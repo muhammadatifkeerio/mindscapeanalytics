@@ -37,7 +37,6 @@ const testimonials = [
     {
         quote: "Reduced response time from 4h to 30s. The ROI was immediate.",
         name: "Sarah Chen",
-        role: "VP Ops, FinServe",
         metric: "98% Faster",
     }
 ];
@@ -83,10 +82,7 @@ export default function AIAuditLeadMagnet() {
                         
                         {/* LEFT COLUMN: THE OFFER & FORM (7/12) */}
                         <div className="lg:col-span-7 p-8 md:p-16 border-b lg:border-b-0 lg:border-r border-border space-y-10">
-                            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-foreground/5 border border-border">
-                                <Bot className="w-4 h-4 text-foreground/60" />
-                                <span className="text-foreground/60 text-[9px] font-mono font-black tracking-[0.4em] uppercase">Free Infrastructure Review</span>
-                            </div>
+
 
                             <div className="space-y-6">
                                 <h2 className="fluid-h2 font-black uppercase not-italic">
@@ -201,18 +197,6 @@ export default function AIAuditLeadMagnet() {
                                         <span className="text-[8px] font-black uppercase tracking-[0.2em] text-foreground/40">{badge.text}</span>
                                     </div>
                                 ))}
-                            </div>
-
-                            {/* Architecture Tag */}
-                            <div className="pt-6 text-center border-t border-border/20">
-                                <span className="text-[9px] font-mono text-foreground/20 tracking-[0.4em] font-black uppercase block mb-4 not-italic">
-                                    Infrastructure // MSA CORE
-                                </span>
-                                <div className="flex justify-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all">
-                                    <span className="text-[9px] font-black tracking-widest uppercase text-foreground not-italic">MSA AGENT</span>
-                                    <span className="text-[9px] font-black tracking-widest uppercase text-foreground not-italic">MISTRAL</span>
-                                    <span className="text-[9px] font-black tracking-widest uppercase text-foreground not-italic">ANTHROPIC</span>
-                                </div>
                             </div>
                         </div>
 

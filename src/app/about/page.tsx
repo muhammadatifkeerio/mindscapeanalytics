@@ -172,15 +172,6 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(255,255,255,0.03),transparent_70%)] pointer-events-none" />
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.6 }}
-                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/[0.02] border border-foreground/10 backdrop-blur-xl"
-                        >
-                            <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                            <span className="text-meta">Registry // ABOUT_MINDSCAPE_V4</span>
-                        </motion.div>
 
                         <motion.h1
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -197,7 +188,6 @@ export default function AboutPage() {
                                 <div className="absolute -bottom-2 -right-6 w-4 h-4 border-b-2 border-r-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform hidden sm:block" />
 
                                 <span className="text-foreground px-4 drop-shadow-sm flex items-center justify-center break-words text-center relative">
-                                    <span className="absolute right-full mr-4 hidden lg:block text-[8px] font-mono text-foreground/20 tracking-[0.5em]">0X_4F</span>
                                     ABOUT
                                 </span>
                                 <span className="relative inline-block mt-0.5 md:mt-4 px-4 overflow-hidden max-w-full">
@@ -217,11 +207,7 @@ export default function AboutPage() {
                             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground/70 font-medium tracking-tight leading-snug uppercase text-center max-w-3xl mx-auto">
                                 We help businesses scale using <span className="text-foreground font-black not-italic border-b border-foreground/20 pb-1">intelligent systems</span> not manual effort.
                             </p>
-                            <div className="flex items-center justify-center gap-6 mt-12 opacity-40">
-                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-foreground/60" />
-                                <span className="text-meta">Scale_Protocol_Active</span>
-                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-foreground/60" />
-                            </div>
+
                         </motion.div>
                     </div>
                 </div>
@@ -232,10 +218,7 @@ export default function AboutPage() {
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                         <ScrollReveal className="space-y-8">
-                            <div className="flex items-center gap-3">
-                                <div className="w-1.5 h-1.5 bg-foreground rounded-full shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
-                                <span className="text-meta">Section_01 // Institutional_Core</span>
-                            </div>
+                          
                             <h2 className="fluid-h2 text-foreground">
                                 NEXT-GENERATION <br />
                                 <span className="text-foreground/45">AI & DATA ENGINEERING.</span>
@@ -255,7 +238,6 @@ export default function AboutPage() {
 
                         <ScrollReveal className="p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] bg-foreground/[0.02] border border-foreground/10 backdrop-blur-xl relative overflow-hidden group shadow-2xl">
                             <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent pointer-events-none" />
-                            <div className="absolute top-6 right-8 text-meta opacity-20">DIAG_v88</div>
                             <h3 className="text-lg sm:text-xl font-black uppercase text-foreground mb-8 tracking-tight font-heading">What Makes Us Different?</h3>
                             <div className="space-y-6">
                                 {differences.map((diff, i) => (
@@ -282,10 +264,7 @@ export default function AboutPage() {
             <section className="py-24 bg-transparent">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <ScrollReveal className="text-center mb-20 space-y-4">
-                        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-foreground/[0.02] border border-foreground/10 mx-auto">
-                            <Cpu className="w-3.5 h-3.5 text-foreground/60" />
-                            <span className="text-meta">System_Capabilities // Readout</span>
-                        </div>
+
                         <h2 className="fluid-h2 text-foreground">
                             CORE EXPERTISE.
                         </h2>
@@ -307,7 +286,6 @@ export default function AboutPage() {
                                         <div className="p-3 rounded-xl bg-foreground/[0.04] border border-foreground/10 group-hover:bg-foreground group-hover:text-black transition-all">
                                             <exp.icon className="w-5 h-5 text-foreground group-hover:text-black transition-colors" />
                                         </div>
-                                        <span className="text-meta">NODE_0x{exp.id}</span>
                                     </div>
                                     <h3 className="text-lg font-black text-foreground uppercase tracking-tight font-heading">{exp.title}</h3>
                                     <p className="text-xs text-foreground/50 leading-relaxed font-medium">{exp.desc}</p>
@@ -325,10 +303,6 @@ export default function AboutPage() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-foreground/5 rounded-full blur-[100px] pointer-events-none" />
                 <div className="container mx-auto px-6 max-w-4xl relative z-10">
                     <ScrollReveal className="text-center space-y-8">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-foreground/[0.02] border border-foreground/10 mx-auto">
-                            <Target className="w-3.5 h-3.5 text-foreground/60" />
-                            <span className="text-meta uppercase tracking-widest text-[10px]">Mission Directive</span>
-                        </div>
                         <h2 className="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter">
                             OUR VISION.
                         </h2>
@@ -344,11 +318,7 @@ export default function AboutPage() {
             <section className="py-32 bg-transparent">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <ScrollReveal className="text-center mb-24 space-y-4">
-                        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-foreground/[0.02] border border-foreground/10 mx-auto">
-                            <Users className="w-3.5 h-3.5 text-foreground/60" />
-                            <span className="text-meta">Institutional Core Logic Unit</span>
-                        </div>
-                        <h2 className="fluid-h2 text-foreground">ARCHITECTS.</h2>
+                        <h2 className="fluid-h2 text-foreground">ARCHITECTS</h2>
                     </ScrollReveal>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -417,10 +387,6 @@ export default function AboutPage() {
             <section className="py-32 bg-transparent border-t border-foreground/5">
                 <div className="container mx-auto px-6 max-w-5xl">
                     <ScrollReveal className="text-center mb-24 space-y-4">
-                        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-foreground/[0.02] border border-foreground/10 mx-auto">
-                            <Globe className="w-3.5 h-3.5 text-foreground/60" />
-                            <span className="text-meta">Chronological System Evolution</span>
-                        </div>
                         <h2 className="fluid-h2 text-foreground">JOURNEY.</h2>
                     </ScrollReveal>
 
@@ -466,7 +432,6 @@ export default function AboutPage() {
                         {/* Why Trust Us card */}
                         <ScrollReveal className="space-y-10 p-8 sm:p-12 rounded-[2.5rem] bg-foreground/[0.02] border border-foreground/5 backdrop-blur-xl shadow-2xl relative overflow-hidden">
                             <div className="space-y-2">
-                                <span className="text-meta block">Node_06 // Trust_Index</span>
                                 <h2 className="fluid-h2 text-foreground">WHY TRUST US?</h2>
                             </div>
                             <div className="space-y-6">
@@ -485,12 +450,9 @@ export default function AboutPage() {
                         {/* Managed Infographic carbon card (100% visible on all backgrounds, extremely sleek) */}
                         <ScrollReveal className="p-8 sm:p-16 rounded-[2.5rem] bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border border-foreground/10 flex flex-col justify-between overflow-hidden relative group shadow-2xl min-h-[450px]">
                             <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:30px_30px]" />
-                            <div className="absolute top-6 right-8 text-meta opacity-20">MGD_v7</div>
                             
                             <div className="relative z-10 space-y-10">
-                                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-foreground/5 border border-foreground/10 text-meta">
-                                    Managed_Subscription_Protocol
-                                </div>
+                                
                                 <h2 className="fluid-h2 text-foreground">
                                     WE DON'T JUST DELIVER. <br />
                                     <span className="text-foreground/45">WE OPTIMIZE.</span>

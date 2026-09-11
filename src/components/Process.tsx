@@ -37,15 +37,6 @@ export default function Process() {
             <div className="container-standard">
                 <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8 mb-16 lg:mb-20 border-b border-border pb-10 text-center lg:text-left">
                     <div className="flex flex-col items-center lg:items-start max-w-4xl">
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className="flex items-center gap-3 mb-6 md:mb-8"
-                        >
-                            <div className="w-1.5 h-1.5 bg-foreground/60 rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
-                            <span className="text-meta">Sequence // OPS_FLOW_v4.1</span>
-                        </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}

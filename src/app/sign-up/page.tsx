@@ -121,7 +121,7 @@ function SignUpContent() {
                     success: false,
                     shouldRetry: false,
                     errorMsg: isNetworkError
-                        ? "Connection timed out. Registry warming up — please try again momentarily."
+                        ? "Connection timed out. Registry warming up. Please try again momentarily."
                         : (err?.message || "Unexpected terminal rejection.")
                 };
             }

@@ -475,7 +475,7 @@ export default function ChatWidget() {
             } else if (lower.includes("voice") || lower.includes("agent")) {
                 fallback = "We deploy autonomous AI voice agents using Vapi and Retell that handle sales, support, and appointment booking 24/7. They integrate with your CRM and process calls in real-time.";
             } else if (lower.includes("automation") || lower.includes("n8n")) {
-                fallback = "We architect n8n automation workflows that connect 400+ apps — CRM sync, lead nurturing, invoice processing, and more. Most clients see 60-80% time savings.";
+                fallback = "We architect n8n automation workflows that connect 400+ apps: CRM sync, lead nurturing, invoice processing, and more. Most clients see 60-80% time savings.";
             }
             setMessages(prev => [...prev, { role: "assistant", content: fallback, timestamp: Date.now() }]);
             setExchangeCount(prev => prev + 1);
@@ -551,7 +551,7 @@ export default function ChatWidget() {
             } else if (lower.includes("voice") || lower.includes("agent")) {
                 fallback = "We deploy autonomous AI voice agents using Vapi and Retell that handle sales, support, and appointment booking 24/7. They integrate with your CRM and process calls in real-time.";
             } else if (lower.includes("automation") || lower.includes("n8n")) {
-                fallback = "We architect n8n automation workflows that connect 400+ apps — CRM sync, lead nurturing, invoice processing, and more. Most clients see 60-80% time savings.";
+                fallback = "We architect n8n automation workflows that connect 400+ apps: CRM sync, lead nurturing, invoice processing, and more. Most clients see 60-80% time savings.";
             }
             setMessages(prev => [...prev, { role: "assistant", content: fallback, timestamp: Date.now() }]);
             setExchangeCount(prev => prev + 1);

@@ -17,15 +17,6 @@ export default function BusinessImpact() {
         <section className="relative section-spacing overflow-hidden bg-transparent">
             <div className="container-standard">
                 <div className="flex flex-col items-center text-center mb-16 lg:mb-24 space-y-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/5 border border-border backdrop-blur-md"
-                    >
-                        <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
-                        <span className="text-meta">Value Metrics // DATA_VERIFIED</span>
-                    </motion.div>
                     <h2 className="fluid-h2">
                         BUSINESS <br className="hidden md:block" /> <span className="text-foreground/40">IMPACT.</span>
                     </h2>
@@ -61,7 +52,6 @@ export default function BusinessImpact() {
                 </div>
 
                 <div className="mt-24 flex flex-col items-center gap-6 text-center">
-                    <div className="text-foreground/20 text-[11px] font-mono font-bold tracking-[0.5em] uppercase">Market_Position // AUTHORITY</div>
                     <p className="text-foreground/40 text-2xl font-medium tracking-tight">Automation isn't an expense.</p>
                     <h2 className="fluid-h2">IT'S A REVENUE <br /> MULTIPLIER.</h2>
                 </div>

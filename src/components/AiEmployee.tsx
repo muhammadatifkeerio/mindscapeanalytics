@@ -589,7 +589,7 @@ export default function AiEmployee() {
                             </h2>
 
                             <p className="text-foreground/70 dark:text-foreground/60 text-base md:text-xl lg:text-2xl font-medium max-w-xl leading-relaxed tracking-tight border-l-[3px] border-secondary/15 pl-6 lg:pl-10">
-                                Transform your organization with self-evolving digital employees&mdash;autonomous agents that handle mission-critical workflows with near-zero latency and elastic scalability.
+                                Transform your organization with self-evolving digital employees: autonomous agents that handle mission-critical workflows with near-zero latency and elastic scalability.
                             </p>
 
                             {/* Voice Intelligence Section */}

@@ -47,7 +47,7 @@ export const NavbarMobileMenu = memo(function NavbarMobileMenu({
             className={cn(
                 dropdownPanelMotion,
                 dropdownPanelState(isOpen),
-                "lg:hidden w-full max-w-sm mt-4 bg-card dark:bg-[#0f0f11] border border-border rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_rgba(0,0,0,0.15)] dark:shadow-[0_32px_64px_rgba(0,0,0,0.9)] relative origin-top"
+                "lg:hidden absolute left-4 right-4 top-full z-50 mx-auto mt-4 w-auto max-w-sm origin-top overflow-hidden rounded-[2.5rem] border border-border bg-card shadow-[0_32px_64px_rgba(0,0,0,0.15)] dark:bg-[#0f0f11] dark:shadow-[0_32px_64px_rgba(0,0,0,0.9)]"
             )}
         >
             <div className="p-8 space-y-8 relative z-10">

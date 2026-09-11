@@ -100,15 +100,6 @@ function ShopContent({ initialProducts }: { initialProducts: ProductWithSeller[]
                     <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] via-transparent to-transparent pointer-events-none" />
 
                     <div className="relative z-10 max-w-4xl mx-auto px-6">
-                        <motion.div
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 py-1.5 bg-foreground/5 border border-border rounded-full mb-8"
-                        >
-                            <span className="w-1.5 h-1.5 rounded-full bg-foreground animate-pulse" />
-                            <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/60">Marketplace Operational</span>
-                        </motion.div>
-
                         <motion.h1
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -138,7 +129,7 @@ function ShopContent({ initialProducts }: { initialProducts: ProductWithSeller[]
                             <div className="flex flex-col items-center">
                                 <span className="text-[8px] md:text-[9px] font-black text-foreground/20 uppercase tracking-[0.4em] mb-1">Elite Creators</span>
                                 <span className="text-3xl md:text-4xl font-black tracking-tighter text-foreground/80">
-                                    {new Set((initialProducts as any[]).map(p => p.sellerId).filter(Boolean)).size || "—"}
+                                    {new Set((initialProducts as any[]).map(p => p.sellerId).filter(Boolean)).size || "-"}
                                 </span>
                             </div>
                         </motion.div>

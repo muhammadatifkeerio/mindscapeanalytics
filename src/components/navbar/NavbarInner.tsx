@@ -98,18 +98,24 @@ function NavbarInner() {
         setMobileMenuOpen(false);
     }, []);
 
+    /**
+     * SOURCE OF TRUTH KEYWORDS: NavbarInner, pointer-events-none, NavbarMobileMenu, fixed nav, mobile overlay
+     * WHAT: Fixed primary nav shell. Hits pass through except the header bar and an open mobile menu.
+     * WHY: Closed mobile drawer stayed in-flow, stretching the fixed nav over the viewport and swallowing taps.
+     * WHERE: All marketing routes via src/components/Navbar.tsx
+     */
     return (
         <nav
             aria-label="Primary Navigation"
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 px-4 md:px-0 flex flex-col items-center",
+                "pointer-events-none fixed top-0 left-0 right-0 z-50 px-4 md:px-0 flex flex-col items-center",
                 navShellTransition,
                 isScrolled ? "pt-3 sm:pt-4" : "pt-6 sm:pt-8"
             )}
         >
             <div
                 className={cn(
-                    "w-full max-w-7xl flex items-center justify-between px-6 py-3 rounded-full border relative",
+                    "pointer-events-auto w-full max-w-7xl flex items-center justify-between px-6 py-3 rounded-full border relative",
                     navShellTransition,
                     isScrolled
                         ? "bg-background/90 md:bg-background/80 backdrop-blur-xl border-border shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)]"

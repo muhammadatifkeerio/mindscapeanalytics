@@ -91,17 +91,6 @@ export default function BankingAiAdoption() {
             <div className="container-standard relative z-10 w-full max-w-7xl">
                 {/* 1. Master Section Header Elements */}
                 <div className="flex flex-col mb-12 sm:mb-16 pb-8 sm:pb-12 border-b border-border/50 dark:border-[#27272a]/50">
-                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-background dark:bg-foreground/[0.03] border border-border shadow-sm backdrop-blur-md mb-6 max-w-full flex-wrap justify-center sm:justify-start"
-                    >
-                        <div className="w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_10px_hsl(var(--secondary) / 0.8)] shrink-0" />
-                        <span className="text-[7px] sm:text-[8px] md:text-[10px] uppercase font-mono tracking-[0.15em] sm:tracking-[0.3em] md:tracking-[0.4em] font-black text-foreground/70 dark:text-foreground/40 text-center">
-                            FINANCIAL SECTOR INSIGHTS 2030 // INSTITUTIONAL SCALE
-                        </span>
-                    </motion.div>
                     
                     <h2 className="fluid-h2 text-foreground drop-shadow-sm mb-6 uppercase tracking-tighter">
                         THE <span className="text-secondary font-black drop-shadow-[0_0_15px_hsl(var(--secondary) / 0.4)]">AGENTIC</span> REVOLUTION

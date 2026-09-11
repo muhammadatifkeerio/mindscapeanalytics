@@ -60,10 +60,6 @@ export default function Footer() {
                             <h3 className="text-sm font-black tracking-[0.3em] uppercase text-foreground not-italic">
                                 Institutional // Intelligence
                             </h3>
-                            <div className="flex items-center gap-3">
-                                <div className="w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_10px_hsl(var(--secondary) / 0.6)]" />
-                                <span className="text-meta opacity-90 text-foreground/80 dark:text-foreground/70">Core // NODE_v4.02</span>
-                            </div>
                             <p className="text-foreground/80 dark:text-foreground/70 text-sm leading-relaxed max-w-sm font-medium tracking-tight">
                                 Architecting state-of-the-art AI automation and software solutions for the next generation of global enterprises.
                             </p>
@@ -246,16 +242,6 @@ export default function Footer() {
                     <p className="text-foreground/40 text-[9px] font-mono font-black tracking-[0.3em] uppercase text-center md:text-left">
                         © 2026 // MINDSCAPE ANALYTICS LLC. <span className="hidden md:inline">FOUNDED 2025. ALL RIGHTS RESERVED.</span>
                     </p>
-                    <div className="flex flex-wrap justify-center md:justify-end items-center gap-4 md:gap-8">
-                        <span className="text-foreground/30 text-[7px] md:text-[8px] font-black tracking-[0.4em] uppercase flex items-center gap-2 group hover:text-foreground transition-colors cursor-default">
-                            <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-green-500/50 rounded-full group-hover:bg-green-400 transition-colors shadow-[0_0_8px_rgba(74,222,128,0.5)]" />
-                            System Active
-                        </span>
-                        <span className="text-foreground/30 text-[7px] md:text-[8px] font-black tracking-[0.4em] uppercase flex items-center gap-2 group hover:text-foreground transition-colors cursor-default">
-                            <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-foreground/20 rounded-full group-hover:bg-foreground transition-colors" />
-                            Grade-A Security
-                        </span>
-                    </div>
                 </div>
             </div>
         </footer>

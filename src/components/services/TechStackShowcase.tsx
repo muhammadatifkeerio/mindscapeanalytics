@@ -104,9 +104,6 @@ export default function TechStackShowcase() {
             <div className="container mx-auto px-6">
                 <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-16 pb-12 border-b border-border">
                     <div className="text-left space-y-4">
-                        <Badge variant="outline" className="bg-foreground/5 text-foreground/40 border-border px-4 py-1.5 text-[9px] tracking-[0.4em] uppercase font-black">
-                            Technical_Infrastructure
-                        </Badge>
                         <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tightest uppercase">
                             ELITE <span className="opacity-20">TEK STACK.</span>
                         </h2>

@@ -28,10 +28,6 @@ export default function InfrastructureAdvantage() {
                 {/* Header Band */}
                 <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8 mb-16 lg:mb-24 border-b border-border pb-10 text-center lg:text-left">
                     <div className="flex flex-col items-center lg:items-start max-w-3xl space-y-6">
-                        <div className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 bg-foreground/40 rounded-full" />
-                            <span className="text-meta">Infrastructure // ELITE_MANAGED</span>
-                        </div>
                         <h2 className="fluid-h2">
                             THE INFRASTRUCTURE <br className="hidden md:block" /> <span className="text-foreground/40">ADVANTAGE.</span>
                         </h2>

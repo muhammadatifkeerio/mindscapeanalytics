@@ -68,14 +68,6 @@ export default function BlogPage() {
                     {/* Header */}
                     <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-border pb-20">
                         <div className="max-w-3xl">
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="inline-flex items-center gap-2 px-3 py-1 bg-foreground/5 border border-border rounded-full mb-8"
-                            >
-                                <Zap size={12} className="text-foreground/40" />
-                                <span className="text-meta">Intelligence_Stream // v2026</span>
-                            </motion.div>
                             <motion.h1
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}

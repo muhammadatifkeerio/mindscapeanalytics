@@ -7,6 +7,12 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+/**
+ * SOURCE OF TRUTH KEYWORDS: pricingPlans, PricingPage, highlight, managedFee, surface-frost, text-foreground
+ * WHAT: Packaged deployment tiers rendered as pricing cards (Starter / Growth / Enterprise).
+ * WHY: Highlight used inverted text-background while surface-frost kept a dark card, so Growth copy vanished.
+ * WHERE: src/app/pricing/page.tsx — /pricing investment grid.
+ */
 const pricingPlans = [
     {
         name: "AI Starter System",
@@ -15,7 +21,6 @@ const pricingPlans = [
         setupFee: "Starting Investment",
         managedFee: "$297 – $497/mo",
         icon: Zap,
-        description: "Foundational AI infrastructure to automate lead capture and basic CRM workflows.",
         features: [
             "AI Lead Capture Agent",
             "Basic Automation Workflow",
@@ -25,8 +30,7 @@ const pricingPlans = [
             "System Performance Monitoring"
         ],
         cta: "Initiate Deployment",
-        highlight: false,
-        managedNote: "Managed Infrastructure Plan Required After Month 1"
+        highlight: false
     },
     {
         name: "Growth Automation System",
@@ -35,7 +39,6 @@ const pricingPlans = [
         setupFee: "Starting Investment",
         managedFee: "$750 – $1,500/mo",
         icon: Brain,
-        description: "Comprehensive AI sales and operational systems built for high-growth global teams.",
         features: [
             "AI Sales Agent (Lead/Qualify/Book)",
             "AI Email Automation Engine",
@@ -46,8 +49,7 @@ const pricingPlans = [
             "Priority Response Support"
         ],
         cta: "Scale Infrastructure",
-        highlight: true,
-        managedNote: "Includes Advanced Infrastructure Monitoring"
+        highlight: true
     },
     {
         name: "Enterprise AI Ecosystem",
@@ -56,7 +58,6 @@ const pricingPlans = [
         setupFee: "Architectural Pricing",
         managedFee: "$2,000+/mo",
         icon: Shield,
-        description: "Full-scale autonomous ecosystems integrating multi-agent reasoning and voice AI.",
         features: [
             "Multi-agent AI Clusters",
             "AI Voice Integration (Vapi/Retell)",
@@ -67,8 +68,7 @@ const pricingPlans = [
             "24/7 Dedicated Support Node"
         ],
         cta: "Request Consultation",
-        highlight: false,
-        managedNote: "Full Infrastructure SLA & Optimization"
+        highlight: false
     }
 ];
 
@@ -96,14 +96,6 @@ export default function PricingPage() {
             <section className="relative pt-44 pb-32 overflow-hidden institutional-grid">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
                 <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center space-y-12">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/5 border border-border backdrop-blur-md"
-                    >
-                        <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_hsl(var(--foreground)/0.6)]" />
-                        <span className="text-meta">Investment_Protocol // v4.2</span>
-                    </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
@@ -137,34 +129,34 @@ export default function PricingPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className={`group relative p-6 xs:p-8 lg:p-10 rounded-[2.5rem] lg:rounded-[3rem] border transition-all duration-500 flex flex-col surface-frost ${plan.highlight
-                                    ? "bg-foreground text-background border-foreground shadow-[0_0_80px_hsl(var(--foreground)/0.1)]"
-                                    : "bg-foreground/[0.02] border-border hover:border-foreground/30 backdrop-blur-xl"
+                                className={`group relative p-6 xs:p-8 lg:p-10 rounded-[2.5rem] lg:rounded-[3rem] border text-foreground transition-all duration-500 flex flex-col surface-frost ${plan.highlight
+                                    ? "border-foreground/40 shadow-[0_0_80px_hsl(var(--foreground)/0.1)]"
+                                    : "border-border hover:border-foreground/30 backdrop-blur-xl"
                                     }`}
                             >
                                 <div className="mb-10 flex items-start justify-between">
-                                    <div className={`p-4 rounded-xl ${plan.highlight ? "bg-background text-foreground" : "bg-foreground/5 border border-border"}`}>
+                                    <div className={`p-4 rounded-xl ${plan.highlight ? "bg-foreground text-background" : "bg-foreground/5 border border-border"}`}>
                                         <plan.icon className="w-7 h-7" />
                                     </div>
-                                    <div className={`text-meta ${plan.highlight ? "text-background/40" : "text-foreground/20"}`}>
+                                    <div className="text-meta text-muted-foreground">
                                         Tier_0{index + 1}
                                     </div>
                                 </div>
 
                                 <div className="mb-8">
-                                    <h3 className={`text-3xl font-black uppercase tracking-tight leading-none mb-2 ${plan.highlight ? "text-background" : "text-foreground"}`}>
+                                    <h3 className="text-3xl font-black uppercase tracking-tight leading-none mb-2 text-foreground">
                                         {plan.name}
                                     </h3>
-                                    <p className={`text-meta ${plan.highlight ? "text-background/40" : "text-foreground/20"}`}>
+                                    <p className="text-meta text-muted-foreground">
                                         {plan.subtitle}
                                     </p>
                                 </div>
 
                                 <div className="mb-10">
                                     <div className="flex items-baseline gap-2">
-                                        <span className="text-4xl font-black">{plan.price}</span>
+                                        <span className="text-4xl font-black text-foreground">{plan.price}</span>
                                     </div>
-                                    <div className={`text-meta mt-1 ${plan.highlight ? "text-background/60" : "text-foreground/40"}`}>
+                                    <div className="text-meta mt-1 text-muted-foreground">
                                         {plan.setupFee}
                                     </div>
                                 </div>
@@ -172,20 +164,20 @@ export default function PricingPage() {
                                 <div className="space-y-4 mb-10 flex-grow">
                                     {plan.features.map((feature) => (
                                         <div key={feature} className="flex items-center gap-3">
-                                            <Check className={`w-4 h-4 ${plan.highlight ? "text-background" : "text-foreground/40"}`} />
-                                            <span className={`text-[11px] font-black uppercase tracking-wider ${plan.highlight ? "text-background/80" : "text-foreground/60"}`}>
+                                            <Check className="w-4 h-4 text-foreground/70" />
+                                            <span className="text-[11px] font-black uppercase tracking-wider text-foreground">
                                                 {feature}
                                             </span>
                                         </div>
                                     ))}
                                 </div>
 
-                                <div className={`pt-8 border-t mb-10 ${plan.highlight ? "border-background/10" : "border-border"}`}>
+                                <div className="pt-8 border-t mb-10 border-border">
                                     <div className="flex items-center gap-3">
-                                        <Database className="w-4 h-4 opacity-40" />
+                                        <Database className="w-4 h-4 text-muted-foreground" />
                                         <div className="flex flex-col">
-                                            <span className="text-meta">{plan.managedFee}</span>
-                                            <span className={`text-[8px] font-medium uppercase opacity-60`}>Managed Infrastructure Plan</span>
+                                            <span className="text-meta text-foreground">{plan.managedFee}</span>
+                                            <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">Managed Infrastructure Plan</span>
                                         </div>
                                     </div>
                                 </div>
@@ -198,10 +190,6 @@ export default function PricingPage() {
                                         </span>
                                     </button>
                                 </Link>
-
-                                <p className={`mt-6 text-[8px] font-mono text-center uppercase tracking-widest font-black leading-relaxed ${plan.highlight ? "text-background/40" : "text-foreground/20"}`}>
-                                    {plan.managedNote}
-                                </p>
                             </motion.div>
                         ))}
                     </div>
@@ -214,7 +202,7 @@ export default function PricingPage() {
                     <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
                         <div className="space-y-12">
                             <div className="space-y-6">
-                                <span className="text-meta opacity-40">Authority // FAQ</span>
+                                <span className="text-meta text-muted-foreground">Authority // FAQ</span>
                                 <h2 className="fluid-h2">
                                     SYSTEM <br /> <span className="text-foreground/40">INTEGRITY.</span>
                                 </h2>

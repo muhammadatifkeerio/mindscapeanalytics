@@ -10,11 +10,11 @@ export function NavbarFallback() {
             aria-label="Primary Navigation"
             aria-busy="true"
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 px-4 md:px-0 flex flex-col items-center pt-6 sm:pt-8",
+                "pointer-events-none fixed top-0 left-0 right-0 z-50 px-4 md:px-0 flex flex-col items-center pt-6 sm:pt-8",
                 navShellTransition
             )}
         >
-            <div className="w-full max-w-7xl flex items-center justify-between px-6 py-3 rounded-full border border-transparent">
+            <div className="pointer-events-auto w-full max-w-7xl flex items-center justify-between px-6 py-3 rounded-full border border-transparent">
                 <Link href="/" aria-label="Mindscape Analytics Home" className="flex items-center">
                     <Image
                         src="/images/logo/mindscape-analytics.png"

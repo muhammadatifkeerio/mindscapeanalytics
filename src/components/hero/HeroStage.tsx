@@ -7,10 +7,10 @@ export default function HeroStage() {
     return (
         <div
             aria-hidden="true"
-            className="hero-stage pointer-events-none absolute inset-0 -z-[1] overflow-hidden"
+            className="hero-stage pointer-events-none absolute inset-0 -z-[1] hidden overflow-hidden lg:block"
         >
             <svg
-                className="hero-stage-svg absolute -right-[8%] top-[12%] h-[78%] w-[72%] max-w-none opacity-[0.55] md:right-0 md:top-[8%] md:h-[85%] md:w-[58%] md:opacity-90 lg:w-[55%]"
+                className="hero-stage-svg absolute right-0 top-[8%] h-[85%] w-[55%] max-w-none opacity-90"
                 viewBox="0 0 720 640"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

@@ -200,10 +200,6 @@ export default function ProjectVision() {
                 {/* --- Section Header --- */}
                 <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 border-b border-border pb-6 lg:pb-10 text-center lg:text-left">
                     <div className="flex flex-col items-center lg:items-start space-y-3 lg:space-y-4">
-                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-background dark:bg-foreground/3 border border-border/80 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-sm">
-                            <div className="w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_10px_hsl(var(--secondary)/0.6)]" />
-                            <span className="text-meta">Portfolio / Selected Work</span>
-                        </div>
                         <h2 className="fluid-h2">
                             PROJECT <span className="text-secondary drop-shadow-[0_0_15px_hsl(var(--secondary)/0.3)]">VISION</span>
                         </h2>
@@ -312,7 +308,7 @@ export default function ProjectVision() {
                                 <div className="relative w-full aspect-video rounded-xl lg:rounded-2xl overflow-hidden border border-border shadow-[0_0_30px_rgba(0,0,0,0.5)] lg:shadow-[0_0_50px_rgba(0,0,0,0.5)] group-hover:border-foreground/20 transition-colors duration-500">
                                     <Image
                                         src={activeProject.image}
-                                        alt={`${activeProject.title} — ${activeProject.category}`}
+                                        alt={`${activeProject.title}: ${activeProject.category}`}
                                         fill
                                         className={cn(
                                             "object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] transform-gpu",
@@ -450,7 +446,7 @@ export default function ProjectVision() {
                 {/* --- Bottom Footer Info --- */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-4 lg:py-8 border-t border-border">
                     <div className="text-[10px] font-mono text-foreground/50 uppercase tracking-widest text-center sm:text-left">
-                        Mindscape Analytics — Selected Work
+                        Mindscape Analytics: Selected Work
                     </div>
                     <div className="text-[10px] font-mono text-foreground/50 uppercase tracking-widest">
                         {PROJECTS.length} Platforms in the Portfolio

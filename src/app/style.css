@@ -350,11 +350,9 @@
         }
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
         .hero-stage-svg {
-            opacity: 0.28;
-            animation: none;
-            transform: none;
+            display: none;
         }
     }
 

@@ -42,14 +42,6 @@ export default function Products() {
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="flex flex-col items-center text-center mb-12">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/5 border border-border mb-10 backdrop-blur-md"
-                    >
-                        <Sparkles className="w-4 h-4 text-foreground/60" />
-                        <span className="text-meta">Elite Product Suite // CATALOG_v4</span>
-                    </motion.div>
 
                     <h2 className="fluid-h2">
                         BATTLE-TESTED <br className="hidden md:block" />

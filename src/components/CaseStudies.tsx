@@ -62,15 +62,6 @@ export default function CaseStudies() {
             <div className="container-standard">
                 <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-32 border-b border-border pb-12">
                     <div className="max-w-4xl space-y-6">
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className="flex items-center gap-3"
-                        >
-                            <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                            <span className="text-[10px] font-mono text-foreground/40 uppercase tracking-[0.5em] font-black">Archive // MISSION_LOGS_v2</span>
-                        </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}

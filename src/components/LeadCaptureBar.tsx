@@ -66,7 +66,7 @@ export default function LeadCaptureBar() {
             setIsSubmitted(true);
             sessionStorage.setItem("msa_lead_bar_dismissed", "true");
         } catch {
-            setError("Couldn't send that — try again in a moment.");
+            setError("Couldn't send that. Try again in a moment.");
             setIsSubmitting(false);
         }
     };
@@ -105,7 +105,7 @@ export default function LeadCaptureBar() {
                                 >
                                     <CheckCircle2 className="h-4 w-4 shrink-0 text-foreground/70" aria-hidden="true" />
                                     <span className="text-center text-sm text-foreground/80">
-                                        Thanks — we&apos;ll follow up within a day.
+                                        Thanks. We&apos;ll follow up within a day.
                                     </span>
                                 </motion.div>
                             ) : (
@@ -116,7 +116,7 @@ export default function LeadCaptureBar() {
                                     <div className="min-w-0 shrink-0 text-left sm:max-w-[11rem]">
                                         <p className="text-sm font-medium text-foreground">Free AI audit</p>
                                         <p className="text-xs text-foreground/55">
-                                            Optional — after you&apos;ve seen the work
+                                            Optional, after you&apos;ve seen the work
                                         </p>
                                     </div>
                                     <div className="flex min-w-0 flex-1 flex-col gap-2">

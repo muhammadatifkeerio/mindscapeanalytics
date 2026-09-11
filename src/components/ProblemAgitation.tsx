@@ -20,15 +20,6 @@ export default function ProblemAgitation() {
             <div className="container-standard">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                     <div className="flex flex-col items-center lg:items-start max-w-4xl space-y-6">
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-background dark:bg-foreground/[0.03] border border-border shadow-sm backdrop-blur-md"
-                        >
-                            <div className="w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_10px_hsl(var(--secondary) / 0.8)]" />
-                            <span className="text-meta uppercase font-mono tracking-widest text-foreground/60 dark:text-foreground/40">Diagnostic // CORE_LEAKAGE</span>
-                        </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
