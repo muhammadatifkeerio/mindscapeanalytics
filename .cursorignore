@@ -1,0 +1,37 @@
+﻿# SOURCE OF TRUTH KEYWORDS: cursorignore, indexing, node_modules, .next, generated prisma, coverage
+# WHAT: Cursor index exclusion list for this workspace.
+# WHY: Keeps the agent index on app source instead of dependencies, builds, and generated clients.
+# WHERE: Read by Cursor at the repository root.
+
+# dependencies and package manager stores
+node_modules/
+.pnp
+.yarn/
+
+# next.js and build output
+.next/
+out/
+build/
+coverage/
+.turbo/
+.vercel/
+
+# generated prisma client
+generated/prisma/
+src/generated/prisma/
+
+# typescript incremental cache
+*.tsbuildinfo
+next-env.d.ts
+
+# git internals
+.git/
+
+# local scratch and detector dumps
+scratch/
+detect-*.json
+
+# agent skill caches (workspace rules stay in AGENTS.md)
+.agents/
+.codex/
+.impeccable/

@@ -1,0 +1,220 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                   String      @id @default(cuid())
+  name                 String?
+  email                String      @unique
+  emailVerified        Boolean?    @default(false)
+  image                String?
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime    @updatedAt
+  role                 String      @default("user")
+  banned               Boolean?    @default(false)
+  banReason            String?
+  banExpires           DateTime?
+  username             String?     @unique
+  displayUsername      String?
+  twoFactorEnabled     Boolean?    @default(false)
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  isSeller             Boolean     @default(false)
+  stripeAccountId      String?     @unique
+  storeName            String?
+  storeDescription     String?
+  sellerVerified       Boolean     @default(false)
+  payoutMethod         String?
+  payoutDetails        String?
+  lastLoginMethod      String?
+  accounts             Account[]
+  orders               Order[]
+  products             Product[]
+  sessions             Session[]
+  twofactors           TwoFactor[]
+
+  @@map("user")
+}
+
+model Session {
+  id             String   @id @default(cuid())
+  expiresAt      DateTime
+  token          String   @unique
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  ipAddress      String?
+  userAgent      String?
+  userId         String
+  impersonatedBy String?
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id @default(cuid())
+  accountId             String
+  providerId            String
+  userId                String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
+}
+
+model TwoFactor {
+  id          String @id @default(cuid())
+  secret      String
+  backupCodes String
+  userId      String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([secret])
+  @@index([userId])
+  @@map("twoFactor")
+}
+
+model Product {
+  id              String        @id @default(cuid())
+  name            String
+  description     String?
+  price           Float
+  category        String        @default("ui_kits")
+  approvedForSale Boolean       @default(false)
+  stripeId        String?
+  priceId         String?
+  demoUrl         String?
+  features        Json?         @default("[]")
+  techStack       Json?         @default("[]")
+  sellerId        String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  images          Image[]
+  orders          OrderItem[]
+  seller          User?         @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  productFiles    ProductFile[]
+
+  @@index([sellerId])
+  @@map("product")
+}
+
+model ProductFile {
+  id        String  @id @default(cuid())
+  filename  String
+  url       String
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@map("product_file")
+}
+
+model Image {
+  id        String  @id @default(cuid())
+  url       String
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@map("image")
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  userId          String?
+  customerEmail   String?
+  customerName    String?
+  amount          Float
+  isPaid          Boolean     @default(false)
+  status          String      @default("pending")
+  stripeSessionId String?     @unique
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  user            User?       @relation(fields: [userId], references: [id])
+  items           OrderItem[]
+
+  @@index([userId])
+  @@map("order")
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int     @default(1)
+  price     Float
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+  @@map("order_item")
+}
+
+// ============================================================================
+// LEAD CAPTURE & CRM
+// ============================================================================
+
+model Lead {
+  id          String   @id @default(cuid())
+  email       String
+  name        String?
+  company     String?
+  phone       String?
+  source      String   @default("website") // chat, voice, newsletter, contact, audit, exit_intent
+  service     String?
+  message     String?
+  status      String   @default("new") // new, contacted, qualified, converted, lost
+  score       Int      @default(0) // lead score 0-100
+  metadata    Json?    @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([email])
+  @@index([source])
+  @@index([status])
+  @@index([createdAt])
+  @@map("lead")
+}
+
+model ChatSession {
+  id          String   @id @default(cuid())
+  visitorId   String   // anonymous fingerprint
+  email       String?  // captured during conversation
+  messages    Json     @default("[]")
+  source      String   @default("chat") // chat, voice
+  leadCaptured Boolean @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([visitorId])
+  @@index([email])
+  @@map("chat_session")
+}

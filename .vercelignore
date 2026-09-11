@@ -1,0 +1,36 @@
+# SOURCE OF TRUTH KEYWORDS: vercelignore, deploy, agents, scratch, docs, local scripts
+# WHAT: Extra files excluded from the Vercel upload in addition to .gitignore.
+# WHY: Production builds only need app source, Prisma schema, public assets, and lockfiles.
+# WHERE: Read by Vercel CLI and Git-connected deployments at the repository root.
+
+# editor / agent tooling
+.agents
+.codex
+.cursor
+.impeccable
+.vscode
+.idea
+
+# local scratch and detector dumps
+scratch
+detect-*.json
+check-users.ts
+
+# docs and agent rules are not required to compile the Next.js app
+docs
+AGENTS.md
+CLAUDE.md
+PRODUCT.md
+skills-lock.json
+
+# local image/dev helpers that are not part of `next build`
+convert.cjs
+optimize-images.cjs
+scripts/optimize-images.js
+scripts/test-db.ts
+scripts/verify-signup.js
+
+# prettier / lint-staged local DX (eslint config is kept for next build)
+.lintstagedrc.js
+.prettierignore
+.cursorignore

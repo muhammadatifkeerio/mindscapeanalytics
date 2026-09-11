@@ -1,0 +1,370 @@
+/* FORCE REBUILD - TAILWIND 4 - MSA 2026 */
+@import "tailwindcss";
+
+@theme {
+    --font-sans: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
+    --font-heading: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+    --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+
+    --color-background: hsl(var(--background));
+    --color-foreground: hsl(var(--foreground));
+    --color-card: hsl(var(--card));
+    --color-card-foreground: hsl(var(--card-foreground));
+    --color-popover: hsl(var(--popover));
+    --color-popover-foreground: hsl(var(--popover-foreground));
+    --color-primary: hsl(var(--primary));
+    --color-primary-foreground: hsl(var(--primary-foreground));
+    --color-secondary: hsl(var(--secondary));
+    --color-secondary-foreground: hsl(var(--secondary-foreground));
+    --color-muted: hsl(var(--muted));
+    --color-muted-foreground: hsl(var(--muted-foreground));
+    --color-accent: hsl(var(--accent));
+    --color-accent-foreground: hsl(var(--accent-foreground));
+    --color-destructive: hsl(var(--destructive));
+    --color-destructive-foreground: hsl(var(--destructive-foreground));
+    --color-border: hsl(var(--border));
+    --color-input: hsl(var(--input));
+    --color-ring: hsl(var(--ring));
+
+    --color-zinc-950: #09090b;
+    --color-zinc-900: #18181b;
+    --color-zinc-800: #27272a;
+    --color-sky-500: #39b8f7;
+
+    @keyframes marquee {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+    }
+}
+
+@utility border-border {
+    border-color: hsl(var(--border));
+}
+
+:root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 4%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 5.9% 30%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+
+    --ambient-1: 240 5.9% 10%;
+    --ambient-2: 240 5.9% 30%;
+    --ambient-3: 240 5.9% 50%;
+    --grid-opacity: 0.05;
+    --subgrid-opacity: 0.02;
+    --surface-frost: 210 20% 98%;
+    --accent-glow: 240 5.9% 10% / 0.15;
+
+    /* Hero accent — Monochrome Elite (brand is white/gray/black, no saturated hues) */
+    --hero-accent: 0 0% 9%;
+    --hero-accent-soft: 0 0% 40%;
+}
+
+.dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 5% 85%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --ambient-1: 0 0% 100%;
+    --ambient-2: 0 0% 100%;
+    --ambient-3: 0 0% 100%;
+    --grid-opacity: 0.03;
+    --subgrid-opacity: 0.01;
+    --surface-frost: 240 10% 3.9%;
+    --accent-glow: 0 0% 100% / 0.1;
+
+    /* Hero accent — pure white on black per Monochrome Elite system */
+    --hero-accent: 0 0% 98%;
+    --hero-accent-soft: 0 0% 64%;
+}
+
+@layer base {
+    * {
+        border-color: hsl(var(--border));
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-background text-foreground antialiased font-sans;
+        overflow-x: clip;
+        /* 2026 standard for catching overflows without breaking sticky */
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-heading;
+    }
+
+    /* Global Cinematic Noise Grain - Removed for sharp 2026 UI */
+
+    /* Scrollbar Management */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+@layer utilities {
+    .container-wide {
+        @apply max-w-[1800px] mx-auto px-5 md:px-12 w-full;
+    }
+
+    .container-standard {
+        @apply max-w-[1600px] mx-auto px-5 md:px-12 w-full;
+    }
+
+    .section-spacing {
+        @apply py-16 md:py-32 lg:py-40;
+    }
+
+    /* Fluid Typography - scaled for enterprise visibility */
+    /* Institutional Display Typography */
+    .fluid-h1 {
+        font-size: clamp(2.4rem, 8vw, 12rem);
+        @apply font-black leading-[0.85] tracking-[-0.05em] uppercase font-heading;
+        font-style: normal !important;
+        word-break: keep-all;
+        overflow-wrap: normal;
+        hyphens: none;
+        text-wrap: balance;
+    }
+
+    .fluid-h2 {
+        font-size: clamp(1.6rem, 6vw, 7rem);
+        @apply font-black leading-[0.9] tracking-[-0.04em] uppercase font-heading;
+        font-style: normal !important;
+        word-break: keep-all;
+        overflow-wrap: normal;
+        hyphens: none;
+        text-wrap: balance;
+    }
+
+    .fluid-body {
+        font-size: clamp(1rem, 1.1vw, 1.25rem);
+    }
+
+    /* Institutional Tokens */
+    .text-meta {
+        @apply font-mono text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.4em] font-black text-foreground/70 dark:text-foreground/40;
+    }
+
+    .btn-institutional {
+        @apply relative px-8 py-4 bg-primary text-primary-foreground font-black uppercase text-[10px] tracking-[0.3em] rounded-xl overflow-hidden transition-all hover:bg-primary/90 active:scale-95 shadow-[0_0_30px_rgba(0,0,0,0.05)] dark:shadow-[0_0_30px_rgba(255,255,255,0.1)];
+    }
+
+    .btn-outline-institutional {
+        @apply relative px-8 py-4 bg-background dark:bg-[#09090b] border border-border text-foreground font-black uppercase text-[10px] tracking-[0.3em] rounded-xl transition-all hover:border-foreground/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] active:scale-95 shadow-sm;
+    }
+
+    .glass-card {
+        @apply bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] rounded-[2rem] hover:border-foreground/20 dark:hover:border-white/40 transition-all duration-500;
+        box-shadow: none;
+    }
+    .glass-card:hover {
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.03);
+    }
+    :is(.dark .glass-card:hover) {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.03);
+    }
+
+    .glass-card-premium {
+        @apply bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] rounded-[2rem] transition-all duration-700;
+        box-shadow: none;
+    }
+    .glass-card-premium:hover {
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.03);
+    }
+    :is(.dark .glass-card-premium:hover) {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.03);
+    }
+
+    .surface-frost {
+        @apply bg-card dark:bg-[#0f0f11];
+    }
+
+    .institutional-grid {
+        background: transparent;
+    }
+
+    @keyframes shimmer {
+        0% { background-position: -200% center; }
+        100% { background-position: 200% center; }
+    }
+
+    .shimmer-sweep {
+        background-size: 200% auto;
+        animation: shimmer 8s linear infinite;
+    }
+
+    .transform-gpu {
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+        will-change: transform;
+    }
+
+    .gpu-accelerate {
+        @apply transform-gpu;
+        content-visibility: auto;
+    }
+
+    /* 2026 Core Optimization */
+    .content-deferred {
+        content-visibility: auto;
+        contain-intrinsic-size: 1000px;
+        contain: layout paint style;
+    }
+
+    .smooth-scroll-container {
+        /* Prevents scroll jank by locking overscroll */
+        overscroll-behavior-y: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* ── Hero: kinetic sheen band on accent word (no duplicate text nodes) */
+    .hero-accent-word {
+        overflow: hidden;
+    }
+
+    .hero-accent-word::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+            110deg,
+            transparent 18%,
+            hsl(var(--hero-accent) / 0.55) 48%,
+            transparent 72%
+        );
+        background-size: 220% 100%;
+        background-repeat: no-repeat;
+        mix-blend-mode: soft-light;
+        pointer-events: none;
+        animation: hero-sheen-sweep 5s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+    }
+
+    @keyframes hero-sheen-sweep {
+        0% { background-position: 130% 0; }
+        60%, 100% { background-position: -130% 0; }
+    }
+
+    /* ── Hero: CSS-only staggered reveal (transform + opacity only) ── */
+    @keyframes hero-rise {
+        from { opacity: 0; transform: translate3d(0, 14px, 0); }
+        to { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    .hero-reveal {
+        opacity: 0;
+        animation: hero-rise 0.75s cubic-bezier(0.23, 1, 0.32, 1) both;
+        will-change: transform, opacity;
+    }
+
+    /* LCP-safe headline entrance: transform only, text stays fully opaque. */
+    @keyframes hero-rise-solid {
+        from { transform: translate3d(0, 12px, 0); }
+        to { transform: translate3d(0, 0, 0); }
+    }
+
+    .hero-reveal-solid {
+        animation: hero-rise-solid 0.75s cubic-bezier(0.23, 1, 0.32, 1) both;
+        will-change: transform;
+    }
+
+    /* ── Hero stage: first-paint reveal (opacity + translate; never scale 0) ── */
+    @keyframes hero-stage-in {
+        from { opacity: 0; transform: translate3d(24px, 0, 0); }
+        to { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    .hero-stage-svg {
+        opacity: 0;
+        animation: hero-stage-in 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s both;
+        will-change: transform, opacity;
+    }
+
+    /* ── Hero: ambient backdrop drift (GPU-only) ── */
+    @keyframes hero-drift {
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+        50% { transform: translate3d(1.5%, -2%, 0) scale(1.05); }
+    }
+
+    .hero-orb {
+        animation: hero-drift 28s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+        will-change: transform;
+    }
+
+    .hero-orb-secondary {
+        animation: hero-drift 36s cubic-bezier(0.77, 0, 0.175, 1) infinite reverse;
+        will-change: transform;
+    }
+
+    /* Primary CTA hover lift — pointer devices only (touch uses :active) */
+    @media (hover: hover) and (pointer: fine) {
+        .hero-cta-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px -12px hsl(var(--foreground) / 0.5);
+        }
+    }
+
+    @media (pointer: coarse) {
+        .hero-cta-primary {
+            -webkit-tap-highlight-color: transparent;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .hero-stage-svg {
+            opacity: 0.28;
+            animation: none;
+            transform: none;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-reveal { animation: none; opacity: 1; }
+        .hero-reveal-solid,
+        .hero-orb,
+        .hero-orb-secondary,
+        .hero-stage-svg { animation: none; }
+        .hero-stage-svg { opacity: 0.7; transform: none; }
+        .hero-accent-word::after { animation: none; opacity: 0; }
+    }
+}
