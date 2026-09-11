@@ -179,7 +179,7 @@ export default function AIAuditLeadMagnet() {
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-bold text-foreground">{testimonials[0].name}</p>
-                                        <p className="text-[8px] font-mono text-foreground/30 uppercase tracking-wider">{testimonials[0].role}</p>
+                                        <p className="text-[8px] font-mono text-foreground/30 uppercase tracking-wider">{testimonials[0].metric}</p>
                                     </div>
                                 </div>
                             </div>
