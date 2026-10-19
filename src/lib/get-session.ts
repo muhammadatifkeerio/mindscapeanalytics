@@ -2,7 +2,7 @@ import "server-only";
 
 /**
  * SOURCE OF TRUTH KEYWORDS: getSession, getProtectedContext, AdapterIdentity, headers, DYNAMIC_SERVER_USAGE
- * WHAT: Server session retrieval that returns adapter identity — never raw vendor role for authz.
+ * WHAT: Server session retrieval that returns adapter identity  -  never raw vendor role for authz.
  * WHY: Tenancy and capabilities must come from ctx, not from LLM/page guesswork.
  * WHERE: protected.ts, route-authorization, RSC pages that need the actor (not for DB).
  */

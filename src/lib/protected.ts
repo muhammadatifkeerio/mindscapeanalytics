@@ -2,7 +2,7 @@ import "server-only";
 
 /**
  * SOURCE OF TRUTH KEYWORDS: protectedProcedure, runProtected, THE BLOCK, requirePermission, plan limit, rate limit, audit, pagination
- * WHAT: The skeletal spine for Server Actions — equivalent of protectedProcedure without a second tRPC stack.
+ * WHAT: The skeletal spine for Server Actions  -  equivalent of protectedProcedure without a second tRPC stack.
  * WHY: Auth, permission, plan, rate, pagination, and audit must run here so routers/actions only hold business logic.
  * WHERE: src/app/_actions/* mutations and privileged queries.
  */

@@ -1,4 +1,4 @@
-/** CSS-only dropdown visibility — avoids Framer mount/unmount lag on hover */
+/** CSS-only dropdown visibility  -  avoids Framer mount/unmount lag on hover */
 
 export const dropdownPanelMotion =
     "transition-[opacity,transform,visibility] duration-150 ease-out";
@@ -9,7 +9,7 @@ export function dropdownPanelState(isOpen: boolean): string {
         : "opacity-0 -translate-y-1 invisible pointer-events-none";
 }
 
-/** Nav shell / link micro-interactions — prefer targeted props over transition-all */
+/** Nav shell / link micro-interactions  -  prefer targeted props over transition-all */
 export const navShellTransition =
     "transition-[padding,background-color,border-color,box-shadow] duration-200 ease-out";
 export const navLinkTransition =

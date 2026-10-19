@@ -8,7 +8,7 @@ import * as productService from "@/services/product.service";
 
 /**
  * SOURCE OF TRUTH KEYWORDS: stripe webhook, checkout.session.completed, fulfillCheckout, getStripe, Connect
- * WHAT: Stripe event ingress — signature verify, then order service fulfillment + Connect transfers.
+ * WHAT: Stripe event ingress  -  signature verify, then order service fulfillment + Connect transfers.
  * WHY: Must not construct Stripe at import (breaks `next build`). DB writes go through services.
  * WHERE: Stripe Dashboard webhook → POST /api/webhooks/stripe
  */

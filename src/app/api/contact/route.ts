@@ -7,7 +7,7 @@ import * as leadService from "@/services/lead.service";
 
 /**
  * SOURCE OF TRUTH KEYWORDS: POST /api/contact, contactFormSchema, lead.service, withBaseHandler
- * WHAT: Contact form ingress — validate, persist as a lead, notify.
+ * WHAT: Contact form ingress  -  validate, persist as a lead, notify.
  * WHY: Same lead home as /api/leads so scoring cannot drift; 5 req/min public cap.
  * WHERE: /contact page.
  */

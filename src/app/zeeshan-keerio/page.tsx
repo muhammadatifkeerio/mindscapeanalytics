@@ -227,7 +227,7 @@ export default function FounderPortfolio() {
                         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
                     >
                         <span className="text-[9px] font-mono font-black tracking-[0.5em] text-foreground/20 uppercase">Initialize_Scroll</span>
-                        <ChevronDown className="animate-bounce text-foreground/20" size={20} />
+                        <ChevronDown className="animate-pulse text-foreground/35" size={20} />
                     </motion.div>
                 </motion.div>
             </section>
@@ -302,7 +302,7 @@ export default function FounderPortfolio() {
                                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                                         <div className="absolute top-6 left-6 flex flex-wrap gap-2">
                                             {project.tags.map(tag => (
-                                                <span key={tag} className="text-[8px] font-black uppercase tracking-widest px-3 py-1 bg-black/80 backdrop-blur-md border border-border text-foreground/60">
+                                                <span key={tag} className="text-[8px] font-black uppercase tracking-widest px-3 py-1 bg-card/90 backdrop-blur-md border border-border text-foreground/80">
                                                     {tag}
                                                 </span>
                                             ))}
@@ -335,8 +335,8 @@ export default function FounderPortfolio() {
                                 onClick={() => setShowAllProjects(true)}
                                 className="inline-flex items-center gap-6 px-12 py-6 bg-foreground/5 border border-border rounded-2xl text-[10px] font-black uppercase tracking-[0.4em] text-foreground/40 hover:bg-foreground hover:text-background hover:border-white transition-all group scale-90 md:scale-100"
                             >
-                                <span className="group-hover:mr-2 transition-all">ACCESS_FULL_PROJECT_LEDGER</span>
-                                <ChevronDown size={14} className="animate-bounce" />
+                                <span className="group-hover:mr-2 transition-all">Show all projects</span>
+                                <ChevronDown size={14} className="animate-pulse" />
                             </button>
                         </div>
                     )}
@@ -344,7 +344,7 @@ export default function FounderPortfolio() {
             </section>
 
             {/* --- CHRONICLE (EXPERIENCE) --- */}
-            <section className="py-32 border-t border-border bg-black/40">
+            <section className="py-32 border-t border-border bg-muted/35">
                 <div className="container-standard px-4 md:px-6">
                     <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start max-w-7xl mx-auto">
                         <div className="lg:sticky lg:top-32 space-y-8 mb-12 lg:mb-0">
@@ -424,13 +424,13 @@ export default function FounderPortfolio() {
                                     </p>
                                 </div>
 
-                                <div className="p-12 bg-black/[0.03] border border-black/5 rounded-[2.5rem] space-y-8">
+                                <div className="p-12 bg-card border border-border rounded-[2.5rem] space-y-8">
                                     <h4 className="text-xs font-black uppercase tracking-[0.3em]">Core Technical Stack</h4>
                                     <div className="flex flex-wrap gap-3">
                                         {[
                                             "Python", "SQL", "LLMs", "RAG", "Agentic AI", "TensorFlow", "Hadoop", "Cloudera", "Spark", "Kafka", "Hive", "Impala", "StreamSets", "Azure AI", "Snowflake", "Power BI", "SSL/TLS", "Apache Knox", "Next.js"
                                         ].map(tech => (
-                                            <span key={tech} className="px-5 py-2 rounded-full border border-black/10 text-[9px] font-black uppercase tracking-widest hover:bg-black hover:text-foreground transition-all cursor-default">
+                                            <span key={tech} className="px-5 py-2 rounded-full border border-border text-[9px] font-black uppercase tracking-widest hover:bg-foreground hover:text-background transition-all cursor-default">
                                                 {tech}
                                             </span>
                                         ))}
@@ -456,7 +456,7 @@ export default function FounderPortfolio() {
                                         "Six Sigma White Belt",
                                         "Ethics in the Age of Generative AI"
                                     ].map((cert, i) => (
-                                        <div key={i} className="group flex items-center justify-between p-6 border-b border-black/5 hover:bg-black/5 transition-all">
+                                        <div key={i} className="group flex items-center justify-between p-6 border-b border-border hover:bg-muted transition-all">
                                             <span className="text-[10px] font-black uppercase tracking-tight">{cert}</span>
                                             <Code2 size={12} className="opacity-20 group-hover:opacity-100 transition-opacity" />
                                         </div>
@@ -484,7 +484,7 @@ export default function FounderPortfolio() {
                                 Harness the power of AI-first engineering. Let's build your industrial-grade intelligence ecosystem together.
                             </p>
                             <Link href="https://wa.me/13072106155" target="_blank">
-                                <button className="px-12 py-6 bg-black text-foreground font-black text-xs tracking-[0.3em] uppercase rounded-2xl hover:bg-black/90 transition-all flex items-center gap-4 mx-auto">
+                                <button className="px-12 py-6 bg-foreground text-background font-black text-xs tracking-[0.3em] uppercase rounded-full hover:bg-foreground/90 transition-all flex items-center gap-4 mx-auto">
                                     Initiate Direct Uplink (WhatsApp)
                                     <ArrowUpRight size={16} />
                                 </button>

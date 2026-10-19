@@ -583,7 +583,7 @@ export default function AiEmployee() {
 
                              <h2 className="fluid-h2 text-foreground relative not-italic">
                                 THE ERA OF AI <br />
-                                <span className="drop-shadow-[0_0_40px_hsl(var(--secondary)/0.35)] bg-gradient-to-r from-secondary to-secondary/50 bg-clip-text text-transparent not-italic">
+                                <span className="text-brand not-italic">
                                     IS HERE.
                                 </span>
                             </h2>
@@ -761,7 +761,7 @@ export default function AiEmployee() {
                                                     {status === "IDLE" && <Mic key="mic" size={14} className="text-black/60" />}
                                                     {status === "CONNECTING" && <Globe key="globe" size={14} className="text-white animate-spin" />}
                                                     {status === "LISTENING" && <Volume2 key="vol" size={14} className="text-white animate-pulse" />}
-                                                    {status === "THINKING" && <Zap key="zap" size={14} className="text-white animate-bounce" />}
+                                                    {status === "THINKING" && <Zap key="zap" size={14} className="text-white animate-pulse" />}
                                                     {status === "SPEAKING" && <Phone key="phone" size={14} className="text-white animate-pulse" />}
                                                 </AnimatePresence>
                                                 {isActive && !prefersReducedMotion && (

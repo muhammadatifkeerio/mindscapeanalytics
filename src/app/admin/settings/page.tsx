@@ -66,7 +66,7 @@ export default async function AdminSettingsPage() {
                                 <h3 className="font-bold text-sm uppercase tracking-wide">Maintenance Mode</h3>
                                 <p className="text-[10px] text-foreground/40 uppercase tracking-widest">Halt all seller traffic & checkouts.</p>
                             </div>
-                            <div className="px-4 py-2 rounded-lg bg-black/50 border border-border text-xs font-black uppercase text-foreground/40 cursor-not-allowed">
+                            <div className="px-4 py-2 rounded-lg bg-muted border border-border text-xs font-black uppercase text-muted-foreground cursor-not-allowed">
                                 Disabled
                             </div>
                         </div>
@@ -76,7 +76,7 @@ export default async function AdminSettingsPage() {
                                 <h3 className="font-bold text-sm uppercase tracking-wide">Global Commission Rate</h3>
                                 <p className="text-[10px] text-foreground/40 uppercase tracking-widest">Current institutional take-rate.</p>
                             </div>
-                            <div className="px-4 py-2 rounded-lg bg-black/50 border border-border text-xs font-black uppercase text-green-400">
+                            <div className="px-4 py-2 rounded-lg bg-muted border border-border text-xs font-black uppercase text-emerald-700">
                                 5.0%
                             </div>
                         </div>

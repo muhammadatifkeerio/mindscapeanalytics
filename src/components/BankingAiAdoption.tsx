@@ -55,7 +55,7 @@ const adoptionDrivers = [
 const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] p-4 rounded-xl shadow-xl">
+            <div className="bg-card border border-border/50 p-4 rounded-xl shadow-sm">
                 <p className="text-foreground dark:text-zinc-300 font-bold mb-2">{label}</p>
                 {payload.map((entry: any, index: number) => (
                     <p key={index} className="text-[12px] font-mono" style={{ color: entry.color }}>
@@ -71,7 +71,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 const CustomTooltipBar = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] p-4 rounded-xl shadow-xl">
+            <div className="bg-card border border-border/50 p-4 rounded-xl shadow-sm">
                 <p className="text-foreground dark:text-zinc-300 font-bold mb-2">{label}</p>
                 <p className="text-muted-foreground dark:text-zinc-400 text-[12px] font-mono">
                     Traditional Cost: <span className="text-foreground dark:text-zinc-400 font-black">{payload[0].payload.cost}%</span>
@@ -90,7 +90,7 @@ export default function BankingAiAdoption() {
         <section className="relative section-spacing overflow-hidden bg-foreground/[0.01] dark:bg-transparent border-y border-border/50 flex flex-col items-center">
             <div className="container-standard relative z-10 w-full max-w-7xl">
                 {/* 1. Master Section Header Elements */}
-                <div className="flex flex-col mb-12 sm:mb-16 pb-8 sm:pb-12 border-b border-border/50 dark:border-[#27272a]/50">
+                <div className="flex flex-col mb-12 sm:mb-16 pb-8 sm:pb-12 border-b border-border/50">
                     
                     <h2 className="fluid-h2 text-foreground drop-shadow-sm mb-6 uppercase tracking-tighter">
                         THE <span className="text-secondary font-black drop-shadow-[0_0_15px_hsl(var(--secondary) / 0.4)]">AGENTIC</span> REVOLUTION
@@ -111,10 +111,10 @@ export default function BankingAiAdoption() {
                         <motion.div 
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            className="bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] rounded-[1.5rem] sm:rounded-[2rem] flex flex-col p-4 sm:p-6 lg:p-8 h-full min-h-[350px] sm:min-h-[400px]"
+                            className="bg-card border border-border/50 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col p-4 sm:p-6 lg:p-8 h-full min-h-[350px] sm:min-h-[400px]"
                         >
                             <div className="mb-6 sm:mb-8">
-                                <h3 className="text-lg sm:text-xl font-bold text-foreground dark:text-white tracking-tight flex items-center gap-2">
+                                <h3 className="text-lg sm:text-xl font-bold text-foreground tracking-tight flex items-center gap-2">
                                     <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-foreground shrink-0" />
                                     Profit Unlock Trajectory (Billions)
                                 </h3>
@@ -146,10 +146,10 @@ export default function BankingAiAdoption() {
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] rounded-[1.5rem] sm:rounded-[2rem] flex flex-col p-4 sm:p-6 lg:p-8 h-full min-h-[300px] sm:min-h-[350px]"
+                            className="bg-card border border-border/50 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col p-4 sm:p-6 lg:p-8 h-full min-h-[300px] sm:min-h-[350px]"
                         >
                             <div className="mb-6 sm:mb-8">
-                                <h3 className="text-lg sm:text-xl font-bold text-foreground dark:text-white tracking-tight flex items-center gap-2">
+                                <h3 className="text-lg sm:text-xl font-bold text-foreground tracking-tight flex items-center gap-2">
                                     <ShieldAlert className="w-4 h-4 sm:w-5 sm:h-5 text-foreground shrink-0" />
                                     Operational Cost Reductions (Target)
                                 </h3>
@@ -182,25 +182,25 @@ export default function BankingAiAdoption() {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className="bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] rounded-[1.5rem] sm:rounded-[2rem] flex flex-col p-5 sm:p-6 lg:p-8 group relative overflow-hidden h-full justify-center min-h-[200px] sm:min-h-[240px]"
+                                    className="bg-card border border-border/50 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col p-5 sm:p-6 lg:p-8 group relative overflow-hidden h-full justify-center min-h-[200px] sm:min-h-[240px]"
                                 >   
                                     {/* Subtle hover gradient */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] dark:from-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     
                                     <div className="relative z-10 flex flex-col h-full">
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center bg-card dark:bg-[#1a1a1c] border border-border/50 dark:border-[#27272a] group-hover:border-foreground/30 transition-colors mb-4 sm:mb-6 shrink-0">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center bg-muted border border-border/50 group-hover:border-foreground/30 transition-colors mb-4 sm:mb-6 shrink-0">
                                             <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-foreground" />
                                         </div>
                                         
-                                        <h3 className="text-lg sm:text-xl font-bold text-foreground dark:text-white mb-2 sm:mb-3 tracking-tight group-hover:text-foreground/80 transition-colors">
+                                        <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3 tracking-tight group-hover:text-foreground/80 transition-colors">
                                             {driver.title}
                                         </h3>
                                         
-                                        <p className="text-muted-foreground dark:text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 flex-grow">
+                                        <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 flex-grow">
                                             {driver.description}
                                         </p>
                                         
-                                        <div className="mt-auto flex flex-row items-center gap-2.5 pt-4 border-t border-border/50 dark:border-[#27272a]/50 flex-wrap">
+                                        <div className="mt-auto flex flex-row items-center gap-2.5 pt-4 border-t border-border/50 flex-wrap">
                                             <div className="w-1.5 h-1.5 bg-foreground rounded-full animate-pulse shrink-0" />
                                             <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] text-foreground/80 leading-tight">
                                                 {driver.metric}

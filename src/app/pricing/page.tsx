@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
  * SOURCE OF TRUTH KEYWORDS: pricingPlans, PricingPage, highlight, managedFee, surface-frost, text-foreground
  * WHAT: Packaged deployment tiers rendered as pricing cards (Starter / Growth / Enterprise).
  * WHY: Highlight used inverted text-background while surface-frost kept a dark card, so Growth copy vanished.
- * WHERE: src/app/pricing/page.tsx — /pricing investment grid.
+ * WHERE: src/app/pricing/page.tsx  -  /pricing investment grid.
  */
 const pricingPlans = [
     {
@@ -252,11 +252,11 @@ export default function PricingPage() {
             </section>
 
             {/* --- Managed Infrastructure Callout --- */}
-            <section className="py-24 border-t border-border bg-foreground text-background text-center">
+            <section className="py-24 border-t border-border bg-muted/40 text-foreground text-center">
                 <div className="container mx-auto px-6">
                     <div className="max-w-4xl mx-auto space-y-8">
                         <span className="text-background/40 text-[11px] font-mono font-black uppercase tracking-[0.5em]">System Reliability Standard</span>
-                        <h2 className="fluid-h2 text-background">
+                        <h2 className="fluid-h2 text-foreground">
                             MANAGED <br /> <span className="opacity-40">OR IT'S BROKEN.</span>
                         </h2>
                         <p className="text-lg font-medium opacity-60 uppercase tracking-tighter max-w-2xl mx-auto text-background">

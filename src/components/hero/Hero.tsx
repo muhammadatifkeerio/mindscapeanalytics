@@ -7,12 +7,12 @@ import HeroBackdrop from "./HeroBackdrop";
 import HeroStage from "./HeroStage";
 import { heroFocusRing, heroRevealStyle } from "./motion";
 
-/** Locked case-study titles from CaseStudies.tsx — names only, no invented metrics. */
+/** Locked case-study titles from CaseStudies.tsx  -  names only, no invented metrics. */
 const PROOF_NAMES = ["Tenvo", "DBLynx", "Fuel Station ERP", "Enterprise ERP"] as const;
 
 /**
  * SOURCE OF TRUTH KEYWORDS: Hero, HeroStage, mobile hero, justify-end, packaged deployments, View packages
- * WHAT: Persuade hero — copy-led on phone/tablet, left spine + deployment mesh from lg up.
+ * WHAT: Persuade hero  -  copy-led on phone/tablet, left spine + deployment mesh from lg up.
  * WHY: The mesh sat under CTAs on small screens and top-aligned copy left a dead viewport.
  * WHERE: Homepage via src/components/Hero.tsx
  */

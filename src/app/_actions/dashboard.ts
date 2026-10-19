@@ -3,7 +3,7 @@
 /**
  * SOURCE OF TRUTH KEYWORDS: getSellerStats, getRecentActivity, seller:read, protectedQuery, seller.service
  * WHAT: Seller dashboard queries through the block.
- * WHY: Stats are privileged reads — layout route-auth is UX; this is the authoritative check.
+ * WHY: Stats are privileged reads  -  layout route-auth is UX; this is the authoritative check.
  * WHERE: /seller page.
  */
 

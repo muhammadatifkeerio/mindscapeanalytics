@@ -2,7 +2,7 @@ import "server-only";
 
 /**
  * SOURCE OF TRUTH KEYWORDS: product.service, Prisma Product, approvedForSale, sellerId, images, productFiles
- * WHAT: Product persistence — list, get, create, update, delete.
+ * WHAT: Product persistence  -  list, get, create, update, delete.
  * WHY: Routers/pages must not touch Prisma; this is the only product DB home.
  * WHERE: shop pages, admin/seller product actions, products API, checkout validation.
  */

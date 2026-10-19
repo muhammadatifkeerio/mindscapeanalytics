@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 /**
  * SOURCE OF TRUTH KEYWORDS: AdminDashboard, getProtectedContext, hasFullAccess, seller.service, product.service
- * WHAT: Console overview counts from services using adapter flags — never role strings.
+ * WHAT: Console overview counts from services using adapter flags  -  never role strings.
  * WHY: Layout already gated console:read; this page only renders numbers.
  * WHERE: /admin
  */

@@ -1,6 +1,6 @@
 /**
  * SOURCE OF TRUTH KEYWORDS: ProductWithImages, ProductWithRelations, OrderWithItems, Prisma payload, derived types
- * WHAT: Prisma-derived payload aliases for common includes — not parallel domain models.
+ * WHAT: Prisma-derived payload aliases for common includes  -  not parallel domain models.
  * WHY: Pages and services share one include shape without inventing User/Product interfaces.
  * WHERE: shop, admin, seller pages and product/order services.
  */

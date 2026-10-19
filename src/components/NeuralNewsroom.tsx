@@ -553,7 +553,7 @@ export default function NeuralNewsroom() {
                 </div>
             </div>
 
-            {/* Ambient backdrop — pre-blurred radial gradient, no filter (cheap on GPU) */}
+            {/* Ambient backdrop  -  pre-blurred radial gradient, no filter (cheap on GPU) */}
             <div
                 aria-hidden
                 className="pointer-events-none absolute left-1/2 top-1/2 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_center,hsl(var(--secondary)/0.05)_0%,transparent_65%)]"

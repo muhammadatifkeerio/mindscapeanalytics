@@ -17,12 +17,10 @@ const siteLinks: NavLink[] = [
         label: "Flagship Platforms",
         href: "/projects",
         submenu: [
-            { name: "DisposIQ", href: "https://disposiq.mindscapeanalytics.com/" },
-            { name: "Smart DairyFarm", href: "https://cattle.mindscapeanalytics.com/" },
+            { name: "Smart Dairy & Cattle", href: "https://cattle.mindscapeanalytics.com/" },
             { name: "RSIQ Pro", href: "https://rsiq.mindscapeanalytics.com/" },
-            { name: "Tenvo", href: "https://tenvo.mindscapeanalytics.com/" },
-            { name: "CyberTrader-X", href: "https://traderx.mindscapeanalytics.com/" },
-            { name: "Agentic Hub", href: "/" },
+            { name: "Tenvo", href: "https://www.tenvo.store/" },
+            { name: "DisposiQ", href: "https://disposiq.tenvo.store/" },
         ],
     },
     {

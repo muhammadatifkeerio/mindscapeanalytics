@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, Send, X, Bot, User, Sparkles, Loader2, Mail, Activity, ShieldCheck, Plus, Rocket, Mic, MicOff } from "lucide-react";
+import { MessageSquare, Send, X, Bot, User, Sparkles, Loader2, Mail, ArrowRight, ShieldCheck, Plus, Rocket, Mic, MicOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Message {
@@ -11,7 +11,7 @@ interface Message {
     timestamp?: number;
 }
 
-const GREETING = `Welcome to Mindscape Analytics! I'm Zee - your gateway to enterprise automation, voice agents, and full-stack SaaS solutions.\n\nHow can I help transform your business today?`;
+const GREETING = `Hi, I’m Zee, the Mindscape Analytics assistant. I can help you explore our AI and data services, digital products, and China-to-production sourcing. What are you working on?`;
 
 const LEAD_PROMPT_THRESHOLD = 3; // Ask for email after 3 exchanges
 
@@ -19,7 +19,7 @@ const formatMarkdown = (text: string) => {
     if (!text) return { __html: '' };
     
     // Parse tables first
-    let parsedText = text;
+    let parsedText = text.replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character] ?? character);
     if (parsedText.includes('|')) {
         const lines = parsedText.split('\n');
         let inTable = false;
@@ -105,6 +105,10 @@ export default function ChatWidget() {
     const [leadCaptured, setLeadCaptured] = useState(false);
     const [exchangeCount, setExchangeCount] = useState(0);
     const [isHudOpen, setIsHudOpen] = useState(false);
+    const [showContactForm, setShowContactForm] = useState(false);
+    const [contactForm, setContactForm] = useState({ name: "", email: "", company: "", phone: "", service: "", message: "" });
+    const [contactSending, setContactSending] = useState(false);
+    const [contactFeedback, setContactFeedback] = useState<string | null>(null);
     
     // Premium Voice Mode States
     const [isVoiceActive, setIsVoiceActive] = useState(false);
@@ -468,21 +472,8 @@ export default function ChatWidget() {
                 speakResponse(reply);
             }
         } catch {
-            const lower = trimmed.toLowerCase();
-            let fallback = "That's an excellent question. Our team at Mindscape Analytics specializes in exactly this area. Would you like to schedule a strategy call?";
-            if (lower.includes("price") || lower.includes("cost")) {
-                fallback = "Our solutions start at $999/month for standard automation packages. Enterprise tiers include custom AI agents, voice integration, and dedicated support. Want a detailed quote?";
-            } else if (lower.includes("voice") || lower.includes("agent")) {
-                fallback = "We deploy autonomous AI voice agents using Vapi and Retell that handle sales, support, and appointment booking 24/7. They integrate with your CRM and process calls in real-time.";
-            } else if (lower.includes("automation") || lower.includes("n8n")) {
-                fallback = "We architect n8n automation workflows that connect 400+ apps: CRM sync, lead nurturing, invoice processing, and more. Most clients see 60-80% time savings.";
-            }
+            const fallback = "I couldn’t reach the assistant just now. Please try again, or use the contact option above to reach our team directly.";
             setMessages(prev => [...prev, { role: "assistant", content: fallback, timestamp: Date.now() }]);
-            setExchangeCount(prev => prev + 1);
-
-            if (voiceActiveRef.current) {
-                speakResponse(fallback);
-            }
         } finally {
             setIsLoading(false);
         }
@@ -543,30 +534,42 @@ export default function ChatWidget() {
                 speakResponse(reply);
             }
         } catch {
-            // Intelligent local fallback
-            const lower = trimmed.toLowerCase();
-            let fallback = "That's an excellent question. Our team at Mindscape Analytics specializes in exactly this area. Would you like to schedule a strategy call?";
-            if (lower.includes("price") || lower.includes("cost")) {
-                fallback = "Our solutions start at $999/month for standard automation packages. Enterprise tiers include custom AI agents, voice integration, and dedicated support. Want a detailed quote?";
-            } else if (lower.includes("voice") || lower.includes("agent")) {
-                fallback = "We deploy autonomous AI voice agents using Vapi and Retell that handle sales, support, and appointment booking 24/7. They integrate with your CRM and process calls in real-time.";
-            } else if (lower.includes("automation") || lower.includes("n8n")) {
-                fallback = "We architect n8n automation workflows that connect 400+ apps: CRM sync, lead nurturing, invoice processing, and more. Most clients see 60-80% time savings.";
-            }
+            const fallback = "I couldn’t reach the assistant just now. Please try again, or use the contact option above to reach our team directly.";
             setMessages(prev => [...prev, { role: "assistant", content: fallback, timestamp: Date.now() }]);
-            setExchangeCount(prev => prev + 1);
-
-            if (voiceActiveRef.current) {
-                speakResponse(fallback);
-            }
         } finally {
             setIsLoading(false);
         }
     };
 
+    const submitContact = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setContactSending(true);
+        setContactFeedback(null);
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(contactForm),
+            });
+            const result: unknown = await response.json();
+            if (!response.ok) {
+                const errorMessage = typeof result === "object" && result !== null && "error" in result && typeof result.error === "object" && result.error !== null && "message" in result.error && typeof result.error.message === "string"
+                    ? result.error.message
+                    : "Please check the form and try again.";
+                throw new Error(errorMessage);
+            }
+            setContactFeedback("Thanks, your message has been sent to our team.");
+            setContactForm({ name: "", email: "", company: "", phone: "", service: "", message: "" });
+        } catch (error) {
+            setContactFeedback(error instanceof Error ? error.message : "We could not send your message. Please try again.");
+        } finally {
+            setContactSending(false);
+        }
+    };
+
     return (
         <>
-            {/* Floating Trigger Button — quiet until needed; no pulse badge */}
+            {/* Floating Trigger Button  -  quiet until needed; no pulse badge */}
             <AnimatePresence>
                 {!isOpen && (
                     <motion.button
@@ -612,15 +615,15 @@ export default function ChatWidget() {
                             <div className="flex items-center gap-1.5">
                                 <button
                                     type="button"
-                                    onClick={() => setIsHudOpen(!isHudOpen)}
-                                    aria-label={isHudOpen ? "Hide status panel" : "Show status panel"}
-                                    aria-pressed={isHudOpen}
+                                    onClick={() => { setShowContactForm(true); setContactFeedback(null); }}
+                                    aria-label="Contact the Mindscape team"
+                                    aria-pressed={showContactForm}
                                     className={cn(
                                         "relative flex h-11 w-11 items-center justify-center rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                                        isHudOpen ? "bg-secondary/10 text-secondary" : "text-foreground/40 hover:bg-foreground/5 hover:text-foreground/80"
+                                        showContactForm ? "bg-secondary/10 text-secondary" : "text-foreground/40 hover:bg-foreground/5 hover:text-foreground/80"
                                     )}
                                 >
-                                    <Activity className="h-4 w-4" aria-hidden="true" />
+                                    <Mail className="h-4 w-4" aria-hidden="true" />
                                 </button>
                                 <button
                                     type="button"
@@ -632,6 +635,25 @@ export default function ChatWidget() {
                                 </button>
                             </div>
                         </div>
+
+                        {showContactForm && (
+                            <div className="absolute inset-0 z-30 flex flex-col bg-background/95 p-5 pt-20 backdrop-blur-sm">
+                                <div className="mb-4 flex items-start justify-between gap-3">
+                                    <div><p className="text-xs font-semibold uppercase tracking-[.16em] text-brand">Talk to a person</p><h4 className="mt-1 text-xl font-semibold tracking-tight">How can we help?</h4></div>
+                                    <button type="button" onClick={() => setShowContactForm(false)} aria-label="Return to chat" className="rounded-full border border-border p-2 text-muted-foreground hover:text-foreground"><X className="h-4 w-4" /></button>
+                                </div>
+                                <form onSubmit={submitContact} className="min-h-0 flex-1 space-y-3 overflow-y-auto pr-1">
+                                    <input required minLength={2} value={contactForm.name} onChange={(event) => setContactForm({ ...contactForm, name: event.target.value })} placeholder="Your name" autoComplete="name" className="h-11 w-full rounded-xl border border-border bg-card px-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand/40" />
+                                    <input required type="email" value={contactForm.email} onChange={(event) => setContactForm({ ...contactForm, email: event.target.value })} placeholder="Work email" autoComplete="email" className="h-11 w-full rounded-xl border border-border bg-card px-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand/40" />
+                                    <input value={contactForm.company} onChange={(event) => setContactForm({ ...contactForm, company: event.target.value })} placeholder="Company (optional)" autoComplete="organization" className="h-11 w-full rounded-xl border border-border bg-card px-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand/40" />
+                                    <select required value={contactForm.service} onChange={(event) => setContactForm({ ...contactForm, service: event.target.value })} className="h-11 w-full rounded-xl border border-border bg-card px-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand/40"><option value="">What would you like to discuss?</option><option>AI agents and automation</option><option>Data and cloud engineering</option><option>Digital products</option><option>China sourcing and production</option><option>Other</option></select>
+                                    <textarea required minLength={10} value={contactForm.message} onChange={(event) => setContactForm({ ...contactForm, message: event.target.value })} placeholder="Tell us a little about your project" rows={4} className="w-full resize-none rounded-xl border border-border bg-card p-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand/40" />
+                                    {contactFeedback && <p role="status" className="text-sm text-muted-foreground">{contactFeedback}</p>}
+                                    <button type="submit" disabled={contactSending} className="msa-button w-full justify-center disabled:opacity-60">{contactSending ? "Sending…" : "Send to the Mindscape team"}<ArrowRight className="h-4 w-4" /></button>
+                                    <p className="pb-2 text-center text-xs text-muted-foreground">Sent securely through our website contact form.</p>
+                                </form>
+                            </div>
+                        )}
 
                         {isHudOpen ? (
                             <div className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-thin bg-card/10 flex flex-col justify-between">

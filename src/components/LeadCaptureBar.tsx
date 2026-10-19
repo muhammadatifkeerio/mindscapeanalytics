@@ -8,8 +8,8 @@ const focusRing =
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 /**
- * Sticky lead capture — stays off the hero. Appears only after the visitor
- * scrolls past the first viewport (or reaches mid-page on short pages).
+ * Sticky lead capture  -  waits 30 seconds before appearing, then stays visible
+ * for one minute so it never interrupts the hero or follows the visitor forever.
  */
 export default function LeadCaptureBar() {
     const [isVisible, setIsVisible] = useState(false);
@@ -20,29 +20,36 @@ export default function LeadCaptureBar() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const dismissed = sessionStorage.getItem("msa_lead_bar_dismissed");
+        let dismissed = false;
+        try {
+            dismissed = sessionStorage.getItem("msa_lead_bar_dismissed") === "true";
+        } catch {
+            // Keep the timed offer usable when browser storage is unavailable.
+        }
         if (dismissed) {
             setIsDismissed(true);
             return;
         }
 
-        const handleScroll = () => {
-            const pastHero = window.scrollY > window.innerHeight * 0.9;
-            const midPage =
-                (window.scrollY / Math.max(1, document.documentElement.scrollHeight - window.innerHeight)) *
-                    100 >
-                35;
-            if (pastHero || midPage) setIsVisible(true);
-        };
+        let hideTimer: number | undefined;
+        const showTimer = window.setTimeout(() => {
+            setIsVisible(true);
+            hideTimer = window.setTimeout(() => setIsVisible(false), 60_000);
+        }, 30_000);
 
-        handleScroll();
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => {
+            window.clearTimeout(showTimer);
+            if (hideTimer !== undefined) window.clearTimeout(hideTimer);
+        };
     }, []);
 
     const dismiss = () => {
         setIsDismissed(true);
-        sessionStorage.setItem("msa_lead_bar_dismissed", "true");
+        try {
+            sessionStorage.setItem("msa_lead_bar_dismissed", "true");
+        } catch {
+            // Dismissing still works even when the browser blocks session storage.
+        }
     };
 
     const submit = async (e: React.FormEvent) => {
@@ -64,17 +71,20 @@ export default function LeadCaptureBar() {
             });
             if (!res.ok) throw new Error("Request failed");
             setIsSubmitted(true);
-            sessionStorage.setItem("msa_lead_bar_dismissed", "true");
+            try {
+                sessionStorage.setItem("msa_lead_bar_dismissed", "true");
+            } catch {
+                // The in-memory submitted state still confirms success this visit.
+            }
         } catch {
             setError("Couldn't send that. Try again in a moment.");
             setIsSubmitting(false);
         }
     };
 
-    if (isDismissed || !isVisible) return null;
-
     return (
         <AnimatePresence>
+            {!isDismissed && isVisible && (
             <motion.div
                 role="region"
                 aria-label="Free AI audit offer"
@@ -84,7 +94,7 @@ export default function LeadCaptureBar() {
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="pointer-events-none fixed inset-x-0 bottom-0 z-[40] px-4 pb-[max(1rem,env(safe-area-inset-bottom))] md:px-6"
             >
-                <div className="pointer-events-auto mx-auto max-w-2xl">
+                <div className="pointer-events-auto mx-auto max-w-4xl">
                     <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-background/90 shadow-[0_-4px_24px_hsl(var(--foreground)/0.06)] backdrop-blur-md">
                         <button
                             type="button"
@@ -114,9 +124,9 @@ export default function LeadCaptureBar() {
                                     className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center"
                                 >
                                     <div className="min-w-0 shrink-0 text-left sm:max-w-[11rem]">
-                                        <p className="text-sm font-medium text-foreground">Free AI audit</p>
-                                        <p className="text-xs text-foreground/55">
-                                            Optional, after you&apos;ve seen the work
+                                        <p className="text-sm font-semibold text-foreground">Free AI audit</p>
+                                        <p className="text-xs leading-4 text-muted-foreground">
+                                            A practical first look at your automation opportunities
                                         </p>
                                     </div>
                                     <div className="flex min-w-0 flex-1 flex-col gap-2">
@@ -168,6 +178,7 @@ export default function LeadCaptureBar() {
                     </div>
                 </div>
             </motion.div>
+            )}
         </AnimatePresence>
     );
 }

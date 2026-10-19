@@ -78,7 +78,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                         aria-expanded={activeDropdown === "profile"}
                         className="flex items-center gap-3 px-4 py-2 bg-foreground/5 border border-border rounded-full hover:bg-foreground/10 hover:border-foreground/20 transition-[background-color,border-color,transform] duration-150 active:scale-95 shadow-lg"
                     >
-                        <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-zinc-800 to-zinc-600 flex items-center justify-center text-xs font-semibold text-foreground/90 uppercase border border-foreground/20">
+                        <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-semibold text-foreground border border-border">
                             {session.user.name?.charAt(0) || "U"}
                         </div>
                         <span className="hidden sm:inline text-[13px] font-medium text-foreground/70 group-hover/profile:text-foreground tracking-normal normal-case transition-colors">
@@ -104,7 +104,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                                         "text-secondary dark:text-foreground/60 mb-1.5 flex items-center gap-2"
                                     )}
                                 >
-                                    <User size={12} /> Authenticated Access
+                                    <User size={12} /> Your account
                                 </p>
                                 <p className="text-sm font-semibold text-foreground truncate">{session.user.name}</p>
                                 <p className="text-xs font-medium text-foreground/60 truncate mt-1">
@@ -121,7 +121,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                                         profileSectionClass
                                     )}
                                 >
-                                    <ShieldCheck size={12} /> Controller HUD
+                                    <ShieldCheck size={12} /> Administration
                                 </p>
                                 <NavLinkItem
                                     href="/admin"
@@ -144,7 +144,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                                         profileSectionClass
                                     )}
                                 >
-                                    <BarChart3 size={12} /> Builder Operations
+                                    <BarChart3 size={12} /> Seller tools
                                 </p>
                                 <NavLinkItem
                                     href="/seller"
@@ -175,7 +175,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                                         profileSectionClass
                                     )}
                                 >
-                                    <Rocket size={12} /> Network Expansion
+                                    <Rocket size={12} /> Grow with us
                                 </p>
                                 <NavLinkItem
                                     href="/become-seller"
@@ -183,8 +183,8 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                                         navFocusRing,
                                         profileLinkClass,
                                         "mx-4 mt-1 flex items-center justify-center gap-3 px-6 py-3.5",
-                                        "bg-gradient-to-r from-zinc-800 to-zinc-900 border border-border rounded-xl",
-                                        "text-foreground hover:bg-transparent hover:border-foreground/60",
+                                        "bg-foreground text-background border border-foreground rounded-xl",
+                                        "hover:bg-transparent hover:text-foreground hover:border-foreground/60",
                                         "hover:shadow-[0_0_20px_hsl(var(--foreground)/0.1)]",
                                         "transition-[color,background-color,border-color,box-shadow] duration-150 shadow-xl"
                                     )}
@@ -195,7 +195,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                         )}
 
                         <div className="py-2 border-t border-border">
-                            <p className={cn("px-6 py-2 text-foreground/60", profileSectionClass)}>Personal Access</p>
+                            <p className={cn("px-6 py-2 text-foreground/60", profileSectionClass)}>Account</p>
                             <NavLinkItem
                                 href="/admin/settings"
                                 className={cn(
@@ -204,7 +204,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                                     "flex items-center gap-3 px-6 py-3 text-foreground/75 hover:text-foreground hover:bg-foreground/5"
                                 )}
                             >
-                                <Settings size={14} /> Account Config
+                                <Settings size={14} /> Account settings
                             </NavLinkItem>
                             <NavLinkItem
                                 href={isAdmin ? "/admin/orders" : "/shop"}
@@ -214,7 +214,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                                     "flex items-center gap-3 px-6 py-3 text-foreground/75 hover:text-foreground hover:bg-foreground/5"
                                 )}
                             >
-                                <Package size={14} /> Acquisitions
+                                <Package size={14} /> {isAdmin ? "Orders" : "Shop"}
                             </NavLinkItem>
                         </div>
 
@@ -228,7 +228,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                             )}
                         >
                             <LogOut size={16} className="group-hover/logout:-translate-x-1 transition-transform" />
-                            Logout / Terminate Access
+                            Sign out
                         </button>
                     </NavbarDropdown>
                 </div>
@@ -236,7 +236,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
         }
 
         return (
-            <div className="hidden sm:flex items-center gap-3">
+            <div className="hidden xl:flex items-center gap-3">
                 <NavLinkItem
                     href="/sign-in"
                     className={cn(
@@ -291,7 +291,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                             <NavLinkItem
                                 href="/admin"
                                 onClick={onNavigate}
-                                className="flex items-center justify-between px-8 py-5 bg-foreground text-background rounded-3xl text-sm font-bold uppercase tracking-[0.08em] shadow-xl shadow-white/5 transition-[transform,opacity] duration-150 active:scale-95"
+                                className="flex items-center justify-between px-8 py-5 bg-foreground text-background rounded-3xl text-sm font-semibold tracking-normal shadow-xl transition-[transform,opacity] duration-150 active:scale-95"
                             >
                                 Master Dashboard
                                 <ShieldCheck size={16} />
@@ -310,7 +310,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                             <NavLinkItem
                                 href="/become-seller"
                                 onClick={onNavigate}
-                                className="flex items-center justify-between px-8 py-5 bg-foreground text-background rounded-3xl text-sm font-bold uppercase tracking-[0.08em] shadow-xl transition-[transform,opacity] duration-150 active:scale-95"
+                                className="flex items-center justify-between px-8 py-5 bg-foreground text-background rounded-3xl text-sm font-semibold tracking-normal shadow-xl transition-[transform,opacity] duration-150 active:scale-95"
                             >
                                 Join Global Network
                                 <Rocket size={16} className="text-amber-500" />
@@ -342,7 +342,7 @@ export const NavbarAuthActions = memo(function NavbarAuthActions(props: NavbarAu
                         className={cn(
                             navFocusRing,
                             authLoginClass,
-                            "w-full bg-foreground/5 border border-white/20 text-white/80 py-5 rounded-[2rem] transition-[color,background-color,border-color] duration-150 hover:bg-foreground/10 hover:text-white hover:border-foreground/30 flex items-center justify-center"
+                            "w-full bg-muted border border-border text-foreground py-5 rounded-full transition-[color,background-color,border-color] duration-150 hover:bg-accent hover:border-brand/30 flex items-center justify-center"
                         )}
                     >
                         Sign in

@@ -74,7 +74,7 @@ export default function SuccessPage({ searchParams }: { searchParams: Promise<{ 
                             style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
                         >
                             ACQUISITION <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground/80 to-foreground/40">VERIFIED.</span>
+                            <span className="text-foreground">VERIFIED.</span>
                         </h1>
                         <p className="text-lg text-foreground/40 max-w-xl mx-auto font-medium tracking-tight border-t border-border pt-8 mt-8">
                             Transaction successfully recorded. Your architectural assets have been allocated for deployment.

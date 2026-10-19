@@ -149,7 +149,7 @@ export default function TechStackShowcase() {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
-                                className="aspect-square bg-card dark:bg-[#0f0f11] border border-border rounded-2xl hover:bg-foreground/5 hover:border-secondary/30 transition-all duration-300 flex flex-col items-center justify-center gap-3 group cursor-default"
+                                className="aspect-square bg-card border border-border rounded-2xl hover:bg-muted/60 hover:border-brand/30 transition-all duration-300 flex flex-col items-center justify-center gap-3 group cursor-default"
                             >
                                 <TechIcon name={item.name} iconSlug={item.iconSlug} fallbackIcon={item.fallbackIcon} />
                                 <span className="text-[9px] font-black uppercase text-foreground/20 group-hover:text-foreground tracking-[0.2em] transition-all text-center px-2">

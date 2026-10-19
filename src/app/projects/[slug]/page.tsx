@@ -198,7 +198,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 <div className="container mx-auto px-6">
                     <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-px bg-foreground/5 rounded-2xl overflow-hidden border border-border">
                         {Object.values(study.heroMetrics).map((metric, i) => (
-                            <div key={i} className="p-8 bg-black/40 backdrop-blur-md text-center">
+                            <div key={i} className="p-8 bg-card/90 backdrop-blur-md text-center">
                                 <div className="text-5xl font-black font-heading text-foreground mb-2">{metric.value}</div>
                                 <div className="text-[10px] font-mono font-black uppercase tracking-widest text-foreground/40">{metric.label}</div>
                             </div>
@@ -221,7 +221,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                                 </div>
                                 <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-foreground/20">Operational_Drag</p>
                             </div>
-                            <div className="prose prose-invert prose-lg text-foreground/60 font-medium leading-relaxed">
+                            <div className="prose prose-lg text-foreground/75 font-medium leading-relaxed">
                                 <p>{study.problem}</p>
                             </div>
                         </div>
@@ -243,7 +243,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                                     <h3 className="text-[10px] font-mono font-black uppercase tracking-widest text-foreground/40">Technology Stack</h3>
                                     <div className="flex flex-wrap gap-2">
                                         {study.techStack.map(tech => (
-                                            <span key={tech} className="px-3 py-1 bg-black/50 border border-border rounded-lg text-xs font-bold tracking-wide text-foreground/80">
+                                            <span key={tech} className="px-3 py-1 bg-muted border border-border rounded-lg text-xs font-bold tracking-wide text-foreground/80">
                                                 {tech}
                                             </span>
                                         ))}
@@ -314,7 +314,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                         </p>
                         <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
                             <Link href="/contact">
-                                <button className="px-10 py-5 bg-black text-foreground font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:scale-105 transition-transform flex items-center gap-3 shadow-2xl">
+                                <button className="px-10 py-5 bg-foreground text-background font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:scale-105 transition-transform flex items-center gap-3 shadow-2xl">
                                     Initiate Deployment
                                     <ArrowRight className="w-4 h-4" />
                                 </button>

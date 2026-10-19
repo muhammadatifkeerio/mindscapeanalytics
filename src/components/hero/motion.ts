@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
 export const heroFocusRing =
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
-/** Brand ease-out (Emil / design engineering — strong ease-out, never ease-in). */
+/** Brand ease-out (Emil / design engineering  -  strong ease-out, never ease-in). */
 export const heroEase = "cubic-bezier(0.23, 1, 0.32, 1)";
 
 /** Stagger delay for the CSS-only `.hero-reveal` keyframe. Non-LCP elements only. */

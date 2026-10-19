@@ -20,7 +20,6 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { PremiumCard } from "@/components/ui/PremiumCard";
 import TechStackShowcase from "@/components/services/TechStackShowcase";
-import TestimonialCarousel from "@/components/services/TestimonialCarousel";
 
 const services = [
     {
@@ -271,26 +270,34 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            {/* --- Global Validation Section --- */}
-            <TestimonialCarousel />
+            {/* Reviews are intentionally omitted until the client-approved source material is supplied. */}
+            <section className="border-t border-border bg-muted/35 py-16 md:py-20">
+                <div className="container-standard flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <p className="text-sm font-semibold text-brand">Selected work</p>
+                        <h2 className="mt-2 max-w-xl text-balance font-heading text-3xl font-semibold tracking-tight md:text-4xl">See how strategy becomes a working system.</h2>
+                    </div>
+                    <Link href="/projects" className="msa-text-link">Explore our projects <ArrowRight className="h-4 w-4" /></Link>
+                </div>
+            </section>
 
             {/* --- Managed Subscription Section --- */}
-            <section className="py-24 border-t border-border bg-foreground text-background">
-                <div className="container mx-auto px-6">
+            <section className="py-24 border-t border-border bg-muted/40 text-foreground">
+                <div className="container-standard">
                     <div className="grid lg:grid-cols-2 gap-20 items-center max-w-screen-2xl mx-auto">
                         <div className="space-y-12">
                             <span className="text-meta opacity-40">Business_Model // Managed</span>
-                            <h2 className="fluid-h2 text-background">
-                                WE DON'T JUST DELIVER. <br /> <span className="opacity-40">WE OPTIMIZE.</span>
+                            <h2 className="fluid-h2 text-foreground">
+                                WE DON'T JUST DELIVER. <br /> <span className="text-muted-foreground">WE OPTIMIZE.</span>
                             </h2>
-                            <p className="text-lg md:text-xl font-black uppercase tracking-tight max-w-xl text-background/40">
+                            <p className="text-lg md:text-xl font-black uppercase tracking-tight max-w-xl text-muted-foreground">
                                 Our clients subscribe to long-term reliability. We manage hosting, databases, AI maintenance, and security so you can focus on growth.
                             </p>
-                            <div className="grid grid-cols-2 gap-6 text-meta opacity-60">
-                                <div className="text-background">✔ NO TECHNICAL HEADACHES</div>
-                                <div className="text-background">✔ NO DOWNTIME RISKS</div>
-                                <div className="text-background">✔ NO UNMANAGED BILLS</div>
-                                <div className="text-background">✔ NO SYSTEM FAILURES</div>
+                            <div className="grid grid-cols-2 gap-6 text-meta text-muted-foreground">
+                                <div>✔ MANAGED TECHNICAL OPERATIONS</div>
+                                <div>✔ RELIABILITY PRACTICES</div>
+                                <div>✔ COST VISIBILITY</div>
+                                <div>✔ CONTINUOUS IMPROVEMENT</div>
                             </div>
                         </div>
 

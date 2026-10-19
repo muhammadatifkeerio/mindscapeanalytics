@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import CartIcon from "@/components/CartIcon";
 import { authClient, type Session, type SessionUser } from "@/lib/auth-client";
 import { signOutAndRedirect } from "@/lib/auth-actions";
 import { getNavLinks, getContextTheme } from "@/config/navbar-links";
@@ -18,6 +17,7 @@ import { NavbarAuthActions } from "@/components/navbar/NavbarAuthActions";
 import { NavbarMobileMenu } from "@/components/navbar/NavbarMobileMenu";
 import { contextBadgeClass } from "@/components/navbar/typography";
 import { navFocusRing, navShellTransition } from "@/components/navbar/motion";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 function NavbarInner() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -122,19 +122,19 @@ function NavbarInner() {
                         : "bg-transparent border-transparent"
                 )}
             >
-                <div className="flex items-center gap-4 min-w-0">
+                <div className="flex items-center gap-3 min-w-0">
                     <Link
                         href="/"
                         aria-label="Mindscape Analytics Home"
-                        className="flex items-center group transition-transform hover:scale-105 active:scale-95 shrink-0"
+                        className="flex shrink-0 items-center transition-transform hover:scale-[1.02] active:scale-95 group dark:rounded-md dark:bg-white dark:px-1 dark:py-0.5"
                     >
                         <Image
-                            src="/images/logo/mindscape-analytics.png"
+                            src="/images/brand/mindscape-analytics-logo-dark.png"
                             alt="Mindscape Analytics Logo"
-                            width={160}
-                            height={35}
+                            width={180}
+                            height={62}
                             priority
-                            className="h-8 sm:h-9 w-auto object-contain brightness-0 invert contrast-125 transition-opacity duration-200 opacity-90 group-hover:opacity-100"
+                            className="h-8 w-auto object-contain transition-opacity duration-200 opacity-100 sm:h-9"
                         />
                     </Link>
                     {contextTheme && (
@@ -160,12 +160,8 @@ function NavbarInner() {
                     onMouseLeave={handleMouseLeave}
                 />
 
-                <div className="flex items-center gap-4 shrink-0">
-                    {navContext === "shop" && (
-                        <div className="flex items-center h-full">
-                            <CartIcon />
-                        </div>
-                    )}
+                <div className="flex items-center gap-4 shrink-0 xl:gap-5">
+                    <ThemeToggle />
 
                     <NavbarAuthActions
                         variant="desktop"
@@ -186,7 +182,7 @@ function NavbarInner() {
                         aria-expanded={mobileMenuOpen}
                         className={cn(
                             navFocusRing,
-                            "lg:hidden p-3 bg-secondary/5 border border-secondary/10 rounded-2xl text-foreground/50 hover:text-foreground transition-colors duration-150 active:scale-90 shadow-inner"
+                            "xl:hidden p-3 bg-secondary/5 border border-secondary/10 rounded-2xl text-foreground/50 hover:text-foreground transition-colors duration-150 active:scale-90 shadow-inner"
                         )}
                     >
                         {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}

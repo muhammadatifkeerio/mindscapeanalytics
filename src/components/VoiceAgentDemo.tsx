@@ -255,7 +255,7 @@ export default function VoiceAgentDemo() {
                                         {status === "IDLE" && <Mic key="mic" size={48} />}
                                         {status === "CONNECTING" && <Globe key="globe" size={48} className="animate-spin" />}
                                         {status === "LISTENING" && <Volume2 key="vol" size={48} className="animate-pulse" />}
-                                        {status === "THINKING" && <Zap key="zap" size={48} className="animate-bounce" />}
+                                        {status === "THINKING" && <Zap key="zap" size={48} className="animate-pulse" />}
                                         {status === "SPEAKING" && <Phone key="phone" size={48} className="animate-pulse" />}
                                     </AnimatePresence>
                                 </motion.div>

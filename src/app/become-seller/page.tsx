@@ -42,7 +42,7 @@ export default async function BecomeSellerPage() {
                             style={{ fontSize: "clamp(3.5rem, 10vw, 8rem)" }}
                         >
                             MONETIZE <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary/80 to-secondary/40">GENIUS.</span>
+                            <span className="text-brand">GENIUS.</span>
                         </h1>
                         <p className="text-lg text-foreground/40 max-w-2xl mx-auto font-medium tracking-tight border-t border-border pt-8 mt-8">
                             Transform your high-performance code into a persistent revenue stream. Join our global network of elite software architects.

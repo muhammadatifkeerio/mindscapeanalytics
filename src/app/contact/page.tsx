@@ -67,6 +67,12 @@ const contactInfo = [
     }
 ];
 
+const officeLocations = [
+    { code: "US", flag: "🇺🇸", country: "United States", city: "Sheridan, Wyoming", address: "30 N Gould St, Suite R · Sheridan, WY 82801", phone: "+1 307 210 6155", href: "tel:+13072106155", pin: { left: "20.3%", top: "25.1%" } },
+    { code: "PK", flag: "🇵🇰", country: "Pakistan", city: "Karachi", address: "Pearl Building · Bahria Town, Karachi", phone: "+92 307 210 6155", href: "tel:+923072106155", pin: { left: "68.6%", top: "36.2%" } },
+    { code: "CN", flag: "🇨🇳", country: "China", city: "Beijing", address: "Beijing · China sourcing network", phone: "+86 178 0226 7424", href: "tel:+8617802267424", pin: { left: "82.3%", top: "27.8%" } },
+];
+
 const faqs = [
     {
         question: "What industrial sectors do you prioritize?",
@@ -211,17 +217,54 @@ function ContactFormContent() {
                                     target={info.link.startsWith('http') ? '_blank' : undefined}
                                     className="block h-full transition-all duration-300 transform hover:scale-[1.02]"
                                 >
-                                    <div className="h-full p-8 rounded-2xl bg-foreground/[0.02] border border-border/50 hover:border-foreground/10 transition-all duration-300 group backdrop-blur-sm surface-frost">
-                                        <div className="mb-6 w-12 h-12 rounded-xl bg-foreground/5 border border-border flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300">
+                    <div className="h-full p-8 rounded-2xl bg-card border border-border hover:border-brand/35 transition-all duration-300 group shadow-sm surface-frost">
+                                        <div className="mb-6 w-12 h-12 rounded-xl bg-muted border border-border flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-all duration-300">
                                             <info.icon className="h-6 w-6" />
                                         </div>
                                         <h3 className="text-meta mb-2">{info.title}</h3>
                                         <p className="text-lg font-bold text-foreground mb-4 leading-tight">{info.value}</p>
-                                        <p className="text-foreground/60 text-sm leading-relaxed">{info.description}</p>
+                                        <p className="text-muted-foreground text-sm leading-relaxed">{info.description}</p>
                                     </div>
                                 </a>
                             </motion.div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="container-standard pb-16 md:pb-24" aria-labelledby="global-offices-heading">
+                <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                    <div><p className="text-xs font-semibold uppercase tracking-[.16em] text-brand">Global presence</p><h2 id="global-offices-heading" className="mt-3 font-heading text-3xl font-semibold tracking-[-.035em] sm:text-4xl">Three offices. One connected team.</h2></div>
+                    <p className="max-w-lg text-sm leading-6 text-muted-foreground">Reach our US, Pakistan, or China teams directly. The map marks Sheridan, Karachi, and Beijing.</p>
+                </div>
+
+                <div className="grid gap-5 lg:grid-cols-[1.2fr_.8fr] lg:items-stretch">
+                    <div className="relative min-h-[260px] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-sm sm:min-h-[360px] sm:p-5" role="img" aria-label="World map showing Mindscape Analytics offices in Sheridan, Wyoming; Karachi, Pakistan; and Beijing, China">
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_68%_34%,hsl(var(--brand)/.09),transparent_42%)]" />
+                        <svg viewBox="0 0 900 420" className="absolute inset-0 h-full w-full text-foreground" fill="none" aria-hidden="true">
+                            <defs><pattern id="office-map-grid" width="45" height="45" patternUnits="userSpaceOnUse"><path d="M45 0H0V45" fill="none" stroke="currentColor" strokeOpacity=".045" strokeWidth="1" /></pattern></defs>
+                            <rect width="900" height="420" fill="url(#office-map-grid)" />
+                            <g fill="currentColor" fillOpacity=".075" stroke="currentColor" strokeOpacity=".14" strokeWidth="1.5" strokeLinejoin="round">
+                                <path d="M75 84 112 61 153 67 176 53 215 62 238 81 267 88 279 112 258 130 247 154 224 163 213 191 186 203 171 190 152 196 140 177 119 171 111 150 91 141 82 119 62 111Z" />
+                                <path d="M226 207 253 214 269 234 263 258 277 279 266 304 253 330 240 359 227 342 221 316 209 291 211 263 199 242 205 222Z" />
+                                <path d="M398 91 425 77 450 82 467 96 454 110 431 112 418 128 398 119Z" />
+                                <path d="M424 132 458 118 489 130 505 157 494 184 481 210 468 239 450 226 443 199 427 179 417 157Z" />
+                                <path d="M482 82 519 62 566 68 587 57 629 66 656 79 702 75 727 91 766 89 803 108 796 129 762 136 738 151 700 147 678 166 647 160 626 175 596 169 576 150 548 150 528 134 501 135 485 116Z" />
+                                <path d="M714 258 748 245 780 254 799 274 787 297 758 306 731 292Z" />
+                                <path d="M824 189 840 178 850 193 844 214 829 217Z" />
+                            </g>
+                            <path d="M183 106Q458 21 746 112" stroke="currentColor" strokeOpacity=".17" strokeWidth="1.5" strokeDasharray="4 7" />
+                        </svg>
+                        {officeLocations.map((office) => <div key={office.code} className="absolute z-10 -translate-x-1/2 -translate-y-1/2" style={office.pin} aria-hidden="true"><span className="absolute -inset-2 animate-ping rounded-full bg-brand/20 motion-reduce:animate-none" /><span className="relative grid h-7 min-w-7 place-items-center rounded-full border-2 border-background bg-brand px-1 text-[9px] font-bold text-white shadow-md">{office.code}</span></div>)}
+                        <div className="absolute bottom-4 left-4 rounded-lg border border-border bg-background/95 px-3 py-2 text-xs font-medium text-muted-foreground shadow-sm sm:bottom-5 sm:left-5"><MapPin className="mr-1.5 inline h-3.5 w-3.5 text-brand" /> Offices across North America and Asia</div>
+                    </div>
+
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                        {officeLocations.map((office) => <article key={office.code} className="rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+                            <div className="flex items-start justify-between gap-4"><div className="flex items-center gap-3"><span className="text-xl" role="img" aria-label={`${office.country} flag`}>{office.flag}</span><div><h3 className="font-semibold">{office.city}</h3><p className="text-xs text-muted-foreground">{office.country}</p></div></div><MapPin className="mt-1 h-4 w-4 shrink-0 text-brand" aria-hidden="true" /></div>
+                            <p className="mt-3 text-xs leading-5 text-muted-foreground">{office.address}</p>
+                            <a href={office.href} className="mt-3 inline-flex min-h-9 items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-brand"><Phone className="h-3.5 w-3.5 text-brand" />{office.phone}</a>
+                        </article>)}
                     </div>
                 </div>
             </section>
@@ -233,11 +276,11 @@ function ContactFormContent() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="max-w-7xl mx-auto p-1px bg-border/50 rounded-3xl overflow-hidden backdrop-blur-md"
+                        className="max-w-7xl mx-auto rounded-3xl border border-border bg-card overflow-hidden shadow-sm"
                     >
-                        <div className="p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12 bg-foreground/[0.01]">
+                        <div className="p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12 bg-card">
                             <div className="w-full md:w-1/3 flex justify-center">
-                                <div className="p-4 bg-foreground rounded-2xl shadow-[0_0_50px_hsl(var(--foreground) / 0.05)] border border-border">
+                                <div className="p-4 rounded-2xl bg-background shadow-sm border border-border">
                                     <div className="relative w-48 h-48 md:w-64 md:h-64">
                                         <Image
                                             src="/images/whatsapp-qr.png"
@@ -252,15 +295,15 @@ function ContactFormContent() {
                                 <h3 className="fluid-h2">
                                     SCAN TO <span className="opacity-30">SYNC.</span>
                                 </h3>
-                                <p className="text-xl text-foreground/50 font-medium leading-relaxed">
+                                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
                                     Instantly bridge the gap with our technical architects via secure WhatsApp protocol. High-priority inquiries receive real-time sync capabilities.
                                 </p>
                                 <div className="flex flex-wrap gap-4 pt-4">
                                     <Button size="lg" className="btn-institutional px-8" asChild>
                                         <a href="https://wa.me/13072106155" target="_blank">OPEN PROTOCOL</a>
                                     </Button>
-                                    <div className="flex items-center gap-3 px-6 py-2 rounded-full border border-border bg-foreground/[0.02]">
-                                        <div className="w-2 h-2 rounded-full bg-foreground animate-pulse" />
+                                    <div className="flex items-center gap-3 px-6 py-2 rounded-full border border-border bg-muted/60">
+                                        <div className="w-2 h-2 rounded-full bg-brand animate-pulse" />
                                         <span className="text-meta">SYSTEM STATUS: READY</span>
                                     </div>
                                 </div>
@@ -313,7 +356,7 @@ function ContactFormContent() {
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
                         >
-                            <Card className="bg-foreground/[0.02] backdrop-blur-3xl border-border/50 rounded-3xl overflow-hidden surface-frost relative group/form">
+                                    <Card className="bg-card border-border rounded-3xl overflow-hidden surface-frost relative group/form shadow-sm">
                                 {/* Console Scanline */}
                                 <motion.div 
                                     animate={{ y: ["-100%", "400%"] }} 
@@ -365,7 +408,7 @@ function ContactFormContent() {
                                                         required
                                                         value={formData.email}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background/80 border-white/20 focus:border-secondary focus:ring-2 focus:ring-secondary/10 text-base text-foreground placeholder:text-foreground/40 rounded-xl transition-all duration-300"
+                                                className="h-14 bg-background border-border focus:border-brand focus:ring-2 focus:ring-brand/10 text-base text-foreground placeholder:text-muted-foreground rounded-xl transition-all duration-300"
                                                         placeholder="SENDER@ACCESS.NODE"
                                                     />
                                                 </div>
@@ -382,7 +425,7 @@ function ContactFormContent() {
                                                         type="text"
                                                         value={formData.company}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background/50 border-border focus:border-secondary focus:ring-1 focus:ring-secondary/20 text-base text-foreground placeholder:text-foreground/30 rounded-xl transition-all duration-300"
+                                                        className="h-14 bg-background border-border focus:border-brand focus:ring-1 focus:ring-brand/20 text-base text-foreground placeholder:text-muted-foreground rounded-xl transition-all duration-300"
                                                         placeholder="CORPORATE IDENTITY"
                                                     />
                                                 </div>
@@ -396,7 +439,7 @@ function ContactFormContent() {
                                                         type="tel"
                                                         value={formData.phone}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background/50 border-border focus:border-secondary focus:ring-1 focus:ring-secondary/20 text-base text-foreground placeholder:text-foreground/30 rounded-xl transition-all duration-300"
+                                                        className="h-14 bg-background border-border focus:border-brand focus:ring-1 focus:ring-brand/20 text-base text-foreground placeholder:text-muted-foreground rounded-xl transition-all duration-300"
                                                         placeholder="+[NODE] XXXXX"
                                                     />
                                                 </div>
@@ -412,13 +455,13 @@ function ContactFormContent() {
                                                         name="service"
                                                         value={formData.service}
                                                         onChange={handleChange}
-                                                        className="w-full h-14 rounded-xl border border-border bg-background/50 px-4 text-base text-foreground focus:border-secondary focus:ring-1 focus:ring-secondary/20 focus:outline-none transition-all appearance-none uppercase font-bold tracking-widest cursor-pointer"
+                                                        className="w-full h-14 rounded-xl border border-border bg-background px-4 text-base text-foreground focus:border-brand focus:ring-1 focus:ring-brand/20 focus:outline-none transition-all appearance-none cursor-pointer"
                                                     >
-                                                        <option value="" className="bg-zinc-950">SELECT PROTOCOL</option>
-                                                        <option value="strategic-architecture" className="bg-zinc-950">Strategic Architecture Plan</option>
-                                                        <option value="enterprise-intelligence" className="bg-zinc-950">Enterprise Intelligence Plan</option>
-                                                        <option value="infinite-ecosystem" className="bg-zinc-950">Infinite Ecosystem Plan</option>
-                                                        <option value="other" className="bg-zinc-950">Other Inquiries</option>
+                                                        <option value="" className="bg-background text-foreground">Select a service</option>
+                                                        <option value="strategic-architecture" className="bg-background text-foreground">Strategic architecture</option>
+                                                        <option value="enterprise-intelligence" className="bg-background text-foreground">Enterprise intelligence</option>
+                                                        <option value="infinite-ecosystem" className="bg-background text-foreground">Managed platform</option>
+                                                        <option value="other" className="bg-background text-foreground">Other inquiry</option>
                                                     </select>
                                                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/40 pointer-events-none group-focus-within:text-secondary transition-colors" />
                                                 </div>
@@ -435,7 +478,7 @@ function ContactFormContent() {
                                                     value={formData.message}
                                                     onChange={handleChange}
                                                     rows={5}
-                                                    className="w-full rounded-xl border border-white/20 bg-background/80 px-4 py-4 text-base text-foreground focus:border-secondary focus:ring-1 focus:ring-secondary/20 focus:outline-none transition-all resize-none placeholder:text-foreground/30 duration-300"
+                                                    className="w-full rounded-xl border border-border bg-background px-4 py-4 text-base text-foreground focus:border-brand focus:ring-1 focus:ring-brand/20 focus:outline-none transition-all resize-none placeholder:text-muted-foreground duration-300"
                                                     placeholder="DESCRIBE ARCHITECTURAL REQUIREMENTS..."
                                                 />
                                             </div>
@@ -443,7 +486,7 @@ function ContactFormContent() {
                                              <button
                                                 type="submit"
                                                 disabled={isSubmitting}
-                                                className="group relative w-full h-16 rounded-xl bg-white text-black font-black uppercase tracking-[0.2em] overflow-hidden transition-all hover:scale-[1.01] active:scale-[0.98] disabled:opacity-50"
+                                                className="group relative w-full h-16 rounded-xl bg-brand text-white font-semibold tracking-[0.08em] overflow-hidden transition-all hover:bg-brand-deep hover:scale-[1.01] active:scale-[0.98] disabled:opacity-50"
                                             >
                                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-[100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                                                 <span className="relative flex items-center justify-center gap-4">

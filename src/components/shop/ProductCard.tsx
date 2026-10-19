@@ -57,7 +57,7 @@ export default function ProductCard({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ y: -8 }}
-                className="group relative rounded-3xl bg-card dark:bg-[#0f0f11] border border-border overflow-hidden hover:border-secondary transition-all duration-500 cursor-pointer card-premium"
+                className="group relative rounded-3xl bg-card border border-border overflow-hidden hover:border-brand/40 transition-all duration-500 cursor-pointer card-premium"
             >
                 {/* Image Container */}
                 <div className="relative aspect-[16/10] bg-background overflow-hidden">
@@ -76,7 +76,7 @@ export default function ProductCard({
 
                     {/* Category Label */}
                     <div className="absolute bottom-5 left-5">
-                        <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/50 bg-foreground/5 px-3 py-1.5 rounded-md backdrop-blur-md border border-border shadow-xl">
+                            <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-foreground bg-background/95 px-3 py-1.5 rounded-md border border-border shadow-sm">
                             {product.category.replace(/_/g, ' ')}
                         </span>
                     </div>
@@ -111,7 +111,7 @@ export default function ProductCard({
                         </h3>
                     </div>
 
-                    <p className="text-[11px] text-foreground/40 line-clamp-2 mb-6 font-medium leading-relaxed uppercase tracking-tighter">
+                    <p className="text-sm text-muted-foreground line-clamp-2 mb-6 leading-relaxed">
                         {product.description || "Elite architectural primitive engineered for high-tier deployments."}
                     </p>
 
@@ -144,7 +144,7 @@ export default function ProductCard({
                             }}
                             className={cn(
                                 "p-4 rounded-xl border transition-all",
-                                isLiked ? "bg-secondary/10 border-secondary text-secondary" : "bg-foreground/5 border-border text-foreground/20 hover:text-foreground"
+                                isLiked ? "bg-secondary/10 border-secondary text-secondary" : "bg-muted border-border text-muted-foreground hover:text-foreground"
                             )}
                         >
                             <Heart size={16} className={isLiked ? "fill-current" : ""} />

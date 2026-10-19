@@ -3,7 +3,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { navShellTransition } from "@/components/navbar/motion";
 
-/** Minimal shell shown while nav location (search params) resolves — prevents layout shift. */
+/** Minimal shell shown while nav location (search params) resolves  -  prevents layout shift. */
 export function NavbarFallback() {
     return (
         <nav
@@ -15,17 +15,17 @@ export function NavbarFallback() {
             )}
         >
             <div className="pointer-events-auto w-full max-w-7xl flex items-center justify-between px-6 py-3 rounded-full border border-transparent">
-                <Link href="/" aria-label="Mindscape Analytics Home" className="flex items-center">
+                <Link href="/" aria-label="Mindscape Analytics Home" className="flex items-center dark:rounded-md dark:bg-white dark:px-1 dark:py-0.5">
                     <Image
-                        src="/images/logo/mindscape-analytics.png"
+                        src="/images/brand/mindscape-analytics-logo-dark.png"
                         alt=""
-                        width={160}
-                        height={35}
-                        className="h-8 sm:h-9 w-auto object-contain brightness-0 invert contrast-125 opacity-90"
+                        width={180}
+                        height={62}
+                        className="h-8 w-auto object-contain opacity-100 sm:h-9"
                         priority
                     />
                 </Link>
-                <div className="h-10 w-10 lg:hidden rounded-2xl bg-secondary/5 border border-secondary/10" aria-hidden />
+                <div className="h-10 w-10 xl:hidden rounded-2xl bg-secondary/5 border border-secondary/10" aria-hidden />
             </div>
         </nav>
     );

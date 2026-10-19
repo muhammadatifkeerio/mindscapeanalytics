@@ -41,7 +41,7 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 30 }}
                         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-                        className="relative w-full max-w-[1200px] h-full max-h-[900px] bg-card dark:bg-[#0f0f11] border border-border rounded-[3rem] overflow-hidden flex flex-col lg:flex-row shadow-[0_0_100px_rgba(0,0,0,0.5)]"
+                        className="relative w-full max-w-[1200px] h-full max-h-[900px] bg-card border border-border rounded-[3rem] overflow-hidden flex flex-col lg:flex-row shadow-2xl"
                     >
                         {/* Close Button */}
                         <button

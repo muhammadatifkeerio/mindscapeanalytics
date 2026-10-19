@@ -1,6 +1,6 @@
 /**
  * SOURCE OF TRUTH KEYWORDS: Permission, PlanKey, ResourceName, NavEntry, PermissionConstants, derived types, RESOURCES
- * WHAT: Types and helpers derived from the RESOURCES registry — never hand-duplicated unions.
+ * WHAT: Types and helpers derived from the RESOURCES registry  -  never hand-duplicated unions.
  * WHY: TypeScript lock-in: invalid permissions/plans fail at compile instead of at a forgotten if-branch.
  * WHERE: protected block, adapters, route-authorization, FeatureGate, services.
  */

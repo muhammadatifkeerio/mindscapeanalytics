@@ -104,7 +104,7 @@ function Avatar({ src, alt }: { src: string; alt: string }) {
 
 function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
     return (
-        <Card className="relative overflow-hidden rounded-[2.5rem] group transition-all duration-500 w-[320px] h-[400px] bg-card dark:bg-[#0f0f11] border border-border/50 hover:bg-foreground/[0.03] hover:border-secondary shadow-2xl flex flex-col backdrop-blur-xl">
+        <Card className="relative overflow-hidden rounded-[2.5rem] group transition-all duration-500 w-[320px] h-[400px] bg-card border border-border/50 hover:bg-muted/60 hover:border-brand/40 shadow-sm flex flex-col backdrop-blur-xl">
             <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
                 <Quote className="h-16 w-16 text-foreground rotate-180" />
             </div>

@@ -1,5 +1,5 @@
 /**
- * Hero atmosphere — primary orb + secondary wash + blueprint grid.
+ * Hero atmosphere  -  primary orb + secondary wash + blueprint grid.
  * Grid is intentional: deployment stage world (map/blueprint), not random décor.
  * Lighter on mobile for GPU cost; mesh figure is lg-only in HeroStage.
  */

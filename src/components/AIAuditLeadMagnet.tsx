@@ -87,7 +87,7 @@ export default function AIAuditLeadMagnet() {
                             <div className="space-y-6">
                                 <h2 className="fluid-h2 font-black uppercase not-italic">
                                     AI AUTOMATION <br /> 
-                                    <span className="bg-gradient-to-r from-secondary via-foreground/80 to-secondary bg-[length:200%_auto] bg-clip-text text-transparent shimmer-sweep">READINESS.</span>
+                                    <span className="text-brand">READINESS.</span>
                                 </h2>
                                 <p className="text-lg text-foreground/40 font-medium leading-relaxed uppercase tracking-tighter max-w-2xl">
                                     Stop guessing. Our engineers will map out the exact AI system architecture required to scale your organization.

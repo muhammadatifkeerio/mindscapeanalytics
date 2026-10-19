@@ -89,21 +89,21 @@ function SignInContent() {
                     <Link href="/" className="inline-block group">
                         <div className="flex items-center justify-center gap-2 mb-6">
                             <Image
-                                src="/images/logo/mindscape-analytics.png"
+                                src="/images/brand/mindscape-analytics-logo.png"
                                 alt="Mindscape Analytics"
                                 width={240}
                                 height={56}
-                                className="h-14 w-auto brightness-0 invert opacity-100 transition-all duration-500 group-hover:scale-110"
+                                className="h-14 w-auto brightness-0 dark:invert opacity-100 transition-all duration-500 group-hover:scale-110"
                             />
                         </div>
                         <h1
-                            className="text-[10px] font-black tracking-[0.5em] uppercase text-foreground/40"
+                            className="text-sm font-medium tracking-normal text-foreground/70"
                         >
-                            SECURE<span className="text-foreground/20"> // </span>GATEWAY
+                            Sign in to your account
                         </h1>
                     </Link>
-                    <p className="text-foreground/40 text-xs font-black uppercase tracking-[0.3em] mt-4">
-                        Secure Authentication Protocol
+                    <p className="text-foreground/65 text-sm font-medium mt-3">
+                        Welcome back to Mindscape Analytics
                     </p>
                 </div>
 
@@ -114,7 +114,7 @@ function SignInContent() {
                             <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-xs font-bold uppercase tracking-wider text-center space-y-3"
+                                className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-700 dark:text-red-300 text-sm font-medium text-center space-y-3"
                             >
                                 <p>{error}</p>
                                 {error.includes("Credentials mismatch") && (
@@ -122,7 +122,7 @@ function SignInContent() {
                                         href={callbackUrl ? `/sign-up?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/sign-up"}
                                         className="inline-block text-foreground bg-foreground/10 border border-foreground/20 px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-foreground/20 transition-all font-bold"
                                     >
-                                        Register New Account →
+                                        Create an account →
                                     </Link>
                                 )}
                             </motion.div>
@@ -130,7 +130,7 @@ function SignInContent() {
 
                         <div className="space-y-4">
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Terminal ID (Email)</label>
+                                <label className="block text-sm font-medium text-foreground/75 mb-2 ml-1">Email address</label>
                                 <div className="relative">
                                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20 group-focus-within:text-foreground transition-colors" size={18} />
                                     <input
@@ -145,7 +145,7 @@ function SignInContent() {
                             </div>
 
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Access Cipher (Password)</label>
+                                <label className="block text-sm font-medium text-foreground/75 mb-2 ml-1">Password</label>
                                 <div className="relative">
                                     <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20 group-focus-within:text-foreground transition-colors" size={18} />
                                     <input
@@ -192,7 +192,7 @@ function SignInContent() {
                                 onClick={() => alert("Password reset protocol initiated. Please check your terminal (email) if configured.")}
                                 className="text-foreground/20 hover:text-foreground/40 text-[8px] font-black uppercase tracking-widest transition-colors"
                             >
-                                Forgot Access Cipher?
+                                Forgot password?
                             </button>
                         </div>
                     </div>
@@ -201,7 +201,7 @@ function SignInContent() {
                 {/* Footer Security Note */}
                 <div className="mt-10 flex items-center justify-center gap-2 text-foreground/20">
                     <Shield size={12} />
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em]">End-to-End Encryption Enabled</span>
+                    <span className="text-xs font-medium">Secure sign-in</span>
                 </div>
             </motion.div>
         </div>
@@ -212,7 +212,7 @@ export default function SignInPage() {
     return (
         <Suspense fallback={
             <div className="min-h-screen bg-transparent flex items-center justify-center">
-                <div className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.5em] animate-pulse">Initializing Security Gateway...</div>
+                <div className="text-xs font-medium text-foreground/65 animate-pulse">Loading sign-in…</div>
             </div>
         }>
             <SignInContent />

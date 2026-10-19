@@ -126,7 +126,7 @@ export default function ProjectVision() {
 
     // Mouse parallax for the ambient glow. Hooks are declared unconditionally
     // (Rules of Hooks); the listener that feeds them is only attached on
-    // desktop pointers with motion enabled — see the effect below.
+    // desktop pointers with motion enabled  -  see the effect below.
     const springConfig = { stiffness: 60, damping: 40, mass: 1, restDelta: 0.005 };
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
@@ -212,7 +212,7 @@ export default function ProjectVision() {
                 </div>
 
                 {/* --- Main Dashboard Container --- */}
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr_1fr] gap-px rounded-2xl overflow-hidden border border-border/80 bg-card dark:bg-[#0f0f11]">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr_1fr] gap-px rounded-2xl overflow-hidden border border-border/80 bg-card">
                     {/* 1. Left Rail: Project Selector (Adaptive) */}
                     <div className="relative flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible border-b lg:border-b-0 lg:border-r border-border p-2 lg:p-4 no-scrollbar snap-x snap-mandatory lg:snap-none mask-[linear-gradient(to_right,transparent,black_12%,black_88%,transparent)] lg:mask-none">
                         <div className="text-[10px] font-mono text-foreground/50 uppercase tracking-widest mb-4 lg:mb-6 px-4 shrink-0 self-center lg:self-start">Projects</div>
@@ -345,7 +345,7 @@ export default function ProjectVision() {
                                     initial={prefersReducedMotion ? false : { y: 10, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={prefersReducedMotion ? { duration: 0 } : { delay: 0.25 }}
-                                    className="relative lg:absolute mt-4 lg:mt-0 lg:-bottom-5 lg:left-10 p-4 lg:p-6 bg-card/80 dark:bg-foreground/4 backdrop-blur-md border border-border rounded-xl lg:rounded-2xl w-full lg:max-w-sm z-30 shadow-2xl"
+                                    className="relative lg:absolute mt-4 lg:mt-0 lg:-bottom-5 lg:left-10 p-4 lg:p-6 bg-card/90 backdrop-blur-md border border-border rounded-xl lg:rounded-2xl w-full lg:max-w-sm z-30 shadow-lg"
                                 >
                                     <div className="flex items-center gap-2 mb-2">
                                         <div className="w-1 h-1 bg-foreground rounded-full" />

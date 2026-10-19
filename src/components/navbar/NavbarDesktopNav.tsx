@@ -27,7 +27,7 @@ export const NavbarDesktopNav = memo(function NavbarDesktopNav({
     onMouseLeave,
 }: NavbarDesktopNavProps) {
     return (
-        <div className="hidden lg:flex items-center gap-x-6 relative">
+        <div className="hidden xl:flex items-center gap-x-5 relative">
             {navLinks.map((link) => {
                 const isActive = isNavLinkActive(location, link);
                 const isDropdownOpen = activeDropdown === link.name;

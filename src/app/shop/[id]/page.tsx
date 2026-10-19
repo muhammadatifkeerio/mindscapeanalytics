@@ -63,9 +63,9 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                             {/* Tech Stack Overlay */}
                             <div className="grid grid-cols-2 gap-4">
                                 {techStack.map((tech: string, i: number) => (
-                                    <div key={i} className="px-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl flex items-center gap-4 group hover:border-foreground/20 transition-all">
-                                        <Code size={16} className="text-foreground/20 group-hover:text-foreground transition-colors" />
-                                        <span className="text-[10px] font-black uppercase tracking-widest text-foreground/40 group-hover:text-foreground transition-colors">{tech}</span>
+                                    <div key={i} className="px-6 py-4 bg-card border border-border rounded-2xl flex items-center gap-4 group hover:border-brand/35 transition-all shadow-sm">
+                                        <Code size={16} className="text-muted-foreground group-hover:text-brand transition-colors" />
+                                        <span className="text-xs font-medium text-foreground group-hover:text-brand transition-colors">{tech}</span>
                                     </div>
                                 ))}
                             </div>
@@ -75,11 +75,11 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         <div className="space-y-12 lg:sticky lg:top-32">
                             <div>
                                 <div className="flex items-center gap-4 mb-6">
-                                    <span className="px-4 py-1.5 bg-foreground/5 border border-border rounded-full text-[9px] font-black uppercase tracking-[0.4em] text-foreground/40">
+                                    <span className="px-4 py-1.5 bg-muted border border-border rounded-full text-[9px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                                         {product.category.replace(/_/g, ' ')}
                                     </span>
                                     <div className="w-px h-4 bg-foreground/10" />
-                                    <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20">Archived ID: #{product.id.slice(-6)}</span>
+                                    <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">Product ID: #{product.id.slice(-6)}</span>
                                 </div>
                                 <h1
                                     className="text-6xl md:text-7xl font-black mb-8 tracking-tightest leading-[0.9] uppercase"
@@ -87,19 +87,19 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                                 >
                                     {product.name}
                                 </h1>
-                                <p className="text-foreground/40 text-lg md:text-xl font-medium leading-relaxed border-l-2 border-border pl-8">
+                                <p className="text-muted-foreground text-lg md:text-xl leading-relaxed border-l-2 border-brand/35 pl-6">
                                     {product.description || "Elite architectural primitive engineered for high-tier deployments."}
                                 </p>
                             </div>
 
                             {/* Key Features Protocol */}
-                            <div className="bg-foreground/[0.02] border border-border rounded-[2.5rem] p-10 space-y-6">
-                                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-4 px-2">Key Specifications</h3>
+                            <div className="bg-card border border-border rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
+                                <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground mb-4 px-2">Key Specifications</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {features.map((feature: string, i: number) => (
                                         <div key={i} className="flex gap-4 items-start group">
-                                            <CheckCircle2 size={16} className="text-foreground/20 mt-0.5 group-hover:text-foreground transition-colors" />
-                                            <span className="text-[11px] font-bold uppercase tracking-widest text-foreground/40 leading-relaxed group-hover:text-foreground/80 transition-colors">
+                                            <CheckCircle2 size={16} className="text-brand mt-0.5" />
+                                            <span className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
                                                 {feature}
                                             </span>
                                         </div>
@@ -108,7 +108,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                             </div>
 
                             {/* Price & Primary CTA Wrapper */}
-                            <div className="bg-foreground/5 border border-border rounded-[3rem] p-12 relative overflow-hidden">
+                            <div className="bg-muted/70 border border-border rounded-3xl p-8 sm:p-10 relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-12 opacity-[0.02]">
                                     <ShieldCheck size={200} strokeWidth={0.5} />
                                 </div>
@@ -141,7 +141,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                             </div>
 
                             {/* Seller/Architect Context */}
-                            <div className="flex items-center gap-6 p-8 bg-foreground/[0.02] border border-border rounded-[2rem] group hover:border-border transition-all">
+                            <div className="flex items-center gap-6 p-6 sm:p-8 bg-card border border-border rounded-2xl group hover:border-brand/30 transition-all shadow-sm">
                                 <div className="w-16 h-16 rounded-2xl bg-foreground/5 border border-border overflow-hidden flex-shrink-0">
                                     {product.seller?.image ? (
                                         <div className="relative w-full h-full">

@@ -1,5 +1,5 @@
 /**
- * Full-bleed decorative deployment stage — monochrome product character.
+ * Full-bleed decorative deployment stage  -  monochrome product character.
  * Labels are locked case-study names only (PRODUCT.md evidence). aria-hidden.
  * Motion: rare first-paint reveal (opacity + translate); no scale(0).
  */
@@ -27,7 +27,7 @@ export default function HeroStage() {
                     </radialGradient>
                 </defs>
 
-                {/* Edges — packaged deployment mesh */}
+                {/* Edges  -  packaged deployment mesh */}
                 <g stroke="url(#hero-stage-line)" strokeWidth="1.25" strokeLinecap="round">
                     <path d="M180 320 L320 180" />
                     <path d="M180 320 L320 460" />
@@ -57,7 +57,7 @@ export default function HeroStage() {
                     <circle cx="560" cy="320" r="9" fill="hsl(var(--foreground) / 0.18)" />
                 </g>
 
-                {/* Locked case-study labels — names only, no metrics */}
+                {/* Locked case-study labels  -  names only, no metrics */}
                 <g
                     fill="hsl(var(--foreground) / 0.55)"
                     fontFamily="ui-sans-serif, system-ui, sans-serif"
@@ -84,7 +84,7 @@ export default function HeroStage() {
                     </text>
                 </g>
 
-                {/* Outer frame ticks — blueprint, not decoration for its own sake */}
+                {/* Outer frame ticks  -  blueprint, not decoration for its own sake */}
                 <g stroke="hsl(var(--foreground) / 0.12)" strokeWidth="1">
                     <path d="M40 40 H100 M40 40 V100" />
                     <path d="M680 40 H620 M680 40 V100" />

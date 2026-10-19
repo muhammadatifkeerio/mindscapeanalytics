@@ -4,7 +4,7 @@ import { enforceRouteAuthorization } from "@/lib/route-authorization";
 /**
  * SOURCE OF TRUTH KEYWORDS: SellerLayout, ROUTE_AUTHORIZATION, seller:read
  * WHAT: Seller portal chrome gated from RESOURCES.nav.
- * WHY: /seller was previously ungated at layout — the gap the block misses.
+ * WHY: /seller was previously ungated at layout  -  the gap the block misses.
  * WHERE: all /seller/* routes.
  */
 

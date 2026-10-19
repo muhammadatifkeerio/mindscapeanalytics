@@ -2,7 +2,7 @@
  * SOURCE OF TRUTH KEYWORDS: writeAuditRow, AuditOverride, atomic audit, gap socket
  * WHAT: Block-level audit writer. Default trail for every protected mutation.
  * WHY: Routers must not call logActivity(); the spine already knows resource, actor, and outcome.
- * WHERE: protected.ts after a successful mutation. Prisma AuditLog is not in the schema yet — this is the sanctioned SOT socket.
+ * WHERE: protected.ts after a successful mutation. Prisma AuditLog is not in the schema yet  -  this is the sanctioned SOT socket.
  */
 
 import type { AuditOverride, Permission } from "@/lib/types";

@@ -38,8 +38,8 @@ function SignUpContent() {
             const signupSchema = zod.object({
                 name: zod.string().min(2, "Identity must be at least 2 characters."),
                 email: zod.string().email("Invalid terminal ID format."),
-                password: zod.string().min(8, "Establish Cipher must be at least 8 characters."),
-                username: zod.string().min(3, "Nomenclature error: Username must be at least 3 characters.").optional().or(zod.literal("")),
+                password: zod.string().min(8, "Password must be at least 8 characters."),
+                username: zod.string().min(3, "Username must be at least 3 characters.").optional().or(zod.literal("")),
             });
 
             signupSchema.parse({ name: trimmedName, email: trimmedEmail, password, username: trimmedUsername });
@@ -87,15 +87,15 @@ function SignUpContent() {
 
                     console.warn("[AUTH_SIGNUP_ERROR]", { code, status, message: authError.message });
 
-                    // Username collision — retry only if auto-generated
+                    // Username collision  -  retry only if auto-generated
                     if (code === "USERNAME_IS_ALREADY_TAKEN_PLEASE_TRY_ANOTHER" || code === "USERNAME_IS_ALREADY_TAKEN") {
                         if (!username.trim() && retryCount < 3) {
                             return { success: false, shouldRetry: true, errorMsg: "" };
                         }
-                        return { success: false, shouldRetry: false, errorMsg: `Nomenclature Conflict: "${uname}" is already registered.` };
+                        return { success: false, shouldRetry: false, errorMsg: `The username "${uname}" is already registered.` };
                     }
 
-                    // Email already registered — user needs to sign in instead
+                    // Email already registered  -  user needs to sign in instead
                     if (status === 422 || code === "USER_ALREADY_EXISTS") {
                         return { success: false, shouldRetry: false, errorMsg: "Email already registered. Please sign in." };
                     }
@@ -170,11 +170,11 @@ function SignUpContent() {
                     <Link href="/" className="inline-block group">
                         <div className="flex items-center justify-center gap-2 mb-6">
                             <Image
-                                src="/images/logo/mindscape-analytics.png"
+                                src="/images/brand/mindscape-analytics-logo.png"
                                 alt="Mindscape Analytics"
                                 width={240}
                                 height={56}
-                                className="h-14 w-auto brightness-0 invert opacity-100 transition-all duration-500 group-hover:scale-110"
+                                className="h-14 w-auto brightness-0 dark:invert opacity-100 transition-all duration-500 group-hover:scale-110"
                             />
                         </div>
                         <h1
@@ -195,7 +195,7 @@ function SignUpContent() {
                             <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-xs font-bold uppercase tracking-wider text-center space-y-3"
+                                className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-700 dark:text-red-300 text-sm font-medium text-center space-y-3"
                             >
                                 <p>{error}</p>
                                 {error.toLowerCase().includes("sign in") && (
@@ -212,7 +212,7 @@ function SignUpContent() {
                             <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl text-emerald-400 text-xs font-bold uppercase tracking-wider text-center space-y-3"
+                                className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl text-emerald-700 dark:text-emerald-300 text-sm font-medium text-center space-y-3"
                             >
                                 <p>{successMsg}</p>
                             </motion.div>
@@ -220,7 +220,7 @@ function SignUpContent() {
 
                         <div className="space-y-4">
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Identity (Full Name)</label>
+                                <label className="block text-sm font-medium text-foreground/75 mb-2 ml-1">Full name</label>
                                 <div className="relative">
                                     <User className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20 group-focus-within:text-foreground transition-colors" size={18} />
                                     <input
@@ -235,7 +235,7 @@ function SignUpContent() {
                             </div>
 
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Nomenclature (Username - Optional)</label>
+                                <label className="block text-sm font-medium text-foreground/75 mb-2 ml-1">Username (optional)</label>
                                 <div className="relative">
                                     <div className="absolute left-1.5 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center font-mono text-[10px] text-foreground/20">@</div>
                                     <input
@@ -249,7 +249,7 @@ function SignUpContent() {
                             </div>
 
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Terminal ID (Email)</label>
+                                <label className="block text-sm font-medium text-foreground/75 mb-2 ml-1">Email address</label>
                                 <div className="relative">
                                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20 group-focus-within:text-foreground transition-colors" size={18} />
                                     <input
@@ -264,7 +264,7 @@ function SignUpContent() {
                             </div>
 
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Establish Cipher (Password)</label>
+                                <label className="block text-sm font-medium text-foreground/75 mb-2 ml-1">Create a password</label>
                                 <div className="relative">
                                     <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20 group-focus-within:text-foreground transition-colors" size={18} />
                                     <input
@@ -311,7 +311,7 @@ function SignUpContent() {
                 {/* Footer Security Note */}
                 <div className="mt-10 flex items-center justify-center gap-2 text-foreground/20">
                     <Shield size={12} />
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em]">Secure Data Protocol Initialized</span>
+                    <span className="text-xs font-medium">Your information is protected</span>
                 </div>
             </motion.div>
         </div>
@@ -322,7 +322,7 @@ export default function SignUpPage() {
     return (
         <Suspense fallback={
             <div className="min-h-screen bg-transparent flex items-center justify-center">
-                <div className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.5em] animate-pulse">Initializing Identity Registry...</div>
+                <div className="text-xs font-medium text-foreground/65 animate-pulse">Preparing your account…</div>
             </div>
         }>
             <SignUpContent />

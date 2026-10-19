@@ -382,7 +382,7 @@ export default function ProjectsPage() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true, margin: "-100px" }}
                                 transition={{ delay: 0.1 }}
-                                className="w-[85vw] md:w-[80vw] lg:w-[1100px] max-w-[1200px] shrink-0 snap-center group relative p-8 lg:p-14 rounded-[3rem] bg-foreground/[0.02] border border-border hover:border-foreground/20 backdrop-blur-xl transition-all duration-500 overflow-hidden flex flex-col justify-between surface-frost"
+                                className="w-[85vw] md:w-[80vw] lg:w-[1100px] max-w-[1200px] shrink-0 snap-center group relative p-6 sm:p-8 lg:p-14 rounded-3xl bg-card border border-border hover:border-brand/35 transition-all duration-500 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md surface-frost"
                             >
                                 <div className="absolute top-0 right-0 p-16 opacity-[0.03] pointer-events-none group-hover:opacity-[0.08] transition-opacity duration-700 translate-x-1/4 -translate-y-1/4">
                                     <project.icon className="w-96 h-96" />
@@ -400,13 +400,13 @@ export default function ProjectsPage() {
                                                 </span>
                                             </div>
                                             <h2 className="fluid-h2 leading-none text-foreground break-words">{project.title}</h2>
-                                            <p className="text-lg md:text-xl text-foreground/50 font-medium leading-relaxed max-w-2xl">
+                                            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">
                                                 {project.description}
                                             </p>
                                         </div>
 
-                                         <div className="bg-foreground/[0.03] border border-border p-6 rounded-2xl space-y-4 mt-auto surface-frost">
-                                            <h3 className="text-[10px] font-mono font-black uppercase tracking-widest text-foreground/40 border-b border-border pb-2">Business Impact & Results</h3>
+                                         <div className="bg-muted/70 border border-border p-6 rounded-2xl space-y-4 mt-auto surface-frost">
+                                            <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground border-b border-border pb-2">Business Impact & Results</h3>
                                             <ul className="space-y-3">
                                                 {project.results.map(res => (
                                                     <li key={res} className="flex items-start gap-3">
@@ -418,9 +418,9 @@ export default function ProjectsPage() {
                                         </div>
                                     </div>
 
-                                     <div className="space-y-10 flex flex-col justify-center bg-foreground/[0.01] p-8 rounded-3xl border border-border surface-frost">
+                                     <div className="space-y-10 flex flex-col justify-center bg-card p-8 rounded-3xl border border-border shadow-sm surface-frost">
                                         <div className="space-y-6">
-                                            <h3 className="text-sm font-black uppercase tracking-widest text-foreground/40 border-b border-border pb-4">System Architecture & Features</h3>
+                                            <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-muted-foreground border-b border-border pb-4">System Architecture & Features</h3>
                                             <div className="grid sm:grid-cols-2 gap-4">
                                                 {project.features.map(feature => (
                                                     <div key={feature} className="flex items-center gap-3">
@@ -432,10 +432,10 @@ export default function ProjectsPage() {
                                         </div>
 
                                         <div className="space-y-6">
-                                            <h3 className="text-sm font-black uppercase tracking-widest text-foreground/40 border-b border-border pb-4">Infrastructure & Tech Stack</h3>
+                                            <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-muted-foreground border-b border-border pb-4">Infrastructure & Tech Stack</h3>
                                             <div className="flex flex-wrap gap-2">
                                                 {project.techStack.map(tech => (
-                                                    <span key={tech} className="px-3 py-1.5 bg-foreground/5 border border-border rounded-lg text-[10px] font-mono font-black uppercase tracking-widest text-foreground/40">
+                                                    <span key={tech} className="px-3 py-1.5 bg-muted border border-border rounded-lg text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
                                                         {tech}
                                                     </span>
                                                 ))}
@@ -471,7 +471,7 @@ export default function ProjectsPage() {
 
                          <div className="grid lg:grid-cols-5 gap-4">
                             {deliveryPhases.map((phase, i) => (
-                                <div key={phase.title} className="p-8 bg-foreground/[0.02] border border-border rounded-2xl relative group hover:bg-foreground/[0.05] transition-colors surface-frost">
+                                <div key={phase.title} className="p-8 bg-card border border-border rounded-2xl relative group hover:bg-muted/70 transition-colors shadow-sm surface-frost">
                                     <div className="text-[10px] font-mono font-black text-foreground/20 uppercase tracking-[0.3em] mb-6">Phase_0{i + 1}</div>
                                     <phase.icon className="w-8 h-8 text-foreground/40 mb-6 group-hover:text-foreground transition-colors" />
                                     <h3 className="text-sm font-black uppercase tracking-wider leading-relaxed">{phase.title}</h3>
@@ -483,15 +483,15 @@ export default function ProjectsPage() {
             </section>
 
             {/* --- Managed Infrastructure Callout --- */}
-            <section className="section-spacing border-t border-border bg-foreground text-background text-center relative overflow-hidden">
+            <section className="section-spacing border-t border-border bg-muted/40 text-foreground text-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-transparent to-transparent opacity-30" />
                 <div className="container-standard">
                     <div className="max-w-4xl mx-auto space-y-8">
-                        <span className="text-meta opacity-40">The Infrastructure Advantage</span>
+                        <span className="text-meta text-muted-foreground">The Infrastructure Advantage</span>
                         <h2 className="fluid-h2">
-                            AGENCIES HAND OVER RAW CODE. <br /> <span className="text-secondary">WE DELIVER MANAGED PERFORMANCE.</span>
+                            AGENCIES HAND OVER RAW CODE. <br /> <span className="text-brand">WE DELIVER MANAGED PERFORMANCE.</span>
                         </h2>
-                        <p className="text-lg font-medium opacity-60 uppercase tracking-tighter max-w-2xl mx-auto">
+                        <p className="text-lg font-medium text-muted-foreground uppercase tracking-tighter max-w-2xl mx-auto">
                             All our deployed systems are backed by monthly infrastructure management, database optimization, and security monitoring to ensure long-term reliability and scalable growth.
                         </p>
                         <Link href="/pricing" className="inline-block pt-8">

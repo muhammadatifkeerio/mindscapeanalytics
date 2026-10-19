@@ -2,11 +2,11 @@ import { Metadata } from "next";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "Mindscape Analytics | Elite Agentic Workflows & Enterprise AI Architecture",
-  description: "The world's premier provider of Agentic AI and Autonomous Workflows. Powered by MSA AGENT CORE and Mistral Large 3. We architect self-evolving digital workforces for global enterprises.",
+  title: "Mindscape Analytics | AI, Data, Products & Production",
+  description: "Autonomous AI agents, decision-grade data systems, digital products, and factory-direct sourcing from China to production.",
   openGraph: {
-    title: "Mindscape Analytics | First Agentic AI, Gen AI & Automation Solutions",
-    description: "The world's first Agentic AI and Gen AI solutions company. We architect high-performance automation, enterprise SaaS, and mission-critical web applications. Lead by Zeeshan Keerio.",
+    title: "Mindscape Analytics | AI, Data, Products & Production",
+    description: "Build intelligent systems and take products from idea to production with Mindscape Analytics.",
     url: "https://mindscapeanalytics.com",
     siteName: "Mindscape Analytics",
     images: [
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mindscape Analytics | Enterprise AI, Asset Marketplace & Elite Talent Hub",
-    description: "Mission-critical AI software architecture, premium digital asset marketplace, and high-performance engineering talent for global organizations.",
-    images: ["/og-bg.webp"],
+    title: "Mindscape Analytics | AI, Data, Products & Production",
+    description: "Build the intelligent system your next stage needs.",
+    images: ["/images/og-image.png"],
   },
 };
 

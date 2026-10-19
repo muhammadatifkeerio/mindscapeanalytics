@@ -8,7 +8,7 @@ const STORAGE_KEY = "msa-intro-shown";
 const DURATION_MS = 1100;
 
 /**
- * Branded site-load intro. Overlay only — hero paints underneath (LCP-safe).
+ * Branded site-load intro. Overlay only  -  hero paints underneath (LCP-safe).
  * Skippable via button or Escape. Skipped under reduced-motion / after first play.
  */
 export default function HeroIntro() {

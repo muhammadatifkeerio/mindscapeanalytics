@@ -248,7 +248,7 @@ export default function AgenticHeroScanner() {
 
                     {/* Column 2: Terminal UI */}
                     <div className="relative group">
-                        {/* Ambient glow — composited opacity transition only, hidden on small screens. */}
+                        {/* Ambient glow  -  composited opacity transition only, hidden on small screens. */}
                         <div
                             aria-hidden="true"
                             className="pointer-events-none absolute -inset-1 hidden sm:block bg-linear-to-r from-secondary/20 via-white/5 to-secondary/20 rounded-4xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity duration-700"

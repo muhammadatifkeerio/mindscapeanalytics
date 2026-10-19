@@ -24,9 +24,9 @@ export function NavbarDropdown({
             className={cn(
                 dropdownPanelMotion,
                 dropdownPanelState(isOpen),
-                "absolute top-full mt-2 w-80 rounded-2xl overflow-hidden py-0 z-[100] bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] shadow-xl",
+                "absolute top-full mt-2 w-80 rounded-2xl overflow-hidden py-0 z-[100] bg-card border border-border shadow-[0_18px_52px_hsl(var(--foreground)/0.12)]",
                 align === "center" && "left-1/2 -translate-x-1/2",
-                align === "right" && "right-0 mt-3 py-3 shadow-[0_32px_64px_rgba(0,0,0,0.1)] dark:shadow-[0_32px_64px_rgba(0,0,0,1)]",
+                align === "right" && "right-0 mt-3 py-3",
                 className
             )}
         >

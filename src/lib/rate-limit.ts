@@ -123,7 +123,7 @@ export function rateLimitResponse(result: RateLimitResult): Response {
 }
 
 /**
- * @deprecated Use withBaseHandler from lib/base-handler.ts — kept so existing call sites compile during migration.
+ * @deprecated Use withBaseHandler from lib/base-handler.ts  -  kept so existing call sites compile during migration.
  */
 export function withRateLimit(maxRequests: number = 100, windowMs: number = 60_000) {
     return async (request: Request): Promise<Response | null> => {

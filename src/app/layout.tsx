@@ -12,10 +12,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Mindscape Analytics | First Agentic AI, Gen AI, Automation, SaaS & Web App Solutions",
-  description: "Mindscape Analytics is the world's first Agentic AI and Gen AI solutions company. We specialize in high-performance automation, enterprise SaaS, and mission-critical web applications. Founded and lead by Zeeshan Keerio.",
+  title: "Mindscape Analytics | AI, Data, Products & Production",
+  description: "Mindscape Analytics builds autonomous AI agents, decision-grade data systems, digital products, and factory-direct sourcing programs from China to production.",
   keywords: [
-    "First Agentic AI Company", "Gen AI Solutions", "Agentic AI Automation",
+    "AI Agents", "Gen AI Solutions", "Agentic AI Automation",
     "RSIQ Pro", "DBlynx", "DisposIQ", "Tenvo",
     "AI Systems Engineering", "Custom Software Development", "AI Asset Shop",
     "Mindscape Analytics", "Enterprise AI Solutions",
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Mindscape Analytics | First Agentic AI, Gen AI & Automation Solutions",
-    description: "The world's first Agentic AI and Gen AI solutions company. We architect high-performance automation, enterprise SaaS, and mission-critical web applications. Founded and lead by Zeeshan Keerio.",
+    title: "Mindscape Analytics | AI, Data, Products & Production",
+    description: "Autonomous AI agents, decision-grade data systems, digital products, and factory-direct sourcing programs.",
     type: "website",
     url: 'https://mindscapeanalytics.com',
     siteName: 'Mindscape Analytics',
@@ -47,14 +47,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Mindscape Analytics | First Agentic AI & Gen AI Infrastructure",
-    description: "Architecting the future of automated enterprise systems. Founded by Zeeshan Keerio.",
+    title: "Mindscape Analytics | AI, Data, Products & Production",
+    description: "Build the intelligent system your next stage needs.",
     creator: '@mindscapeai',
     images: ['https://mindscapeanalytics.com/images/og-image.png'],
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: '/images/brand/mindscape-icon-light.png',
+    apple: '/images/brand/mindscape-icon-light.png',
   },
   robots: {
     index: true,
@@ -79,8 +79,8 @@ const jsonLd = {
       "legalName": "Mindscape Analytics",
       "foundingDate": "2025",
       "url": "https://mindscapeanalytics.com",
-      "logo": "https://mindscapeanalytics.com/images/logo/mindscape-analytics.png",
-      "description": "The world's first Agentic AI and Gen AI solutions company, specializing in automation architecture, enterprise SaaS, and high-performance web applications.",
+      "logo": "https://mindscapeanalytics.com/images/brand/mindscape-analytics-logo.png",
+      "description": "An AI, data, and product company building autonomous automation, enterprise software, and factory-direct sourcing programs.",
       "founder": {
         "@id": "https://mindscapeanalytics.com/#founder"
       },
@@ -152,8 +152,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fontVariables} antialiased dark`} suppressHydrationWarning>
+    <html lang="en" className={`${fontVariables} antialiased`} suppressHydrationWarning>
       <body className="font-sans" suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('mindscape-theme');var d=t==='dark';document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light';var icons=document.querySelectorAll('link[rel~="icon"]');for(var i=0;i<icons.length;i++){icons[i].href=d?'/images/brand/mindscape-icon-dark.png':'/images/brand/mindscape-icon-light.png'}}catch(e){document.documentElement.style.colorScheme='light'}})();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -161,15 +161,15 @@ function ScrollReveal({
 
 export default function AboutPage() {
     return (
-        <div className="min-h-screen bg-transparent text-foreground relative selection:bg-foreground selection:text-black">
+        <div className="about-page min-h-screen bg-background text-foreground relative selection:bg-foreground selection:text-background">
             <Navbar />
 
             {/* Subtle global telemetry grid lines */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.025)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.025)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
             {/* --- Premium Cybernetic Hero Section --- */}
             <section className="relative pt-36 md:pt-52 pb-20 md:pb-36 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(255,255,255,0.03),transparent_70%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,hsl(var(--brand)/0.08),transparent_70%)] pointer-events-none" />
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
 
@@ -191,7 +191,7 @@ export default function AboutPage() {
                                     ABOUT
                                 </span>
                                 <span className="relative inline-block mt-0.5 md:mt-4 px-4 overflow-hidden max-w-full">
-                                    <span className="bg-gradient-to-r from-secondary via-foreground/80 to-secondary bg-[length:200%_auto] bg-clip-text text-transparent shimmer-sweep drop-shadow-[0_0_20px_hsl(var(--secondary)/0.4)] break-words animate-pulse-subtle">
+                                    <span className="text-brand break-words">
                                         MINDSCAPE
                                     </span>
                                 </span>
@@ -227,7 +227,7 @@ export default function AboutPage() {
                                 <p className="text-base sm:text-lg text-foreground/60 leading-relaxed font-medium">
                                     Mindscape Analytics is a next-generation AI and Software Development company specializing in intelligent automation, AI agents, full-stack systems, and scalable cloud infrastructure.
                                 </p>
-                                <div className="p-6 rounded-2xl bg-foreground/[0.02] border border-foreground/10 relative overflow-hidden group">
+                                <div className="p-6 rounded-2xl bg-card border border-border shadow-sm relative overflow-hidden group">
                                     <div className="absolute top-0 left-0 w-1 h-full bg-foreground transition-all group-hover:h-[50%] duration-500" />
                                     <p className="text-base sm:text-lg text-foreground font-black leading-relaxed pl-4">
                                         &ldquo;To help businesses scale using intelligent systems, not manual effort.&rdquo;
@@ -236,7 +236,7 @@ export default function AboutPage() {
                             </div>
                         </ScrollReveal>
 
-                        <ScrollReveal className="p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] bg-foreground/[0.02] border border-foreground/10 backdrop-blur-xl relative overflow-hidden group shadow-2xl">
+                        <ScrollReveal className="p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] bg-card border border-border relative overflow-hidden group shadow-sm">
                             <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent pointer-events-none" />
                             <h3 className="text-lg sm:text-xl font-black uppercase text-foreground mb-8 tracking-tight font-heading">What Makes Us Different?</h3>
                             <div className="space-y-6">
@@ -278,7 +278,7 @@ export default function AboutPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                                className="group p-8 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-foreground/20 backdrop-blur-xl transition-all relative flex flex-col justify-between min-h-[220px] shadow-lg overflow-hidden"
+                                className="group p-8 rounded-2xl bg-card border border-border hover:border-brand/40 transition-all relative flex flex-col justify-between min-h-[220px] shadow-sm hover:shadow-md overflow-hidden"
                             >
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-foreground/[0.01] rounded-bl-full group-hover:bg-foreground/[0.02] transition-colors pointer-events-none" />
                                 <div className="space-y-4">
@@ -329,7 +329,7 @@ export default function AboutPage() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                                className="p-6 rounded-[2rem] bg-foreground/[0.02] border border-foreground/10 hover:border-foreground/20 transition-all duration-500 group relative overflow-hidden backdrop-blur-md flex flex-col justify-between shadow-2xl"
+                                className="p-6 rounded-[2rem] bg-card border border-border hover:border-brand/35 transition-all duration-500 group relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md"
                             >
                                 <div>
                                     <Link href={member.href || "#"} className={cn("block overflow-hidden rounded-2xl aspect-[4/5] relative border border-foreground/10 mb-8", !member.href && "cursor-default")}>
@@ -352,12 +352,12 @@ export default function AboutPage() {
                                             </div>
                                             <div className="flex gap-2">
                                                 {member.linkedin && member.linkedin !== "#" && (
-                                                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-foreground/[0.04] border border-foreground/10 hover:bg-foreground hover:text-black text-foreground transition-all">
+                                                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-muted border border-border hover:bg-brand hover:text-white text-foreground transition-all">
                                                         <Linkedin className="h-3.5 w-3.5" />
                                                     </a>
                                                 )}
                                                 {member.email && member.email !== "#" && (
-                                                    <a href={member.email} className="p-2.5 rounded-xl bg-foreground/[0.04] border border-foreground/10 hover:bg-foreground hover:text-black text-foreground transition-all">
+                                                    <a href={member.email} className="p-2.5 rounded-xl bg-muted border border-border hover:bg-brand hover:text-white text-foreground transition-all">
                                                         <Mail className="h-3.5 w-3.5" />
                                                     </a>
                                                 )}
@@ -405,10 +405,10 @@ export default function AboutPage() {
                                     className={`flex flex-col md:flex-row gap-8 items-start relative ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
                                 >
                                     {/* Pulse node */}
-                                    <div className="absolute left-[16px] md:left-1/2 -ml-[5px] w-3 h-3 rounded-full bg-foreground border-4 border-black z-20 shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
+                                    <div className="absolute left-[16px] md:left-1/2 -ml-[5px] w-3 h-3 rounded-full bg-brand border-4 border-background z-20 shadow-[0_1px_4px_rgba(20,15,18,0.22)]" />
                                     
                                     <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-12">
-                                        <div className={`space-y-4 p-8 rounded-2xl bg-foreground/[0.02] border border-foreground/5 hover:border-foreground/10 transition-colors backdrop-blur-xl relative ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                                        <div className={`space-y-4 p-8 rounded-2xl bg-card border border-border hover:border-brand/30 transition-colors relative ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
                                             <span className="text-4xl sm:text-5xl font-black text-foreground/10 font-heading leading-none absolute top-4 right-6 pointer-events-none">{item.year}</span>
                                             <span className="text-3xl sm:text-4xl font-black text-foreground font-heading leading-none block">{item.year}</span>
                                             <h4 className="text-lg font-black uppercase tracking-tight text-foreground">{item.title}</h4>
@@ -430,7 +430,7 @@ export default function AboutPage() {
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid lg:grid-cols-[1.2fr_1.8fr] gap-8">
                         {/* Why Trust Us card */}
-                        <ScrollReveal className="space-y-10 p-8 sm:p-12 rounded-[2.5rem] bg-foreground/[0.02] border border-foreground/5 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+                        <ScrollReveal className="space-y-10 p-8 sm:p-12 rounded-[2.5rem] bg-card border border-border shadow-sm relative overflow-hidden">
                             <div className="space-y-2">
                                 <h2 className="fluid-h2 text-foreground">WHY TRUST US?</h2>
                             </div>
@@ -448,7 +448,7 @@ export default function AboutPage() {
                         </ScrollReveal>
 
                         {/* Managed Infographic carbon card (100% visible on all backgrounds, extremely sleek) */}
-                        <ScrollReveal className="p-8 sm:p-16 rounded-[2.5rem] bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border border-foreground/10 flex flex-col justify-between overflow-hidden relative group shadow-2xl min-h-[450px]">
+                        <ScrollReveal className="p-8 sm:p-16 rounded-[2.5rem] bg-muted border border-border flex flex-col justify-between overflow-hidden relative group shadow-sm min-h-[450px]">
                             <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:30px_30px]" />
                             
                             <div className="relative z-10 space-y-10">

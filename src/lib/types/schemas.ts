@@ -83,12 +83,12 @@ export const contactFormSchema = z.object({
 });
 
 export const chatMessageSchema = z.object({
-    role: z.enum(["user", "assistant", "system"]),
-    content: z.string().min(1),
+    role: z.enum(["user", "assistant"]),
+    content: z.string().trim().min(1).max(4_000),
 });
 
 export const chatRequestSchema = z.object({
-    messages: z.array(chatMessageSchema).min(1).max(50),
+    messages: z.array(chatMessageSchema).min(1).max(16),
 });
 
 export const voiceRequestSchema = z.object({

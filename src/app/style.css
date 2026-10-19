@@ -1,6 +1,9 @@
 /* FORCE REBUILD - TAILWIND 4 - MSA 2026 */
 @import "tailwindcss";
 
+/* Keep Tailwind's dark: utilities in sync with this app's explicit theme toggle. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
     --font-sans: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
     --font-heading: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
@@ -25,6 +28,8 @@
     --color-border: hsl(var(--border));
     --color-input: hsl(var(--input));
     --color-ring: hsl(var(--ring));
+    --color-brand: hsl(var(--brand));
+    --color-brand-deep: hsl(var(--brand-deep));
 
     --color-zinc-950: #09090b;
     --color-zinc-900: #18181b;
@@ -42,25 +47,27 @@
 }
 
 :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 4%;
+    --background: 20 20% 98.5%;
+    --foreground: 345 9% 8%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 4%;
+    --card-foreground: 345 9% 8%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 4%;
-    --primary: 240 5.9% 10%;
+    --popover-foreground: 345 9% 8%;
+    --primary: 345 56% 47%;
     --primary-foreground: 0 0% 98%;
     --secondary: 240 5.9% 30%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --muted: 345 15% 94%;
+    --muted-foreground: 345 7% 40%;
+    --accent: 345 40% 94%;
+    --accent-foreground: 345 9% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --border: 345 10% 87%;
+    --input: 345 10% 87%;
+    --ring: 345 56% 47%;
+    --brand: 345 56% 47%;
+    --brand-deep: 345 58% 35%;
 
     --ambient-1: 240 5.9% 10%;
     --ambient-2: 240 5.9% 30%;
@@ -70,9 +77,9 @@
     --surface-frost: 210 20% 98%;
     --accent-glow: 240 5.9% 10% / 0.15;
 
-    /* Hero accent — Monochrome Elite (brand is white/gray/black, no saturated hues) */
-    --hero-accent: 0 0% 9%;
-    --hero-accent-soft: 0 0% 40%;
+    /* Hero accent  -  restrained rose paired with warm neutral surfaces. */
+    --hero-accent: 345 56% 47%;
+    --hero-accent-soft: 345 34% 55%;
 }
 
 .dark {
@@ -95,6 +102,8 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+    --brand: 345 62% 58%;
+    --brand-deep: 345 55% 31%;
 
     --ambient-1: 0 0% 100%;
     --ambient-2: 0 0% 100%;
@@ -104,9 +113,59 @@
     --surface-frost: 240 10% 3.9%;
     --accent-glow: 0 0% 100% / 0.1;
 
-    /* Hero accent — pure white on black per Monochrome Elite system */
-    --hero-accent: 0 0% 98%;
-    --hero-accent-soft: 0 0% 64%;
+    /* Preserve the rose brand accent when the optional dark theme is selected. */
+    --hero-accent: 345 62% 58%;
+    --hero-accent-soft: 345 42% 67%;
+}
+
+/* Product-specific tokens keep Tenvo's supplied red and navy identity intact while the company site stays rose-led. */
+.tenvo-page {
+    --tenvo-bg: 0 0% 98.5%;
+    --tenvo-ink: 215 28% 12%;
+    --tenvo-red: 358 77% 52%;
+    --tenvo-highlight: 356 100% 79%;
+    color-scheme: light;
+    color: hsl(var(--tenvo-ink));
+    background: hsl(var(--tenvo-bg));
+}
+
+.business-card-scene {
+    perspective: 1400px;
+}
+
+.business-card-inner {
+    transform-style: preserve-3d;
+    transition: transform 850ms cubic-bezier(.2,.7,.15,1);
+}
+
+.business-card-face {
+    backface-visibility: hidden;
+}
+
+.business-card-back {
+    transform: rotateY(180deg);
+}
+
+.business-card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .business-card-inner:not(.is-flipped):hover {
+        transform: rotateY(180deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .business-card-inner { transition-duration: 1ms; }
+}
+
+/* Keep all page-level display headings on the shared modern sentence-case type system, including legacy routes. */
+h1, h2, h3, h4 {
+    font-family: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    text-transform: none;
 }
 
 @layer base {
@@ -139,6 +198,20 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+
+    ::selection {
+        background: hsl(var(--brand) / 0.24);
+        color: hsl(var(--foreground));
+    }
+
+    :focus-visible {
+        outline: 2px solid hsl(var(--brand));
+        outline-offset: 4px;
+    }
+
+    * {
+        scrollbar-color: hsl(var(--brand) / 0.75) hsl(var(--muted));
+    }
 }
 
 @layer utilities {
@@ -150,6 +223,57 @@
         @apply max-w-[1600px] mx-auto px-5 md:px-12 w-full;
     }
 
+    .msa-button {
+        @apply inline-flex min-h-14 items-center gap-4 rounded-full bg-foreground pl-6 pr-2 font-semibold text-background transition-transform duration-300 active:scale-[0.98];
+        box-shadow: 0 16px 38px -20px hsl(var(--foreground) / 0.45);
+    }
+
+    .msa-button:hover {
+        transform: translateY(-2px);
+    }
+
+    .msa-button-orb {
+        @apply grid h-10 w-10 place-items-center rounded-full bg-brand text-white transition-transform duration-300;
+    }
+
+    .msa-button:hover .msa-button-orb {
+        transform: rotate(-12deg);
+    }
+
+    .msa-text-link {
+        @apply inline-flex min-h-12 items-center gap-2 px-3 font-semibold text-foreground/70 underline decoration-border underline-offset-8 transition-colors hover:text-foreground;
+    }
+
+    .hero-halo {
+        position: absolute;
+        inset: 4% 14% auto 28%;
+        height: 72%;
+        background: radial-gradient(circle at 58% 48%, hsl(var(--brand) / 0.12), transparent 54%);
+        filter: blur(28px);
+        pointer-events: none;
+    }
+
+    .hero-particles {
+        position: absolute;
+        inset: 0;
+        opacity: 0.22;
+        background-image: radial-gradient(circle, hsl(var(--brand)) 1px, transparent 1.5px);
+        background-size: 52px 52px;
+        mask-image: radial-gradient(circle at 58% 38%, black, transparent 48%);
+        animation: particle-drift 24s linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes particle-drift {
+        from { transform: translate3d(0, 0, 0); }
+        to { transform: translate3d(52px, -52px, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-particles { animation: none; }
+        .msa-button, .msa-button-orb { transition: none; }
+    }
+
     .section-spacing {
         @apply py-16 md:py-32 lg:py-40;
     }
@@ -157,8 +281,8 @@
     /* Fluid Typography - scaled for enterprise visibility */
     /* Institutional Display Typography */
     .fluid-h1 {
-        font-size: clamp(2.4rem, 8vw, 12rem);
-        @apply font-black leading-[0.85] tracking-[-0.05em] uppercase font-heading;
+        font-size: clamp(2.4rem, 8vw, 6rem);
+        @apply font-semibold leading-[0.94] tracking-[-0.04em] font-heading;
         font-style: normal !important;
         word-break: keep-all;
         overflow-wrap: normal;
@@ -167,8 +291,8 @@
     }
 
     .fluid-h2 {
-        font-size: clamp(1.6rem, 6vw, 7rem);
-        @apply font-black leading-[0.9] tracking-[-0.04em] uppercase font-heading;
+        font-size: clamp(1.6rem, 6vw, 5.5rem);
+        @apply font-semibold leading-[0.95] tracking-[-0.04em] font-heading;
         font-style: normal !important;
         word-break: keep-all;
         overflow-wrap: normal;
@@ -190,11 +314,11 @@
     }
 
     .btn-outline-institutional {
-        @apply relative px-8 py-4 bg-background dark:bg-[#09090b] border border-border text-foreground font-black uppercase text-[10px] tracking-[0.3em] rounded-xl transition-all hover:border-foreground/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] active:scale-95 shadow-sm;
+        @apply relative px-8 py-4 bg-background border border-border text-foreground font-black uppercase text-[10px] tracking-[0.3em] rounded-xl transition-all hover:border-foreground/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] active:scale-95 shadow-sm;
     }
 
     .glass-card {
-        @apply bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] rounded-[2rem] hover:border-foreground/20 dark:hover:border-white/40 transition-all duration-500;
+        @apply bg-card border border-border/50 rounded-[2rem] hover:border-foreground/20 transition-all duration-500;
         box-shadow: none;
     }
     .glass-card:hover {
@@ -205,7 +329,7 @@
     }
 
     .glass-card-premium {
-        @apply bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] rounded-[2rem] transition-all duration-700;
+        @apply bg-card border border-border/50 rounded-[2rem] transition-all duration-700;
         box-shadow: none;
     }
     .glass-card-premium:hover {
@@ -216,11 +340,15 @@
     }
 
     .surface-frost {
-        @apply bg-card dark:bg-[#0f0f11];
+        @apply bg-card;
     }
 
     .institutional-grid {
         background: transparent;
+    }
+
+    .about-page :is(h1, h2, h3, h4) {
+        text-transform: none;
     }
 
     @keyframes shimmer {
@@ -336,7 +464,7 @@
         will-change: transform;
     }
 
-    /* Primary CTA hover lift — pointer devices only (touch uses :active) */
+    /* Primary CTA hover lift  -  pointer devices only (touch uses :active) */
     @media (hover: hover) and (pointer: fine) {
         .hero-cta-primary:hover {
             transform: scale(1.02);

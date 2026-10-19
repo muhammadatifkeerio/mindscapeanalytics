@@ -12,7 +12,7 @@ const GrowthHub = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-foreground/[0.02] blur-[120px] rounded-full pointer-events-none" />
 
             <div className="container-standard relative z-10">
-                <div className="grid md:grid-cols-2 gap-1 px-1 bg-card dark:bg-[#0f0f11] rounded-[40px] border border-border overflow-hidden shadow-2xl">
+                <div className="grid md:grid-cols-2 gap-1 px-1 bg-card rounded-[40px] border border-border overflow-hidden shadow-sm">
 
                     {/* Sell Side */}
                     <motion.div
@@ -87,7 +87,7 @@ const GrowthHub = () => {
                         </div>
 
                         <Link href="/outsourcing" className="mt-12 group/btn">
-                            <button className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em] text-foreground py-4 px-8 border border-border rounded-2xl hover:bg-foreground hover:text-background transition-all duration-500 shadow-[0_0_20px_hsl(var(--foreground) / 0.05)] bg-card dark:bg-[#0f0f11]">
+                            <button className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em] text-foreground py-4 px-8 border border-border rounded-2xl hover:bg-foreground hover:text-background transition-all duration-500 shadow-sm bg-card">
                                 Hire Talent
                                 <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                             </button>

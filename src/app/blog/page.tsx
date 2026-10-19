@@ -146,7 +146,7 @@ export default function BlogPage() {
                             <input
                                 type="email"
                                 placeholder="IDENT_EMAIL@SECURE.HOST"
-                                className="flex-1 bg-black/50 border border-border rounded-2xl px-8 py-5 text-meta focus:outline-none focus:border-white/30 transition-all"
+                                className="flex-1 bg-card border border-border rounded-2xl px-8 py-5 text-meta focus:outline-none focus:border-brand/60 transition-all"
                             />
                             <button className="btn-institutional">
                                 Subscribe

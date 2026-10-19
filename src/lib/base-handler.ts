@@ -1,6 +1,6 @@
 /**
  * SOURCE OF TRUTH KEYWORDS: withBaseHandler, baseProcedure, checkRateLimit, public route, RATE_LIMITED, fail-open
- * WHAT: API-route spine for public and webhook traffic — rate limit first, then handler.
+ * WHAT: API-route spine for public and webhook traffic  -  rate limit first, then handler.
  * WHY: Most abuse hits open endpoints. Do not invent per-router limiters.
  * WHERE: src/app/api/** except Better Auth's own handler.
  */

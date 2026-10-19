@@ -78,7 +78,7 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            className="bg-card dark:bg-[#0f0f11] w-full max-w-md rounded-3xl border border-border shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden pointer-events-auto relative"
+                            className="bg-card w-full max-w-md rounded-3xl border border-border shadow-2xl overflow-hidden pointer-events-auto relative"
                         >
                             {/* Decorative Top Line */}
                             <div className="h-1 w-full bg-secondary shadow-[0_0_20px_hsl(var(--secondary) / 0.3)]" />

@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 
 /**
  * SOURCE OF TRUTH KEYWORDS: AdminLayout, ROUTE_AUTHORIZATION, getSidebarNav, hasPermission, console:read
- * WHAT: Admin shell gated from RESOURCES.nav — same permission helper as the block.
+ * WHAT: Admin shell gated from RESOURCES.nav  -  same permission helper as the block.
  * WHY: Pasteable /admin URLs never hit tRPC; layout is the page-level twin of protectedProcedure.
  * WHERE: all /admin/* routes.
  */
