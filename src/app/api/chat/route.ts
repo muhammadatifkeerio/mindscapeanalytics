@@ -44,7 +44,10 @@ export const POST = withBaseHandler(async (req) => {
         throw new BadRequestError("Invalid chat payload", parsed.error.format());
     }
 
-    const apiKey = process.env["X-goog-api-key"]?.trim() || process.env.GEMINI_API_KEY?.trim() || process.env.GOOGLE_API_KEY?.trim();
+    const apiKey = process.env.X_goog_api_key?.trim()
+        || process.env["X-goog-api-key"]?.trim()
+        || process.env.GEMINI_API_KEY?.trim()
+        || process.env.GOOGLE_API_KEY?.trim();
     if (!apiKey) {
         return NextResponse.json({ error: { message: "The assistant is temporarily unavailable. Please use the contact option." } }, { status: 503 });
     }
