@@ -49,12 +49,12 @@ const services = [
     },
     {
         icon: Database,
-        title: "Big Data & Cloud Engineering",
-        description: "Architecting high-performance cloud ecosystems and big data pipelines for enterprise precision.",
+        title: "AWS Architecture, Cost Optimization & Deployment",
+        description: "Design and deploy AWS infrastructure for web and AI applications, with workload sizing, cost reviews, monitoring, and repeatable releases.",
         features: [
             "Data Warehousing",
             "Managed Infrastructure",
-            "Performance Clusters",
+            "AWS Cost Optimization",
             "ETL Pipeline Design",
             "Query Optimization"
         ],
@@ -77,8 +77,8 @@ const services = [
     },
     {
         icon: Globe,
-        title: "SaaS Application Development",
-        description: "Custom SaaS applications, business portals, subscriptions, and integrations, from product design to cloud deployment and ongoing support.",
+        title: "Web & SaaS Application Development",
+        description: "Complete web applications, SaaS platforms, and AI-enabled software: product discovery, UI/UX design, APIs, databases, deployment, and ongoing support.",
         features: [
             "Type-safe Architecture",
             "Micro-frontend Ready",
@@ -87,6 +87,14 @@ const services = [
             "Scalable Auth Systems"
         ],
         link: "/solutions/enterprise-software",
+        gradient: "from-white/10 to-transparent"
+    },
+    {
+        icon: Globe,
+        title: "UI/UX Design",
+        description: "Plan and design responsive web applications with clear user journeys, accessible interfaces, practical prototypes, and implementation-ready product screens.",
+        features: ["User Journey Mapping", "Responsive Web Design", "Accessible Interfaces", "Product Prototypes", "Design to Development"],
+        link: "/solutions/enterprise-software#ui-ux-design",
         gradient: "from-white/10 to-transparent"
     },
     {
@@ -203,7 +211,7 @@ export default function ServicesPage() {
                             animate={{ opacity: 1, y: 0 }}
                             className="fluid-h1"
                         >
-                            ENGINEERED <br /> <span className="opacity-40">SERVICES.</span>
+                            APPLICATION &amp; AI <br /> <span className="opacity-40">SERVICES.</span>
                         </motion.h1>
 
                         <motion.div
@@ -213,7 +221,7 @@ export default function ServicesPage() {
                             className="max-w-4xl border-t border-border pt-12"
                         >
                             <p className="text-xl md:text-2xl lg:text-3xl font-black text-foreground/40 font-heading tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl">
-                                ARCHITECTING THE NEXT GENERATION OF <span className="text-foreground">ENTERPRISE INTELLIGENCE</span> THROUGH PRECISION ENGINEERING.
+                                Web application development, UI/UX design, AI agents, chatbot and workflow automation, AWS architecture and deployment, and China factory sourcing. From your first product brief to a working system.
                             </p>
                         </motion.div>
                     </div>

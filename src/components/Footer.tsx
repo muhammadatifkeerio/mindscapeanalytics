@@ -15,7 +15,9 @@ const exploreLinks = [
     ["AI asset shop", "/shop"],
     ["China Direct Factory Sourcing", "/china-sourcing"],
     ["SaaS Application Development", "/solutions/enterprise-software"],
-    ["Tenvo", "https://www.tenvo.store/"],
+    ["TENVO Business OS", "https://www.tenvo.store/"],
+    ["Smart Dairy & Cattle", "https://cattle.mindscapeanalytics.com/"],
+    ["DisposIQ", "https://disposiq.tenvo.store/"],
     ["Insights", "/blog"],
 ] as const;
 

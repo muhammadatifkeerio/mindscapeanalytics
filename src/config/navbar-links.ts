@@ -30,7 +30,8 @@ const siteLinks: NavLink[] = [
         submenu: [
             { name: "AI Agents & Automation", href: "/solutions/ai-genai" },
             { name: "SaaS Application Development", href: "/solutions/enterprise-software" },
-            { name: "Data & Cloud Engineering", href: "/solutions/cloud-infrastructure" },
+            { name: "UI/UX Design", href: "/solutions/enterprise-software#ui-ux-design" },
+            { name: "AWS Architecture & Deployment", href: "/solutions/cloud-infrastructure" },
             { name: "China Direct Factory Sourcing", href: "/china-sourcing" },
             { name: "All Services", href: "/services" },
         ],

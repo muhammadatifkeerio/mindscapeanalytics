@@ -21,8 +21,8 @@ const features = [
         icon: Globe
     },
     {
-        title: "Custom Database Design",
-        description: "High-performance data architectures tailored to your specific query patterns and scaling requirements.",
+        title: "Modern AI Application Development",
+        description: "Build web applications with AI assistants, business data retrieval, role-based access, APIs, and dependable database architecture.",
         icon: Database
     },
     {
@@ -36,8 +36,8 @@ const features = [
         icon: Zap
     },
     {
-        title: "Legacy Modernization",
-        description: "Transforming monolithic legacy architectures into sleek, modular, and cloud-native software units.",
+        title: "UI/UX Design",
+        description: "Translate business workflows into responsive interfaces, clear navigation, accessible forms, and usable mobile and desktop experiences.",
         icon: Code
     },
     {
@@ -51,8 +51,8 @@ export default function EnterpriseSoftwareClient() {
     return (
         <SolutionLayout
             currentSolutionId="enterprise-software"
-            title="SaaS Application Development"
-            subtitle="Turn your business workflow into software people can use. We design and build custom SaaS applications, ERP systems, customer portals, and integrations, then deploy and support them in the cloud."
+            title="Web & SaaS Application Development"
+            subtitle="From UI/UX design to production deployment, we build complete web applications, SaaS platforms, and modern AI software. Bring together your customer portal, business workflows, APIs, and data in a product your team can use."
         >
             <div className="space-y-32">
                 {/* Intro Section */}
@@ -61,9 +61,11 @@ export default function EnterpriseSoftwareClient() {
                         <div className="space-y-6">
                             <h2 className="fluid-h2">ENGINEERING FOR SCALE.</h2>
                             <p className="text-body text-lg">
-                                We design software that grows with you. Our enterprise solutions are built on the
-                                latest technical standards, ensuring they remain performant under load and
-                                maintainable for years to come.
+                                We handle product discovery, UI/UX design, application engineering, AI integration,
+                                cloud deployment, and ongoing improvement. Our shipped products include
+                                {" "}<Link href="https://www.tenvo.store/" className="underline underline-offset-4">TENVO business software</Link>,
+                                {" "}<Link href="https://cattle.mindscapeanalytics.com/" className="underline underline-offset-4">Smart Dairy &amp; Cattle Farm Management</Link>, and
+                                {" "}<Link href="https://disposiq.tenvo.store/" className="underline underline-offset-4">DisposIQ production operations software</Link>.
                             </p>
                             <div className="flex flex-wrap gap-4 pt-4">
                                 {["Node.js", "Python", "Go", "React", "PostgreSQL", "Redis"].map(tech => (
@@ -102,11 +104,12 @@ export default function EnterpriseSoftwareClient() {
                         {features.map((feature, index) => (
                             <motion.div
                                 key={feature.title}
+                                id={feature.title === "UI/UX Design" ? "ui-ux-design" : undefined}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="p-8 rounded-2xl bg-foreground/[0.03] border border-border hover:border-foreground/20 transition-all group"
+                                className="scroll-mt-32 p-8 rounded-2xl bg-foreground/[0.03] border border-border hover:border-foreground/20 transition-all group"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-foreground/5 border border-border flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                                     <feature.icon className="w-6 h-6 text-foreground/60 group-hover:text-foreground transition-colors" />

@@ -21,13 +21,13 @@ const features = [
         icon: Database
     },
     {
-        title: "Managed Infrastructure",
-        description: "subscription-based cloud management, hosting, and optimization to ensure zero-downtime operations.",
+        title: "AWS Cost Optimization",
+        description: "Review workload demand, instance sizing, storage, and recurring spend. Prioritize practical savings while preserving the availability and performance your application needs.",
         icon: Server
     },
     {
-        title: "Industrial-Scale Cloud",
-        description: "Cloud-native architectures defined by horizontal scalability and sub-10ms global latency protocols.",
+        title: "AWS Architecture for AI & Web Apps",
+        description: "Design compute, databases, networking, and scaling around your application traffic, AI workloads, recovery requirements, and operating budget.",
         icon: Cloud
     },
     {
@@ -36,8 +36,8 @@ const features = [
         icon: ShieldCheck
     },
     {
-        title: "Automated Deployments",
-        description: "Zero-friction CI/CD pipelines that ensure rapid, reliable, and secure code transitions to production.",
+        title: "Application Deployment & CI/CD",
+        description: "Ship web and AI applications with repeatable deployments, environment configuration, health checks, and rollback planning.",
         icon: Zap
     },
     {
@@ -51,8 +51,8 @@ export default function CloudInfrastructureClient() {
     return (
         <SolutionLayout
             currentSolutionId="cloud-infrastructure"
-            title="Cloud & Infra"
-            subtitle="Building high-performance, resilient foundation that scales horizontally with your enterprise demands."
+            title="AWS Architecture & Cost Optimization"
+            subtitle="Deploy web and AI applications on infrastructure shaped around your workload and budget. We help with AWS architecture, cloud cost optimization, data engineering, automated deployments, monitoring, and ongoing operations."
         >
             <div className="space-y-32">
                 {/* Intro Section */}
@@ -61,9 +61,9 @@ export default function CloudInfrastructureClient() {
                         <div className="space-y-6">
                             <h2 className="fluid-h2">RESILIENCE BY DESIGN.</h2>
                             <p className="text-body text-lg">
-                                Infrastructure shouldn't be a bottleneck. We build cloud-native environments
-                                that are elastic, self-healing, and fully automated. Our DevOps experts
-                                bridge the gap between code and production.
+                                Start with the application requirements, current cloud spend, traffic,
+                                and data needs. We plan the architecture, deploy the application,
+                                and establish monitoring so cost and performance can be measured together.
                             </p>
                             <div className="flex flex-wrap gap-4 pt-4">
                                 {["Terraform", "Kubernetes", "AWS", "Azure", "Docker", "Prometheus"].map(tech => (

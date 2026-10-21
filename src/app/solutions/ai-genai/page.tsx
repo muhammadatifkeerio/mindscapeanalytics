@@ -2,15 +2,16 @@ import { Metadata } from "next";
 import AIGenAIClient from "./AIGenAIClient";
 
 export const metadata: Metadata = {
-    title: "AI & Generative AI Solutions | Mindscape Analytics",
-    description: "Architecting context-aware intelligence, agentic workflows, and custom LLM tuning that transforms how enterprises think, create, and operate.",
+    title: "AI Agent, Workflow & Chatbot Development | Mindscape Analytics",
+    description: "Build AI agents, automated workflows, customer support chatbots, RAG systems, and generative AI applications. Mindscape connects your business data, tools, and CRM with production software.",
     openGraph: {
-        title: "AI & Generative AI Solutions | Mindscape Analytics",
-        description: "Architecting context-aware intelligence, agentic workflows, and custom LLM tuning that transforms how enterprises think, create, and operate.",
+        title: "AI Agent, Workflow & Chatbot Development | Mindscape Analytics",
+        description: "Custom AI agents, workflow automation, chatbots, RAG, and generative AI applications built around your business operations.",
         url: "https://mindscapeanalytics.com/solutions/ai-genai",
         siteName: "Mindscape Analytics",
         locale: "en_US",
         type: "website",
+        images: ["/images/og-mindscape-2026.png"],
     },
 };
 

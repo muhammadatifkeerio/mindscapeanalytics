@@ -77,6 +77,7 @@ const jsonLd = {
       "@type": "Organization",
       "@id": "https://mindscapeanalytics.com/#organization",
       "name": "Mindscape Analytics",
+      "alternateName": "Mindscape",
       "legalName": "Mindscape Analytics",
       "foundingDate": "2025",
       "url": "https://mindscapeanalytics.com",
@@ -91,6 +92,10 @@ const jsonLd = {
         "Lead generation systems",
         "Data engineering and analytics",
         "Custom software and digital products",
+        "Web and SaaS application development",
+        "UI/UX design for web applications",
+        "AI workflow and chatbot development",
+        "AWS cost optimization, architecture, and deployment",
         "China sourcing and production coordination"
       ],
       "founder": {
@@ -115,7 +120,8 @@ const jsonLd = {
         "itemListElement": [
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Agents & Generative AI", "url": "https://mindscapeanalytics.com/solutions/ai-genai" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS Application Development", "url": "https://mindscapeanalytics.com/solutions/enterprise-software" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Engineering & Cloud Infrastructure", "url": "https://mindscapeanalytics.com/solutions/cloud-infrastructure" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Design", "url": "https://mindscapeanalytics.com/solutions/enterprise-software#ui-ux-design" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AWS Cost Optimization, Architecture & Deployment", "url": "https://mindscapeanalytics.com/solutions/cloud-infrastructure" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Direct Factory Sourcing", "url": "https://mindscapeanalytics.com/china-sourcing" } }
         ]
       }
@@ -125,7 +131,7 @@ const jsonLd = {
       "@id": "https://mindscapeanalytics.com/#website",
       "url": "https://mindscapeanalytics.com",
       "name": "Mindscape Analytics",
-      "alternateName": "Mindscape Analytics LLC",
+      "alternateName": ["Mindscape", "Mindscape Analytics LLC"],
       "description": "AI agents, data systems, software products, and China sourcing for real business operations.",
       "publisher": { "@id": "https://mindscapeanalytics.com/#organization" },
       "inLanguage": ["en-US", "zh-CN"]
@@ -145,6 +151,8 @@ const jsonLd = {
     {
       "@type": "SoftwareApplication",
       "name": "RSIQ Pro",
+      "url": "https://rsiq.mindscapeanalytics.com/",
+      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
       "description": "Market analysis and intelligent alerting for digital asset markets.",
       "applicationCategory": "FinTech AI",
       "operatingSystem": "Web-based"
@@ -159,20 +167,26 @@ const jsonLd = {
     {
       "@type": "SoftwareApplication",
       "name": "DisposIQ",
+      "url": "https://disposiq.tenvo.store/",
+      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
       "description": "Production and disposal operations platform for tracking activity and operational insights.",
       "applicationCategory": "Automation / ERP",
       "operatingSystem": "Web-based"
     },
     {
       "@type": "SoftwareApplication",
-      "name": "Tenvo",
-      "description": "Business operations platform connecting storefront, point of sale, inventory, and business workflows.",
+      "name": "TENVO",
+      "url": "https://www.tenvo.store/",
+      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
+      "description": "Business operations platform connecting storefront, point of sale, inventory, manufacturing, and finance workflows.",
       "applicationCategory": "Enterprise SaaS",
       "operatingSystem": "Web-based"
     },
     {
       "@type": "SoftwareApplication",
       "name": "Smart Dairy & Cattle Farm Management System",
+      "url": "https://cattle.mindscapeanalytics.com/",
+      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
       "description": "Farm operations software for cattle records, milk production, feed, herd health, and farm performance.",
       "applicationCategory": "Agriculture Management Software",
       "operatingSystem": "Web-based"

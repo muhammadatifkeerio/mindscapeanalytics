@@ -2,16 +2,17 @@ import { Metadata } from "next";
 import EnterpriseSoftwareClient from "./EnterpriseSoftwareClient";
 
 export const metadata: Metadata = {
-    title: "SaaS Application Development & Custom Software | Mindscape Analytics",
-    description: "Build custom SaaS applications, business portals, ERP and inventory systems with Mindscape Analytics. From product design and secure integrations to cloud deployment and ongoing support.",
+    title: "Web & SaaS Application Development | Mindscape Analytics",
+    description: "End-to-end web application and SaaS development: UI/UX design, AI features, APIs, databases, cloud deployment, and ongoing support. Explore TENVO, farm management, and production software we built.",
     alternates: { canonical: "/solutions/enterprise-software" },
     openGraph: {
-        title: "SaaS Application Development & Custom Software | Mindscape Analytics",
-        description: "Turn your business workflow into a custom SaaS application, with product design, software engineering, cloud deployment, and ongoing support.",
+        title: "Web & SaaS Application Development | Mindscape Analytics",
+        description: "From UI/UX design and application engineering to AI integration, cloud deployment, and product support.",
         url: "https://mindscapeanalytics.com/solutions/enterprise-software",
         siteName: "Mindscape Analytics",
         locale: "en_US",
         type: "website",
+        images: ["/images/og-mindscape-2026.png"],
     },
 };
 

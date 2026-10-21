@@ -10,15 +10,13 @@ import {
     Database,
     Zap,
     Bot,
-    Mic,
-    ShieldCheck,
-    Cpu
+    Mic
 } from "lucide-react"
 
 const features = [
     {
-        title: "Agentic Workflow Design",
-        description: "Autonomous AI agents that reason through multi-step business logic to eliminate manual operational bottlenecks.",
+        title: "AI Agent & Workflow Development",
+        description: "Connect AI agents with your CRM, APIs, and business tools to research, qualify leads, and complete repeatable workflows with human approval where needed.",
         icon: BrainCircuit
     },
     {
@@ -42,8 +40,8 @@ const features = [
         icon: Database
     },
     {
-        title: "AI Chatbots (Sales)",
-        description: "24/7 intelligent sales assistants that drive conversions and handle complex customer queries frictionlessly.",
+        title: "AI Chatbot Development",
+        description: "Build sales and customer support chatbots grounded in your business knowledge, with lead capture, conversation history, and a clear handoff to your team.",
         icon: Bot
     }
 ];
@@ -52,8 +50,8 @@ export default function AIGenAIClient() {
     return (
         <SolutionLayout
             currentSolutionId="ai-genai"
-            title="AI & GenAI"
-            subtitle="Architecting context-aware intelligence that transforms how enterprises think, create, and operate."
+            title="AI Agents, Workflows & Chatbots"
+            subtitle="Build AI applications that work with your business data and tools. We develop AI agents, workflow automation, sales and support chatbots, and retrieval-augmented generation systems, then integrate and deploy them for real operations."
         >
             <div className="space-y-32">
                 {/* Intro Section */}
@@ -62,12 +60,12 @@ export default function AIGenAIClient() {
                         <div className="space-y-6">
                             <h2 className="fluid-h2">INTELLIGENCE AS INFRASTRUCTURE.</h2>
                             <p className="text-body text-lg">
-                                We believe AI shouldn't just be a chatbot in the corner. It should be the foundation
-                                of your business logic. Our team builds deeply integrated AI systems that
-                                automate reasoning, not just tasks.
+                                We design AI applications around your workflow, data, and existing tools.
+                                That includes knowledge retrieval, API integrations, conversation history,
+                                evaluation, deployment, and human review for consequential actions.
                             </p>
                             <div className="flex flex-wrap gap-4 pt-4">
-                                {["GPT-4o", "Claude 3.5", "Llama 3", "Gemini Pro"].map(tech => (
+                                {["OpenAI", "Claude", "Llama", "Gemini"].map(tech => (
                                     <span key={tech} className="px-3 py-1 rounded-md bg-foreground/5 border border-border text-xs text-foreground/40 font-bold uppercase tracking-wider">
                                         {tech}
                                     </span>
