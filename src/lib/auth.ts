@@ -30,7 +30,6 @@ export const auth = betterAuth({
     trustedOrigins: [
         "https://www.mindscapeanalytics.com",
         "https://mindscapeanalytics.com",
-        "https://mindscapeanalytics.vercel.app",
         "https://mindscapeanalytics-main.vercel.app",
         "https://mindscape-analytics-main.vercel.app"
     ],

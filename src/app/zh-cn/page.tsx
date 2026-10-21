@@ -10,14 +10,14 @@ import { ArrowRight, Mail, Phone } from "lucide-react";
  */
 export const metadata: Metadata = {
     title: "Mindscape Analytics | 中国企业 AI 与软件解决方案",
-    description: "Mindscape Analytics 为企业设计和交付 AI 自动化、数据系统及定制软件。了解我们的产品与服务，并直接联系团队。",
+    description: "Mindscape Analytics 为企业打造 AI 自动化、销售线索与客户开发系统、数据平台和定制软件，并协助中国供应链与生产落地。",
     alternates: {
         canonical: "/zh-cn",
-        languages: { "en-US": "/", "zh-CN": "/zh-cn" },
+        languages: { "en-US": "/", "zh-CN": "/zh-cn", "x-default": "/" },
     },
     openGraph: {
         title: "Mindscape Analytics | 中国企业 AI 与软件解决方案",
-        description: "为企业打造 AI 自动化、数据系统及定制软件。联系 Mindscape Analytics 团队。",
+        description: "了解 AI 自动化、客户开发、数据系统、定制软件及供应链协同服务，并联系 Mindscape Analytics 团队。",
         url: "https://mindscapeanalytics.com/zh-cn",
         locale: "zh_CN",
         type: "website",
@@ -50,7 +50,7 @@ export default function ChineseLandingPage() {
                 <section className="grid gap-12 border-b border-border pb-16 lg:grid-cols-[1.1fr_.9fr] lg:items-end lg:gap-20 lg:pb-24">
                     <div>
                         <h1 className="max-w-4xl text-balance font-heading text-5xl font-semibold tracking-[-.04em] sm:text-6xl lg:text-7xl">把数据转化为<span className="text-brand">明智决策</span></h1>
-                        <p className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground">Mindscape Analytics 为企业设计并交付 AI 自动化、数据系统和定制软件。从业务流程梳理、系统架构到部署，与团队一起把想法变成可用的产品。</p>
+                        <p className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground">Mindscape Analytics 为企业设计并交付 AI 自动化、销售线索与客户开发系统、数据平台和定制软件，并协助中国供应链与生产落地。从流程梳理、系统架构到部署，我们与团队一起把业务目标变成可用的产品。</p>
                         <div className="mt-9 flex flex-wrap gap-3">
                             <Link href="/contact" className="inline-flex min-h-12 items-center gap-2 rounded-full bg-brand px-6 py-3 font-semibold text-white transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">联系团队 <ArrowRight aria-hidden="true" className="h-4 w-4" /></Link>
                             <Link href="/projects" className="inline-flex min-h-12 items-center rounded-full border border-border px-6 py-3 font-semibold hover:bg-muted">查看项目</Link>

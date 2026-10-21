@@ -13,7 +13,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "AI, Data & Software for Real Operations | Mindscape Analytics",
-  description: "Mindscape Analytics builds AI agents, business software, farm management systems, and data platforms, and helps bring products from China sourcing to production.",
+  description: "Mindscape Analytics designs autonomous AI agents, decision-grade data systems, and custom digital products—and helps companies source from China and scale production.",
   keywords: [
     "AI Agents", "Gen AI Solutions", "Agentic AI Automation",
     "RSIQ Pro", "DBlynx", "DisposIQ", "Tenvo",
@@ -25,11 +25,17 @@ export const metadata: Metadata = {
   authors: [{ name: "Mindscape Analytics", url: "https://mindscapeanalytics.com" }],
   creator: "Mindscape Analytics",
   publisher: "Mindscape Analytics",
+  verification: {
+    ...(process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : {}),
+    ...(process.env.BAIDU_SITE_VERIFICATION
+      ? { other: { "baidu-site-verification": process.env.BAIDU_SITE_VERIFICATION } }
+      : {}),
+  },
   // Public marketing URLs use the verified brand domain, independently of auth/API origins.
   metadataBase: new URL('https://mindscapeanalytics.com'),
   openGraph: {
     title: "AI, Data & Software for Real Operations | Mindscape Analytics",
-    description: "AI agents, business software, farm management systems, data platforms, and product sourcing built around real operating needs.",
+    description: "Autonomous AI agents, decision-grade data systems, custom digital products, and China sourcing built around real operating needs.",
     type: "website",
     url: 'https://mindscapeanalytics.com',
     siteName: 'Mindscape Analytics',
@@ -75,7 +81,18 @@ const jsonLd = {
       "foundingDate": "2025",
       "url": "https://mindscapeanalytics.com",
       "logo": "https://mindscapeanalytics.com/images/brand/mindscape-analytics-logo.webp",
-      "description": "An AI, data, and product company building autonomous automation, enterprise software, and factory-direct sourcing programs.",
+      "description": "An AI, data, and software company building automation, digital products, and China sourcing programs for real business operations.",
+      "areaServed": [
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "China" }
+      ],
+      "knowsAbout": [
+        "AI agents and business automation",
+        "Lead generation systems",
+        "Data engineering and analytics",
+        "Custom software and digital products",
+        "China sourcing and production coordination"
+      ],
       "founder": {
         "@id": "https://mindscapeanalytics.com/#founder"
       },
@@ -92,6 +109,16 @@ const jsonLd = {
         "email": "info@mindscapeanalytics.com"
       },
       "sameAs": ["https://www.linkedin.com/company/mindscapeanalytics/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mindscapeanalytics.com/#website",
+      "url": "https://mindscapeanalytics.com",
+      "name": "Mindscape Analytics",
+      "alternateName": "Mindscape Analytics LLC",
+      "description": "AI agents, data systems, software products, and China sourcing for real business operations.",
+      "publisher": { "@id": "https://mindscapeanalytics.com/#organization" },
+      "inLanguage": ["en-US", "zh-CN"]
     },
     {
       "@type": "Person",

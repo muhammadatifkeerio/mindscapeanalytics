@@ -1,12 +1,12 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: "Portfolio | Mindscape Analytics - Institutional Case Studies",
-    description: "Explore our archive of mission-critical AI automation and software projects. From autonomous POS systems to governance engines, witness the scale of our architectural intelligence.",
+    title: "AI, Software & Digital Product Projects | Mindscape Analytics",
+    description: "Explore shipped Mindscape products across farm operations, business software, market intelligence, production workflows, and ready-to-acquire digital assets.",
     alternates: { canonical: "/projects" },
     openGraph: {
-        title: "Project Portfolio | Mindscape Analytics",
-        description: "Witness the industrial-grade performance of our AI and software ecosystems.",
+        title: "AI, Software & Digital Product Projects | Mindscape Analytics",
+        description: "See working products and software projects built by Mindscape Analytics, with links to live platforms and available digital assets.",
     }
 }
 

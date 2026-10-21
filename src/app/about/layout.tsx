@@ -1,12 +1,12 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: "About Mindscape Analytics | Vision & Team",
-    description: "Meet the innovators, engineers, and strategists democratizing AI for the enterprise.",
+    title: "About Mindscape Analytics | AI, Data & Product Engineering",
+    description: "Meet the team behind Mindscape Analytics and learn how we combine AI engineering, data systems, software products, and China sourcing.",
     alternates: { canonical: "/about" },
     openGraph: {
         title: "About Us | Mindscape Analytics",
-        description: "Building the future of enterprise intelligence with transparency and precision.",
+        description: "Our team builds practical AI, data, software, and sourcing systems for real business operations.",
     }
 }
 

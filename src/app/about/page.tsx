@@ -113,20 +113,20 @@ const expertise = [
 ];
 
 const differences = [
-    { name: "AI Automation Workflows", stat: "99.9% Autonomous" },
-    { name: "Optimized Cloud Infrastructure", stat: "<10ms Latency" },
-    { name: "Enterprise Database Architecture", stat: "SOC-2 Standard" },
-    { name: "Performance Monitoring Systems", stat: "24/7 Real-Time" },
-    { name: "Ongoing Technical Support", stat: "Direct Slack Access" }
+    { name: "AI Automation Workflows", stat: "Human-reviewed" },
+    { name: "Cloud Architecture", stat: "Cost-aware" },
+    { name: "Enterprise Data Systems", stat: "Integrated" },
+    { name: "Production Delivery", stat: "Observable" },
+    { name: "Ongoing Engineering", stat: "Collaborative" }
 ];
 
 const trustFactors = [
-    { title: "Enterprise-Grade Database Architecture", detail: "Optimized for scale and precision." },
-    { title: "Cloud-Native Scalable Deployments", detail: "Built on AWS/GCP/Azure standards." },
-    { title: "Security-First Development", detail: "Proactive threat detection integrated." },
-    { title: "Monthly Maintenance & Monitoring", detail: "Zero-downtime operations." },
-    { title: "Performance-Optimized Systems", detail: "Sub-10ms latency protocols." },
-    { title: "Transparent ROI Structures", detail: "Calculated business impact metrics." }
+    { title: "Architecture shaped around your operations", detail: "We design for your workflows, data, integrations, and delivery constraints." },
+    { title: "Cloud-cost-aware deployment", detail: "We consider service selection, sizing, and usage so infrastructure fits the workload." },
+    { title: "Security-conscious engineering", detail: "We apply secure defaults and access controls appropriate to the system and its data." },
+    { title: "Observable production systems", detail: "We plan monitoring, backups, and recovery needs as part of deployment." },
+    { title: "Performance measured in context", detail: "We agree on relevant baselines and evaluate results against real operating needs." },
+    { title: "Clear delivery and support", detail: "Scope, ownership, handoff, and ongoing support are discussed before launch." }
 ];
 
 // Helper component for reveal animations
@@ -464,15 +464,15 @@ export default function AboutPage() {
                                 </div>
                                 <div className="flex items-center gap-3 text-foreground hover:text-foreground/80 transition-colors">
                                     <Zap className="w-4 h-4 text-foreground/50" />
-                                    <span>✔ NO DOWNTIME RISKS</span>
+                                    <span>✔ PLAN FOR RECOVERY</span>
                                 </div>
                                 <div className="flex items-center gap-3 text-foreground hover:text-foreground/80 transition-colors">
                                     <Database className="w-4 h-4 text-foreground/50" />
-                                    <span>✔ NO UNMANAGED BILLS</span>
+                                    <span>✔ MAKE CLOUD COSTS VISIBLE</span>
                                 </div>
                                 <div className="flex items-center gap-3 text-foreground hover:text-foreground/80 transition-colors">
                                     <Cpu className="w-4 h-4 text-foreground/50" />
-                                    <span>✔ NO SYSTEM FAILURES</span>
+                                    <span>✔ DESIGN FOR RESILIENCE</span>
                                 </div>
                             </div>
                         </ScrollReveal>
@@ -485,10 +485,10 @@ export default function AboutPage() {
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-12 sm:gap-16">
                         {[
-                            { value: "500+", label: "CORE ARCHITECTURES", sub: "DEPLOYED" },
-                            { value: "98%", label: "OPERATIONAL", sub: "EFFICIENCY" },
-                            { value: "100+", label: "GLOBAL NODE", sub: "NETWORK" },
-                            { value: "24/7", label: "REAL-TIME", sub: "SYNC" }
+                            { value: "AI + Data", label: "INTELLIGENT", sub: "SYSTEMS" },
+                            { value: "Products", label: "BUILT FOR", sub: "REAL OPERATIONS" },
+                            { value: "US ↔ China", label: "CONNECTED", sub: "DELIVERY" },
+                            { value: "End to end", label: "STRATEGY TO", sub: "PRODUCTION" }
                         ].map((stat, index) => (
                             <motion.div
                                 key={stat.label}

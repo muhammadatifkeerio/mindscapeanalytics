@@ -2,11 +2,11 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: "Contact Mindscape Analytics | AI Consulting & Development",
-    description: "Ready to transform your business? Schedule a consultation with our AI architects today.",
+    description: "Contact Mindscape Analytics about AI agents, lead generation, data systems, custom software, or China sourcing and production.",
     alternates: { canonical: "/contact" },
     openGraph: {
         title: "Contact Us | Mindscape Analytics",
-        description: "Start your journey towards enterprise intelligence.",
+        description: "Tell us about your workflow, product, or data challenge and discuss practical next steps with our team.",
     }
 }
 

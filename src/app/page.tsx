@@ -3,14 +3,14 @@ import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
   title: "AI, Data & Software for Real Operations | Mindscape Analytics",
-  description: "Mindscape Analytics builds AI agents, business software, farm management systems, and data platforms, and helps bring products from China sourcing to production.",
+  description: "Mindscape Analytics designs autonomous AI agents, decision-grade data systems, and custom digital products—and helps companies source from China and scale production.",
   alternates: {
     canonical: "/",
-    languages: { "en-US": "/", "zh-CN": "/zh-cn" },
+    languages: { "en-US": "/", "zh-CN": "/zh-cn", "x-default": "/" },
   },
   openGraph: {
     title: "AI, Data & Software for Real Operations | Mindscape Analytics",
-    description: "Build AI agents, business software, farm management systems, and data platforms with Mindscape Analytics.",
+    description: "Build autonomous AI agents, decision-grade data systems, and custom digital products, with China sourcing through production.",
     url: "https://mindscapeanalytics.com",
     siteName: "Mindscape Analytics",
     images: [

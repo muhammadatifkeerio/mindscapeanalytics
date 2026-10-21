@@ -38,6 +38,20 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // The Vercel project alias is a deployment address, not a public brand URL.
+        source: "/:path*",
+        has: [{ type: "host", value: "mindscapeanalytics.vercel.app" }],
+        destination: "https://mindscapeanalytics.com/:path*",
+        permanent: true,
+      },
+      {
+        // Keep www requests on the same apex canonical if they reach the app.
+        source: "/:path*",
+        has: [{ type: "host", value: "www.mindscapeanalytics.com" }],
+        destination: "https://mindscapeanalytics.com/:path*",
+        permanent: true,
+      },
+      {
         source: "/founder/zeeshan-keerio",
         destination: "/zeeshan-keerio",
         permanent: true,
