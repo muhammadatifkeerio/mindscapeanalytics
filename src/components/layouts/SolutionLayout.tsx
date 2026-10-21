@@ -3,7 +3,6 @@
 import React from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import {
     Brain,
@@ -11,8 +10,7 @@ import {
     Cloud,
     Shield,
     ArrowRight,
-    ChevronRight,
-    CheckCircle2
+    ChevronRight
 } from "lucide-react"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
@@ -62,10 +60,8 @@ export default function SolutionLayout({
     children,
     currentSolutionId,
     title,
-    subtitle,
-    heroImage
+    subtitle
 }: SolutionLayoutProps) {
-    const pathname = usePathname()
 
     return (
         <div className="min-h-screen bg-transparent text-foreground relative overflow-x-clip">

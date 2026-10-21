@@ -9,12 +9,9 @@ import {
     Mic,
     Shield,
     TrendingUp,
-    Users,
     ArrowRight,
     BarChart3
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -298,7 +295,7 @@ export default function ServicesPage() {
                         <div className="space-y-12">
                             <span className="text-meta opacity-40">Business_Model // Managed</span>
                             <h2 className="fluid-h2 text-foreground">
-                                WE DON'T JUST DELIVER. <br /> <span className="text-muted-foreground">WE OPTIMIZE.</span>
+                                WE DON&apos;T JUST DELIVER. <br /> <span className="text-muted-foreground">WE OPTIMIZE.</span>
                             </h2>
                             <p className="text-lg md:text-xl font-black uppercase tracking-tight max-w-xl text-muted-foreground">
                                 Our clients subscribe to long-term reliability. We manage hosting, databases, AI maintenance, and security so you can focus on growth.

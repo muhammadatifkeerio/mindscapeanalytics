@@ -9,10 +9,8 @@ import {
     Layers,
     Shield,
     Zap,
-    Terminal,
     Database,
     Globe,
-    Lock,
     ArrowRight
 } from "lucide-react"
 
