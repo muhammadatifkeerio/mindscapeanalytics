@@ -18,13 +18,13 @@ import Footer from "@/components/Footer"
 const solutions = [
     {
         id: "ai-genai",
-        name: "Intelligent AI Ecosystems",
+        name: "AI Agents & Workflows",
         icon: Brain,
         href: "/solutions/ai-genai"
     },
     {
         id: "cloud-infrastructure",
-        name: "Industrial Cloud Foundations",
+        name: "Cloud & Infra",
         icon: Cloud,
         href: "/solutions/cloud-infrastructure"
     },
@@ -48,6 +48,38 @@ const solutions = [
     }
 ];
 
+/** SOURCE OF TRUTH KEYWORDS: service questions, buyer intent, project scope, AWS costs, AI integration, software ownership
+ * WHAT: Practical questions visitors ask before starting a service engagement.
+ * WHY: Explain the work and next steps using service-specific information.
+ * WHERE: The shared solution detail layout.
+ */
+const solutionQuestions = [
+    {
+        id: "ai-genai",
+        questions: [
+            { question: "Can you connect an AI agent or chatbot to our existing tools?", answer: "We review your CRM, APIs, data sources, and access requirements, then design the integration around the workflow. The scope can include knowledge retrieval, lead capture, appointment booking, and a handoff to your team." },
+            { question: "What is included in an AI workflow development project?", answer: "We agree on the workflow, data sources, expected outputs, and review points. Delivery can include agent logic, tool integrations, evaluation, deployment, monitoring, and ongoing improvements based on the agreed scope." },
+            { question: "How do we start an AI application project?", answer: "Share the process you want to improve, the tools your team uses, and examples of the expected result. We use that information to assess feasibility and propose a scope, delivery plan, and relevant evaluation criteria." },
+        ],
+    },
+    {
+        id: "cloud-infrastructure",
+        questions: [
+            { question: "Can you optimize the cost of an existing AWS application?", answer: "We review the cost baseline, resource usage, workload requirements, and reliability needs. Recommendations can cover resource sizing, storage, application architecture, and unnecessary recurring spend. Savings are evaluated against the actual workload." },
+            { question: "Do you deploy web applications and AI workloads to AWS?", answer: "Yes. We plan the infrastructure and deployment around the application, including compute, databases, environment configuration, release pipelines, monitoring, and recovery needs. Service selection follows the workload and budget." },
+            { question: "What should we provide for a cloud architecture review?", answer: "Start with your architecture overview, application requirements, recent cost breakdown, traffic patterns, and the problems you want to solve. We then agree on the scope and any access needed for the review." },
+        ],
+    },
+    {
+        id: "enterprise-software",
+        questions: [
+            { question: "Can you handle the full web application development process?", answer: "We work across product discovery, UI/UX design, frontend and backend engineering, database design, integrations, testing, cloud deployment, and ongoing improvement. The scope is agreed around your users, workflows, and launch requirements." },
+            { question: "Can you build AI features into a SaaS application?", answer: "Yes. We can integrate assistants, business knowledge retrieval, workflow automation, and connected tools into an application. Permissions, evaluation, operating costs, and human review are considered as part of the design." },
+            { question: "Can we see products Mindscape has developed?", answer: "Our projects include TENVO business operations software, Smart Dairy & Cattle Farm Management, and DisposIQ production operations software. The project catalog links to the live products so you can explore their workflows." },
+        ],
+    },
+]
+
 interface SolutionLayoutProps {
     children: React.ReactNode
     currentSolutionId: string
@@ -62,9 +94,39 @@ export default function SolutionLayout({
     title,
     subtitle
 }: SolutionLayoutProps) {
+    /** SOURCE OF TRUTH KEYWORDS: service schema, breadcrumbs, solution identity, JSON-LD, provider
+     * WHAT: Describes each service using its visible title, summary, and existing navigation URL.
+     * WHY: Keeps search entities and breadcrumbs aligned with the content visitors actually see.
+     * WHERE: Shared solution pages, including China sourcing.
+     */
+    const currentSolution = solutions.find((solution) => solution.id === currentSolutionId)
+    const questions = solutionQuestions.find((solution) => solution.id === currentSolutionId)?.questions
+    const breadcrumbItems = [
+        { name: "Home", item: "https://mindscapeanalytics.com/" },
+        ...(currentSolution?.href.startsWith("/solutions/") ? [{ name: "Solutions", item: "https://mindscapeanalytics.com/solutions" }] : []),
+        ...(currentSolution ? [{ name: title, item: `https://mindscapeanalytics.com${currentSolution.href}` }] : []),
+    ]
+    const searchData = currentSolution ? {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Service",
+                "@id": `https://mindscapeanalytics.com${currentSolution.href}#service`,
+                name: title,
+                description: subtitle,
+                url: `https://mindscapeanalytics.com${currentSolution.href}`,
+                provider: { "@id": "https://mindscapeanalytics.com/#organization" },
+            },
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: breadcrumbItems.map((item, index) => ({ "@type": "ListItem", position: index + 1, ...item })),
+            },
+        ],
+    } : null
 
     return (
         <div className="min-h-screen bg-transparent text-foreground relative overflow-x-clip">
+            {searchData && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(searchData).replace(/</g, "\\u003c") }} />}
             {/* Cinematic Background Layer - Harmonized with Global */}
             <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
                 <div className="absolute top-10 left-0 w-[60%] h-[60%] -translate-x-1/2 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)] opacity-20" />
@@ -82,11 +144,15 @@ export default function SolutionLayout({
 
                 <div className="container-standard relative z-10 text-center">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span className="text-meta mb-4 block">Solutions Architecture</span>
+                        {currentSolution && <nav aria-label="Breadcrumb" className="mb-5 text-sm text-muted-foreground">
+                            <ol className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+                                {breadcrumbItems.map((item, index) => <li key={item.item} className="inline-flex items-center gap-2">{index > 0 && <span aria-hidden="true">/</span>}{index === breadcrumbItems.length - 1 ? <span aria-current="page">{item.name}</span> : <Link href={item.item} className="underline-offset-4 hover:underline">{item.name}</Link>}</li>)}
+                            </ol>
+                        </nav>}
                         <h1 className="fluid-h1 mb-8">
                             {title}
                         </h1>
@@ -148,6 +214,13 @@ export default function SolutionLayout({
                     {/* Main Content Area */}
                     <main className="w-full flex-1">
                         {children}
+                        {questions && <section aria-labelledby="service-questions" className="mt-20 border-t border-border pt-12">
+                            <h2 id="service-questions" className="font-heading text-3xl font-semibold tracking-tight">Planning your project</h2>
+                            <div className="mt-7 divide-y divide-border">
+                                {questions.map(({ question, answer }) => <details key={question} className="py-5"><summary className="cursor-pointer py-2 text-lg font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">{question}</summary><p className="mt-3 max-w-prose text-base leading-7 text-muted-foreground">{answer}</p></details>)}
+                            </div>
+                            <div className="mt-6 flex flex-wrap gap-6 text-sm font-semibold"><Link href="/projects" className="underline underline-offset-4">Explore shipped products</Link><Link href="/zeeshan-keerio" className="underline underline-offset-4">Meet the lead engineer</Link><Link href="/contact" className="underline underline-offset-4">Discuss your project</Link></div>
+                        </section>}
                     </main>
                 </div>
             </div>

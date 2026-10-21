@@ -28,20 +28,9 @@ const stages = [
     ["Plan production and delivery", "Coordinate production requirements, milestones, and delivery planning with the people responsible for each stage."],
 ] as const;
 
-const service = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "China Direct Factory Sourcing",
-    serviceType: "Factory sourcing and production coordination",
-    url: "https://mindscapeanalytics.com/china-sourcing",
-    description: "China factory matching, supplier fit, sample validation, production handoff, and delivery coordination.",
-    provider: { "@id": "https://mindscapeanalytics.com/#organization" },
-};
-
 export default function ChinaSourcingPage() {
     return (
         <SolutionLayout currentSolutionId="china-sourcing" title="China Direct Factory Sourcing" subtitle="Take your physical product from requirements to a production path. Mindscape connects factory sourcing, sample coordination, and delivery planning with the operating systems behind your business.">
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }} />
             <section aria-labelledby="sourcing-process">
                 <h2 id="sourcing-process" className="fluid-h2">From product brief to production.</h2>
                 <p className="mt-6 max-w-prose text-lg leading-8 text-muted-foreground">Our China factory relationships support companies developing physical products. We help translate your requirements into practical supplier conversations, samples, and a coordinated production handoff.</p>
