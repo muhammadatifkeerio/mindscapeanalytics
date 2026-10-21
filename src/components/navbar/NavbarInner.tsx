@@ -2,7 +2,7 @@
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "@/components/SmartImage";
+import BrandLogo from "@/components/BrandLogo";
 import { Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -128,13 +128,12 @@ function NavbarInner() {
                     <Link
                         href="/"
                         aria-label="Mindscape Analytics Home"
-                        className="flex shrink-0 items-center transition-transform hover:scale-[1.02] active:scale-95 group dark:rounded-md dark:bg-white dark:px-1 dark:py-0.5"
+                        className="flex shrink-0 items-center transition-transform hover:scale-[1.02] active:scale-95 group"
                     >
-                        <Image
-                            src="/images/brand/mindscape-analytics-logo-dark.webp"
+                        <BrandLogo
                             alt="Mindscape Analytics Logo"
                             width={180}
-                            height={62}
+                            height={60}
                             priority
                             className="h-8 w-auto object-contain transition-opacity duration-200 opacity-100 sm:h-9"
                         />

@@ -12,12 +12,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "AI, SaaS Development & China Sourcing | Mindscape Analytics",
-  description: "Build AI agents, custom SaaS applications, and data systems with Mindscape Analytics. Connect software engineering and cloud deployment with China direct factory sourcing and production.",
+  title: "AI & Software Development Company | Mindscape Analytics",
+  description: "AI agents, workflow automation, SaaS and web apps, data platforms, and cloud infrastructure—built by Mindscape Analytics, with China sourcing through production.",
   keywords: [
-    "AI Agents", "Gen AI Solutions", "Agentic AI Automation",
+    "AI Agents", "AI Agent Development", "AI Workflow Automation", "AI Chatbot Development", "Gen AI Solutions", "Agentic AI Automation",
     "RSIQ Pro", "DBlynx", "DisposIQ", "Tenvo",
-    "AI Systems Engineering", "Custom Software Development", "AI Asset Shop",
+    "AI Systems Engineering", "Custom Software Development", "Web Application Development", "SaaS Development", "UI/UX Design", "AWS Cost Optimization", "AWS Architecture and Deployment", "China Factory Sourcing", "AI Asset Shop",
     "Mindscape Analytics", "Enterprise AI Solutions",
     "Automated Sales Agents", "Scalable Cloud Infrastructure", "Expert Execution Services",
     "Zeeshan Keerio", "AI Engineer Portfolio"
@@ -34,28 +34,34 @@ export const metadata: Metadata = {
   // Public marketing URLs use the verified brand domain, independently of auth/API origins.
   metadataBase: new URL('https://mindscapeanalytics.com'),
   openGraph: {
-    title: "AI, SaaS Development & China Sourcing | Mindscape Analytics",
-    description: "Autonomous AI agents, decision-grade data systems, custom digital products, and China sourcing built around real operating needs.",
+    title: "AI & Software Development Company | Mindscape Analytics",
+    description: "AI agents, workflow automation, SaaS and web apps, data platforms, and cloud infrastructure—built by Mindscape Analytics, with China sourcing through production.",
     type: "website",
     url: 'https://mindscapeanalytics.com',
     siteName: 'Mindscape Analytics',
     images: [
       {
         url: '/images/og-mindscape-2026.png',
-        alt: 'Mindscape Analytics: turning data into smart decisions with AI, analytics, automation, and custom software.',
+        width: 1200,
+        height: 630,
+        alt: 'Mindscape Analytics builds AI agents, SaaS and web apps, data platforms, cloud infrastructure, and China sourcing programs.',
       },
     ],
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Mindscape Analytics | AI, Data, Products & Production",
-    description: "Build the intelligent system your next stage needs.",
+    title: "Mindscape Analytics | AI & Software Development",
+    description: "AI agents, SaaS and web applications, cloud infrastructure, data platforms, and China sourcing through production.",
     images: ['/images/og-mindscape-2026.png'],
   },
+  alternates: { canonical: "https://mindscapeanalytics.com/" },
   icons: {
-    icon: '/images/brand/mindscape-icon-light.png',
-    apple: '/images/brand/mindscape-icon-light.png',
+    icon: [
+      { url: "/images/brand/mindscape-icon-light-2026.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon-2026.ico", sizes: "48x48" },
+    ],
+    apple: [{ url: "/apple-touch-icon-2026.png", sizes: "180x180", type: "image/png" }],
   },
   robots: {
     index: true,
@@ -81,7 +87,7 @@ const jsonLd = {
       "legalName": "Mindscape Analytics",
       "foundingDate": "2025",
       "url": "https://mindscapeanalytics.com",
-      "logo": "https://mindscapeanalytics.com/images/brand/mindscape-analytics-logo.webp",
+      "logo": "https://mindscapeanalytics.com/images/brand/mindscape-analytics-logo-light-2026.webp",
       "description": "An AI, data, and software company building automation, digital products, and China sourcing programs for real business operations.",
       "areaServed": [
         { "@type": "Country", "name": "United States" },
@@ -205,7 +211,7 @@ export default function RootLayout({
       <body className="font-sans" suppressHydrationWarning>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('mindscape-theme');var d=t==='dark';document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light';var icons=document.querySelectorAll('link[rel~="icon"]');for(var i=0;i<icons.length;i++){icons[i].href=d?'/images/brand/mindscape-icon-dark.png':'/images/brand/mindscape-icon-light.png'}}catch(e){document.documentElement.style.colorScheme='light'}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('mindscape-theme');var d=t==='dark';document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light';var icons=document.querySelectorAll('link[rel~="icon"]');for(var i=0;i<icons.length;i++){if(icons[i].href.indexOf('favicon.ico')===-1){icons[i].href=d?'/images/brand/mindscape-icon-dark-2026.png':'/images/brand/mindscape-icon-light-2026.png'}}}catch(e){document.documentElement.style.colorScheme='light'}})();`,
           }}
         />
         <script

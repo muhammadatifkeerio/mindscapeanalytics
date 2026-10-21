@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "@/components/SmartImage";
+import BrandLogo from "@/components/BrandLogo";
 import { ArrowRight, ArrowUpRight, Factory, Globe2, Mail, Search, Workflow } from "lucide-react";
 import WechatNumber from "@/components/WechatNumber";
 
@@ -101,7 +102,7 @@ export default function ChineseLandingPage() {
             <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
                 <div className="container-standard flex min-h-16 items-center justify-between gap-4">
                     <Link href="/zh-cn" aria-label="Mindscape Analytics 中文首页">
-                        <Image src="/images/brand/mindscape-analytics-logo-dark.webp" alt="Mindscape Analytics" width={220} height={88} className="h-auto w-36 object-contain sm:w-44" priority />
+                        <BrandLogo alt="Mindscape Analytics" width={220} height={74} className="h-auto w-36 object-contain sm:w-44" priority />
                     </Link>
                     <nav aria-label="主导航" className="flex items-center gap-3 text-sm sm:gap-6">
                         <a href="#合作方向" className="hidden text-muted-foreground transition-colors hover:text-foreground md:inline">合作方向</a>

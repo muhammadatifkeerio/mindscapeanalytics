@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Cloud Infrastructure | Mindscape Analytics",
         description: "Building the resilient, scalable foundation for your digital future.",
+        images: ["/images/og-mindscape-2026.png"],
     }
 }
 

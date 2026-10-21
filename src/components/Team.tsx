@@ -17,7 +17,7 @@ const team = [
     },
     {
         name: "Muhammad Atif",
-        role: "Full Stack Developer",
+        role: "Full-Stack Developer & AI Engineer",
         bio: "Builds and maintains responsive product experiences, connecting clear interfaces with dependable application logic.",
         image: "/images/team/muhammad-ibrahim.webp",
         linkedin: "#",
@@ -25,7 +25,7 @@ const team = [
     },
     {
         name: "Saleem Raza",
-        role: "Accounting and Finance Business Consultant",
+        role: "Finance Manager",
         bio: "Advises on finance workflows, accounting systems, and practical implementation needs for business teams.",
         image: "/images/team/saleem-raza.webp",
         linkedin: "#",

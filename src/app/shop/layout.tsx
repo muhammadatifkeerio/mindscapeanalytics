@@ -13,6 +13,7 @@ export const metadata: Metadata = {
         title: "MSA Asset Terminal | Engineering for the Elite",
         description: "Premium architectural assets for modern enterprise scale.",
         url: "https://mindscapeanalytics.com/shop",
+        images: ["/images/og-mindscape-2026.png"],
     },
 };
 

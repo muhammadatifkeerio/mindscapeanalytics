@@ -1,12 +1,18 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Badge } from "@/components/ui/badge";
+import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
-import { Search, Brain, Cpu, Database, Cloud, Code, Shield, Network, Zap, Globe } from "lucide-react";
+import Image from "next/image";
+import { Search, Brain, Cpu, Database, Cloud, Code, Shield, Network, Zap, Globe, type LucideIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const TechIcon = ({ name, iconSlug, fallbackIcon: FallbackIcon }: { name: string; iconSlug?: string; fallbackIcon?: any }) => {
+/**
+ * SOURCE OF TRUTH KEYWORDS: TechIcon, technology logos, theme contrast
+ * WHAT: Renders provider marks with a legible monochrome treatment in both themes.
+ * WHY: Simple Icons are requested in white for dark mode; invert them on light surfaces.
+ * WHERE: Technology cards in the services-page stack showcase.
+ */
+const TechIcon = ({ name, iconSlug, fallbackIcon: FallbackIcon }: { name: string; iconSlug?: string; fallbackIcon?: LucideIcon }) => {
     const [imgError, setImgError] = useState(false);
     const iconUrl = iconSlug ? `https://cdn.simpleicons.org/${iconSlug}/${imgError ? '71717a' : 'ffffff'}` : null;
 
@@ -14,9 +20,9 @@ const TechIcon = ({ name, iconSlug, fallbackIcon: FallbackIcon }: { name: string
         return (
             <div className="w-10 h-10 rounded-lg bg-foreground/5 border border-border flex items-center justify-center group-hover:bg-foreground/10 transition-colors">
                 {FallbackIcon ? (
-                    <FallbackIcon className="w-5 h-5 text-foreground/40 group-hover:text-foreground/80 transition-colors" />
+                    <FallbackIcon className="w-5 h-5 text-foreground/75 group-hover:text-foreground transition-colors" />
                 ) : (
-                    <span className="font-bold text-xs text-foreground/40 uppercase">
+                    <span className="font-bold text-xs text-foreground/75 uppercase">
                         {name.slice(0, 2)}
                     </span>
                 )}
@@ -26,12 +32,15 @@ const TechIcon = ({ name, iconSlug, fallbackIcon: FallbackIcon }: { name: string
 
     return (
         <div className="w-10 h-10 flex items-center justify-center p-1.5 overflow-hidden">
-            <img
+            <Image
                 src={iconUrl}
                 alt={name}
-                className="w-full h-full object-contain opacity-40 group-hover:opacity-100 transition-all duration-300"
+                className="w-full h-full object-contain opacity-80 invert dark:invert-0 group-hover:opacity-100 transition-all duration-300"
                 onError={() => setImgError(true)}
+                width={40}
+                height={40}
                 loading="lazy"
+                unoptimized
             />
         </div>
     );
@@ -41,7 +50,7 @@ type TechItem = {
     name: string;
     category: string;
     iconSlug?: string;
-    fallbackIcon: any;
+    fallbackIcon: LucideIcon;
 };
 
 const techStackData: TechItem[] = [
@@ -85,19 +94,12 @@ const categories = [
 export default function TechStackShowcase() {
     const [activeCategory, setActiveCategory] = useState("all");
     const [searchQuery, setSearchQuery] = useState("");
-    const [hasMounted, setHasMounted] = useState(false);
-
-    useEffect(() => {
-        setHasMounted(true);
-    }, []);
 
     const filteredTech = techStackData.filter(tech => {
         const matchesCategory = activeCategory === "all" || tech.category === activeCategory;
         const matchesSearch = tech.name.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesCategory && matchesSearch;
     });
-
-    if (!hasMounted) return null;
 
     return (
         <section className="w-full py-24 bg-background border-t border-border relative overflow-hidden institutional-grid">
@@ -152,7 +154,7 @@ export default function TechStackShowcase() {
                                 className="aspect-square bg-card border border-border rounded-2xl hover:bg-muted/60 hover:border-brand/30 transition-all duration-300 flex flex-col items-center justify-center gap-3 group cursor-default"
                             >
                                 <TechIcon name={item.name} iconSlug={item.iconSlug} fallbackIcon={item.fallbackIcon} />
-                                <span className="text-[9px] font-black uppercase text-foreground/20 group-hover:text-foreground tracking-[0.2em] transition-all text-center px-2">
+                                <span className="text-[9px] font-black uppercase text-foreground/65 group-hover:text-foreground tracking-[0.2em] transition-all text-center px-2">
                                     {item.name}
                                 </span>
                             </motion.div>

@@ -1,4 +1,4 @@
-import Image from "@/components/SmartImage";
+import BrandLogo from "@/components/BrandLogo";
 
 /**
  * SOURCE OF TRUTH KEYWORDS: Branded route loading screen, Mindscape logo, light theme
@@ -10,11 +10,10 @@ export default function Loading() {
     return (
         <main className="grid min-h-[100svh] place-items-center bg-background px-6 text-foreground">
             <div role="status" aria-live="polite" className="flex flex-col items-center gap-6">
-                <Image
-                    src="/images/brand/mindscape-analytics-logo-dark.webp"
+                <BrandLogo
                     alt="Mindscape Analytics"
                     width={220}
-                    height={88}
+                    height={74}
                     priority
                     className="h-auto w-44 sm:w-52"
                 />

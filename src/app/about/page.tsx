@@ -35,7 +35,7 @@ const team = [
     },
     {
         name: "Muhammad Atif",
-        role: "Full-Stack Developer",
+        role: "Full-Stack Developer & AI Engineer",
         bio: "Builds and maintains responsive product experiences, connecting clear interfaces with dependable application logic.",
         image: "/images/team/muhammad-ibrahim.webp",
         linkedin: "#",
@@ -43,7 +43,7 @@ const team = [
     },
     {
         name: "Saleem Raza",
-        role: "Finance Consultant",
+        role: "Finance Manager",
         bio: "Advises on finance workflows, accounting systems, and practical implementation needs for business teams.",
         image: "/images/team/saleem-raza.webp",
         linkedin: "#",
@@ -171,8 +171,8 @@ export default function AboutPage() {
                             transition={{ duration: 0.75, ease: [0.23, 1, 0.32, 1] }}
                             className="max-w-[12ch] text-left text-[clamp(3.5rem,7vw,6.5rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-foreground"
                         >
-                            <span className="block">Intelligence for</span>
-                            <span className="mt-2 block">real-world work.</span>
+                            <span className="block">We build for</span>
+                            <span className="mt-2 block">real work.</span>
                         </motion.h1>
 
                         <motion.div

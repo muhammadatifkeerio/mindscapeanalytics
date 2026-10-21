@@ -11,7 +11,7 @@ export const metadata: Metadata = {
         siteName: "Mindscape Analytics",
         images: [
             {
-                url: "/og-bg.webp",
+                url: "/images/og-mindscape-2026.png",
                 width: 1200,
                 height: 630,
                 alt: "Mindscape Analytics Solutions",

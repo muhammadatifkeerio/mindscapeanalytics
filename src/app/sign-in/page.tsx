@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Shield, ArrowRight, Loader2, Mail, Lock } from "lucide-react";
 import Link from "next/link";
-import Image from "@/components/SmartImage";
+import BrandLogo from "@/components/BrandLogo";
 import { useRouter } from "next/navigation";
 
 function SignInContent() {
@@ -88,12 +88,11 @@ function SignInContent() {
                 <div className="text-center mb-10">
                     <Link href="/" className="inline-block group">
                         <div className="flex items-center justify-center gap-2 mb-6">
-                            <Image
-                                src="/images/brand/mindscape-analytics-logo.webp"
+                            <BrandLogo
                                 alt="Mindscape Analytics"
                                 width={240}
-                                height={56}
-                                className="h-14 w-auto brightness-0 dark:invert opacity-100 transition-all duration-500 group-hover:scale-110"
+                                height={80}
+                                className="h-14 w-auto opacity-100 transition-all duration-500 group-hover:scale-105"
                             />
                         </div>
                         <h1

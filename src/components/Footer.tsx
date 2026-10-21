@@ -1,4 +1,4 @@
-import Image from "@/components/SmartImage";
+import BrandLogo from "@/components/BrandLogo";
 import Link from "next/link";
 import { ArrowUpRight, Mail, MapPin, MessageCircle } from "lucide-react";
 import WechatNumber from "@/components/WechatNumber";
@@ -33,8 +33,8 @@ export default function Footer() {
             <div className="container-standard py-16 md:py-24">
                 <div className="grid gap-10 lg:grid-cols-[1.2fr_0.6fr_0.6fr_1.25fr] lg:gap-12">
                     <div>
-                        <Link href="/" aria-label="Mindscape Analytics home" className="inline-flex dark:rounded-md dark:bg-white dark:p-1">
-                            <Image src="/images/brand/mindscape-analytics-logo-dark.webp" alt="Mindscape Analytics" width={300} height={120} className="h-auto w-[250px] object-contain sm:w-[290px]" />
+                        <Link href="/" aria-label="Mindscape Analytics home" className="inline-flex">
+                            <BrandLogo alt="Mindscape Analytics" width={300} height={100} className="h-auto w-[250px] object-contain sm:w-[290px]" />
                         </Link>
                         <p className="mt-7 max-w-md text-base leading-7 text-muted-foreground">AI agents, data systems, digital products, and factory-direct sourcing, designed as one connected path from intelligence to execution.</p>
                         <Link href="/contact" className="mt-8 inline-flex items-center gap-2 font-semibold text-brand">Get in touch <ArrowUpRight className="h-4 w-4" /></Link>

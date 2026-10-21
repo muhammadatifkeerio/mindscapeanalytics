@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Contact Us | Mindscape Analytics",
         description: "Tell us about your workflow, product, or data challenge and discuss practical next steps with our team.",
+        images: ["/images/og-mindscape-2026.png"],
     }
 }
 

@@ -34,7 +34,7 @@ export function AdminSidebar({ navItems }: AdminSidebarProps) {
             {/* Mobile Header */}
             <header className="lg:hidden flex items-center justify-between p-4 border-b border-border bg-black/40 backdrop-blur-xl sticky top-0 z-50">
                 <Image
-                    src="/images/brand/mindscape-analytics-logo.webp"
+                    src="/images/brand/mindscape-analytics-logo-dark-2026.webp"
                     alt="Mindscape Analytics"
                     width={140}
                     height={32}
@@ -65,7 +65,7 @@ export function AdminSidebar({ navItems }: AdminSidebarProps) {
 
                 <div className="mb-12">
                     <Image
-                    src="/images/brand/mindscape-analytics-logo.webp"
+                    src="/images/brand/mindscape-analytics-logo-dark-2026.webp"
                         alt="Mindscape Analytics"
                         width={180}
                         height={40}

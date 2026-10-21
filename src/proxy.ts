@@ -47,11 +47,11 @@ export const config = {
          * - api (API routes)
          * - _next/static (static files)
          * - _next/image (image optimization files)
-         * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+         * - favicon, touch-icon, sitemap.xml, robots.txt (metadata files)
          * - images/ (public directory assets)
          */
         {
-            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|images/).*)',
+            source: '/((?!api|_next/static|_next/image|favicon(?:-[^/]+)?\\.(?:ico|png|webp)|apple-touch-icon(?:-[^/]+)?\\.png|sitemap\\.xml|robots\\.txt|images/).*)',
             missing: [
                 { type: 'header', key: 'next-router-prefetch' },
                 { type: 'header', key: 'purpose', value: 'prefetch' },

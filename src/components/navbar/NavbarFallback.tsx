@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "@/components/SmartImage";
+import BrandLogo from "@/components/BrandLogo";
 import { cn } from "@/lib/utils";
 import { navShellTransition } from "@/components/navbar/motion";
 
@@ -21,12 +21,11 @@ export function NavbarFallback() {
             )}
         >
             <div className="pointer-events-auto w-full max-w-7xl flex items-center justify-between px-6 py-3 rounded-full border border-transparent">
-                <Link href="/" aria-label="Mindscape Analytics Home" className="flex items-center dark:rounded-md dark:bg-white dark:px-1 dark:py-0.5">
-                    <Image
-                        src="/images/brand/mindscape-analytics-logo-dark.webp"
+                <Link href="/" aria-label="Mindscape Analytics Home" className="flex items-center">
+                    <BrandLogo
                         alt=""
                         width={180}
-                        height={62}
+                        height={60}
                         className="h-8 w-auto object-contain opacity-100 sm:h-9"
                         priority
                     />
