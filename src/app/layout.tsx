@@ -134,8 +134,8 @@ const jsonLd = {
       "@type": "Person",
       "@id": "https://mindscapeanalytics.com/#founder",
       "name": "Zeeshan Keerio",
-      "jobTitle": "Founder & Lead AI Engineer",
-      "description": "Founder and Lead AI Engineer at Mindscape Analytics, working across AI products, business software, data systems, and automation.",
+      "jobTitle": "Lead AI Engineer & Solutions Architect",
+      "description": "Founder of Mindscape Analytics and Lead AI Engineer & Solutions Architect, working across AI products, business software, data systems, and automation.",
       "url": "https://mindscapeanalytics.com/zeeshan-keerio",
       "sameAs": [
         "https://linkedin.com/in/zeeshan-keerio",

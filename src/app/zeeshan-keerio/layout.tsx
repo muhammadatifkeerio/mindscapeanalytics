@@ -6,8 +6,8 @@ import type { Metadata } from "next";
  * WHERE: /zeeshan-keerio.
  */
 export const metadata: Metadata = {
-    title: "Zeeshan Keerio | Founder & Lead AI Engineer",
-    description: "Zeeshan Keerio is the Founder and Lead AI Engineer at Mindscape Analytics, building AI products, data systems, and production software.",
+    title: "Zeeshan Keerio | Lead AI Engineer & Solutions Architect",
+    description: "Zeeshan Keerio is the founder of Mindscape Analytics and Lead AI Engineer & Solutions Architect, building AI products, data systems, and production software.",
     alternates: { canonical: "/zeeshan-keerio" },
 };
 export default function FounderLayout({ children }: Readonly<{ children: React.ReactNode }>) { return children; }

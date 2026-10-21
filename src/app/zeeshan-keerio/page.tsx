@@ -242,11 +242,11 @@ export default function FounderPortfolio() {
                     <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
                         <div className="relative mb-7 h-40 w-40 rounded-full bg-card p-1.5 shadow-xl shadow-foreground/10 ring-1 ring-border sm:h-48 sm:w-48">
                             <div className="relative h-full w-full overflow-hidden rounded-full bg-muted ring-4 ring-background">
-                                <Image src="/images/team/zeeshan-keerio.webp" alt="Portrait of Zeeshan Keerio, Founder and Lead AI Engineer" fill priority sizes="(max-width: 640px) 160px, 192px" className="object-cover object-top" />
+                                <Image src="/images/team/zeeshan-keerio.webp" alt="Portrait of Zeeshan Keerio, Lead AI Engineer and Solutions Architect" fill priority sizes="(max-width: 640px) 160px, 192px" className="object-cover object-top" />
                             </div>
                         </div>
                         <h1 className="font-heading text-5xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Zeeshan Keerio</h1>
-                        <p className="mt-4 text-lg font-semibold tracking-[-0.02em] text-primary sm:text-xl">Founder &amp; Lead AI Engineer</p>
+                        <p className="mt-4 text-lg font-semibold tracking-[-0.02em] text-primary sm:text-xl">Lead AI Engineer &amp; Solutions Architect</p>
                         <p className="mt-1 text-sm font-medium text-muted-foreground">Mindscape Analytics <span className="mx-2 text-border" aria-hidden="true">·</span> Sheridan, Wyoming, USA</p>
                         <p className="mt-6 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
                             I turn complex business problems into dependable AI, data, and software products. I lead the work from system architecture through engineering, cloud deployment, and ongoing improvement for teams worldwide.

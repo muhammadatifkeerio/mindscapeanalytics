@@ -9,7 +9,7 @@ import { Linkedin } from "@/components/icons/brand-icons";
 const team = [
     {
         name: "Zeeshan Keerio",
-        role: "Founder & Lead AI Engineer",
+        role: "Lead AI Engineer & Solutions Architect",
         bio: "Visionary AI specialist with extensive experience in developing cutting-edge artificial intelligence solutions.",
         image: "/images/team/zeeshan-keerio.webp",
         linkedin: "https://linkedin.com/in/zeeshan-keerio",
@@ -33,7 +33,7 @@ const team = [
     },
     {
         name: "Muhammad Ibrahim",
-        role: "Marketing Head & Strategic Partner",
+        role: "Senior Manager - Marketing",
         bio: "Shapes go-to-market strategy, brand positioning, and partnerships that connect Mindscape products with the right customers.",
         image: "/images/team/shafqat-ali.webp",
         linkedin: "#",
@@ -41,8 +41,8 @@ const team = [
     },
     {
         name: "Zainab Gul",
-        role: "Operations Head",
-        bio: "Coordinates day-to-day operations and delivery workflows, helping teams stay aligned from planning through execution.",
+        role: "Research & Development Analyst",
+        bio: "Researches business needs, evaluates product opportunities, and turns findings into practical recommendations for development teams.",
         image: "/images/team/zainab-gul.webp",
         linkedin: "#",
         email: "#"
@@ -51,7 +51,7 @@ const team = [
         name: "Shafqat Ali",
         role: "Software Engineer",
         bio: "Develops and improves software features, integrations, and systems with a focus on reliability and maintainability.",
-        image: "/images/team/muhammad-atif-new.webp",
+        image: "/images/team/shafqat-ali-portrait-2026.webp",
         linkedin: "#",
         email: "#"
     }
