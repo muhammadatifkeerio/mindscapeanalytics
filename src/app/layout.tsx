@@ -12,8 +12,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Mindscape Analytics | AI, Data, Products & Production",
-  description: "Mindscape Analytics builds autonomous AI agents, decision-grade data systems, digital products, and factory-direct sourcing programs from China to production.",
+  title: "AI, Data & Software for Real Operations | Mindscape Analytics",
+  description: "Mindscape Analytics builds AI agents, business software, farm management systems, and data platforms, and helps bring products from China sourcing to production.",
   keywords: [
     "AI Agents", "Gen AI Solutions", "Agentic AI Automation",
     "RSIQ Pro", "DBlynx", "DisposIQ", "Tenvo",
@@ -25,22 +25,18 @@ export const metadata: Metadata = {
   authors: [{ name: "Mindscape Analytics", url: "https://mindscapeanalytics.com" }],
   creator: "Mindscape Analytics",
   publisher: "Mindscape Analytics",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://mindscapeanalytics.com'),
-  alternates: {
-    canonical: '/',
-  },
+  // Public marketing URLs use the verified brand domain, independently of auth/API origins.
+  metadataBase: new URL('https://mindscapeanalytics.com'),
   openGraph: {
-    title: "Mindscape Analytics | AI, Data, Products & Production",
-    description: "Autonomous AI agents, decision-grade data systems, digital products, and factory-direct sourcing programs.",
+    title: "AI, Data & Software for Real Operations | Mindscape Analytics",
+    description: "AI agents, business software, farm management systems, data platforms, and product sourcing built around real operating needs.",
     type: "website",
     url: 'https://mindscapeanalytics.com',
     siteName: 'Mindscape Analytics',
     images: [
       {
-        url: 'https://mindscapeanalytics.com/images/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Mindscape Analytics Architecture',
+        url: '/images/og-mindscape-2026.png',
+        alt: 'Mindscape Analytics: turning data into smart decisions with AI, analytics, automation, and custom software.',
       },
     ],
     locale: 'en_US',
@@ -49,8 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Mindscape Analytics | AI, Data, Products & Production",
     description: "Build the intelligent system your next stage needs.",
-    creator: '@mindscapeai',
-    images: ['https://mindscapeanalytics.com/images/og-image.png'],
+    images: ['/images/og-mindscape-2026.png'],
   },
   icons: {
     icon: '/images/brand/mindscape-icon-light.png',
@@ -79,7 +74,7 @@ const jsonLd = {
       "legalName": "Mindscape Analytics",
       "foundingDate": "2025",
       "url": "https://mindscapeanalytics.com",
-      "logo": "https://mindscapeanalytics.com/images/brand/mindscape-analytics-logo.png",
+      "logo": "https://mindscapeanalytics.com/images/brand/mindscape-analytics-logo.webp",
       "description": "An AI, data, and product company building autonomous automation, enterprise software, and factory-direct sourcing programs.",
       "founder": {
         "@id": "https://mindscapeanalytics.com/#founder"
@@ -96,18 +91,14 @@ const jsonLd = {
         "contactType": "customer service",
         "email": "info@mindscapeanalytics.com"
       },
-      "sameAs": [
-        "https://linkedin.com/company/mindscapeanalytics",
-        "https://twitter.com/mindscapeai",
-        "https://github.com/mindscapeai"
-      ]
+      "sameAs": ["https://www.linkedin.com/company/mindscapeanalytics/"]
     },
     {
       "@type": "Person",
       "@id": "https://mindscapeanalytics.com/#founder",
       "name": "Zeeshan Keerio",
-      "jobTitle": "Founder, CEO & Lead AI Engineer",
-      "description": "Founder, CEO, and Lead AI Engineer/Developer of all Mindscape Analytics products including RSIQ Pro, DBlynx, DisposIQ, and Tenvo. Expert in Agentic AI, Gen AI, and Enterprise Automation.",
+      "jobTitle": "Founder & Lead AI Engineer",
+      "description": "Founder and Lead AI Engineer at Mindscape Analytics, working across AI products, business software, data systems, and automation.",
       "url": "https://mindscapeanalytics.com/zeeshan-keerio",
       "sameAs": [
         "https://linkedin.com/in/zeeshan-keerio",
@@ -117,29 +108,36 @@ const jsonLd = {
     {
       "@type": "SoftwareApplication",
       "name": "RSIQ Pro",
-      "description": "First Agentic AI for institutional-grade market analysis and intelligent alerting.",
+      "description": "Market analysis and intelligent alerting for digital asset markets.",
       "applicationCategory": "FinTech AI",
       "operatingSystem": "Web-based"
     },
     {
       "@type": "SoftwareApplication",
       "name": "DBlynx",
-      "description": "Agentic AI platform for autonomous data analysis and Natural Language Querying (NLQ).",
+      "description": "Data intelligence platform for natural-language database queries and analytics.",
       "applicationCategory": "AI Data Intelligence",
       "operatingSystem": "Web-based"
     },
     {
       "@type": "SoftwareApplication",
       "name": "DisposIQ",
-      "description": "Agentic AI for intelligent industrial asset disposal and lifecycle management.",
+      "description": "Production and disposal operations platform for tracking activity and operational insights.",
       "applicationCategory": "Automation / ERP",
       "operatingSystem": "Web-based"
     },
     {
       "@type": "SoftwareApplication",
       "name": "Tenvo",
-      "description": "Enterprise-grade Agentic AI framework for scalable SaaS and high-performance applications.",
+      "description": "Business operations platform connecting storefront, point of sale, inventory, and business workflows.",
       "applicationCategory": "Enterprise SaaS",
+      "operatingSystem": "Web-based"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Smart Dairy & Cattle Farm Management System",
+      "description": "Farm operations software for cattle records, milk production, feed, herd health, and farm performance.",
+      "applicationCategory": "Agriculture Management Software",
       "operatingSystem": "Web-based"
     }
   ]

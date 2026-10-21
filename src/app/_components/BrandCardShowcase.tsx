@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import { useState } from "react";
 
 const cards = [

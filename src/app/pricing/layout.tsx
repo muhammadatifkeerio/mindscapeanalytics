@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: "Pricing & Investment | Mindscape Analytics - AI Ecosystems",
+    alternates: { canonical: "/pricing" },
     description: "Precision-engineered pricing models for AI Starter Systems, Growth Automation, and Enterprise Ecosystems. Transparent investment protocols for high-fidelity technical outcomes.",
     openGraph: {
         title: "Pricing | Mindscape Analytics",

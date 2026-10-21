@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,9 +17,38 @@ import {
     Activity
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import { asStringList } from "@/lib/json-list";
 import * as productService from "@/services/product.service";
+
+/** SOURCE OF TRUTH KEYWORDS: product metadata, canonical, productService, Open Graph, shop
+ * WHAT: Loads approved product details for route-specific search and share metadata.
+ * WHY: Product pages need accurate titles, availability, canonical paths, and previews.
+ * WHERE: Next.js metadata generation for /shop/[id].
+ */
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+    const { id } = await params;
+    const product = await productService.getById(id);
+    if (!product) notFound();
+
+    const description = product.description || `Explore ${product.name}, available from the Mindscape Analytics digital product shop.`;
+    const image = product.images[0]?.url || "/images/og-mindscape-2026.png";
+
+    return {
+        title: `${product.name} | Mindscape Analytics Shop`,
+        description,
+        alternates: { canonical: `/shop/${id}` },
+        robots: product.approvedForSale ? { index: true, follow: true } : { index: false, follow: false },
+        openGraph: {
+            title: `${product.name} | Mindscape Analytics Shop`,
+            description,
+            url: `https://mindscapeanalytics.com/shop/${id}`,
+            type: "website",
+            images: [{ url: image, alt: product.name }],
+        },
+        twitter: { card: "summary_large_image", title: product.name, description, images: [image] },
+    };
+}
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -115,11 +145,12 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
                                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
                                     <div>
-                                        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-foreground/20 mb-2 block">Institutional Value</span>
+                                        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-foreground/40 mb-2 block">{product.category === "request_access" ? "Availability" : product.category === "trading_intelligence" ? "One-time purchase" : "Product price"}</span>
                                         <div className="flex items-baseline gap-2">
-                                            <span className="text-5xl font-black tracking-tighter">${product.price}</span>
-                                            <span className="text-foreground/20 text-xs font-bold uppercase">USD</span>
+                                            {product.category === "request_access" ? <span className="text-3xl font-bold tracking-tight">Request access</span> : <><span className="text-5xl font-black tracking-tighter">${product.price}</span><span className="text-foreground/40 text-xs font-bold uppercase">USD</span></>}
                                         </div>
+                                        {product.category === "trading_intelligence" && <p className="mt-2 text-sm text-muted-foreground">Single payment. No recurring charge.</p>}
+                                        {product.category === "request_access" && <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">No payment is collected here. Availability, licensing, and pricing are confirmed by our team.</p>}
                                     </div>
 
                                     <div className="w-full md:w-[350px]">

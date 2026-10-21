@@ -1,58 +1,57 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { Mail, ArrowRight } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Linkedin } from "@/components/icons/brand-icons";
-import { cn } from "@/lib/utils";
 
 const team = [
     {
         name: "Zeeshan Keerio",
-        role: "Founder & CEO",
+        role: "Founder & Lead AI Engineer",
         bio: "Visionary AI specialist with extensive experience in developing cutting-edge artificial intelligence solutions.",
-        image: "/images/team/founder.webp",
+        image: "/images/team/zeeshan-keerio.webp",
         linkedin: "https://linkedin.com/in/zeeshan-keerio",
         email: "mailto:zeeshan.keerio@mindscapeanalytics.com"
     },
     {
         name: "Muhammad Atif",
         role: "Full Stack Developer",
-        bio: "Versatile developer specializing in creating scalable, user-friendly applications with modern technologies.",
-        image: "/images/team/muhammad-atif-new.jpeg",
+        bio: "Builds and maintains responsive product experiences, connecting clear interfaces with dependable application logic.",
+        image: "/images/team/muhammad-ibrahim.webp",
         linkedin: "#",
         email: "mailto:atif@mindscapeanalytics.com"
     },
     {
         name: "Saleem Raza",
         role: "Accounting and Finance Business Consultant",
-        bio: "Worked closely with clients to understand their business needs, configure accounting modules, and ensure accurate data migration and smooth system integration. Also delivered user training and post-implementation support to ensure a seamless transition.",
-        image: "/images/team/saleem-raza.jpeg",
+        bio: "Advises on finance workflows, accounting systems, and practical implementation needs for business teams.",
+        image: "/images/team/saleem-raza.webp",
         linkedin: "#",
         email: "#"
     },
     {
-        name: "Ghulam Akbar",
-        role: "Business Dev Manager",
-        bio: "Strategic leader focused on driving growth through market expansion and high-value partnerships.",
-        image: "/images/team/Akbar_keerio.webp",
-        linkedin: "#",
-        email: "mailto:akbar@mindscapeanalytics.com"
-    },
-    {
-        name: "Syed Athar",
-        role: "Brand & Media Specialist",
-        bio: "Creative expert dedicated to building compelling brand identities and high-impact digital media strategies.",
-        image: "/images/team/syed-ather.webp",
+        name: "Muhammad Ibrahim",
+        role: "Marketing Head & Strategic Partner",
+        bio: "Shapes go-to-market strategy, brand positioning, and partnerships that connect Mindscape products with the right customers.",
+        image: "/images/team/shafqat-ali.webp",
         linkedin: "#",
         email: "#"
     },
     {
-        name: "Farhan Murad",
-        role: "Cybersecurity Analyst",
-        bio: "Security specialist focused on proactive threat detection and ensuring the integrity of digital infrastructure.",
-        image: "/images/team/farhankeerio.webp",
+        name: "Zainab Gul",
+        role: "Operations Head",
+        bio: "Coordinates day-to-day operations and delivery workflows, helping teams stay aligned from planning through execution.",
+        image: "/images/team/zainab-gul.webp",
+        linkedin: "#",
+        email: "#"
+    },
+    {
+        name: "Shafqat Ali",
+        role: "Software Engineer",
+        bio: "Develops and improves software features, integrations, and systems with a focus on reliability and maintainability.",
+        image: "/images/team/muhammad-atif-new.webp",
         linkedin: "#",
         email: "#"
     }

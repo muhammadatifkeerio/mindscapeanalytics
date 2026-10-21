@@ -2,11 +2,10 @@
 
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Star, Heart, ShoppingCart, Eye } from "lucide-react";
+import { Heart, Eye } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { useCart } from "@/contexts/CartContext";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 
 interface Product {
     id: string;
@@ -19,7 +18,7 @@ interface Product {
         name: string | null;
         image: string | null;
         storeName: string | null;
-    };
+    } | null;
 }
 
 export default function ProductCard({
@@ -32,21 +31,6 @@ export default function ProductCard({
     priority?: boolean;
 }) {
     const [isLiked, setIsLiked] = useState(false);
-    const { addToCart } = useCart();
-    const [isAdding, setIsAdding] = useState(false);
-
-    const handleAddToCart = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setIsAdding(true);
-        addToCart({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.images[0]?.url,
-        });
-        setTimeout(() => setIsAdding(false), 1000);
-    };
 
     const imageUrl = product.images[0]?.url || "https://placehold.co/600x400/0a0a0b/ffffff?text=No+Image";
 
@@ -77,11 +61,11 @@ export default function ProductCard({
                     {/* Category Label */}
                     <div className="absolute bottom-5 left-5">
                             <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-foreground bg-background/95 px-3 py-1.5 rounded-md border border-border shadow-sm">
-                            {product.category.replace(/_/g, ' ')}
+                            {product.category === "request_access" ? "Early access" : product.category.replace(/_/g, ' ')}
                         </span>
                     </div>
 
-                    {/* Hover Stats */}
+                    {/* Quick view */}
                     <div className="absolute top-5 right-5 flex gap-2">
                         <button
                             onClick={(e) => {
@@ -94,12 +78,6 @@ export default function ProductCard({
                         >
                             <Eye size={16} strokeWidth={3} />
                         </button>
-                        <div className="p-2.5 bg-background/40 backdrop-blur-md rounded-lg border border-border opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 duration-300 delay-75">
-                            <span className="text-[9px] font-black uppercase tracking-widest text-foreground/80 flex items-center gap-1.5">
-                                <Star size={10} className="fill-secondary text-secondary" />
-                                4.8
-                            </span>
-                        </div>
                     </div>
                 </div>
 
@@ -128,11 +106,11 @@ export default function ProductCard({
                             className="bg-foreground text-background px-6 py-4 rounded-xl flex-1 flex items-center justify-between group/btn shadow-[0_10px_20px_hsl(var(--foreground) / 0.05)]"
                         >
                             <span className="text-[10px] font-black uppercase tracking-[0.2em]">
-                                View & Acquire
+                                {product.category === "request_access" ? "Request access" : "View & Acquire"}
                             </span>
                             <div className="flex items-center gap-2">
                                 <div className="w-px h-3 bg-background/10" />
-                                <span className="text-sm font-black text-secondary">${product.price}</span>
+                                <span className="text-sm font-black text-secondary">{product.category === "request_access" ? "Contact" : `$${product.price}`}</span>
                             </div>
                         </motion.button>
 

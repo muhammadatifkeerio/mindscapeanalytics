@@ -4,7 +4,7 @@ import React, { useRef } from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
-import Image from "next/image"
+import Image from "@/components/SmartImage"
 import {
     BarChart3,
     Brain,

@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
+    alternates: { canonical: "/solutions/cloud-infrastructure" },
     title: "Cloud Infrastructure & DevOps | Mindscape Analytics",
     description: "Modern cloud architectures, container orchestration, and automated CI/CD pipelines defined by security and efficiency.",
     openGraph: {

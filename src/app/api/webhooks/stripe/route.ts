@@ -146,6 +146,7 @@ async function handleStripeWebhook(req: NextRequest): Promise<Response> {
         }
     } catch (error) {
         console.error("[WEBHOOK_HANDLER_ERROR] Unexpected error processing event:", error);
+        return NextResponse.json({ error: "Webhook processing failed; retry the event." }, { status: 500 });
     }
 
     return NextResponse.json({ received: true, timestamp: new Date().toISOString() });

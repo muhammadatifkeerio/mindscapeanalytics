@@ -1,20 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import Link from "next/link";
 import {
     Mail,
     Shield,
     Zap,
-    Globe,
     Users,
     Bot,
     TrendingUp,
-    Award,
     ChevronRight,
-    Target,
-    Eye,
     Database,
     Code,
     Cpu,
@@ -25,13 +21,14 @@ import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AIAuditLeadMagnet from "@/components/AIAuditLeadMagnet";
+import TeamMoments from "@/components/TeamMoments";
 
 const team = [
     {
         name: "Zeeshan Keerio",
-        role: "Founder & CEO",
+        role: "Founder & Lead AI Engineer",
         bio: "AI-focused technology leader and AI Engineer specialized in GenAI and Agentic AI. Sole designer and developer of the Mindscape Analytics (MSA) platform, architecting its core autonomous intelligence and multi-tenant infrastructure.",
-        image: "/images/team/founder.webp",
+        image: "/images/team/zeeshan-keerio.webp",
         linkedin: "https://linkedin.com/in/zeeshan-keerio",
         email: "mailto:zeeshan.keerio@mindscapeanalytics.com",
         href: "/zeeshan-keerio"
@@ -39,40 +36,40 @@ const team = [
     {
         name: "Muhammad Atif",
         role: "Full-Stack Developer",
-        bio: "Versatile developer specializing in creating scalable, user-friendly applications with modern technologies and robust architectures.",
-        image: "/images/team/muhammad-atif-new.webp",
+        bio: "Builds and maintains responsive product experiences, connecting clear interfaces with dependable application logic.",
+        image: "/images/team/muhammad-ibrahim.webp",
         linkedin: "#",
         email: "mailto:atif@mindscapeanalytics.com"
     },
     {
         name: "Saleem Raza",
         role: "Finance Consultant",
-        bio: "Expert in accounting modules and system integration, ensuring accurate data migration and seamless transition for enterprise clients.",
+        bio: "Advises on finance workflows, accounting systems, and practical implementation needs for business teams.",
         image: "/images/team/saleem-raza.webp",
         linkedin: "#",
         email: "#"
     },
     {
-        name: "Ghulam Akbar",
-        role: "Business Dev Manager",
-        bio: "Strategic leader focused on driving growth through market expansion, high-value partnerships, and global outreach.",
-        image: "/images/team/Akbar_keerio.webp",
-        linkedin: "#",
-        email: "mailto:akbar@mindscapeanalytics.com"
-    },
-    {
-        name: "Syed Athar",
-        role: "Brand & Media Specialist",
-        bio: "Creative expert dedicated to building compelling brand identities and high-impact digital media strategies.",
-        image: "/images/team/syed-ather.webp",
+        name: "Muhammad Ibrahim",
+        role: "Marketing Head & Strategic Partner",
+        bio: "Shapes go-to-market strategy, brand positioning, and partnerships that connect Mindscape products with the right customers.",
+        image: "/images/team/shafqat-ali.webp",
         linkedin: "#",
         email: "#"
     },
     {
-        name: "Farhan Murad",
-        role: "Cybersecurity Analyst",
-        bio: "Security specialist focused on proactive threat detection and ensuring the integrity of digital infrastructure.",
-        image: "/images/team/farhankeerio.webp",
+        name: "Zainab Gul",
+        role: "Operations Head",
+        bio: "Coordinates day-to-day operations and delivery workflows, helping teams stay aligned from planning through execution.",
+        image: "/images/team/zainab-gul.webp",
+        linkedin: "#",
+        email: "#"
+    },
+    {
+        name: "Shafqat Ali",
+        role: "Software Engineer",
+        bio: "Develops and improves software features, integrations, and systems with a focus on reliability and maintainability.",
+        image: "/images/team/muhammad-atif-new.webp",
         linkedin: "#",
         email: "#"
     }
@@ -164,51 +161,55 @@ export default function AboutPage() {
         <div className="about-page min-h-screen bg-background text-foreground relative selection:bg-foreground selection:text-background">
             <Navbar />
 
-            {/* Subtle global telemetry grid lines */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.025)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.025)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
-
-            {/* --- Premium Cybernetic Hero Section --- */}
-            <section className="relative pt-36 md:pt-52 pb-20 md:pb-36 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,hsl(var(--brand)/0.08),transparent_70%)] pointer-events-none" />
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
-
+            {/* About introduction */}
+            <section className="relative overflow-hidden pb-16 pt-32 sm:pb-20 sm:pt-40 lg:pb-24 lg:pt-44">
+                <div className="container relative z-10 mx-auto max-w-7xl px-6">
+                    <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
                         <motion.h1
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
-                            className="fluid-h1 relative z-10 w-full text-center flex flex-col items-center justify-center gpu-accelerate"
+                            initial={{ opacity: 0, y: 18 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.75, ease: [0.23, 1, 0.32, 1] }}
+                            className="max-w-[12ch] text-left text-[clamp(3.5rem,7vw,6.5rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-foreground"
                         >
-                            {/* Visibility Backlighting */}
-                            <div className="absolute inset-0 bg-secondary/5 blur-[80px] rounded-full opacity-30 pointer-events-none" />
-
-                            <div className="relative group/title inline-flex flex-col items-center max-w-[calc(100vw-2rem)] not-italic">
-                                {/* Architectural Brackets */}
-                                <div className="absolute -top-4 -left-6 w-4 h-4 border-t-2 border-l-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform hidden sm:block" />
-                                <div className="absolute -bottom-2 -right-6 w-4 h-4 border-b-2 border-r-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform hidden sm:block" />
-
-                                <span className="text-foreground px-4 drop-shadow-sm flex items-center justify-center break-words text-center relative">
-                                    ABOUT
-                                </span>
-                                <span className="relative inline-block mt-0.5 md:mt-4 px-4 overflow-hidden max-w-full">
-                                    <span className="text-brand break-words">
-                                        MINDSCAPE
-                                    </span>
-                                </span>
-                            </div>
+                            <span className="block">Intelligence for</span>
+                            <span className="mt-2 block">real-world work.</span>
                         </motion.h1>
 
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 18 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="max-w-4xl border-t border-foreground/10 pt-10 md:pt-12 w-full mx-auto px-4"
+                            transition={{ duration: 0.65, delay: 0.12, ease: [0.23, 1, 0.32, 1] }}
+                            className="max-w-xl lg:justify-self-end"
                         >
-                            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground/70 font-medium tracking-tight leading-snug uppercase text-center max-w-3xl mx-auto">
-                                We help businesses scale using <span className="text-foreground font-black not-italic border-b border-foreground/20 pb-1">intelligent systems</span> not manual effort.
+                            <p className="text-xl font-medium leading-relaxed tracking-tight text-foreground/75 sm:text-2xl">
+                                We help businesses scale using intelligent systems, not manual effort.
                             </p>
-
+                            <p className="mt-4 text-base leading-relaxed text-foreground/60 sm:text-lg">
+                                From AI agents and data systems to digital products and production, we connect strategy with software teams can rely on.
+                            </p>
+                            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+                                <Link
+                                    href="/projects"
+                                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-foreground px-5 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                                >
+                                    Explore our work <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                                </Link>
+                                <Link
+                                    href="/contact"
+                                    className="inline-flex min-h-12 items-center text-sm font-semibold text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors hover:text-brand hover:decoration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                                >
+                                    Get in touch
+                                </Link>
+                            </div>
                         </motion.div>
+                    </div>
+
+                    <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-4 border-t border-foreground/10 pt-5 sm:mt-16 sm:grid-cols-4 sm:gap-6 lg:mt-20">
+                        {["AI agents", "Data systems", "Digital products", "Production delivery"].map((capability) => (
+                            <p key={capability} className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground/55 sm:text-sm">
+                                {capability}
+                            </p>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -260,13 +261,28 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* --- Premium Core Expertise Bento Grid --- */}
+            {/* --- Vision: the north star behind the work --- */}
+            <section className="py-20 relative overflow-hidden border-y border-foreground/5">
+                <div className="absolute inset-0 bg-foreground/[0.01]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-foreground/5 rounded-full blur-[100px] pointer-events-none" />
+                <div className="container mx-auto px-6 max-w-4xl relative z-10">
+                    <ScrollReveal className="text-center space-y-7">
+                        <h2 className="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter">Our vision</h2>
+                        <div className="h-px w-24 bg-gradient-to-r from-transparent via-foreground/20 to-transparent mx-auto" />
+                        <p className="text-lg sm:text-xl md:text-2xl font-medium tracking-tight leading-relaxed text-foreground/70 max-w-3xl mx-auto">
+                            To become a global AI-first technology partner helping businesses transition from manual operations to <span className="text-foreground font-black border-b border-foreground/20 pb-1">autonomous AI-driven systems.</span>
+                        </p>
+                    </ScrollReveal>
+                </div>
+            </section>
+
+            {/* --- Core expertise: how the vision becomes practical work --- */}
             <section className="py-24 bg-transparent">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <ScrollReveal className="text-center mb-20 space-y-4">
 
                         <h2 className="fluid-h2 text-foreground">
-                            CORE EXPERTISE.
+                            What we do
                         </h2>
                     </ScrollReveal>
 
@@ -297,28 +313,50 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* --- Stunning Glassmorphic Vision Section --- */}
-            <section className="py-24 relative overflow-hidden border-y border-foreground/5">
-                <div className="absolute inset-0 bg-foreground/[0.01]" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-foreground/5 rounded-full blur-[100px] pointer-events-none" />
-                <div className="container mx-auto px-6 max-w-4xl relative z-10">
-                    <ScrollReveal className="text-center space-y-8">
-                        <h2 className="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter">
-                            OUR VISION.
-                        </h2>
-                        <div className="h-px w-24 bg-gradient-to-r from-transparent via-foreground/20 to-transparent mx-auto" />
-                        <p className="text-lg sm:text-xl md:text-2xl font-medium tracking-tight leading-relaxed text-foreground/70 max-w-3xl mx-auto">
-                            To become a global AI-first technology partner helping businesses transition from manual operations to <span className="text-foreground font-black border-b border-foreground/20 pb-1">autonomous AI-driven systems.</span>
-                        </p>
+            {/* --- Company journey: context before introducing the people --- */}
+            <section className="py-24 bg-transparent border-t border-foreground/5">
+                <div className="container mx-auto px-6 max-w-5xl">
+                    <ScrollReveal className="text-center mb-16 space-y-4">
+                        <p className="text-meta">From strategy to systems in the real world</p>
+                        <h2 className="fluid-h2 text-foreground">Our journey</h2>
                     </ScrollReveal>
+
+                    <div className="relative">
+                        <div className="absolute top-0 bottom-0 left-[20px] md:left-1/2 w-[2px] bg-gradient-to-b from-foreground/20 via-foreground/5 to-transparent pointer-events-none" />
+                        <div className="space-y-10 md:space-y-16">
+                            {timeline.map((item, index) => (
+                                <motion.div
+                                    key={item.year}
+                                    initial={{ opacity: 0, y: 24 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.55, delay: index * 0.08 }}
+                                    className={`flex flex-col md:flex-row gap-6 md:gap-8 items-start relative ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+                                >
+                                    <div className="absolute left-[16px] md:left-1/2 -ml-[5px] w-3 h-3 rounded-full bg-brand border-4 border-background z-20 shadow-[0_1px_4px_rgba(20,15,18,0.22)]" />
+                                    <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-12">
+                                        <div className={`space-y-3 p-6 sm:p-8 rounded-2xl bg-card border border-border hover:border-brand/30 transition-colors relative ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                                            <span className="text-4xl sm:text-5xl font-black text-foreground/10 font-heading leading-none absolute top-4 right-6 pointer-events-none">{item.year}</span>
+                                            <span className="text-3xl sm:text-4xl font-black text-foreground font-heading leading-none block">{item.year}</span>
+                                            <h3 className="text-lg font-black tracking-tight text-foreground">{item.title}</h3>
+                                            <p className="text-foreground/60 text-sm leading-relaxed max-w-sm ml-0 mr-auto md:ml-auto md:mr-0">{item.description}</p>
+                                        </div>
+                                    </div>
+                                    <div className="hidden md:block w-1/2" />
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </section>
+
+            <TeamMoments />
 
             {/* --- Architects (Team) Section --- */}
             <section className="py-32 bg-transparent">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <ScrollReveal className="text-center mb-24 space-y-4">
-                        <h2 className="fluid-h2 text-foreground">ARCHITECTS</h2>
+                        <h2 className="fluid-h2 text-foreground">Core team</h2>
                     </ScrollReveal>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -337,8 +375,7 @@ export default function AboutPage() {
                                             src={member.image}
                                             alt={member.name}
                                             fill
-                                            sizes="(max-w-768px) 100vw, 33vw"
-                                            priority={index < 3}
+                                            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
                                             className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60" />
@@ -383,56 +420,14 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* --- Next-Gen Circuit Journey (Timeline) --- */}
-            <section className="py-32 bg-transparent border-t border-foreground/5">
-                <div className="container mx-auto px-6 max-w-5xl">
-                    <ScrollReveal className="text-center mb-24 space-y-4">
-                        <h2 className="fluid-h2 text-foreground">JOURNEY.</h2>
-                    </ScrollReveal>
-
-                    <div className="relative">
-                        {/* Center circuit timeline bar */}
-                        <div className="absolute top-0 bottom-0 left-[20px] md:left-1/2 w-[2px] bg-gradient-to-b from-foreground/20 via-foreground/5 to-transparent pointer-events-none" />
-
-                        <div className="space-y-24">
-                            {timeline.map((item, index) => (
-                                <motion.div
-                                    key={item.year}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                                    className={`flex flex-col md:flex-row gap-8 items-start relative ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-                                >
-                                    {/* Pulse node */}
-                                    <div className="absolute left-[16px] md:left-1/2 -ml-[5px] w-3 h-3 rounded-full bg-brand border-4 border-background z-20 shadow-[0_1px_4px_rgba(20,15,18,0.22)]" />
-                                    
-                                    <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-12">
-                                        <div className={`space-y-4 p-8 rounded-2xl bg-card border border-border hover:border-brand/30 transition-colors relative ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
-                                            <span className="text-4xl sm:text-5xl font-black text-foreground/10 font-heading leading-none absolute top-4 right-6 pointer-events-none">{item.year}</span>
-                                            <span className="text-3xl sm:text-4xl font-black text-foreground font-heading leading-none block">{item.year}</span>
-                                            <h4 className="text-lg font-black uppercase tracking-tight text-foreground">{item.title}</h4>
-                                            <p className="text-foreground/50 text-sm font-medium leading-relaxed max-w-sm ml-0 mr-auto md:ml-auto md:mr-0 uppercase tracking-tight">
-                                                {item.description}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="hidden md:block w-1/2" />
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* --- Premium Trust & Business Model Bento Grid --- */}
+            {/* --- Trust and ongoing partnership --- */}
             <section className="py-24 border-t border-foreground/5 bg-foreground/[0.01]">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid lg:grid-cols-[1.2fr_1.8fr] gap-8">
                         {/* Why Trust Us card */}
                         <ScrollReveal className="space-y-10 p-8 sm:p-12 rounded-[2.5rem] bg-card border border-border shadow-sm relative overflow-hidden">
                             <div className="space-y-2">
-                                <h2 className="fluid-h2 text-foreground">WHY TRUST US?</h2>
+                                <h2 className="fluid-h2 text-foreground">Why partner with us?</h2>
                             </div>
                             <div className="space-y-6">
                                 {trustFactors.map((factor, i) => (
@@ -454,7 +449,7 @@ export default function AboutPage() {
                             <div className="relative z-10 space-y-10">
                                 
                                 <h2 className="fluid-h2 text-foreground">
-                                    WE DON'T JUST DELIVER. <br />
+                                    WE DON&apos;T JUST DELIVER. <br />
                                     <span className="text-foreground/45">WE OPTIMIZE.</span>
                                 </h2>
                                 <p className="text-base sm:text-lg font-medium text-foreground/70 max-w-xl leading-relaxed">

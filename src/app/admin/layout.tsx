@@ -17,6 +17,11 @@ import { getProtectedContext } from "@/lib/get-session";
 import { getSidebarNav } from "@/lib/types";
 import { hasPermission } from "@/lib/adapters";
 import { ROUTES } from "@/config/resources";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    robots: { index: false, follow: false },
+};
 
 export default async function AdminLayout({
     children,

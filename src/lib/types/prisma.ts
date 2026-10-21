@@ -15,8 +15,25 @@ export type ProductWithRelations = Prisma.ProductGetPayload<{
     include: { images: true; seller: true; productFiles: true };
 }>;
 
-export type ProductWithSeller = Prisma.ProductGetPayload<{
-    include: { images: true; seller: true };
+/**
+ * SOURCE OF TRUTH KEYWORDS: ShopProduct, public marketplace projection, product cards, quick view
+ * WHAT: The minimal public product payload used by the storefront client.
+ * WHY: Prevents private seller and payment identifiers from being serialized to shoppers and reduces hydration payload.
+ * WHERE: product.service.listApproved, /shop, and shop product cards/modals.
+ */
+export type ShopProduct = Prisma.ProductGetPayload<{
+    select: {
+        id: true;
+        name: true;
+        description: true;
+        price: true;
+        category: true;
+        demoUrl: true;
+        features: true;
+        techStack: true;
+        sellerId: true;
+        images: { select: { url: true } };
+    };
 }>;
 
 export type ProductFormInitial = {

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import { cn } from "@/lib/utils";
 import { LayoutDashboard, ArrowLeft, Settings, Menu, X, Package, ShoppingCart, Users, DollarSign } from "lucide-react";
 import LogoutButton from "@/components/auth/LogoutButton";
@@ -34,7 +34,7 @@ export function AdminSidebar({ navItems }: AdminSidebarProps) {
             {/* Mobile Header */}
             <header className="lg:hidden flex items-center justify-between p-4 border-b border-border bg-black/40 backdrop-blur-xl sticky top-0 z-50">
                 <Image
-                    src="/images/brand/mindscape-analytics-logo.png"
+                    src="/images/brand/mindscape-analytics-logo.webp"
                     alt="Mindscape Analytics"
                     width={140}
                     height={32}
@@ -65,7 +65,7 @@ export function AdminSidebar({ navItems }: AdminSidebarProps) {
 
                 <div className="mb-12">
                     <Image
-                        src="/images/brand/mindscape-analytics-logo.png"
+                    src="/images/brand/mindscape-analytics-logo.webp"
                         alt="Mindscape Analytics"
                         width={180}
                         height={40}

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ShieldCheck, Cpu, Mic, Globe, Volume2, Zap, Phone, MicOff } from "lucide-react";
@@ -629,7 +629,7 @@ export default function AiEmployee() {
                                 className="relative w-full max-w-[300px] md:max-w-[500px] lg:max-w-[720px] h-[480px] md:h-[750px] lg:h-[950px] z-20 group transform-gpu"
                             >
                                 <div className="absolute inset-0 rounded-[2.5rem] lg:rounded-[5rem] border border-white/5 bg-zinc-950/40 backdrop-blur-lg overflow-hidden shadow-[0_100px_200px_-40px_rgba(0,0,0,1)] ring-1 ring-white/5">
-                                    <Image src="/images/team/zeeshan-keerio.webp" alt="Zeeshan Keerio, Founder of Mindscape Analytics" fill sizes="(min-width: 1024px) 720px, (min-width: 768px) 500px, 300px" className="object-cover object-top contrast-[1.05] grayscale-[0.02] group-hover:grayscale-0 transition-[filter] duration-[3s]" priority />
+                                    <Image src="/images/team/zeeshan-keerio.webp" alt="Zeeshan Keerio, Founder of Mindscape Analytics" fill sizes="(min-width: 1024px) 720px, (min-width: 768px) 500px, 300px" className="object-cover object-top contrast-[1.05] grayscale-[0.02] group-hover:grayscale-0 transition-[filter] duration-[3s]" />
                                     <div className="absolute inset-0 bg-black/20 pointer-events-none z-10" />
                                     <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-background via-background/40 to-transparent z-10 pointer-events-none" />
 

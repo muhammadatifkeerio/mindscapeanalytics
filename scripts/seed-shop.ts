@@ -8,7 +8,7 @@ const products = [
         category: 'TRADING_SYSTEMS',
         features: ['Real-time Liquidity Mapping', 'Neural Signal Gating', 'Risk Management V3', 'Pine Script v6 Optimized'],
         approvedForSale: true,
-        images: { create: [{ url: '/oracle_alpha_trading_engine.png' }] }
+        images: { create: [{ url: '/oracle_alpha_trading_engine.webp' }] }
     },
     {
         name: 'Neural-Lead-Gen n8n Pack',
@@ -17,7 +17,7 @@ const products = [
         category: 'AUTOMATION_PACKS',
         features: ['Multimodal Scraping', 'Apollo/Lusha Integration', 'AI Intent Analysis', 'CRM Auto-Sync'],
         approvedForSale: true,
-        images: { create: [{ url: '/neural_lead_gen_n8n.png' }] }
+        images: { create: [{ url: '/neural_lead_gen_n8n.webp' }] }
     },
     {
         name: 'Sentience CRM Sync',
@@ -26,7 +26,7 @@ const products = [
         category: 'ENTERPRISE_TOOLS',
         features: ['Sentiment Tracking', 'Automated Note-Taking', 'Entity Extraction', 'Universal API Support'],
         approvedForSale: true,
-        images: { create: [{ url: '/sentience_crm_sync.png' }] }
+        images: { create: [{ url: '/sentience_crm_sync.webp' }] }
     },
     {
         name: 'Sovereign SaaS Boilerplate',
@@ -35,7 +35,7 @@ const products = [
         category: 'SOFTWARE_KITS',
         features: ['Next.js 15 App Router', 'Clerk / Supabase Ready', 'Stripe Subscription Flow', 'Tailwind v4 Engine'],
         approvedForSale: true,
-        images: { create: [{ url: '/sovereign_saas_boilerplate.png' }] }
+        images: { create: [{ url: '/sovereign_saas_boilerplate.webp' }] }
     },
     {
         name: 'Aether-Flow Voice AI',
@@ -44,7 +44,7 @@ const products = [
         category: 'VOICE_INTELLIGENCE',
         features: ['Ultra-Low Latency', 'Emotional Tone Mapping', 'Dynamic Scripting', 'Multi-Language Support'],
         approvedForSale: true,
-        images: { create: [{ url: '/aether-flow.png' }] }
+        images: { create: [{ url: '/aether-flow.webp' }] }
     },
     {
         name: 'Ghost-Writer SEO Engine',
@@ -53,7 +53,7 @@ const products = [
         category: 'CONTENT_AUTOMATION',
         features: ['Keyword Cluster Generation', 'Serpstat/Ahrefs Integration', 'Semantic Optimization', 'Bulk CMS Publishing'],
         approvedForSale: true,
-        images: { create: [{ url: '/ghost-writer.png' }] }
+        images: { create: [{ url: '/ghost-writer.webp' }] }
     }
 ];
 

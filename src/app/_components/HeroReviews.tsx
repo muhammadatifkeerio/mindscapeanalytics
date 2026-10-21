@@ -18,7 +18,7 @@ const reviews = [
 
 /**
  * SOURCE OF TRUTH KEYWORDS: hero reviews, verified Fiverr feedback, 4-second carousel, reduced motion
- * WHAT: A compact carousel of the nine client reviews in the supplied review PDF.
+ * WHAT: A single-row mobile review summary and desktop carousel of the nine supplied client reviews.
  * WHY: Keeps social proof visible in the hero without letting it crowd the headline and primary actions.
  * WHERE: Rendered beneath the homepage hero actions in src/app/HomeClient.tsx.
  */
@@ -53,14 +53,14 @@ export default function HeroReviews() {
             onBlur={(event) => {
                 if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsInteracting(false);
             }}
-            className="mt-9 border-t border-border/80 pt-4 sm:mt-11"
+            className="mt-5 border-t border-border/80 pt-3 sm:mt-11 sm:pt-4"
         >
-            <div className="grid min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-2 sm:grid-cols-[auto_minmax(0,1fr)_auto_auto] sm:gap-x-5">
+            <div className="grid min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-2 sm:grid-cols-[auto_minmax(0,1fr)_auto_auto] sm:gap-x-5">
                 <div role="img" className="flex items-center gap-1 text-brand" aria-label={`${review.rating} out of 5 stars`}>
                     {Array.from({ length: 5 }, (_, index) => {
                         const fill = Math.max(0, Math.min(1, review.rating - index));
                         return (
-                            <span key={index} className="relative inline-flex h-3.5 w-3.5" aria-hidden="true">
+                            <span key={index} className={`relative h-3.5 w-3.5 ${index === 0 ? "inline-flex" : "hidden sm:inline-flex"}`} aria-hidden="true">
                                 <Star className="absolute inset-0 h-3.5 w-3.5 fill-border/50 text-border/50" />
                                 <span className="absolute inset-y-0 left-0 overflow-hidden" style={{ width: `${fill * 100}%` }}>
                                     <Star className="h-3.5 w-3.5 fill-current text-brand" />
@@ -68,10 +68,10 @@ export default function HeroReviews() {
                             </span>
                         );
                     })}
-                    <span className="ml-1 whitespace-nowrap text-[11px] font-semibold text-muted-foreground">{review.rating.toFixed(1)} / 5</span>
+                    <span className="ml-1 whitespace-nowrap text-[11px] font-semibold text-muted-foreground">{review.rating.toFixed(1)}<span className="hidden sm:inline"> / 5</span></span>
                 </div>
 
-                <div className="min-w-0 sm:col-start-2 sm:row-start-1">
+                <div className="sr-only min-w-0 sm:not-sr-only sm:col-start-2 sm:row-start-1">
                     <AnimatePresence mode="wait" initial={false}>
                         <motion.p
                             key={review.name}
@@ -86,17 +86,17 @@ export default function HeroReviews() {
                     </AnimatePresence>
                 </div>
 
-                <div className="col-span-2 flex min-w-0 items-center gap-2 sm:col-span-1 sm:col-start-3 sm:row-start-1">
-                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand/10 text-xs font-bold text-brand" aria-hidden="true">{review.name.slice(0, 1).toUpperCase()}</span>
+                <div className="col-start-2 row-start-1 flex min-w-0 items-center gap-2 sm:col-start-3">
+                    <span className="hidden h-8 w-8 shrink-0 place-items-center rounded-full bg-brand/10 text-xs font-bold text-brand sm:grid" aria-hidden="true">{review.name.slice(0, 1).toUpperCase()}</span>
                     <div className="min-w-0 text-xs leading-4 text-muted-foreground">
                         <p className="truncate"><span className="font-semibold text-foreground">{review.name}</span><span aria-hidden="true"> · </span>{review.location}</p>
                         <p className="truncate">Fiverr client · {review.age}</p>
                     </div>
                 </div>
 
-                <div className="col-start-2 row-start-1 flex items-center justify-end gap-0.5 sm:col-start-4 sm:row-start-1">
+                <div className="col-start-3 row-start-1 flex items-center justify-end gap-0.5 sm:col-start-4">
                     <span className="mr-1 hidden whitespace-nowrap text-[10px] tabular-nums text-muted-foreground sm:inline">{String(activeIndex + 1).padStart(2, "0")} / {String(reviews.length).padStart(2, "0")}</span>
-                    <button type="button" onClick={() => changeReview(-1)} aria-label="Previous review" className="grid h-11 w-11 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><ArrowLeft className="h-4 w-4" /></button>
+                    <button type="button" onClick={() => changeReview(-1)} aria-label="Previous review" className="hidden h-11 w-11 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:grid"><ArrowLeft className="h-4 w-4" /></button>
                     {!reduceMotion && <button type="button" onClick={() => setIsPaused((paused) => !paused)} aria-label={isPaused ? "Resume automatic reviews" : "Pause automatic reviews"} aria-pressed={isPaused} className="grid h-11 w-11 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{isPaused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}</button>}
                     <button type="button" onClick={() => changeReview(1)} aria-label="Next review" className="grid h-11 w-11 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><ArrowRight className="h-4 w-4" /></button>
                 </div>

@@ -1,14 +1,14 @@
 "use client"
 
 import React from "react"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, type LucideIcon } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
+import Image from "@/components/SmartImage"
 import { cn } from "@/lib/utils"
 
 export interface PremiumCardProps {
     title: string
-    icon: React.ComponentType<any>
+    icon: LucideIcon
     description: string
     features?: string[]
     link: string
@@ -58,7 +58,7 @@ export function PremiumCard({
                 {/* Image Top */}
                 {image && imagePosition === "top" && (
                     <div className="relative w-full h-48 lg:h-56 rounded-xl overflow-hidden border border-border/50 group-hover:border-foreground/30 transition-colors">
-                        <Image src={image} alt={title} fill className="object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <Image src={image} alt={title} fill sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 480px" className="object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                     </div>
                 )}
 
@@ -94,7 +94,7 @@ export function PremiumCard({
                         "relative rounded-xl overflow-hidden border border-border/50 group-hover:border-foreground/30 transition-colors",
                         imagePosition === "right" ? "w-full md:w-1/2 min-h-[160px]" : "w-full h-48 mt-4"
                     )}>
-                        <Image src={image} alt={title} fill className="object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <Image src={image} alt={title} fill sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 480px" className="object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                     </div>
                 )}
             </div>

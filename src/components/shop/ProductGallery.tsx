@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import { motion, AnimatePresence } from "framer-motion";
 import { Box, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -41,6 +41,7 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
                             alt={`${name} - ${activeIndex + 1}`}
                             fill
                             priority
+                            sizes="(max-width: 1023px) 100vw, 50vw"
                             className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000"
                         />
                     </motion.div>
@@ -98,6 +99,7 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
                                 src={img.url}
                                 alt={`${name} thumb ${i + 1}`}
                                 fill
+                                sizes="96px"
                                 className="object-cover"
                             />
                         </button>

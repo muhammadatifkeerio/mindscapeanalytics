@@ -37,6 +37,12 @@ export const NavbarMobileMenu = memo(function NavbarMobileMenu({
     isRegisteredSeller,
     onSignOut,
 }: NavbarMobileMenuProps) {
+    /**
+     * SOURCE OF TRUTH KEYWORDS: Mobile navigation, touch menu, viewport scroll, safe area, drawer usability
+     * WHAT: Scroll-contained mobile navigation with touch-sized links.
+     * WHY: Short screens need to reach every destination without losing the page's scroll context.
+     * WHERE: Rendered from NavbarInner across public routes below the desktop navigation breakpoint.
+     */
     return (
         <div
             role="dialog"
@@ -47,10 +53,10 @@ export const NavbarMobileMenu = memo(function NavbarMobileMenu({
             className={cn(
                 dropdownPanelMotion,
                 dropdownPanelState(isOpen),
-                "xl:hidden absolute left-4 right-4 top-full z-50 mx-auto mt-4 w-auto max-w-sm origin-top overflow-hidden rounded-3xl border border-border bg-card shadow-[0_24px_64px_hsl(var(--foreground)/0.14)]"
+                "xl:hidden absolute left-4 right-4 top-full z-50 mx-auto mt-3 w-auto max-w-sm origin-top overflow-x-hidden overflow-y-auto overscroll-y-contain touch-pan-y rounded-3xl border border-border bg-card shadow-[0_24px_64px_hsl(var(--foreground)/0.14)] max-h-[calc(100dvh-7rem)]"
             )}
         >
-            <div className="p-8 space-y-8 relative z-10">
+            <div className="relative z-10 space-y-5 p-5 sm:space-y-8 sm:p-8">
                 {navLinks.map((link) => {
                     const isActive = isNavLinkActive(location, link);
                     const isSubmenuOpen = activeMobileDropdown === link.name;
@@ -64,7 +70,7 @@ export const NavbarMobileMenu = memo(function NavbarMobileMenu({
                                     className={cn(
                                         navFocusRing,
                                         mobileNavLinkClass,
-                                        "flex items-center gap-4 py-1 transition-colors duration-150",
+                                        "flex min-h-11 items-center gap-4 py-2 transition-colors duration-150",
                                         isActive
                                             ? "text-foreground"
                                             : "text-foreground/80 hover:text-foreground"
@@ -95,7 +101,7 @@ export const NavbarMobileMenu = memo(function NavbarMobileMenu({
                                         }
                                         className={cn(
                                             navFocusRing,
-                                            "p-3 text-foreground/70 hover:text-foreground transition-colors duration-150 bg-foreground/10 rounded-xl border border-border shadow-sm"
+                                            "grid h-11 w-11 shrink-0 place-items-center text-foreground/70 hover:text-foreground transition-colors duration-150 bg-foreground/10 rounded-xl border border-border shadow-sm"
                                         )}
                                     >
                                         <ChevronDown
@@ -127,7 +133,7 @@ export const NavbarMobileMenu = memo(function NavbarMobileMenu({
                                                     className={cn(
                                                         navFocusRing,
                                                         mobileSubmenuClass,
-                                                        "flex items-center gap-3 py-2 transition-colors duration-150",
+                                        "flex min-h-11 items-center gap-3 py-2 transition-colors duration-150",
                                                         isSubActive
                                                             ? "text-foreground"
                                                             : "text-foreground/75 hover:text-foreground"

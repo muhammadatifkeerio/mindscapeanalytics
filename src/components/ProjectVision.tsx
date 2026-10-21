@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import { cn } from "@/lib/utils";
 
 // --- Types ---

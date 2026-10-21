@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import { useCart } from "@/contexts/CartContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -18,14 +18,10 @@ import {
 } from "lucide-react";
 import { createMultiItemCheckout } from "@/app/_actions/stripe";
 import { motion, AnimatePresence } from "framer-motion";
-import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
 
 export default function CartPage() {
     const { items, removeFromCart, updateQuantity, total, itemCount } = useCart();
     const [isProcessing, setIsProcessing] = useState(false);
-    const { data: session } = authClient.useSession();
-    const router = useRouter();
 
     const handleCheckout = async () => {
         if (items.length === 0) return;
@@ -111,6 +107,7 @@ export default function CartPage() {
                                                         src={item.image}
                                                         alt={item.name}
                                                         fill
+                                                        sizes="128px"
                                                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                                                     />
                                                 ) : (

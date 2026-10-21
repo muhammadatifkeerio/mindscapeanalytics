@@ -3,15 +3,14 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle2, Code, ExternalLink } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import ProductDetailsClient from "./ProductDetailsClient";
-import ProductGallery from "./ProductGallery";
 
-import type { ProductWithSeller } from "@/lib/types";
+import type { ShopProduct } from "@/lib/types";
 import { asStringList } from "@/lib/json-list";
 
 interface ProductDetailsModalProps {
-    product: ProductWithSeller | null;
+    product: ShopProduct | null;
     isOpen: boolean;
     onClose: () => void;
 }
@@ -59,6 +58,7 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                                         src={product.images[0]?.url || "https://placehold.co/600x400/0a0a0b/ffffff?text=No+Image"}
                                         alt={product.name}
                                         fill
+                                        sizes="(max-width: 1023px) 100vw, 50vw"
                                         className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
@@ -123,14 +123,13 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                             <div className="mt-12 pt-10 border-t border-border">
                                 <div className="flex items-center justify-between mb-8">
                                     <div className="flex flex-col">
-                                        <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-1">Standard Allocation</span>
+                                        <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-1">{product.category === "request_access" ? "Availability" : product.category === "trading_intelligence" ? "One-time purchase" : "Standard Allocation"}</span>
                                         <div className="flex items-baseline gap-2">
-                                            <span className="text-4xl font-black tracking-tighter text-foreground">${product.price}</span>
-                                            <span className="text-foreground/20 text-[9px] font-bold uppercase">USD</span>
+                                            {product.category === "request_access" ? <span className="text-2xl font-bold tracking-tight text-foreground">Request access</span> : <><span className="text-4xl font-black tracking-tighter text-foreground">${product.price}</span><span className="text-foreground/20 text-[9px] font-bold uppercase">USD</span></>}
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-3 px-4 py-2 bg-foreground/5 rounded-xl border border-border">
-                                        <span className="text-[8px] font-black uppercase tracking-widest text-foreground/40">Verified Ready</span>
+                                        <span className="text-[8px] font-black uppercase tracking-widest text-foreground/40">{product.category === "request_access" ? "Availability by request" : "Verified Ready"}</span>
                                     </div>
                                 </div>
 

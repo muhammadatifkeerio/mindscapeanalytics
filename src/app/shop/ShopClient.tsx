@@ -8,7 +8,6 @@ import Link from "next/link";
 import {
     Search,
     SlidersHorizontal,
-    LayoutGrid,
     ArrowRight,
     Zap,
     ShieldCheck,
@@ -18,12 +17,11 @@ import {
     Database,
     Globe,
     Filter,
-    Eye,
     X
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ProductDetailsModal } from "@/components/shop/ProductDetailsModal";
-import type { ProductWithSeller } from "@/lib/types";
+import type { ShopProduct } from "@/lib/types";
 
 const PRIMARY_CATEGORIES = [
     { id: "all", name: "All Products", slug: "" },
@@ -34,7 +32,7 @@ const PRIMARY_CATEGORIES = [
 ];
 
 
-function ShopContent({ initialProducts }: { initialProducts: ProductWithSeller[] }) {
+function ShopContent({ initialProducts }: { initialProducts: ShopProduct[] }) {
     const searchParams = useSearchParams();
     const navRouter = useRouter();
     const categoryQuery = searchParams.get("category") || "";
@@ -43,8 +41,8 @@ function ShopContent({ initialProducts }: { initialProducts: ProductWithSeller[]
     // Add local state for instantaneous typing feedback
     const [searchQuery, setSearchQuery] = useState(urlSearchQuery);
 
-    const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-    const [selectedProduct, setSelectedProduct] = useState<ProductWithSeller | null>(null);
+    const viewMode = "grid";
+    const [selectedProduct, setSelectedProduct] = useState<ShopProduct | null>(null);
 
     // Debounce the actual URL update
     useEffect(() => {
@@ -63,13 +61,17 @@ function ShopContent({ initialProducts }: { initialProducts: ProductWithSeller[]
         return () => clearTimeout(timer);
     }, [searchQuery, urlSearchQuery, navRouter]);
 
-    // Keep local state in sync if URL changes externally
+    // Keep local search in sync with browser back/forward navigation.
     useEffect(() => {
-        setSearchQuery(urlSearchQuery);
-    }, [urlSearchQuery]);
+        const syncSearchQuery = () => {
+            setSearchQuery(new URLSearchParams(window.location.search).get("search") || "");
+        };
+        window.addEventListener("popstate", syncSearchQuery);
+        return () => window.removeEventListener("popstate", syncSearchQuery);
+    }, []);
 
     const products = useMemo(() => {
-        let list = [...(initialProducts as any[])];
+        let list = [...initialProducts];
 
         if (categoryQuery && categoryQuery !== "all") {
             list = list.filter(p => p.category === categoryQuery);
@@ -90,7 +92,7 @@ function ShopContent({ initialProducts }: { initialProducts: ProductWithSeller[]
         <div className="min-h-screen bg-background text-foreground relative">
             <Navbar />
 
-            <main className="relative z-10 max-w-[1800px] mx-auto px-6 pt-32 pb-32 sm:pt-36 lg:px-12 lg:pt-40">
+            <main className="relative z-10 max-w-[1800px] mx-auto px-6 pt-40 pb-32 sm:pt-44 lg:px-12 lg:pt-48">
                 {/* Background Effects specifically for Hero - Enhanced Depth */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-[700px] bg-[url('/grid.svg')] bg-[length:60px_60px] opacity-[0.04] [mask-image:radial-gradient(ellipse_at_top,white,transparent_60%)] pointer-events-none" />
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
@@ -125,7 +127,7 @@ function ShopContent({ initialProducts }: { initialProducts: ProductWithSeller[]
                 </header>
 
                 {/* Unified Control Hub (Sticky) */}
-                <div className="sticky top-20 md:top-24 z-[100] mb-8 md:mb-12 px-2">
+                <div className="sticky top-24 md:top-28 z-30 mb-8 md:mb-12 px-2">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -280,7 +282,7 @@ function ShopContent({ initialProducts }: { initialProducts: ProductWithSeller[]
     );
 }
 
-export default function ShopClient({ initialProducts }: { initialProducts: ProductWithSeller[] }) {
+export default function ShopClient({ initialProducts }: { initialProducts: ShopProduct[] }) {
     return (
         <Suspense fallback={
             <div className="min-h-screen bg-background flex items-center justify-center">

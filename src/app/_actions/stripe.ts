@@ -29,6 +29,9 @@ export async function createCheckoutSession(productId: string): Promise<{ url: s
         if (!product.approvedForSale) {
             throw new Error("This asset is pending review and cannot be purchased at this time.");
         }
+        if (product.category === "request_access") {
+            throw new Error("This product is available by request and is not configured for checkout.");
+        }
 
         const stripe = getStripe();
         const stripeSession = await stripe.checkout.sessions.create({
@@ -70,6 +73,9 @@ export async function createMultiItemCheckout(items: Array<{ id: string; quantit
             if (!product) throw new Error(`Asset "${item.id}" not found.`);
             if (!product.approvedForSale) {
                 throw new Error(`Asset "${product.name}" is not available for purchase.`);
+            }
+            if (product.category === "request_access") {
+                throw new Error(`Asset "${product.name}" is available by request and is not configured for checkout.`);
             }
         }
 

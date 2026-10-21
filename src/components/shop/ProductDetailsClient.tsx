@@ -31,6 +31,7 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
     const { data: session } = authClient.useSession();
     const router = useRouter();
     const pathname = usePathname();
+    const isRequestAccess = product.category === "request_access";
 
     const handleAddToCart = () => {
         setIsAdding(true);
@@ -66,6 +67,16 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
     return (
         <div className="space-y-6">
             <div className="flex flex-col gap-4">
+                {isRequestAccess ? (
+                    <motion.button
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
+                        onClick={() => setIsDemoModalOpen(true)}
+                        className="w-full py-6 bg-foreground text-background font-black text-xs uppercase tracking-[0.3em] rounded-2xl hover:bg-foreground/90 transition-all flex items-center justify-center gap-3 group"
+                    >
+                        Request access <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    </motion.button>
+                ) : <>
                 <motion.button
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
@@ -109,19 +120,23 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
                 >
                     Request Demo
                 </motion.button>
+                </>}
             </div>
 
-            <div className="pt-6 border-t border-border space-y-3">
+            {isRequestAccess ? (
+                <p className="pt-4 border-t border-border text-xs leading-5 text-muted-foreground">No payment is collected here. Our team will confirm availability, access, licensing, and pricing.</p>
+            ) : <div className="pt-6 border-t border-border space-y-3">
                 <div className="flex items-center gap-3 text-foreground/30 group">
                     <ShieldCheck size={14} className="group-hover:text-foreground transition-colors" />
                     <span className="text-[10px] font-black uppercase tracking-widest">Stripe Security Protocol Active</span>
                 </div>
-            </div>
+            </div>}
 
             <RequestDemoModal
                 isOpen={isDemoModalOpen}
                 onClose={() => setIsDemoModalOpen(false)}
                 productName={product.name}
+                requestType={isRequestAccess ? "access" : "demo"}
             />
         </div>
     );

@@ -1,59 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
-import { ArrowRight, Bot, Target, Zap, CheckCircle2, Sparkles, Mail, Shield, Globe, Users, TrendingUp, Award, Cpu, Database } from 'lucide-react';
-
-function AnimatedCounter({ target, suffix = "", prefix = "" }: { target: number; suffix?: string; prefix?: string }) {
-    const count = useMotionValue(0);
-    const rounded = useTransform(count, (v) => `${prefix}${Math.round(v).toLocaleString()}${suffix}`);
-    const [display, setDisplay] = useState(`${prefix}0${suffix}`);
-
-    useEffect(() => {
-        const unsubscribe = rounded.on("change", (v) => setDisplay(v));
-        return () => unsubscribe();
-    }, [rounded]);
-
-    return (
-        <motion.span
-            onViewportEnter={() => {
-                animate(count, target, { duration: 2.5, ease: [0.25, 0.1, 0.25, 1] });
-            }}
-            viewport={{ once: true }}
-        >
-            {display}
-        </motion.span>
-    );
-}
-
-const businessStats = [
-    { icon: Bot, value: 47, suffix: "+", label: "Agents", color: "text-emerald-400" },
-    { icon: Zap, value: 2.4, suffix: "M+", label: "Tasks", color: "text-amber-400" },
-    { icon: Users, value: 35, suffix: "+", label: "Clients", color: "text-blue-400" },
-    { icon: TrendingUp, value: 340, suffix: "%", label: "ROI", color: "text-purple-400" },
-];
-
-const testimonials = [
-    {
-        quote: "Reduced response time from 4h to 30s. The ROI was immediate.",
-        name: "Sarah Chen",
-        metric: "98% Faster",
-    }
-];
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Target, Zap, CheckCircle2, Sparkles, Shield, Globe, Users } from 'lucide-react';
 
 export default function AIAuditLeadMagnet() {
     const [email, setEmail] = useState("");
     const [company, setCompany] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!email.trim() || isSubmitting) return;
         setIsSubmitting(true);
+        setError(null);
 
         try {
-            await fetch("/api/leads", {
+            const response = await fetch("/api/leads", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -64,9 +29,10 @@ export default function AIAuditLeadMagnet() {
                     message: "Requested AI readiness audit from landing page lead magnet",
                 }),
             });
+            if (!response.ok) throw new Error("We could not send your request. Please try again or contact us directly.");
             setIsSubmitted(true);
-        } catch {
-            window.location.href = `/contact?plan=ai-audit&email=${encodeURIComponent(email)}`;
+        } catch (submitError) {
+            setError(submitError instanceof Error ? submitError.message : "We could not send your request. Please try again.");
         } finally {
             setIsSubmitting(false);
         }
@@ -117,13 +83,17 @@ export default function AIAuditLeadMagnet() {
                                             <CheckCircle2 className="w-6 h-6 text-emerald-400" />
                                         </div>
                                         <h3 className="text-lg font-black uppercase tracking-wider">Audit Requested</h3>
-                                        <p className="text-xs text-foreground/40">Architectural analysis delivered within 48 hours.</p>
+                                        <p className="text-xs text-foreground/50">Your request is in. We’ll follow up at the email address you provided.</p>
+                                        <a className="text-sm font-semibold text-brand underline underline-offset-4" href="mailto:info@mindscapeanalytics.com">Email us directly</a>
                                     </motion.div>
                                 ) : (
                                     <form onSubmit={handleSubmit} className="space-y-4">
                                         <div className="flex flex-col sm:flex-row gap-3">
                                             <input
                                                 type="email"
+                                                aria-label="Work email"
+                                                autoComplete="email"
+                                                maxLength={254}
                                                 value={email}
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 placeholder="your@email.com"
@@ -132,6 +102,9 @@ export default function AIAuditLeadMagnet() {
                                             />
                                             <input
                                                 type="text"
+                                                aria-label="Company (optional)"
+                                                autoComplete="organization"
+                                                maxLength={120}
                                                 value={company}
                                                 onChange={(e) => setCompany(e.target.value)}
                                                 placeholder="Company"
@@ -144,6 +117,7 @@ export default function AIAuditLeadMagnet() {
                                                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
                                             </span>
                                         </button>
+                                        {error && <p role="alert" className="text-sm text-destructive text-center">{error} <a className="underline underline-offset-4" href="mailto:info@mindscapeanalytics.com">Email us instead</a>.</p>}
                                         <p className="text-[10px] text-foreground/20 text-center font-bold uppercase tracking-widest">No spam. Mission-critical intelligence only.</p>
                                     </form>
                                 )}
@@ -153,50 +127,24 @@ export default function AIAuditLeadMagnet() {
                         {/* RIGHT COLUMN: TRUST & TECH (5/12) */}
                         <div className="lg:col-span-5 p-8 md:p-16 bg-foreground/[0.01] space-y-12 flex flex-col justify-center">
                             
-                            {/* Stats Grid */}
-                            <div className="grid grid-cols-2 gap-4">
-                                {businessStats.map((stat) => (
-                                    <div key={stat.label} className="p-5 rounded-2xl bg-foreground/[0.02] border border-border/30 text-center">
-                                        <stat.icon className={`w-4 h-4 mx-auto mb-2 ${stat.color} opacity-40`} />
-                                        <div className="text-xl font-black text-foreground tracking-tight">
-                                            <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                                        </div>
-                                        <p className="text-[8px] font-mono font-black uppercase tracking-[0.2em] text-foreground/30">{stat.label}</p>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Featured Testimonial */}
-                            <div className="p-6 rounded-2xl bg-secondary/5 border border-secondary/20 relative">
-                                <Award className="absolute -top-3 -right-3 w-8 h-8 text-secondary opacity-20" />
-                                <div className="text-[8px] font-mono font-black uppercase tracking-[0.3em] text-secondary mb-3">Featured Result</div>
-                                <p className="text-sm text-foreground/70 leading-relaxed font-medium mb-4">
-                                    &ldquo;{testimonials[0].quote}&rdquo;
-                                </p>
-                                <div className="flex items-center gap-3 pt-4 border-t border-secondary/10">
-                                    <div className="w-8 h-8 rounded-full bg-foreground/5 border border-border flex items-center justify-center text-[10px] font-black">
-                                        {testimonials[0].name[0]}
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] font-bold text-foreground">{testimonials[0].name}</p>
-                                        <p className="text-[8px] font-mono text-foreground/30 uppercase tracking-wider">{testimonials[0].metric}</p>
-                                    </div>
+                            <div className="space-y-6">
+                                <h3 className="text-xl font-semibold text-foreground">A practical first step</h3>
+                                <p className="text-sm leading-6 text-muted-foreground">We’ll review your goals, identify process and data constraints, then recommend a sensible next step. If a fit is unclear, we’ll say so.</p>
+                                <ul className="space-y-4 text-sm text-muted-foreground">
+                                    {[
+                                        { icon: Target, text: "Clarify the operational problem and desired outcome" },
+                                        { icon: Zap, text: "Identify automation opportunities and integration needs" },
+                                        { icon: Sparkles, text: "Outline a roadmap you can discuss with our team" },
+                                    ].map((item) => (
+                                        <li key={item.text} className="flex items-start gap-3"><item.icon aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-brand" /><span>{item.text}</span></li>
+                                    ))}
+                                </ul>
+                                <div className="border-t border-border pt-5 text-xs text-muted-foreground">No compliance certifications or outcome guarantees are implied by this request.</div>
+                                <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                                    <a className="inline-flex items-center gap-2 font-medium text-foreground underline underline-offset-4" href="mailto:info@mindscapeanalytics.com"><Shield aria-hidden="true" className="h-4 w-4" />Email Mindscape</a>
+                                    <a className="inline-flex items-center gap-2 font-medium text-foreground underline underline-offset-4" href="https://www.linkedin.com/company/mindscapeanalytics/" target="_blank" rel="noreferrer"><Globe aria-hidden="true" className="h-4 w-4" />LinkedIn</a>
+                                    <a className="inline-flex items-center gap-2 font-medium text-foreground underline underline-offset-4" href="tel:+13072106155"><Users aria-hidden="true" className="h-4 w-4" />Call our team</a>
                                 </div>
-                            </div>
-
-                            {/* Trust Badges */}
-                            <div className="grid grid-cols-2 gap-3">
-                                {[
-                                    { icon: Shield, text: "SOC 2" },
-                                    { icon: Globe, text: "GDPR" },
-                                    { icon: Zap, text: "99.9% SLA" },
-                                    { icon: Users, text: "24/7" },
-                                ].map((badge, i) => (
-                                    <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-xl bg-foreground/[0.02] border border-border/30">
-                                        <badge.icon className="w-3 h-3 text-foreground/20" />
-                                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-foreground/40">{badge.text}</span>
-                                    </div>
-                                ))}
                             </div>
                         </div>
 

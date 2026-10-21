@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Bot, Boxes, Check, Database, Factory, Globe2, LineChart, PackageCheck, Sparkles, TrendingUp, Users } from "lucide-react";
@@ -9,12 +9,13 @@ import Footer from "@/components/Footer";
 import LeadCaptureBar from "@/components/LeadCaptureBar";
 import BrandCardShowcase from "./_components/BrandCardShowcase";
 import HeroReviews from "./_components/HeroReviews";
+import TeamMoments from "@/components/TeamMoments";
 
 const portfolio = [
-    { name: "Smart Dairy & Cattle Farm Management", descriptor: "A connected operating system for dairy and cattle farms", image: "/images/projects/smart-dairy-card.png", width: 1754, height: 993, href: "https://cattle.mindscapeanalytics.com/" },
-    { name: "RSIQ Pro", descriptor: "AI-powered market intelligence", image: "/images/projects/rsiq-pro-card.png", width: 1863, height: 844, href: "https://rsiq.mindscapeanalytics.com/" },
-    { name: "Tenvo", descriptor: "AI agents for modern businesses", image: "/images/projects/tenvo-card.png", width: 1824, height: 862, href: "https://www.tenvo.store/" },
-    { name: "DisposiQ", descriptor: "Production and disposal operations intelligence", image: "/images/projects/disposiq-card.png", width: 1864, height: 843, href: "https://disposiq.tenvo.store/" },
+    { name: "Smart Dairy & Cattle Farm Management", descriptor: "A connected operating system for dairy and cattle farms", image: "/images/projects/smart-dairy-card.webp", width: 1754, height: 896, href: "https://cattle.mindscapeanalytics.com/" },
+    { name: "RSIQ Pro", descriptor: "AI-powered market intelligence", image: "/images/projects/rsiq-pro-card.webp", width: 1863, height: 844, href: "https://rsiq.mindscapeanalytics.com/" },
+    { name: "Tenvo", descriptor: "AI agents for modern businesses", image: "/images/projects/tenvo-card.webp", width: 1824, height: 862, href: "https://www.tenvo.store/" },
+    { name: "DisposiQ", descriptor: "Production and disposal operations intelligence", image: "/images/projects/disposiq-card.webp", width: 1864, height: 843, href: "https://disposiq.tenvo.store/" },
 ] as const;
 
 const capabilities = [
@@ -50,35 +51,41 @@ export default function HomeClient() {
             <Navbar />
             <LeadCaptureBar />
 
-            <section className="relative isolate min-h-[100svh] overflow-hidden pt-28 md:pt-32">
+            {/*
+             * SOURCE OF TRUTH KEYWORDS: Homepage hero, mobile-first composition, portrait stage, responsive CTAs, desktop grid
+             * WHAT: Responsive lead section that adapts its stacked phone layout into the established desktop grid.
+             * WHY: Keep the offer and primary action clear on narrow screens without reserving desktop-sized empty space.
+             * WHERE: Homepage first section, before the product portfolio strip.
+             */}
+            <section className="relative isolate min-h-0 overflow-hidden pt-[max(7rem,calc(env(safe-area-inset-top)_+_5.5rem))] lg:min-h-[100svh] md:pt-32">
                 <div className="hero-halo" aria-hidden="true" />
                 <div className="hero-particles" aria-hidden="true" />
 
-                <div className="container-standard relative z-10 grid min-h-[calc(100svh-7rem)] items-center gap-10 pb-14 lg:grid-cols-[0.9fr_1.15fr_0.75fr] lg:gap-0 lg:pb-8">
-                    <motion.div initial="hidden" animate="visible" variants={reveal} transition={transition} className="relative z-20 max-w-xl lg:pb-20">
-                        <div className="mb-7 flex items-center gap-3 text-xs font-semibold text-brand">
+                <div className="container-standard relative z-10 grid min-h-0 items-center gap-0 pb-10 sm:gap-10 sm:pb-14 lg:min-h-[calc(100svh-7rem)] lg:grid-cols-[0.9fr_1.15fr_0.75fr] lg:gap-0 lg:pb-8">
+                    <motion.div initial="hidden" animate="visible" variants={reveal} transition={transition} className="relative z-20 order-last w-full max-w-xl sm:order-none lg:pb-20">
+                        <div className="mb-7 hidden items-center gap-3 text-xs font-semibold text-brand sm:flex">
                             <span className="inline-flex h-2.5 w-2.5 rounded-full bg-brand shadow-[0_0_0_7px_hsl(var(--brand)/0.1)]" />
                             AI, data, products & production
                         </div>
-                        <h1 className="max-w-[14ch] text-balance font-heading text-[clamp(3rem,5.2vw,5rem)] font-semibold leading-[0.95] tracking-[-0.04em]">
+                        <h1 className="max-w-[12ch] text-balance font-heading text-[clamp(2.65rem,10vw,4rem)] font-semibold leading-[0.95] tracking-[-0.04em] sm:max-w-[14ch] sm:text-[clamp(3rem,5.2vw,5rem)]">
                             AI that works for you.
                         </h1>
-                        <p className="mt-7 max-w-[54ch] text-pretty text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
+                        <p className="mt-4 max-w-[54ch] text-pretty text-base leading-7 text-muted-foreground sm:mt-7 md:text-lg md:leading-8">
                             Mindscape builds autonomous AI agents, decision-grade data systems, and digital products, then helps ambitious companies take physical products from China sourcing to production.
                         </p>
-                        <div className="mt-9 flex flex-wrap items-center gap-3">
-                            <Link href="/contact" className="msa-button group">
+                        <div className="mt-5 flex flex-col items-stretch gap-2.5 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+                            <Link href="/contact" className="msa-button group w-full justify-between sm:w-auto">
                                 Get in touch
                                 <span className="msa-button-orb"><ArrowRight className="h-4 w-4" /></span>
                             </Link>
-                            <Link href="/projects" className="msa-text-link">Explore our work <ArrowRight className="h-4 w-4" /></Link>
+                            <Link href="/projects" className="msa-text-link !hidden self-start sm:!inline-flex sm:self-auto">Explore our work <ArrowRight className="h-4 w-4" /></Link>
                         </div>
                         <HeroReviews />
                     </motion.div>
 
-                    <motion.div initial={reduceMotion ? false : { opacity: 0, y: 18, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ ...transition, delay: 0.12 }} className="relative z-10 flex min-h-[480px] items-end justify-center self-end lg:min-h-[720px]">
+                    <motion.div initial={reduceMotion ? false : { opacity: 0, y: 18, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ ...transition, delay: 0.12 }} className="relative z-10 order-first -mx-3 -mt-4 flex h-[clamp(17rem,78vw,23rem)] items-center justify-center overflow-hidden sm:order-none sm:mx-0 sm:mt-0 sm:h-auto sm:min-h-[480px] sm:items-end sm:self-end lg:min-h-[720px]">
                         <div className="absolute inset-x-[12%] bottom-[9%] h-[60%] rounded-[50%] bg-[hsl(var(--brand)/0.09)] blur-3xl" aria-hidden="true" />
-                        <Image src="/images/hero/mindscape-intelligence-2026.png" alt="An ethereal AI portrait visualizing connected intelligence" width={1024} height={1536} priority className="relative z-10 h-auto max-h-[78svh] w-auto max-w-full object-contain object-bottom mix-blend-multiply dark:mix-blend-screen" style={{ maskImage: "linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%)" }} />
+                        <Image src="/images/hero/mindscape-intelligence-2026.webp" alt="An ethereal AI portrait visualizing connected intelligence" width={1024} height={1536} priority sizes="(max-width: 639px) 76vw, (max-width: 1023px) 48vw, 42vw" className="hero-portrait-image relative z-10 h-full w-auto max-w-full object-contain object-center mix-blend-multiply dark:mix-blend-screen sm:h-auto sm:max-h-[min(50svh,28rem)] sm:object-bottom lg:max-h-[78svh]" />
                         <motion.div animate={reduceMotion ? undefined : { y: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute left-0 top-[27%] z-20 hidden w-60 rounded-2xl bg-card/95 p-4 shadow-[0_18px_60px_rgba(35,20,25,0.12)] ring-1 ring-border/70 backdrop-blur-xl md:block">
                             <div className="flex items-start gap-3">
                                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-foreground text-background"><Sparkles className="h-4 w-4" /></span>
@@ -87,17 +94,17 @@ export default function HomeClient() {
                         </motion.div>
                     </motion.div>
 
-                    <motion.aside initial="hidden" animate="visible" variants={reveal} transition={{ ...transition, delay: 0.22 }} className="relative z-20 lg:pb-28 lg:pl-2">
-                        <div className="mb-12 ml-auto max-w-[260px] border-t border-border pt-5">
+                    <motion.aside initial="hidden" animate="visible" variants={reveal} transition={{ ...transition, delay: 0.22 }} className="relative z-20 hidden sm:block lg:pb-28 lg:pl-2">
+                        <div className="mb-0 ml-auto max-w-none border-t border-border pt-4 lg:mb-12 lg:max-w-[260px] lg:pt-5">
                             <div className="flex items-end justify-between gap-4"><p className="text-xs leading-5 text-muted-foreground">One connected delivery team</p><span className="font-heading text-3xl font-semibold tracking-[-0.04em]">AI →</span></div>
                             <div className="mt-4 flex flex-wrap gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground"><span>AI</span><span aria-hidden="true">·</span><span>Data</span><span aria-hidden="true">·</span><span>Products</span><span aria-hidden="true">·</span><span>Production</span></div>
                         </div>
-                        <p className="max-w-[13ch] font-heading text-[clamp(2.25rem,3.8vw,4.4rem)] font-semibold leading-[0.96] tracking-[-0.04em]">Your AI system doesn’t sleep.</p>
+                        <p className="max-w-[13ch] font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[0.98] tracking-[-0.04em] sm:text-[clamp(2.25rem,3.8vw,4.4rem)]">Your AI system doesn’t sleep.</p>
                     </motion.aside>
                 </div>
 
-                <div className="relative z-20 mt-5 border-y border-border/75 bg-card/70 py-5 before:absolute before:left-1/2 before:top-0 before:h-px before:w-24 before:-translate-x-1/2 before:bg-brand md:mt-0">
-                    <div className="container-standard flex flex-col items-center gap-5 md:flex-row md:justify-between"><p className="text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground md:text-left">Built across the Mindscape product portfolio</p><div className="flex max-w-full flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm font-semibold text-foreground/70 sm:gap-x-8 lg:gap-x-10">{portfolio.map((item) => <span key={item.name}>{item.name}</span>)}</div></div>
+                <div className="relative z-20 mt-5 hidden border-y border-border/75 bg-card/70 py-5 before:absolute before:left-1/2 before:top-0 before:h-px before:w-24 before:-translate-x-1/2 before:bg-brand sm:block md:mt-0">
+                    <div className="container-standard flex flex-col items-center gap-5 md:flex-row md:justify-between"><p className="text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground md:text-left">Built across the Mindscape product portfolio</p><div className="flex max-w-full flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm font-semibold text-foreground/70 sm:gap-x-8 lg:gap-x-10">{portfolio.map((item) => <span key={item.name} className={item.name === "Smart Dairy & Cattle Farm Management" ? "hidden sm:inline" : undefined}>{item.name}</span>)}</div></div>
                 </div>
             </section>
 
@@ -152,6 +159,8 @@ export default function HomeClient() {
                     </div>
                 </div>
             </section>
+
+            <TeamMoments compact />
 
             <section className="container-standard py-20 md:py-28" aria-labelledby="network-heading">
                 <div className="mb-8 max-w-2xl"><p className="text-xs font-semibold uppercase tracking-[.18em] text-brand">Ways to work with us</p><h2 id="network-heading" className="mt-4 text-balance font-heading text-[clamp(2.5rem,4.8vw,5rem)] font-semibold leading-[.94] tracking-[-.04em]">Build with the right people and tools.</h2></div>

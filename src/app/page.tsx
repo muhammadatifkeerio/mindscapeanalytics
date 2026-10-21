@@ -2,19 +2,21 @@ import { Metadata } from "next";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "Mindscape Analytics | AI, Data, Products & Production",
-  description: "Autonomous AI agents, decision-grade data systems, digital products, and factory-direct sourcing from China to production.",
+  title: "AI, Data & Software for Real Operations | Mindscape Analytics",
+  description: "Mindscape Analytics builds AI agents, business software, farm management systems, and data platforms, and helps bring products from China sourcing to production.",
+  alternates: {
+    canonical: "/",
+    languages: { "en-US": "/", "zh-CN": "/zh-cn" },
+  },
   openGraph: {
-    title: "Mindscape Analytics | AI, Data, Products & Production",
-    description: "Build intelligent systems and take products from idea to production with Mindscape Analytics.",
+    title: "AI, Data & Software for Real Operations | Mindscape Analytics",
+    description: "Build AI agents, business software, farm management systems, and data platforms with Mindscape Analytics.",
     url: "https://mindscapeanalytics.com",
     siteName: "Mindscape Analytics",
     images: [
       {
-        url: "https://mindscapeanalytics.com/images/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Mindscape Analytics Deep Architecture",
+        url: "/images/og-mindscape-2026.png",
+        alt: "Mindscape Analytics: turning data into smart decisions with AI, analytics, automation, and custom software.",
       },
     ],
     locale: "en_US",
@@ -22,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mindscape Analytics | AI, Data, Products & Production",
-    description: "Build the intelligent system your next stage needs.",
-    images: ["/images/og-image.png"],
+    title: "AI, Data & Software for Real Operations | Mindscape Analytics",
+    description: "AI agents, business software, farm management systems, and data platforms for real operating needs.",
+    images: ["/images/og-mindscape-2026.png"],
   },
 };
 

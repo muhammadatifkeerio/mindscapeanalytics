@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Elite Assets | Mindscape Analytics Marketplace",
     description: "Premium marketplace to Sell Digital Products, Sell pre built softwares, Sell n8n workfllows, and buy automations. Buy web components, buy workflows, and buy automations engineered for scale.",
+    alternates: { canonical: "/shop" },
     keywords: [
         "Sell Digital Products", "Sell pre built softwares", "Sell n8n workfllows",
         "marketplace", "software selling platforms", "buy web", "buy componenets",

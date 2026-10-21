@@ -29,8 +29,8 @@ export const POST = withBaseHandler(async (request) => {
     const leadInput = { ...data, source: "contact" };
     const score = leadService.scoreLead(leadInput);
 
+    await leadService.createLead(leadInput, score);
     try {
-        await leadService.createLead(leadInput, score);
         await notifyAdmin({
             title: "NEW CONTACT INQUIRY",
             ...data,
@@ -38,11 +38,11 @@ export const POST = withBaseHandler(async (request) => {
             color: 0xffffff,
         });
     } catch (error) {
-        console.error("[CONTACT_PROCESS_ERROR]", error);
+        console.error("[CONTACT_NOTIFICATION_ERROR] Lead was saved, but the team notification failed.", error);
     }
 
     return NextResponse.json({
         success: true,
-        message: "Transmission successful. Lead synchronized.",
+        message: "Thanks for reaching out. Your message has been received.",
     });
 }, { maxRequests: 5, windowMs: 60_000 });

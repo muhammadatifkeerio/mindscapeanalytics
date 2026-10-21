@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import { Upload, X, Check, Loader2, Image as ImageIcon } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 
 interface ImageUploadProps {
     onUploadAction: (url: string) => void;

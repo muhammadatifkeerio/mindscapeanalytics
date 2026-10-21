@@ -1,27 +1,20 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
+import React from "react";
+import Image from "@/components/SmartImage";
 import Link from "next/link";
 import {
-    Mail,
-    Terminal,
-    Cpu,
-    Database,
-    Globe,
     Code2,
-    ShieldCheck,
-    ArrowUpRight,
     Briefcase,
     GraduationCap,
     Sparkles,
-    ChevronDown
+    ArrowRight,
+    ArrowUpRight,
+    ExternalLink,
 } from "lucide-react";
 import { Linkedin } from "@/components/icons/brand-icons";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { cn } from "@/lib/utils";
 
 const projects = [
     {
@@ -138,6 +131,78 @@ const projects = [
     }
 ];
 
+/**
+ * SOURCE OF TRUTH KEYWORDS: featuredPortfolioProjects, Tenvo, DisposIQ, RSIQ Pro, Smart Dairy, DBLynx
+ * WHAT: The verified public product portfolio and the current project destinations.
+ * WHY: Leads with shipped systems people can inspect, while keeping the legacy project archive below.
+ * WHERE: Rendered in the founder portfolio's primary work section.
+ */
+const featuredPortfolioProjects = [
+    {
+        title: "AurumPulse Gold News Intelligence Pro",
+        category: "XAUUSD economic news intelligence",
+        image: "/images/projects/aurumpulse-gold-intelligence.webp",
+        description: "A gold-focused terminal that organizes macroeconomic event alerts, impact classifications, pre-news market context, conditional post-release scenarios, and historical and forward validation. It presents analytical context, not guaranteed predictions.",
+        tags: ["Market intelligence", "XAUUSD", "News analysis"],
+        href: "/shop/seed_aurumpulse_gold_news_intelligence_pro",
+        external: false,
+    },
+    {
+        title: "TENVO Growth Intelligence",
+        category: "Customer acquisition & lead generation",
+        image: "/images/tenvo/tenvo-dashboard.webp",
+        description: "A connected growth workflow within TENVO that brings prospect capture, quotes and pipeline follow-up, customer purchase history, campaigns, and business analytics together. It gives teams a clearer path from first inquiry to repeat customer, with guided insights expanding by plan and configuration.",
+        tags: ["Lead generation", "CRM", "Campaigns"],
+        href: "https://tenvo.store/solutions/marketing-crm",
+        external: true,
+    },
+    {
+        title: "TENVO",
+        category: "Business operations platform",
+        image: "/images/projects/tenvo.webp",
+        description: "A connected business platform for commerce, inventory, finance, customer operations, and AI-assisted workflows, built to reduce the tool-switching that slows growing teams.",
+        tags: ["SaaS", "Business systems", "AI workflows"],
+        href: "https://www.tenvo.store/",
+        external: true,
+    },
+    {
+        title: "DisposIQ",
+        category: "Production & disposal intelligence",
+        image: "/images/projects/disposiq.webp",
+        description: "An operational system that connects production records, disposal tracking, reporting, and AI-assisted insights for food production and industrial teams.",
+        tags: ["Operations", "Analytics", "AI insights"],
+        href: "https://disposiq.tenvo.store/",
+        external: true,
+    },
+    {
+        title: "RSIQ Pro",
+        category: "Real-time market intelligence",
+        image: "/images/projects/rsiq-pro.webp",
+        description: "A multi-exchange market intelligence product that organizes live market data and technical signals into a focused decision workspace for traders.",
+        tags: ["FinTech", "Live data", "Decision support"],
+        href: "https://rsiq.mindscapeanalytics.com/",
+        external: true,
+    },
+    {
+        title: "Smart Dairy & Cattle Farm Management",
+        category: "Agriculture operations system",
+        image: "/images/projects/smart-dairy.webp",
+        description: "A digital operating system for dairy farms, bringing cattle records, milk production, feed, animal health, and farm performance into one workspace.",
+        tags: ["AgriTech", "Farm operations", "Analytics"],
+        href: "https://cattle.mindscapeanalytics.com/",
+        external: true,
+    },
+    {
+        title: "DBLynx Intelligence",
+        category: "AI data infrastructure",
+        image: "/images/projects/dblynx-database-intelligence-mindscapeanalytics_opt.webp",
+        description: "An agentic data platform that helps teams explore structured databases through natural-language questions, governed access, and generated analysis.",
+        tags: ["Agentic AI", "RAG", "Data systems"],
+        href: "/projects/dblynx-neural-intelligence",
+        external: false,
+    },
+];
+
 const experience = [
     {
         role: "AI Engineer | Team Lead (GenAI & Agentic Systems)",
@@ -167,234 +232,184 @@ const experience = [
 
 export default function FounderPortfolio() {
     const [showAllProjects, setShowAllProjects] = React.useState(false);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({ target: containerRef });
-
-    // Parallax effects
-    const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-    const scaleHero = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
-
     return (
-        <main ref={containerRef} className="bg-transparent text-foreground min-h-screen relative">
+        <main className="min-h-screen bg-background text-foreground">
             <Navbar />
 
-            {/* --- INDUSTRIAL HERO SECTION --- */}
-            <section className="relative min-h-screen md:h-screen flex items-center justify-center overflow-hidden py-20 md:py-0">
-                <motion.div
-                    style={{ opacity: opacityHero, scale: scaleHero }}
-                    className="container mx-auto px-6 z-10 flex flex-col items-center text-center"
-                >
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="relative w-48 h-48 md:w-64 md:h-64 mb-12 aspect-square"
-                    >
-                        <div className="absolute inset-0 rounded-full border-2 border-border animate-[spin_10s_linear_infinite]" />
-                        <div className="absolute inset-[-10px] rounded-full border border-border animate-[spin_15s_linear_infinite_reverse]" />
-                        <div className="w-full h-full rounded-full overflow-hidden border-4 border-white grayscale contrast-125 shadow-[0_0_50px_hsl(var(--foreground)/0.1)] relative">
-                            <Image
-                                src="/images/team/founder.webp"
-                                alt="Zeeshan Keerio"
-                                fill
-                                className="object-cover"
-                                priority
-                                sizes="(max-width: 768px) 192px, 256px"
-                            />
+            <section className="relative overflow-hidden border-b border-border bg-background">
+                <div className="pointer-events-none absolute -right-28 top-12 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+                <div className="container-standard relative px-6 pb-14 pt-28 md:pb-20 md:pt-32">
+                    <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+                        <div className="relative mb-7 h-40 w-40 rounded-full bg-card p-1.5 shadow-xl shadow-foreground/10 ring-1 ring-border sm:h-48 sm:w-48">
+                            <div className="relative h-full w-full overflow-hidden rounded-full bg-muted ring-4 ring-background">
+                                <Image src="/images/team/zeeshan-keerio.webp" alt="Portrait of Zeeshan Keerio, Founder and Lead AI Engineer" fill priority sizes="(max-width: 640px) 160px, 192px" className="object-cover object-top" />
+                            </div>
                         </div>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="space-y-4"
-                    >
-                        <span className="text-[10px] font-mono font-black text-foreground/30 uppercase tracking-[0.8em] mb-4 block">Founding_Architect // ARCH_ZEESHAN</span>
-                        <h1 className="text-6xl md:text-9xl font-black font-heading leading-none tracking-tighter uppercase mb-2">
-                            ZEESHAN <br /> <span className="text-foreground/40">KEERIO.</span>
-                        </h1>
-                        <p className="max-w-3xl mx-auto text-lg md:text-xl text-foreground/60 font-medium tracking-tight leading-relaxed uppercase">
-                            AI-focused technology leader & AI Engineer specialized in GenAI, Agentic AI, and RAG Pipelines. <br />
-                            <span className="text-foreground font-black not-italic drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">Architecting Production-Grade Autonomous Intelligence.</span>
+                        <h1 className="font-heading text-5xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Zeeshan Keerio</h1>
+                        <p className="mt-4 text-lg font-semibold tracking-[-0.02em] text-primary sm:text-xl">Founder &amp; Lead AI Engineer</p>
+                        <p className="mt-1 text-sm font-medium text-muted-foreground">Mindscape Analytics <span className="mx-2 text-border" aria-hidden="true">·</span> Sheridan, Wyoming, USA</p>
+                        <p className="mt-6 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+                            I turn complex business problems into dependable AI, data, and software products. I lead the work from system architecture through engineering, cloud deployment, and ongoing improvement for teams worldwide.
                         </p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1 }}
-                        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-                    >
-                        <span className="text-[9px] font-mono font-black tracking-[0.5em] text-foreground/20 uppercase">Initialize_Scroll</span>
-                        <ChevronDown className="animate-pulse text-foreground/35" size={20} />
-                    </motion.div>
-                </motion.div>
+                        <div className="mt-7 flex flex-wrap justify-center items-center gap-3">
+                                <Link href="/contact" className="inline-flex min-h-12 items-center gap-3 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+                                    Get in touch <ArrowRight size={17} aria-hidden="true" />
+                                </Link>
+                                <Link href="https://www.linkedin.com/in/zeeshan-keerio" target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center gap-2 rounded-full border border-border bg-card px-5 py-3 font-semibold transition hover:border-primary/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+                                    <Linkedin size={17} aria-hidden="true" /> LinkedIn <ExternalLink size={14} aria-hidden="true" />
+                                </Link>
+                                <Link href="mailto:zeeshan.keerio@mindscapeanalytics.com" className="inline-flex min-h-12 items-center gap-2 px-3 py-3 font-semibold text-foreground underline decoration-border underline-offset-4 transition hover:text-primary">Email <ArrowUpRight size={15} aria-hidden="true" /></Link>
+                            </div>
+                    </div>
+                    <div className="mt-12 grid gap-x-8 gap-y-5 border-t border-border pt-6 sm:grid-cols-2 lg:grid-cols-4">
+                        {[
+                            ["01", "Agentic AI, LLMs & RAG"],
+                            ["02", "Data platforms & analytics"],
+                            ["03", "AWS architecture & delivery"],
+                            ["04", "Full-stack product engineering"],
+                        ].map(([index, label]) => <div key={index} className="flex items-center gap-3"><span className="text-xs font-semibold tabular-nums text-primary">{index}</span><span className="text-sm font-medium text-foreground">{label}</span></div>)}
+                    </div>
+                </div>
             </section>
 
-            {/* --- MISSION DIRECTIVE --- */}
-            <section className="py-32 border-y border-border relative bg-foreground/5 backdrop-blur-3xl overflow-hidden">
-                <div className="absolute inset-0 opacity-5 bg-[url('/grid.svg')] bg-[length:40px_40px]" />
-                <div className="container-standard relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-24 items-center max-w-7xl mx-auto">
-                        <div className="space-y-12">
-                            <div className="flex items-center gap-3">
-                                <div className="p-2 bg-foreground/5 rounded-lg border border-border text-foreground/40">
-                                    <Terminal size={18} />
-                                </div>
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 font-mono">01_Mission_Directive</span>
-                            </div>
-                            <h2 className="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter font-heading leading-[0.9]">
-                                REPLACING MANUAL <br /> <span className="text-foreground/40">WORK WITH CODE.</span>
-                            </h2>
-                            <p className="text-xl text-foreground/40 leading-relaxed font-medium">
-                                "Technology is only as valuable as the manual effort it eliminates. As the sole architect of the Mindscape Analytics platform, my focus is on engineering high-fidelity, autonomous ecosystems that allow founders and enterprises to operate at post-quantum speeds with zero technical friction."
-                            </p>
+            <section id="featured-work" className="scroll-mt-28 py-20 md:py-28">
+                <div className="container-standard px-6">
+                    <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+                        <div>
+                            <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">Products I’ve built and shipped</h2>
+                            <p className="mt-3 max-w-2xl text-base leading-7 text-muted-foreground">A selection of products where software, data, and day-to-day operations meet.</p>
                         </div>
+                        <Link href="/projects" className="inline-flex shrink-0 items-center gap-2 font-semibold text-primary hover:underline underline-offset-4">
+                            Browse project catalog <ArrowUpRight size={16} aria-hidden="true" />
+                        </Link>
+                    </div>
 
-                        <div className="grid grid-cols-2 gap-4">
-                            {[
-                                { icon: Cpu, label: "GenAI Architect", val: "200+ Nodes" },
-                                { icon: Database, label: "Data Engineering", val: "Petabyte Scale" },
-                                { icon: Globe, label: "Cloud Systems", val: "Global Ops" },
-                                { icon: ShieldCheck, label: "Cybersecurity", val: "Hardened" }
-                            ].map((stat, i) => (
-                                <div key={i} className="p-8 rounded-[2rem] bg-foreground/[0.03] border border-border flex flex-col items-center text-center gap-4 group hover:bg-foreground hover:text-background transition-all duration-500">
-                                    <stat.icon size={24} className="text-foreground/40 group-hover:text-background transition-colors" />
-                                    <div className="space-y-1">
-                                        <div className="text-[9px] font-black uppercase tracking-widest opacity-40">{stat.label}</div>
-                                        <div className="text-xl font-black font-heading">{stat.val}</div>
-                                    </div>
+                    <div className="grid gap-x-8 md:grid-cols-2">
+                        {featuredPortfolioProjects.map((project) => (
+                            <article key={project.title} className="group flex min-w-0 gap-4 border-t border-border py-5 sm:gap-5 sm:py-6">
+                                <div className="relative aspect-[4/3] w-[34%] max-w-48 shrink-0 overflow-hidden rounded-xl bg-muted sm:w-[38%]">
+                                    <Image src={project.image} alt={`${project.title} product interface`} fill sizes="(max-width: 640px) 34vw, 190px" className="object-cover transition duration-500 group-hover:scale-[1.03]" />
                                 </div>
-                            ))}
+                                <div className="flex min-w-0 flex-1 flex-col items-start">
+                                    <p className="text-xs font-semibold text-primary">{project.category}</p>
+                                    <h3 className="mt-1 font-heading text-lg font-semibold leading-snug tracking-tight sm:text-xl">{project.title}</h3>
+                                    <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted-foreground">{project.description}</p>
+                                    <ul className="mt-3 hidden flex-wrap gap-1.5 sm:flex" aria-label={`${project.title} focus areas`}>
+                                        {project.tags.map((tag) => <li key={tag} className="rounded-full bg-muted px-2.5 py-1 text-[11px] font-medium text-muted-foreground">{tag}</li>)}
+                                    </ul>
+                                    <Link href={project.href} target={project.external ? "_blank" : undefined} rel={project.external ? "noreferrer" : undefined} className="mt-auto inline-flex items-center gap-2 pt-3 text-sm font-semibold text-foreground underline decoration-primary/50 underline-offset-4 transition hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+                                        {project.external ? "View live product" : "Read the case study"}
+                                        {project.external ? <ExternalLink size={14} aria-hidden="true" /> : <ArrowRight size={14} aria-hidden="true" />}
+                                    </Link>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+
+                    <div className="mt-6 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+                        <Link href="https://www.tenvo.store/demo-stores" target="_blank" rel="noreferrer" className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-card p-6 transition hover:border-primary/40 sm:flex-row sm:items-center sm:p-8">
+                            <div className="max-w-2xl">
+                                <h3 className="font-heading text-2xl font-semibold tracking-tight">TENVO demo storefront ecosystem</h3>
+                                <p className="mt-2 text-sm leading-6 text-muted-foreground">Explore 25+ live, industry-specific storefronts built on the TENVO platform, from retail and food to automotive and services.</p>
+                            </div>
+                            <span className="inline-flex shrink-0 items-center gap-2 font-semibold text-primary">View demo stores <ExternalLink size={15} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5" /></span>
+                        </Link>
+                        <div className="rounded-2xl bg-primary p-6 text-primary-foreground sm:p-8">
+                            <h3 className="font-heading text-2xl font-semibold tracking-tight">Cloud architecture, built for efficiency</h3>
+                            <p className="mt-3 text-sm leading-6 text-primary-foreground/85">I design and deploy AWS environments around workload needs, with right-sizing and architecture optimization that can reduce cloud costs by up to 70%.</p>
+                            <p className="mt-3 text-xs leading-5 text-primary-foreground/75">Actual savings depend on the starting architecture, usage, and workload.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* --- PROJECT LEDGER (The 14 Projects) --- */}
-            <section className="py-32 relative">
-                <div className="container-standard">
-                    <div className="text-center mb-24">
-                        <h2 className="text-5xl md:text-8xl font-black font-heading uppercase tracking-[-0.05em] mb-4">PROJECT LEDGER.</h2>
-                        <span className="text-[9px] font-mono text-foreground/20 uppercase tracking-[0.8em] font-black">All Assets Designed & Developed by Zeeshan Keerio</span>
+            <section id="selected-work" className="scroll-mt-28 border-t border-border bg-muted/35 py-20 md:py-28">
+                <div className="container-standard px-6">
+                    <div className="mb-8 max-w-3xl">
+                        <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">More engineering work</h2>
+                        <p className="mt-3 text-base leading-7 text-muted-foreground">Selected systems across AI, data, finance, supply chain, and computer vision. The product pages include deeper architecture and delivery details.</p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-8xl mx-auto">
+                    <div className="grid gap-x-10 md:grid-cols-2">
                         {(showAllProjects ? projects : projects.slice(0, 6)).map((project, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-                                className="group relative"
-                            >
-                                <div className="p-1 bg-foreground/5 rounded-[2.5rem] border border-border overflow-hidden transition-all duration-700 hover:border-white/30 hover:shadow-[0_0_50px_rgba(255,255,255,0.05)]">
-                                    <div className="aspect-video relative rounded-[2rem] overflow-hidden mb-6 border border-border">
-                                        <Image
-                                            src={project.image}
-                                            alt={project.title}
-                                            fill
-                                            className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 group-hover:contrast-125"
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                            loading={i < 3 ? "eager" : "lazy"}
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
-                                        <div className="absolute top-6 left-6 flex flex-wrap gap-2">
-                                            {project.tags.map(tag => (
-                                                <span key={tag} className="text-[8px] font-black uppercase tracking-widest px-3 py-1 bg-card/90 backdrop-blur-md border border-border text-foreground/80">
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div className="px-8 pb-10">
-                                        <span className="text-[9px] font-black text-foreground/40 uppercase tracking-[0.3em] mb-2 block">{project.category}</span>
-                                        <h3 className="text-2xl font-black text-foreground uppercase tracking-tight mb-4 transition-all">
-                                            {project.title}
-                                        </h3>
-                                        <p className="text-sm text-foreground/40 font-medium leading-relaxed mb-8 h-20 line-clamp-3 overflow-hidden">
-                                            {project.description}
-                                        </p>
-                                        <div className="pt-6 border-t border-border flex justify-between items-center">
-                                            <span className="text-[8px] font-mono font-black text-foreground/20 uppercase tracking-[0.2em]">Designed & Developed by Founder</span>
-                                            <div className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center border border-border group-hover:bg-foreground group-hover:text-background transition-all">
-                                                <ArrowUpRight size={14} />
-                                            </div>
-                                        </div>
-                                    </div>
+                            <article key={project.title} className="flex gap-4 border-t border-border py-5 sm:gap-6">
+                                <div className="relative h-20 w-28 shrink-0 overflow-hidden rounded-xl bg-card sm:h-24 sm:w-36">
+                                    <Image src={project.image} alt={`${project.title} project`} fill sizes="(max-width: 640px) 112px, 144px" className="object-cover" loading={i < 2 ? "eager" : "lazy"} />
                                 </div>
-                            </motion.div>
+                                <div className="min-w-0">
+                                    <p className="text-xs font-semibold text-primary">{project.category}</p>
+                                    <h3 className="mt-1 font-heading text-lg font-semibold leading-snug tracking-tight">{project.title}</h3>
+                                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">{project.description}</p>
+                                    <p className="mt-2 text-xs text-muted-foreground">{project.tags.slice(0, 3).join(" · ")}</p>
+                                </div>
+                            </article>
                         ))}
                     </div>
 
                     {!showAllProjects && projects.length > 6 && (
-                        <div className="mt-20 text-center">
-                            <button
-                                onClick={() => setShowAllProjects(true)}
-                                className="inline-flex items-center gap-6 px-12 py-6 bg-foreground/5 border border-border rounded-2xl text-[10px] font-black uppercase tracking-[0.4em] text-foreground/40 hover:bg-foreground hover:text-background hover:border-white transition-all group scale-90 md:scale-100"
-                            >
-                                <span className="group-hover:mr-2 transition-all">Show all projects</span>
-                                <ChevronDown size={14} className="animate-pulse" />
-                            </button>
-                        </div>
+                        <button
+                            type="button"
+                            aria-expanded={showAllProjects}
+                            onClick={() => setShowAllProjects(true)}
+                            className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 font-semibold transition hover:border-primary/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+                        >
+                            Show all {projects.length} projects <ArrowRight size={16} aria-hidden="true" />
+                        </button>
+                    )}
+                    {showAllProjects && (
+                        <button
+                            type="button"
+                            aria-expanded={showAllProjects}
+                            onClick={() => setShowAllProjects(false)}
+                            className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 font-semibold transition hover:border-primary/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+                        >
+                            Show fewer projects
+                        </button>
                     )}
                 </div>
             </section>
 
             {/* --- CHRONICLE (EXPERIENCE) --- */}
-            <section className="py-32 border-t border-border bg-muted/35">
+            <section id="experience" className="scroll-mt-28 border-t border-border bg-background py-20 md:py-28">
                 <div className="container-standard px-4 md:px-6">
                     <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start max-w-7xl mx-auto">
                         <div className="lg:sticky lg:top-32 space-y-8 mb-12 lg:mb-0">
-                            <div className="flex items-center gap-3">
-                                <div className="p-2 bg-foreground/5 rounded-lg border border-border text-foreground/40">
-                                    <Briefcase size={18} />
-                                </div>
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 font-mono">02_Chronicle</span>
-                            </div>
-                            <h2 className="text-4xl md:text-5xl font-black uppercase font-heading leading-[0.8] tracking-tight">PROFESSIONAL <br /> <span className="text-foreground/40">EVOLUTION.</span></h2>
-                            <p className="text-foreground/40 text-sm font-medium leading-relaxed max-w-xs uppercase">
-                                A high-fidelity journey through the core layers of financial data and AI engineering.
+                            <Briefcase className="text-primary" size={22} aria-hidden="true" />
+                            <h2 className="font-heading text-3xl font-semibold leading-tight tracking-[-0.03em] sm:text-4xl">Experience built across data, AI, and product delivery</h2>
+                            <p className="max-w-sm text-sm font-medium leading-6 text-muted-foreground">
+                                From enterprise reporting and big-data operations to designing and shipping production AI products.
                             </p>
-                            <div className="pt-8 flex flex-wrap gap-4">
-                                <Link href="https://linkedin.com/in/zeeshan-keerio" target="_blank">
-                                    <button className="p-4 rounded-xl bg-foreground/5 border border-border hover:bg-foreground hover:text-background transition-all">
-                                        <Linkedin size={20} />
-                                    </button>
+                            <div className="flex flex-wrap gap-3">
+                                <Link href="https://www.linkedin.com/in/zeeshan-keerio" target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-4 py-2 font-semibold transition hover:border-primary/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+                                    <Linkedin size={17} aria-hidden="true" /> LinkedIn <ExternalLink size={14} aria-hidden="true" />
                                 </Link>
-                                <Link href="mailto:zeeshan.keerio@mindscapeanalytics.com">
-                                    <button className="px-8 py-4 rounded-xl bg-foreground/5 border border-border font-black text-[10px] uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-all">
-                                        Request Deck
-                                    </button>
+                                <Link href="mailto:zeeshan.keerio@mindscapeanalytics.com" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-4 py-2 font-semibold transition hover:border-primary/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+                                    <Briefcase size={16} aria-hidden="true" /> Contact
                                 </Link>
                             </div>
                         </div>
 
-                        <div className="space-y-6 lg:space-y-4">
-                            {experience.map((exp, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: 20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true, margin: "-100px" }}
-                                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    className="p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-foreground/[0.02] border border-border group hover:bg-foreground/[0.05] hover:border-foreground/20 transition-all duration-500"
-                                >
-                                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
+                        <div className="divide-y divide-border border-y border-border">
+                            {experience.map((exp) => (
+                                <article key={`${exp.company}-${exp.role}`} className="py-7 first:pt-7 last:pb-7 sm:py-8">
+                                    <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-start sm:gap-6">
                                         <div>
-                                            <h3 className="text-xl md:text-2xl font-black text-foreground uppercase tracking-tighter group-hover:text-foreground transition-colors font-heading">{exp.role}</h3>
-                                            <div className="text-[10px] font-bold text-foreground/30 uppercase tracking-[0.3em] font-mono">{exp.company}</div>
+                                            <h3 className="font-heading text-xl font-semibold tracking-tight sm:text-2xl">{exp.role}</h3>
+                                            <p className="mt-1 font-medium text-muted-foreground">{exp.company}</p>
                                         </div>
-                                        <div className="px-4 py-2 rounded-full bg-foreground/5 border border-border text-[9px] font-black uppercase tracking-widest text-foreground/50">
+                                        <p className="shrink-0 text-sm font-medium text-muted-foreground">
                                             {exp.period}
-                                        </div>
+                                        </p>
                                     </div>
-                                    <p className="text-xs md:text-sm text-foreground/40 font-medium leading-relaxed uppercase tracking-tight">
+                                    <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">
                                         {exp.description}
                                     </p>
-                                </motion.div>
+                                    {exp.role === "Financial Data Analyst" && (
+                                        <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-sm font-semibold text-primary">
+                                            Automated recurring reports from 5 hours to 15 minutes
+                                        </p>
+                                    )}
+                                </article>
                             ))}
                         </div>
                     </div>
@@ -402,35 +417,30 @@ export default function FounderPortfolio() {
             </section>
 
             {/* --- EDUCATION & CERTIFICATIONS --- */}
-            <section className="py-32 relative overflow-hidden bg-foreground text-background">
-                <div className="absolute inset-0 opacity-5 bg-[url('/grid.svg')] bg-[length:50px_50px]" />
-                <div className="container-standard relative z-10">
+            <section id="education" className="scroll-mt-28 border-t border-border bg-muted/35 py-20 text-foreground md:py-28">
+                <div className="container-standard px-6">
                     <div className="max-w-7xl mx-auto">
-                        <div className="grid lg:grid-cols-2 gap-24">
-                            {/* Academic Hub */}
-                            <div className="space-y-16">
-                                <div className="space-y-6">
-                                    <div className="flex items-center gap-3">
-                                        <GraduationCap size={24} className="opacity-40" />
-                                        <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40">Academic_Foundation</span>
+                        <div className="grid items-start gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+                            <div className="space-y-8">
+                                <GraduationCap size={22} className="text-primary" aria-hidden="true" />
+                                <div>
+                                    <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">Education & tools</h2>
+                                    <div className="mt-6">
+                                        <h3 className="text-xl font-semibold">BS in Computer Science</h3>
+                                        <p className="mt-1 text-sm font-medium text-muted-foreground">Iqra University · Karachi · 2016–2021</p>
                                     </div>
-                                    <h2 className="text-4xl md:text-6xl font-black font-heading leading-tight uppercase">THE IQRA <span className="opacity-20">ALMA MATER.</span></h2>
-                                    <div className="space-y-2">
-                                        <div className="text-2xl font-black uppercase">BS | Computer Science</div>
-                                        <div className="text-xs font-bold uppercase tracking-[0.2em] opacity-60">Iqra University • Karachi • 2016-2021</div>
-                                    </div>
-                                    <p className="text-sm font-medium leading-relaxed opacity-60 uppercase">
-                                        Specialization in Artificial Intelligence, Data Engineering, and Machine Learning. Final Year Project: Student Distraction Detection using Computer Vision & Deep Learning (Project Lead & Backend Developer).
+                                    <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">
+                                        Focused on artificial intelligence, data engineering, and machine learning. Led backend development for a final-year computer-vision project that detected student engagement from webcam video.
                                     </p>
                                 </div>
 
-                                <div className="p-12 bg-card border border-border rounded-[2.5rem] space-y-8">
-                                    <h4 className="text-xs font-black uppercase tracking-[0.3em]">Core Technical Stack</h4>
-                                    <div className="flex flex-wrap gap-3">
+                                <div className="rounded-2xl border border-border bg-card p-5 sm:p-7">
+                                    <h3 className="font-heading text-lg font-semibold">Technical toolkit</h3>
+                                    <div className="mt-4 flex flex-wrap gap-2">
                                         {[
                                             "Python", "SQL", "LLMs", "RAG", "Agentic AI", "TensorFlow", "Hadoop", "Cloudera", "Spark", "Kafka", "Hive", "Impala", "StreamSets", "Azure AI", "Snowflake", "Power BI", "SSL/TLS", "Apache Knox", "Next.js"
                                         ].map(tech => (
-                                            <span key={tech} className="px-5 py-2 rounded-full border border-border text-[9px] font-black uppercase tracking-widest hover:bg-foreground hover:text-background transition-all cursor-default">
+                                            <span key={tech} className="rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground">
                                                 {tech}
                                             </span>
                                         ))}
@@ -438,13 +448,12 @@ export default function FounderPortfolio() {
                                 </div>
                             </div>
 
-                            {/* Certification Vault */}
-                            <div className="space-y-12">
+                            <div>
                                 <div className="flex items-center gap-3">
-                                    <Sparkles size={24} className="opacity-40" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40">Validation_Vault</span>
+                                    <Sparkles size={20} className="text-primary" aria-hidden="true" />
+                                    <h3 className="font-heading text-2xl font-semibold tracking-tight">Certifications & learning</h3>
                                 </div>
-                                <div className="space-y-4">
+                                <ul className="mt-6 divide-y divide-border border-y border-border">
                                     {[
                                         "Career Essentials in GEN AI (Microsoft/LinkedIn)",
                                         "Data Science Professional (Coursera)",
@@ -455,13 +464,13 @@ export default function FounderPortfolio() {
                                         "Scrum Foundation Professional",
                                         "Six Sigma White Belt",
                                         "Ethics in the Age of Generative AI"
-                                    ].map((cert, i) => (
-                                        <div key={i} className="group flex items-center justify-between p-6 border-b border-border hover:bg-muted transition-all">
-                                            <span className="text-[10px] font-black uppercase tracking-tight">{cert}</span>
-                                            <Code2 size={12} className="opacity-20 group-hover:opacity-100 transition-opacity" />
-                                        </div>
+                                    ].map((cert) => (
+                                        <li key={cert} className="flex items-center justify-between gap-4 py-4 text-sm font-medium text-muted-foreground">
+                                            <span>{cert}</span>
+                                            <Code2 size={15} className="shrink-0 text-primary/70" aria-hidden="true" />
+                                        </li>
                                     ))}
-                                </div>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -469,28 +478,20 @@ export default function FounderPortfolio() {
             </section>
 
             {/* --- CALL TO ACTION --- */}
-            <section className="py-24 bg-transparent">
+            <section id="contact" className="scroll-mt-28 border-t border-border bg-background py-20 md:py-28">
                 <div className="container-standard text-center">
-                    <motion.div
-                        whileHover={{ scale: 1.02 }}
-                        className="bg-foreground text-background p-12 md:p-24 rounded-[3.5rem] relative overflow-hidden group cursor-pointer"
-                    >
-                        <div className="absolute inset-0 z-0 opacity-5 bg-[url('/grid.svg')] bg-[length:50px_50px]" />
-                        <div className="relative z-10 space-y-12">
-                            <h2 className="text-5xl md:text-8xl font-black font-heading leading-[0.8] uppercase tracking-[-0.05em]">
-                                READY TO <br /> <span className="opacity-40">AUTOMATE?</span>
-                            </h2>
-                            <p className="text-lg font-medium max-w-2xl mx-auto opacity-60 uppercase tracking-tight">
-                                Harness the power of AI-first engineering. Let's build your industrial-grade intelligence ecosystem together.
-                            </p>
-                            <Link href="https://wa.me/13072106155" target="_blank">
-                                <button className="px-12 py-6 bg-foreground text-background font-black text-xs tracking-[0.3em] uppercase rounded-full hover:bg-foreground/90 transition-all flex items-center gap-4 mx-auto">
-                                    Initiate Direct Uplink (WhatsApp)
-                                    <ArrowUpRight size={16} />
-                                </button>
+                    <div className="mx-auto max-w-4xl rounded-2xl border border-border bg-card px-6 py-12 sm:px-12 md:py-16">
+                        <h2 className="font-heading text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">Have a system to build?</h2>
+                        <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground">If you’re exploring AI agents, data platforms, cloud architecture, or a product idea, let’s talk through the problem and a practical path to delivery.</p>
+                        <div className="mt-8 flex flex-wrap justify-center gap-3">
+                            <Link href="/contact" className="inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+                                Start a conversation <ArrowRight size={17} aria-hidden="true" />
+                            </Link>
+                            <Link href="mailto:zeeshan.keerio@mindscapeanalytics.com" className="inline-flex min-h-12 items-center gap-2 rounded-full border border-border px-5 py-3 font-semibold transition hover:border-primary/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+                                Email me <ExternalLink size={14} aria-hidden="true" />
                             </Link>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 

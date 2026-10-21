@@ -9,9 +9,10 @@ interface RequestDemoModalProps {
     isOpen: boolean;
     onClose: () => void;
     productName: string;
+    requestType?: "demo" | "access";
 }
 
-export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoModalProps) {
+export function RequestDemoModal({ isOpen, onClose, productName, requestType = "demo" }: RequestDemoModalProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState("");
@@ -35,8 +36,8 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                 body: JSON.stringify({
                     name,
                     email,
-                    service: `[DEMO REQUEST] ${productName}`,
-                    message: message || `I would like to request a demo and more information regarding the asset: ${productName}.`,
+                    service: `[${requestType === "access" ? "ACCESS REQUEST" : "DEMO REQUEST"}] ${productName}`,
+                    message: message || `I would like to request ${requestType === "access" ? "access and current availability, licensing, and pricing details" : "a demo"} for ${productName}.`,
                 }),
             });
 
@@ -98,13 +99,13 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                                 <div className="mb-6">
                                     <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 flex items-center gap-2 mb-2">
                                         <div className="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_hsl(var(--secondary)/0.5)] animate-pulse" />
-                                        Protocol Initialization
+                                        {requestType === "access" ? "AurumPulse early access" : "Product walkthrough"}
                                     </span>
                                     <h3 className="text-2xl font-black uppercase tracking-tighter text-foreground">
-                                        Request Demo
+                                        {requestType === "access" ? "Request Access" : "Request Demo"}
                                     </h3>
                                     <p className="text-foreground/40 text-xs font-medium uppercase tracking-widest mt-1">
-                                        Asset: {productName}
+                                        Product: {productName}
                                     </p>
                                 </div>
 

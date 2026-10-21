@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
+    alternates: { canonical: "/solutions/ai-genai" },
     title: "AI & GenAI Solutions | Mindscape Analytics",
     description: "Custom Large Language Models, Agentic Workflows, and Neural Architectures engineered for enterprise scale.",
     openGraph: {

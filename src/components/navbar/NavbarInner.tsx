@@ -2,7 +2,7 @@
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import { Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -110,7 +110,9 @@ function NavbarInner() {
             className={cn(
                 "pointer-events-none fixed top-0 left-0 right-0 z-50 px-4 md:px-0 flex flex-col items-center",
                 navShellTransition,
-                isScrolled ? "pt-3 sm:pt-4" : "pt-6 sm:pt-8"
+                isScrolled
+                    ? "pt-[max(0.75rem,env(safe-area-inset-top))] sm:pt-4"
+                    : "pt-[max(1.5rem,env(safe-area-inset-top))] sm:pt-8"
             )}
         >
             <div
@@ -129,7 +131,7 @@ function NavbarInner() {
                         className="flex shrink-0 items-center transition-transform hover:scale-[1.02] active:scale-95 group dark:rounded-md dark:bg-white dark:px-1 dark:py-0.5"
                     >
                         <Image
-                            src="/images/brand/mindscape-analytics-logo-dark.png"
+                            src="/images/brand/mindscape-analytics-logo-dark.webp"
                             alt="Mindscape Analytics Logo"
                             width={180}
                             height={62}

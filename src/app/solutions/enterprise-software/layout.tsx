@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
+    alternates: { canonical: "/solutions/enterprise-software" },
     title: "Enterprise Software Development | Mindscape Analytics",
     description: "Scalable, secure, and mission-critical software architectures built for high-growth organizations.",
     openGraph: {

@@ -1,271 +1,176 @@
 "use client"
 
-import React, { useRef, useEffect, useState } from "react"
-import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "@/components/SmartImage"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import {
-    ExternalLink,
-    Terminal,
     Database,
     Cloud,
-    Server,
-    Zap,
-    Mic,
-    Bot,
     ArrowRight,
-    Shield,
+    ArrowUpRight,
     Activity,
     Layers,
     Code,
-    ChevronLeft,
-    ChevronRight,
-    Boxes,
-    Factory,
-    Landmark,
-    LineChart
 } from "lucide-react"
 
-const projects = [
+/**
+ * SOURCE OF TRUTH KEYWORDS: featuredProducts, AurumPulse, Smart Dairy, RSIQ Pro, TENVO, DisposiQ, portfolio
+ * WHAT: Curated product summaries, capabilities, artwork, and official destinations for the portfolio grid.
+ * WHY: Keeps product facts and their direct links together without presenting unsupported ROI figures.
+ * WHERE: Rendered by ProjectsPage as the primary projects showcase.
+ */
+const featuredProducts = [
     {
-        title: "Global Enterprise ERP Architecture",
-        category: "Enterprise Infrastructure",
-        industry: "Multinational Conglomerate",
-        description: "A centralized, intelligent ERP system engineered to break down data silos across global operations. Features real-time supply chain visibility, LLM-powered financial forecasting, and autonomous procurement workflows.",
-        features: [
-            "Autonomous resource planning",
-            "Multi-currency financial forecasting",
-            "Real-time global inventory sync",
-            "Cross-border compliance tracking",
-            "Predictive maintenance scheduling",
-            "AI-assisted executive dashboards"
-        ],
-        techStack: ["PostgreSQL Cluster", "n8n Automation", "Custom LLM Agents", "Cloud Load Balancing", "Zero-Trust Security"],
-        results: [
-            "Reduced operational costs by 40%",
-            "Accelerated quarterly closing by 14 days",
-            "Achieved 99.999% system uptime"
-        ],
-        icon: Server,
-        link: "/projects/global-enterprise-erp"
+        name: "AurumPulse Gold News Intelligence Pro",
+        category: "Gold news intelligence",
+        summary: "A desktop terminal for XAUUSD traders, combining economic calendar alerts, impact levels, pre-news market context, conditional scenarios, and validation workspaces. Analysis is informational, not a guaranteed prediction.",
+        image: "/images/projects/aurumpulse-gold-intelligence.webp",
+        imageAlt: "AurumPulse gold news intelligence dashboard with economic event impact and XAUUSD analysis",
+        highlights: ["Economic event alerts", "XAUUSD context & scenarios", "Historical and forward validation"],
+        href: "/shop/seed_aurumpulse_gold_news_intelligence_pro",
+        action: "Shop AurumPulse · $299 one-time"
     },
     {
-        title: "Automated Inventory & Logistics System",
-        category: "Supply Chain Intelligence",
-        industry: "E-Commerce & Retail",
-        description: "Self-healing inventory networks utilizing predictive analytics and IoT telemetry. The system accurately forecasts demand spikes, executes autonomous reordering, and routes logistics dynamically.",
-        features: [
-            "Predictive demand forecasting",
-            "Autonomous vendor reordering",
-            "Dynamic logistics routing",
-            "IoT warehouse telemetry",
-            "Real-time spoilage tracking",
-            "Automated audit trails"
-        ],
-        techStack: ["Edge Compute IoT", "Redis Caching", "GraphQL API", "AWS Lambda", "MongoDB"],
-        results: [
-            "Eliminated stockouts completely (Zero Stockouts)",
-            "Maintained 99.9% fulfillment accuracy",
-            "Reduced warehouse holding costs by 22%"
-        ],
-        icon: Boxes,
-        link: "/projects/automated-inventory-system"
+        name: "Smart Dairy & Cattle Farm",
+        category: "Farm operations",
+        summary: "A connected management system for cattle, milk production, feed, herd health, and farm finances, bringing daily farm activity into one clear operating view.",
+        image: "/images/projects/smart-dairy-card.webp",
+        imageAlt: "Smart Dairy farm-management dashboard showing herd, milk production, feed, health, and financial data",
+        highlights: ["Herd and health records", "Milk production tracking", "Feed and farm operations"],
+        href: "https://cattle.mindscapeanalytics.com/",
+        action: "Explore Smart Dairy"
     },
     {
-        title: "Production & ESG Disposal Intelligence",
-        category: "Manufacturing Technology",
-        industry: "Industrial Manufacturing",
-        description: "An AI-governed production lifecycle system. It monitors manufacturing telemetry in real-time to optimize yield, while autonomously tracking and routing industrial byproducts for perfect environmental compliance.",
-        features: [
-            "Real-time yield optimization",
-            "Automated byproduct routing",
-            "Continuous ESG compliance tracking",
-            "Carbon footprint logging",
-            "Predictive equipment failure alerts",
-            "Automated regulatory reporting"
-        ],
-        techStack: ["Time-Series DB", "Industrial IoT Sensors", "Kubernetes Clustering", "ML Pipelines", "Blockchain Audit Trails"],
-        results: [
-            "Achieved 100% verifiable ESG compliance",
-            "Reduced raw material waste by 31%",
-            "Monetized 15% of hazardous byproducts"
-        ],
-        icon: Factory,
-        link: "/projects/production-esg-intelligence"
+        name: "RSIQ Pro",
+        category: "Market intelligence",
+        summary: "A live market workspace combining multi-asset scanning, technical signal context, alerts, and portfolio risk tools to support more informed trading decisions.",
+        image: "/images/projects/rsiq-pro-card.webp",
+        imageAlt: "RSIQ Pro market-intelligence terminal with live signals, market data, and risk insights",
+        highlights: ["Multi-asset market scanner", "Signal confluence", "Alerts and risk context"],
+        href: "https://rsiq.mindscapeanalytics.com/",
+        action: "Explore RSIQ Pro"
     },
     {
-        title: "DBlynx: Neural DB Intelligence",
-        category: "Data Science & NLP",
-        industry: "FinTech & SaaS",
-        description: "A revolutionary semantic search architecture that allows non-technical executives to chat with massive relational databases in plain English. Translates natural language into complex, optimized SQL queries instantaneously.",
-        features: [
-            "Natural Language to SQL translation",
-            "Sub-second query resolution",
-            "Context-aware data visualization",
-            "Automatic query optimization",
-            "Role-based data access controls",
-            "Conversational data exploration"
-        ],
-        techStack: ["Vector Databases", "OpenAI Embeddings", "PostgreSQL", "React Server Components", "Vercel Edge"],
-        results: [
-            "Democratized data access universally",
-            "Eliminated 80% of ad-hoc data requests",
-            "Accelerated decision-making speed by 10x"
-        ],
-        icon: Terminal,
-        link: "/projects/dblynx-neural-intelligence"
+        name: "TENVO Business OS",
+        category: "Business operations",
+        summary: "A unified workspace for storefront, POS, inventory, CRM, accounting, and analytics, helping teams keep sales and operations connected across desktop and mobile.",
+        image: "/images/projects/tenvo-card.webp",
+        imageAlt: "TENVO Business OS dashboard for inventory, point of sale, finance, and business analytics",
+        highlights: ["POS and inventory", "Finance and CRM", "AI-assisted insights"],
+        href: "https://www.tenvo.store/",
+        action: "Explore TENVO"
     },
     {
-        title: "AI Sales & Lead Qualification Agent",
-        category: "AI Automation / Sales Intelligence",
-        industry: "B2B Services",
-        description: "A fully autonomous AI Sales Agent that works as a 24/7 virtual sales team, reducing manual pipeline management.",
-        features: [
-            "Captures inbound leads",
-            "Qualifies prospects via AI conversation",
-            "Books appointments automatically",
-            "Sends follow-up emails",
-            "Updates CRM in real-time",
-            "Filters unqualified leads"
-        ],
-        techStack: ["LLM Integration", "n8n Automation Engine", "Custom API Integrations", "Cloud Backend", "Managed Database"],
-        results: [
-            "Reduced manual sales effort by 70%",
-            "Increased response speed by 5x",
-            "Improved lead conversion rates"
-        ],
-        icon: Bot,
-        link: "/projects/ai-sales-agent"
-    },
-    {
-        title: "AI Voice Call Appointment Booking System",
-        category: "AI Voice Automation",
-        industry: "Healthcare & Services",
-        description: "Built an AI-powered voice agent capable of handling inbound and outbound calls, booking appointments, and answering FAQs naturally.",
-        features: [
-            "Natural human-like voice conversations",
-            "Calendar routing and booking",
-            "Automated SMS/email confirmations",
-            "CRM syncing",
-            "Objection handling",
-            "Call analytics dashboard"
-        ],
-        techStack: ["Secure Voice APIs", "Managed database", "Real-time monitoring", "Monthly maintenance SLA"],
-        results: [
-            "Eliminated manual booking staff overhead",
-            "24/7 autonomous availability",
-            "Reduced missed calls to near zero"
-        ],
-        icon: Mic,
-        link: "/contact"
-    },
-    {
-        title: "Custom SaaS Platform with Managed Infrastructure",
-        category: "Full Stack SaaS Development",
-        industry: "Tech Startup",
-        description: "Developed a scalable SaaS web platform with integrated AI features, secure user authentication, and high-availability endpoints.",
-        features: [
-            "Multi-role RBAC authentication",
-            "Subscription subscription billing",
-            "Real-time streaming dashboards",
-            "AI-powered data insights",
-            "Tenant-isolated admin analytics",
-            "API-first architecture"
-        ],
-        techStack: ["Managed cloud hosting", "Database indexing & optimization", "Auto backups", "Security edge monitoring", "Performance reporting"],
-        results: [
-            "Full infrastructure ownership",
-            "Ensured 99.9% application uptime",
-            "Sub-100ms API peak performance"
-        ],
-        icon: Cloud,
-        link: "/contact"
-    },
-    {
-        title: "AI Workflow Automation for Lead Generation",
-        category: "Automation Systems",
-        industry: "Digital Marketing",
-        description: "Engineered an automated lead generation network that scrapes, filters, verifies, and engages potential B2B clients concurrently.",
-        features: [
-            "Continuous lead data collection",
-            "Multi-node email validation",
-            "AI personalized outbound generation",
-            "Automated cadence sequences",
-            "Smart follow-up logic",
-            "Bi-directional CRM integration"
-        ],
-        techStack: ["Serverless Scrapers", "Third-party APIs", "Distributed Workflows", "Message Queues", "Analytics Engine"],
-        results: [
-            "Fully automated outbound sales pipeline",
-            "Scaled monthly lead volume by 300%",
-            "Reduced operational cost by $20k+/mo"
-        ],
-        icon: Zap,
-        link: "/contact"
-    },
-    {
-        title: "Managed Database & Hosting Architecture",
-        category: "Infrastructure & Cloud Engineering",
-        industry: "Enterprise Services",
-        description: "Enterprise-grade managed infrastructure ensuring zero configuration risk, ironclad security perimeters, and continuous optimization.",
-        features: [
-            "Highly available PostgreSQL clusters",
-            "Automated slow-query optimization",
-            "Multi-region data indexing",
-            "Zero-trust secure authentication",
-            "Continuous automated backups",
-            "Intelligent L7 load balancing"
-        ],
-        techStack: ["PostgreSQL", "Redis", "Cloud Load Balancers", "Docker/Kubernetes", "Strict Security Protocols"],
-        results: [
-            "Absolute zero configuration risk",
-            "24/7 active infrastructure monitoring",
-            "Continuous auto-scaling optimization"
-        ],
-        icon: Database,
-        link: "/contact"
-    },
-    {
-        title: "DBLynx: Autonomous Banking Intelligence",
-        category: "Database AI Agent",
-        industry: "Banking & Financial Services",
-        description: "Deployed an AI-powered database intelligence system for a regional bank, enabling 95% faster analytics and automated real-time fraud detection on a $36.8M loan portfolio.",
-        features: [
-            "Natural Language SQL Queries",
-            "AI Anomaly Detection",
-            "Automated Analytics Dashboards",
-            "SOC-2 Read-Only Security"
-        ],
-        techStack: ["DBLynx Core", "PostgreSQL", "Next.js", "Vector Embeddings"],
-        results: [
-            "95% Faster Analytics",
-            "Identified 153 anomalous transactions",
-            "$45K estimated annual savings"
-        ],
-        icon: Landmark,
-        link: "/projects/dblynx-regional-bank"
-    },
-    {
-        title: "Fuel Station Management System",
-        category: "Energy & Infrastructure ERP",
-        industry: "Oil & Gas Retail",
-        description: "A mission-critical ERP for fuel station networks featuring automated pump synchronization, hazardous material tracking, and real-time enterprise accounting across multiple locations.",
-        features: [
-            "Automated Pump Synchronization",
-            "Real-Time Inventory & Leak Detection",
-            "Hazardous Material Compliance",
-            "Enterprise-Grade Accounting"
-        ],
-        techStack: ["Industrial IoT Sensors", "PostgreSQL", "Next.js", "Strict Security SLA"],
-        results: [
-            "100% Inventory Accuracy",
-            "Zero Safety Compliance Breaches",
-            "Real-Time Multi-Site Visibility"
-        ],
-        icon: Factory,
-        link: "/projects/fuel-station-erp"
+        name: "DisposiQ",
+        category: "Production operations",
+        summary: "An operations hub that brings production tracking, disposal records, team activity, and operational insights into one shared view.",
+        image: "/images/projects/disposiq-card.webp",
+        imageAlt: "DisposiQ operations dashboard for production, disposal, activity, and operational metrics",
+        highlights: ["Production tracking", "Disposal records", "Operational insights"],
+        href: "https://disposiq.tenvo.store/",
+        action: "Explore DisposiQ"
     }
+];
+
+/**
+ * SOURCE OF TRUTH KEYWORDS: marketplaceProducts, Global Formations, BreachData, Enterprise LMS, AgriChain, Inventory Management
+ * WHAT: Shop assets that are available to browse and acquire through their canonical product pages.
+ * WHY: Distinguishes packaged marketplace assets from the four live product platforms above.
+ * WHERE: Rendered in the ready-to-acquire section on the /projects route.
+ */
+const marketplaceProducts = [
+    {
+        name: "AurumPulse Gold News Intelligence Pro",
+        category: "Trading intelligence",
+        summary: "Gold-focused news analysis with scheduled event alerts, low, medium, and high impact classifications, pre-release context, conditional scenarios, and validation views. No guaranteed predictions or results.",
+        image: "/images/projects/aurumpulse-gold-intelligence.webp",
+        imageAlt: "AurumPulse economic news and XAUUSD intelligence terminal",
+        href: "/shop/seed_aurumpulse_gold_news_intelligence_pro",
+        price: "$299 one-time",
+    },
+    {
+        name: "Global Formations LLC Portal",
+        category: "Business formation",
+        summary: "An automated incorporation and registered-agent platform that helps users form LLCs and generate operating agreements.",
+        image: "/images/projects/global_formations_opt.webp",
+        imageAlt: "Global Formations LLC incorporation portal",
+        href: "/shop/seed_global_formations_llc_portal",
+        price: "$1,199",
+    },
+    {
+        name: "BreachData Intelligence Platform",
+        category: "SaaS",
+        summary: "A breach-monitoring and intelligence dashboard for tracking compromised credentials, with high-frequency alerts.",
+        image: "/images/projects/breachdata_opt.webp",
+        imageAlt: "BreachData intelligence and monitoring platform",
+        href: "/shop/seed_breachdata_intelligence_platform",
+        price: "$999",
+    },
+    {
+        name: "Enterprise LMS Solution",
+        category: "Learning management",
+        summary: "A learning platform with course-building tools, student analytics, customizable graduation certificates, and integrated billing.",
+        image: "/images/projects/LMS_opt.webp",
+        imageAlt: "Enterprise learning management system dashboard",
+        href: "/shop/seed_enterprise_lms_solution",
+        price: "$899",
+    },
+    {
+        name: "AgriChain Logistics Platform",
+        category: "Agriculture and logistics",
+        summary: "Traceability and logistics management for modern agricultural supply chains.",
+        image: "/images/projects/AgriChian_opt.webp",
+        imageAlt: "AgriChain agricultural supply-chain logistics platform",
+        href: "/shop/seed_agrichain_logistics_platform",
+        price: "$599",
+    },
+    {
+        name: "Inventory Management Pro",
+        category: "Management systems",
+        summary: "A professional inventory analysis system for teams that need a clearer view of stock and operations.",
+        image: "/images/projects/amazon_invontry_management_system_opt.webp",
+        imageAlt: "Inventory Management Pro analytics dashboard",
+        href: "/shop/seed_inventory_management_pro",
+        price: null,
+    },
+];
+
+/**
+ * SOURCE OF TRUTH KEYWORDS: tenvoDemoStores, TENVO live demo stores, storefronts, images, descriptions, public routes
+ * WHAT: The verified public TENVO storefront demos, with the same card imagery and descriptions used by TENVO.
+ * WHY: Lets Mindscape visitors preview working vertical-specific stores while keeping demo storefronts distinct from assets for sale.
+ * WHERE: Rendered beneath marketplaceProducts in the ready-to-acquire portfolio section.
+ */
+const tenvoDemoStores = [
+    { slug: "demo-textile", name: "Textile", description: "Premium fabrics, unstitched collections, and wholesale textile essentials.", image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?ixlib=rb-4.1.0&auto=format&fit=crop&w=1200&q=85", imageAlt: "Textile live demo storefront" },
+    { slug: "demo-retail", name: "Retail", description: "Everyday essentials, gifts, and quality general merchandise.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.1.0&auto=format&fit=crop&w=1200&q=82", imageAlt: "Retail live demo storefront" },
+    { slug: "demo-restaurant", name: "Roll Inn", description: "Experience the essence of Desi flavours at Roll Inn in Karachi. Hearty BBQ, rolls, biryani, and combos made with tradition and taste.", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=82&auto=format&fit=crop", imageAlt: "Roll Inn live demo storefront" },
+    { slug: "demo-pharmacy", name: "Pharmacy", description: "Tenvo Pharmacy is a licensed online pharmacy in Pakistan offering genuine medicines, OTC products, vitamins, personal care, mother & baby essentials, and medical devices with pharmacist support and nationwide delivery.", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920&q=85&auto=format&fit=crop", imageAlt: "Pharmacy live demo storefront" },
+    { slug: "demo-dental", name: "Dental", description: "Dental care products and clinic essentials, professional-grade treatments.", image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.1.0&auto=format&fit=crop&w=1200&q=82", imageAlt: "Dental live demo storefront" },
+    { slug: "demo-supermarket", name: "Supermarket", description: "Tenvo Supermarket — Clifton-style online grocery with fresh produce, mega food & non-food offers, pharmacy, and household essentials. Delivery across Karachi.", image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.1.0&auto=format&fit=crop&w=1920&q=85", imageAlt: "Supermarket live demo storefront" },
+    { slug: "demo-hardware", name: "Hardware", description: "Tools, plumbing, sanitary ware, and building supplies for trade & DIY.", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.1.0&auto=format&fit=crop&w=1200&q=82", imageAlt: "Hardware live demo storefront" },
+    { slug: "demo-autoparts", name: "Auto Parts", description: "Genuine car accessories, car care products, and auto parts. OEM filters, oils, brakes, and electronics.", image: "https://www.autostore.pk/wp-content/uploads/2026/02/hero2-slide4-oils.jpg", imageAlt: "Auto Parts live demo storefront" },
+    { slug: "demo-showroom", name: "Car Dealership", description: "Tenvo Car Dealership showroom: new and used cars, auto parts, car care, PPF, conversions, and accessories with online booking.", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.1.0&auto=format&fit=crop&w=1920&q=85", imageAlt: "Car Dealership live demo storefront" },
+    { slug: "demo-sgcarmart", name: "Tenvo Auto Marketplace", description: "Tenvo Auto Marketplace demo: new, used, and rental listings, e-shop parts, valuations, and motoring resources on one branded portal.", image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=85&auto=format&fit=crop", imageAlt: "Tenvo Auto Marketplace live demo storefront" },
+    { slug: "demo-ev", name: "TENVO EV", description: "Tenvo EV is Pakistan’s leading electric motorcycle & scooter showroom. Discover high-performance Vlektra EV motorbikes, Metro EV smart scooters, and Ramza Aima e-bikes with lithium battery serial tracking, fast chargers, and free test rides.", image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=1200&q=80&auto=format&fit=crop", imageAlt: "TENVO EV live demo storefront" },
+    { slug: "demo-oil", name: "Tenvo Lubricants", description: "TENVO OILS is Pakistan’s leading engine oil & filter distribution network supplying Shell, Caltex, ZIC, PSO, TotalEnergies, Guard, Leppon, and Vic filters to wholesalers, workshops, lube shops, and commercial fleets.", image: "https://images.unsplash.com/photo-1486262715619-67b85e44308f?w=1200&q=80&auto=format&fit=crop", imageAlt: "Tenvo Lubricants live demo storefront" },
+    { slug: "demo-travel", name: "Dream Vista Travel & Tours", description: "Official travel agency desk offering luxury expeditions across Northern Pakistan, Dubai & UAE escapes, executive Umrah packages, and express visa filing with guaranteed deposit safety.", image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&q=80&auto=format&fit=crop", imageAlt: "Dream Vista Travel & Tours live demo storefront" },
+    { slug: "demo-bakery", name: "Bakery", description: "Fresh breads, cakes, pastries, and custom celebration orders.", image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-4.1.0&auto=format&fit=crop&w=1200&q=82", imageAlt: "Bakery live demo storefront" },
+    { slug: "demo-boutique", name: "Boutique", description: "Women's unstitched, pret, western & accessories, new arrivals every week.", image: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.1.0&auto=format&fit=crop&w=1000&q=85", imageAlt: "Boutique live demo storefront" },
+    { slug: "demo-jewellery", name: "Jewellery", description: "Hallmark-certified gold (21K–24K), diamond jewellery, bridal sets, pearls, and sterling silver. Assay certificates, custom sizing, and insured delivery.", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.1.0&auto=format&fit=crop&w=1000&q=85", imageAlt: "Jewellery live demo storefront" },
+    { slug: "demo-electronics", name: "Tenvo Electronics", description: "Home appliances, LED TVs, and gadgets with official warranty and installment enquiry support.", image: "https://cdn.shopify.com/s/files/1/0830/0897/9164/files/Untitleddesign_20_130dd02e-89eb-4f6b-9b91-dec6031dabe9.jpg", imageAlt: "Tenvo Electronics live demo storefront" },
+    { slug: "demo-mobile", name: "Mobile Shop", description: "Latest smartphones, tablets, and accessories, official warranty included.", image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.1.0&auto=format&fit=crop&w=1200&q=82", imageAlt: "Mobile Shop live demo storefront" },
+    { slug: "demo-furniture", name: "Furniture Store", description: "Tenvo Furniture Store offers modern sofas, recliners, dining sets, beds, and mattresses with nationwide delivery and assembly on qualifying orders.", image: "https://comfy.sg/cdn/shop/files/comfy-sofa-singapore.webp?width=1920", imageAlt: "Furniture Store live demo storefront" },
+    { slug: "demo-marbles", name: "Tenvo Marbles", description: "Tenvo Marbles offers porcelain and ceramic tile collections plus marble, granite, onyx, and natural stone slabs for homes and commercial projects across Pakistan.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.1.0&auto=format&fit=crop&w=1920&q=85", imageAlt: "Tenvo Marbles live demo storefront" },
+    { slug: "demo-tyre", name: "Tenvo Tyre Store", description: "Trade parts, consumables, and wholesale quantities for businesses.", image: "https://gtrweb.mediaidee.com/wp-content/uploads/2025/07/GTR-banner1.webp", imageAlt: "Tenvo Tyre Store live demo storefront" },
+    { slug: "demo-milk", name: "Tenvo Milk Demo", description: "Fresh cow and buffalo milk by the kg, homemade dahi, makkhan, lassi, and packaged dairy — chilled daily.", image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.1.0&auto=format&fit=crop&w=800&q=82", imageAlt: "Tenvo Milk Demo live demo storefront" },
+    { slug: "demo-fmcg", name: "FMCG", description: "Fast-moving consumer goods, household, personal care, and pantry staples — wholesale and retail with distributor pricing.", image: "https://www.dsmonline.pk/media/wysiwyg/MANGO_BANNER.png", imageAlt: "FMCG live demo storefront" },
+    { slug: "demo-footwear", name: "Tenvo Footwear Demo", description: "Shop authentic local and imported footwear — men, women, kids, sports, and orthopedic — with size-first search and graded condition.", image: "https://images.footlocker.com/content/dam/final/footlocker/site/homepage/2026/july/260717-fl-recjctp9ltdwglxup-bts-sale-sotf-1up-hp/260717-fl-recJCTp9ltDWGLxup-bts-sale-sotf-1up-web.jpg", imageAlt: "Tenvo Footwear Demo live demo storefront" },
+    { slug: "demo-fitness", name: "Fitness Demo", description: "Train wild with strength, mobility, and conditioning programs. Shop whey protein, pre-workout, vitamins, and memberships with nationwide supplement delivery.", image: "https://assets.website-files.com/62258d7594580b9078cf9018/62259760d123ca0a7c2f1c20_Image%2011.png", imageAlt: "Fitness Demo live demo storefront" },
+    { slug: "demo-marine", name: "Tenvo Marine", description: "Marine spare parts and propulsion systems. Thrusters, rudder propellers, seals, and lifecycle support for commercial vessels.", image: "https://c11cbcde.delivery.rocketcdn.me/wp-content/uploads/2025/03/Home-topfoto-dwg-trading.jpg", imageAlt: "Tenvo Marine live demo storefront" },
+    { slug: "demo-construction", name: "Tenvo Constructors", description: "Consigli Construction Life Sciences & Civil Engineering: PEC C-A / C-1 licensed general contractor for turnkey pharmaceutical, commercial, and high-tech infrastructure.", image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=85&auto=format&fit=crop", imageAlt: "Tenvo Constructors live demo storefront" },
+    { slug: "tenvo-packaging", name: "TENVO Packaging", description: "A factory and paper-converting storefront for food-grade packaging, including baking cups, paper bowls, parchment rolls, and custom-printed food-service boxes.", image: "https://www.tenvo.store/factory/img/eco-packaging-suite.webp", imageAlt: "TENVO Packaging factory and paper-converter storefront" },
 ];
 
 const deliveryPhases = [
@@ -276,187 +181,194 @@ const deliveryPhases = [
     { title: "Ongoing Monitoring & Maintenance", icon: Activity }
 ];
 
+/**
+ * SOURCE OF TRUTH KEYWORDS: ProjectsPage, featuredProducts, deliveryPhases, Navbar, Footer, portfolio
+ * WHAT: Renders the responsive product portfolio and Mindscape delivery information.
+ * WHY: Gives visitors a clear path from shipped products to a related project conversation.
+ * WHERE: Next.js /projects route.
+ */
 export default function ProjectsPage() {
-    const scrollContainerRef = useRef<HTMLDivElement>(null);
-    const [isHovered, setIsHovered] = useState(false);
-
-    useEffect(() => {
-        if (isHovered) return;
-
-        const interval = setInterval(() => {
-            if (scrollContainerRef.current) {
-                const container = scrollContainerRef.current;
-                const scrollAmount = container.clientWidth * 0.8;
-
-                // If we've reached near the end, scroll back to start
-                if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 100) {
-                    container.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                }
-            }
-        }, 5000); // 5 second auto delay
-
-        return () => clearInterval(interval);
-    }, [isHovered]);
-
-    const scroll = (direction: 'left' | 'right') => {
-        if (scrollContainerRef.current) {
-            const container = scrollContainerRef.current;
-            const scrollAmount = container.clientWidth * 0.8; // Scroll by most of the container width
-            container.scrollBy({
-                left: direction === 'left' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-    };
-
     return (
         <div className="min-h-screen bg-transparent text-foreground relative">
             <Navbar />
-
-            {/* --- Hero Section --- */}
-            <section className="relative pt-44 pb-16 overflow-hidden institutional-grid">
-                <div className="container-standard relative z-10 text-center space-y-12">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/5 border border-border backdrop-blur-md mx-auto"
-                    >
-                        <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_hsl(var(--foreground)/0.6)]" />
-                        <span className="text-meta">Deployment_Logs // v5.1</span>
-                    </motion.div>
-
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="fluid-h1"
-                    >
-                        SYSTEM <span className="text-foreground/40">DEPLOYS.</span>
-                    </motion.h1>
-                </div>
-            </section>
-
-            {/* --- Projects Slider --- */}
-            <section className="py-24 bg-transparent relative border-t border-border">
-                <div className="container-standard mb-8 flex justify-between items-end">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <p className="text-xl md:text-2xl lg:text-3xl font-black text-foreground/40 font-heading tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl">
-                            REAL ENTERPRISE SYSTEMS. <br />
-                            <span className="text-foreground">VERIFIED ROI & IMPACT.</span>
+            <main>
+                <section className="relative overflow-hidden pt-32 pb-14 md:pt-40 md:pb-20 institutional-grid">
+                    <div className="container-standard relative z-10">
+                        <h1 className="fluid-h1 max-w-5xl text-left">
+                            Built for the work that matters.
+                        </h1>
+                        <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
+                            Explore products from Mindscape Analytics, shaped around real operating challenges, from farm management and market intelligence to business operations and production.
                         </p>
+                        <Link href="/contact" className="mt-8 inline-flex min-h-12 items-center gap-3 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
+                            Discuss a product or project
+                            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        </Link>
                     </div>
-                    {/* Navigation Arrows */}
-                    <div className="hidden lg:flex items-center gap-4">
-                        <button
-                            onClick={() => scroll('left')}
-                            className="p-4 bg-foreground/5 border border-border rounded-full hover:bg-foreground/10 hover:border-foreground/20 transition-all text-foreground/60 hover:text-foreground"
-                        >
-                            <ChevronLeft className="w-6 h-6" />
-                        </button>
-                        <button
-                            onClick={() => scroll('right')}
-                            className="p-4 bg-foreground/5 border border-border rounded-full hover:bg-foreground/10 hover:border-foreground/20 transition-all text-foreground/60 hover:text-foreground"
-                        >
-                            <ChevronRight className="w-6 h-6" />
-                        </button>
-                    </div>
-                </div>
+                </section>
 
-                <div className="relative w-full">
-                    {/* Visual fade edges for larger screens */}
-                    <div className="absolute left-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+                <section className="border-t border-border bg-background py-16 md:py-24">
+                    <div className="container-standard">
+                        <div className="mb-9 max-w-3xl md:mb-12">
+                            <h2 className="fluid-h2 text-balance">Real products. Built for measurable impact.</h2>
+                            <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+                                See how the product portfolio turns complex day-to-day work into clearer, connected systems. Open any product to explore it directly.
+                            </p>
+                        </div>
 
-                    <div
-                        ref={scrollContainerRef}
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
-                        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-8 px-8 md:px-[calc((100vw-80rem)/2)] pb-12"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                    >
-                        {projects.map((project, index) => (
-                             <motion.div
-                                key={project.title}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ delay: 0.1 }}
-                                className="w-[85vw] md:w-[80vw] lg:w-[1100px] max-w-[1200px] shrink-0 snap-center group relative p-6 sm:p-8 lg:p-14 rounded-3xl bg-card border border-border hover:border-brand/35 transition-all duration-500 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md surface-frost"
-                            >
-                                <div className="absolute top-0 right-0 p-16 opacity-[0.03] pointer-events-none group-hover:opacity-[0.08] transition-opacity duration-700 translate-x-1/4 -translate-y-1/4">
-                                    <project.icon className="w-96 h-96" />
-                                </div>
-
-                                <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20">
-                                    <div className="space-y-8 flex flex-col justify-center">
-                                        <div className="space-y-4">
-                                             <div className="flex flex-wrap gap-2">
-                                                <span className="px-3 py-1 bg-foreground/5 border border-border rounded-full text-meta opacity-60">
-                                                    {project.category}
-                                                </span>
-                                                <span className="px-3 py-1 bg-foreground/5 border border-border rounded-full text-meta opacity-40">
-                                                    Industry: {project.industry}
-                                                </span>
-                                            </div>
-                                            <h2 className="fluid-h2 leading-none text-foreground break-words">{project.title}</h2>
-                                            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                                                {project.description}
-                                            </p>
+                        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
+                            {featuredProducts.map((product) => (
+                                <article
+                                    key={product.name}
+                                    className="group overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                                >
+                                    <Link
+                                        href={product.href}
+                                        target="_blank"
+                                                rel="noopener noreferrer"
+                                        aria-label={`${product.action}, opens in a new tab`}
+                                        className="block h-full rounded-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                                    >
+                                        <div className="relative aspect-[16/9] overflow-hidden bg-muted">
+                                            <Image
+                                                src={product.image}
+                                                alt={product.imageAlt}
+                                                fill
+                                                sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 640px"
+                                                className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                                            />
+                                            <span className="absolute left-4 top-4 rounded-full border border-border bg-background/95 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm">
+                                                {product.category}
+                                            </span>
                                         </div>
 
-                                         <div className="bg-muted/70 border border-border p-6 rounded-2xl space-y-4 mt-auto surface-frost">
-                                            <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground border-b border-border pb-2">Business Impact & Results</h3>
-                                            <ul className="space-y-3">
-                                                {project.results.map(res => (
-                                                    <li key={res} className="flex items-start gap-3">
-                                                        <Shield className="w-4 h-4 text-foreground/40 shrink-0 mt-0.5" />
-                                                        <span className="text-sm font-bold uppercase tracking-wide text-foreground/90">{res}</span>
+                                        <div className="flex min-h-[260px] flex-col p-5 sm:p-7">
+                                            <div>
+                                                <h3 className="text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">
+                                                    {product.name}
+                                                </h3>
+                                                <p className="mt-3 max-w-xl text-[15px] leading-6 text-muted-foreground">
+                                                    {product.summary}
+                                                </p>
+                                            </div>
+
+                                            <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${product.name} capabilities`}>
+                                                {product.highlights.map((highlight) => (
+                                                    <li key={highlight} className="rounded-full border border-border bg-muted/60 px-3 py-1.5 text-xs font-medium text-muted-foreground">
+                                                        {highlight}
                                                     </li>
                                                 ))}
                                             </ul>
-                                        </div>
-                                    </div>
 
-                                     <div className="space-y-10 flex flex-col justify-center bg-card p-8 rounded-3xl border border-border shadow-sm surface-frost">
-                                        <div className="space-y-6">
-                                            <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-muted-foreground border-b border-border pb-4">System Architecture & Features</h3>
-                                            <div className="grid sm:grid-cols-2 gap-4">
-                                                {project.features.map(feature => (
-                                                    <div key={feature} className="flex items-center gap-3">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-foreground/20" />
-                                                        <span className="text-xs font-bold uppercase tracking-wider text-foreground/60">{feature}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
+                                            <span className="mt-auto flex min-h-12 items-end justify-between gap-4 pt-6 text-sm font-semibold text-foreground">
+                                                <span>{product.action}</span>
+                                                <ArrowUpRight className="h-5 w-5 shrink-0 text-brand transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                                            </span>
                                         </div>
-
-                                        <div className="space-y-6">
-                                            <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-muted-foreground border-b border-border pb-4">Infrastructure & Tech Stack</h3>
-                                            <div className="flex flex-wrap gap-2">
-                                                {project.techStack.map(tech => (
-                                                    <span key={tech} className="px-3 py-1.5 bg-muted border border-border rounded-lg text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                                                        {tech}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        <Link href={project.link} className="inline-block mt-4">
-                                            <button className="btn-institutional group w-full">
-                                                <span className="relative z-10 flex items-center justify-center gap-4">
-                                                    View Case Study
-                                                    <ExternalLink className="w-4 h-4 transition-transform group-hover:scale-110" />
-                                                </span>
-                                            </button>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                    </Link>
+                                </article>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+
+                <section className="border-t border-border bg-muted/30 py-16 md:py-24" aria-labelledby="acquire-products-heading">
+                    <div className="container-standard">
+                        <div className="mb-9 max-w-3xl md:mb-12">
+                            <h2 id="acquire-products-heading" className="fluid-h2 text-balance">Ready-to-acquire digital products.</h2>
+                            <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+                                Explore packaged software and business systems available through the Mindscape shop. Each listing opens its product page for current details and acquisition options.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 md:gap-6">
+                            {marketplaceProducts.map((product) => (
+                                <article key={product.href} className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+                                    <Link
+                                        href={product.href}
+                                        aria-label={`View ${product.name} in the shop`}
+                                        className="flex h-full flex-col rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                                    >
+                                        <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                                            <Image
+                                                src={product.image}
+                                                alt={product.imageAlt}
+                                                fill
+                                                sizes="(max-width: 639px) 100vw, (max-width: 1279px) 50vw, 33vw"
+                                                className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                                            />
+                                            <span className="absolute left-4 top-4 rounded-full border border-border bg-background/95 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm">
+                                                {product.category}
+                                            </span>
+                                        </div>
+                                        <div className="flex flex-1 flex-col p-5 sm:p-6">
+                                            <h3 className="text-xl font-semibold tracking-[-0.02em] text-foreground">{product.name}</h3>
+                                            <p className="mt-2 text-sm leading-6 text-muted-foreground">{product.summary}</p>
+                                            <span className="mt-5 flex items-center justify-between gap-4 border-t border-border pt-4 text-sm font-semibold text-foreground">
+                                                <span>{product.price === "Request access" ? "Request access" : product.price ? `Listed at ${product.price}` : "View product details"}</span>
+                                                <span className="inline-flex items-center gap-2 text-brand">
+                                                    View in shop
+                                                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </Link>
+                                </article>
+                            ))}
+                        </div>
+
+                        <div className="mt-16 border-t border-border pt-12 md:mt-20 md:pt-16" aria-labelledby="tenvo-demo-heading">
+                            <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between md:mb-10">
+                                <div className="max-w-3xl">
+                                    <h3 id="tenvo-demo-heading" className="text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">
+                                        TENVO live demo storefronts.
+                                    </h3>
+                                    <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
+                                        Browse {tenvoDemoStores.length} public, industry-specific TENVO storefronts. Open a demo to explore its live catalog and shopping experience.
+                                    </p>
+                                </div>
+                                <span className="shrink-0 text-sm font-medium text-muted-foreground">{tenvoDemoStores.length} live stores</span>
+                            </div>
+
+                            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-6">
+                                {tenvoDemoStores.map((store) => (
+                                    <article key={store.slug} className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+                                        <Link
+                                            href={`https://www.tenvo.store/store/${store.slug}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`Open the ${store.name} TENVO demo store in a new tab`}
+                                            className="flex h-full flex-col rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                                        >
+                                            <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                                                <Image
+                                                    src={store.image}
+                                                    alt={store.imageAlt}
+                                                    fill
+                                                    unoptimized
+                                                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw"
+                                                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                                                />
+                                                <span className="absolute bottom-3 right-3 rounded-full border border-border bg-background/95 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm">
+                                                    Live demo <ArrowUpRight className="ml-1 inline h-3.5 w-3.5" aria-hidden="true" />
+                                                </span>
+                                            </div>
+                                            <div className="flex flex-1 flex-col p-5">
+                                                <h4 className="text-lg font-semibold tracking-[-0.02em] text-foreground">{store.name}</h4>
+                                                <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted-foreground">{store.description}</p>
+                                                <span className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-4 mt-5 text-sm font-semibold text-foreground">
+                                                    <span>Explore storefront</span>
+                                                    <ArrowUpRight className="h-4 w-4 shrink-0 text-brand transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                                                </span>
+                                            </div>
+                                        </Link>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
 
             {/* --- 5-Phase Methodology Section --- */}
             <section className="section-spacing border-t border-border bg-background/40 backdrop-blur-3xl relative overflow-hidden institutional-grid">
@@ -464,8 +376,8 @@ export default function ProjectsPage() {
                     <div className="max-w-7xl mx-auto space-y-16">
                         <div className="text-center space-y-6">
                             <h2 className="fluid-h2">5-PHASE DELIVERY FRAMEWORK</h2>
-                            <p className="text-lg text-foreground/40 font-medium uppercase tracking-widest max-w-2xl mx-auto">
-                                We don't just deliver code and disappear. Every system we engineer follows a rigorous protocol from inception to perpetual maintenance.
+                            <p className="text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
+                                We deliver more than code. Every system follows a rigorous path from inception through continuous maintenance.
                             </p>
                         </div>
 
@@ -473,7 +385,7 @@ export default function ProjectsPage() {
                             {deliveryPhases.map((phase, i) => (
                                 <div key={phase.title} className="p-8 bg-card border border-border rounded-2xl relative group hover:bg-muted/70 transition-colors shadow-sm surface-frost">
                                     <div className="text-[10px] font-mono font-black text-foreground/20 uppercase tracking-[0.3em] mb-6">Phase_0{i + 1}</div>
-                                    <phase.icon className="w-8 h-8 text-foreground/40 mb-6 group-hover:text-foreground transition-colors" />
+                                    <phase.icon className="w-8 h-8 text-muted-foreground mb-6 group-hover:text-foreground transition-colors" />
                                     <h3 className="text-sm font-black uppercase tracking-wider leading-relaxed">{phase.title}</h3>
                                 </div>
                             ))}

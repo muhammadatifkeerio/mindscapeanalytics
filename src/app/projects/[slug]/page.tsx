@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -153,16 +154,42 @@ const caseStudies = {
     }
 };
 
+/** SOURCE OF TRUTH KEYWORDS: project metadata, canonical, caseStudies, Open Graph, social sharing
+ * WHAT: Generates route-specific search and share metadata for a known project case study.
+ * WHY: Each project needs a distinct canonical URL and preview; unknown slugs must not masquerade as another case.
+ * WHERE: Next.js metadata generation for /projects/[slug].
+ */
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const study = caseStudies[slug as keyof typeof caseStudies];
+    if (!study) notFound();
+
+    return {
+        title: `${study.title} | Mindscape Analytics`,
+        description: study.problem,
+        alternates: { canonical: `/projects/${slug}` },
+        openGraph: {
+            title: `${study.title} | Mindscape Analytics`,
+            description: study.problem,
+            url: `https://mindscapeanalytics.com/projects/${slug}`,
+            type: 'article',
+            images: [{ url: '/images/og-mindscape-2026.png', alt: 'Mindscape Analytics project portfolio' }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `${study.title} | Mindscape Analytics`,
+            description: study.problem,
+            images: ['/images/og-mindscape-2026.png'],
+        },
+    };
+}
+
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
     const resolvedParams = await params;
     const slug = resolvedParams.slug;
 
-    // Simulate fallback for prototype
-    const study = caseStudies[slug as keyof typeof caseStudies] || caseStudies["global-enterprise-erp"];
-
-    if (!study) {
-        notFound();
-    }
+    const study = caseStudies[slug as keyof typeof caseStudies];
+    if (!study) notFound();
 
     return (
         <div className="min-h-screen bg-transparent text-foreground relative">

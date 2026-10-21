@@ -1,69 +1,54 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import {
-    Mail,
-    Phone,
-    MapPin,
-    Send,
-    Clock,
-    MessageSquare,
-    CheckCircle2,
-    Calendar,
-    Globe,
-    ArrowRight,
-    Search,
-    ChevronDown,
-    ChevronUp,
-    PhoneCall,
-    MessageCircle
-} from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle2, Calendar, Globe, ChevronDown, MessageCircle } from "lucide-react";
 import { LinkedinIcon } from "@/components/icons/brand-icons";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WechatNumber from "@/components/WechatNumber";
 
 const contactInfo = [
     {
         icon: Mail,
-        title: "Platform Liaison",
+        title: "Email",
         value: "info@mindscapeanalytics.com",
         link: "mailto:info@mindscapeanalytics.com",
-        description: "Standard inquiries and general platform assistance."
+        description: "For project questions, partnerships, and general inquiries."
     },
     {
         icon: MessageCircle,
-        title: "Matrix Direct",
+        title: "🇺🇸 Message us on WhatsApp",
         value: "+1 (307) 210-6155",
         link: "https://wa.me/13072106155",
-        description: "Instant connectivity via WhatsApp secure protocol."
+        description: "Contact our US team directly by phone or WhatsApp."
     },
     {
         icon: LinkedinIcon,
-        title: "Professional Sync",
+        title: "LinkedIn",
         value: "Mindscape Analytics",
         link: "https://www.linkedin.com/company/mindscapeanalytics/",
-        description: "Connect with our industrial node on LinkedIn."
+        description: "Follow Mindscape Analytics and connect with our team."
     },
     {
         icon: Calendar,
-        title: "Strategic Session",
+        title: "Book a strategy call",
         value: "Schedule Now",
         link: "https://cal.com/mindscape/strategy",
-        description: "Book a deep-dive consultation with our architects."
+        description: "Choose a time to discuss your goals with our team."
     },
     {
         icon: Globe,
-        title: "Digital Presence",
+        title: "Our website",
         value: "mindscapeanalytics.com",
         link: "https://mindscapeanalytics.com",
-        description: "Primary entry point for the digital elite."
+        description: "Explore our services, products, and project portfolio."
     }
 ];
 
@@ -75,20 +60,20 @@ const officeLocations = [
 
 const faqs = [
     {
-        question: "What industrial sectors do you prioritize?",
-        answer: "We focus on high-stakes environments: Finance, Healthcare, Retail, and Advanced Manufacturing. Our architectures are designed for sectors requiring zero-latency intelligence."
+        question: "What can Mindscape help us build?",
+        answer: "Our work includes AI agents and automation, business and farm-management software, data systems, cloud architecture, and product sourcing. Tell us about your goals and we will help identify a suitable next step."
     },
     {
-        question: "How do I initiate a custom AI deployment?",
-        answer: "Start by scheduling a Strategic Session. We analyze your current stack and architect a custom node integration plan tailored to your operational needs."
+        question: "What happens after I send an inquiry?",
+        answer: "The team reviews the information you share and follows up using your email. You can also call one of our offices directly."
     },
     {
-        question: "Do you offer post-deployment support?",
-        answer: "Yes. Every deployment includes 24/7 dedicated Technical Protocol. We offer continuous monitoring, synchronization, and optimization services."
+        question: "Can you support a product after launch?",
+        answer: "Ongoing support, maintenance, and monitoring can be discussed and included in a project scope where needed."
     },
     {
-        question: "Is your infrastructure legally compliant?",
-        answer: "Mindscape Analytics operates under strict data privacy protocols and ensures all AI integrations meet regional and international cybersecurity standards."
+        question: "Can you work with our security and compliance requirements?",
+        answer: "Share your requirements during the initial conversation. We can review them with you and confirm what is in scope before work begins."
     }
 ];
 
@@ -96,7 +81,7 @@ export default function ContactPage() {
     return (
         <Suspense fallback={
             <div className="min-h-screen bg-background flex items-center justify-center">
-                <div className="text-foreground/20 font-black tracking-[0.5em] animate-pulse">LOADING ARC...</div>
+                <div className="text-muted-foreground">Loading contact options…</div>
             </div>
         }>
             <ContactFormContent />
@@ -113,15 +98,9 @@ function ContactFormContent() {
         email: "",
         company: "",
         phone: "",
-        service: "",
+        service: plan || "",
         message: ""
     });
-
-    useEffect(() => {
-        if (plan) {
-            setFormData(prev => ({ ...prev, service: plan }));
-        }
-    }, [plan]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -149,18 +128,6 @@ function ContactFormContent() {
             setIsSubmitting(false);
             setIsSubmitted(true);
 
-            // Reset form after 3 seconds
-            setTimeout(() => {
-                setIsSubmitted(false);
-                setFormData({
-                    name: "",
-                    email: "",
-                    company: "",
-                    phone: "",
-                    service: "",
-                    message: ""
-                });
-            }, 5000);
         } catch (err) {
             console.error('Submission error:', err);
             setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
@@ -191,10 +158,10 @@ function ContactFormContent() {
                         className="max-w-4xl mx-auto text-center"
                     >
                         <h1 className="fluid-h1 mb-8">
-                            GET IN <span className="opacity-30">TOUCH.</span>
+                            Tell us what you’re looking to build.
                         </h1>
                         <p className="fluid-body max-w-4xl mx-auto text-foreground/70 font-medium tracking-tight">
-                            READY TO TRANSFORM YOUR BUSINESS WITH <span className="text-foreground font-black">INDUSTRIAL INTELLIGENCE</span>?
+                            Share a few details and our team will get back to you. Prefer to speak directly? Choose one of our office numbers below.
                         </p>
                     </motion.div>
                 </div>
@@ -215,6 +182,7 @@ function ContactFormContent() {
                                 <a
                                     href={info.link}
                                     target={info.link.startsWith('http') ? '_blank' : undefined}
+                                    rel={info.link.startsWith('http') ? 'noreferrer' : undefined}
                                     className="block h-full transition-all duration-300 transform hover:scale-[1.02]"
                                 >
                     <div className="h-full p-8 rounded-2xl bg-card border border-border hover:border-brand/35 transition-all duration-300 group shadow-sm surface-frost">
@@ -228,13 +196,27 @@ function ContactFormContent() {
                                 </a>
                             </motion.div>
                         ))}
+                        <motion.article
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: contactInfo.length * 0.1 }}
+                            className="h-full rounded-2xl border border-border bg-card p-8 shadow-sm surface-frost"
+                        >
+                            <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-muted text-foreground">
+                                <MessageCircle className="h-6 w-6" aria-hidden="true" />
+                            </div>
+                            <h3 className="text-meta mb-2">🇨🇳 WeChat</h3>
+                            <p className="text-sm leading-relaxed text-muted-foreground">Find our China team in WeChat using this phone number.</p>
+                            <WechatNumber />
+                        </motion.article>
                     </div>
                 </div>
             </section>
 
             <section className="container-standard pb-16 md:pb-24" aria-labelledby="global-offices-heading">
                 <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                    <div><p className="text-xs font-semibold uppercase tracking-[.16em] text-brand">Global presence</p><h2 id="global-offices-heading" className="mt-3 font-heading text-3xl font-semibold tracking-[-.035em] sm:text-4xl">Three offices. One connected team.</h2></div>
+                    <div><p className="text-xs font-semibold uppercase tracking-[.16em] text-brand">Global presence</p><h2 id="global-offices-heading" className="mt-3 font-heading text-3xl font-semibold tracking-[-.035em] sm:text-4xl">Reach our teams in three locations</h2></div>
                     <p className="max-w-lg text-sm leading-6 text-muted-foreground">Reach our US, Pakistan, or China teams directly. The map marks Sheridan, Karachi, and Beijing.</p>
                 </div>
 
@@ -286,6 +268,7 @@ function ContactFormContent() {
                                             src="/images/whatsapp-qr.png"
                                             alt="WhatsApp Connection Protocol"
                                             fill
+                                            sizes="(max-width: 767px) 192px, 256px"
                                             className="object-contain"
                                         />
                                     </div>
@@ -293,18 +276,18 @@ function ContactFormContent() {
                             </div>
                             <div className="w-full md:w-2/3 space-y-6">
                                 <h3 className="fluid-h2">
-                                    SCAN TO <span className="opacity-30">SYNC.</span>
+                                    Message our team on WhatsApp
                                 </h3>
                                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                                    Instantly bridge the gap with our technical architects via secure WhatsApp protocol. High-priority inquiries receive real-time sync capabilities.
+                                    Prefer messaging? Start a WhatsApp conversation with our US office.
                                 </p>
                                 <div className="flex flex-wrap gap-4 pt-4">
                                     <Button size="lg" className="btn-institutional px-8" asChild>
-                                        <a href="https://wa.me/13072106155" target="_blank">OPEN PROTOCOL</a>
+                                        <a href="https://wa.me/13072106155" target="_blank" rel="noreferrer">Open WhatsApp</a>
                                     </Button>
                                     <div className="flex items-center gap-3 px-6 py-2 rounded-full border border-border bg-muted/60">
                                         <div className="w-2 h-2 rounded-full bg-brand animate-pulse" />
-                                        <span className="text-meta">SYSTEM STATUS: READY</span>
+                                        <span className="text-meta">WhatsApp contact</span>
                                     </div>
                                 </div>
                             </div>
@@ -373,9 +356,9 @@ function ContactFormContent() {
                                             <div className="w-20 h-20 rounded-full bg-foreground/5 border border-border flex items-center justify-center mx-auto mb-8">
                                                 <CheckCircle2 className="h-10 w-10 text-foreground animate-pulse" />
                                             </div>
-                                            <h3 className="text-3xl font-black uppercase tracking-tighter mb-4">SIGNAL RECEIVED</h3>
-                                            <p className="text-foreground/40 font-medium tracking-wide">
-                                                Transmission successful. Awaiting architect verification.
+                                            <h3 className="text-3xl font-black tracking-tight mb-4">Thanks for reaching out.</h3>
+                                            <p className="text-muted-foreground font-medium">
+                                                Your message has been received. We’ll follow up using the email address you provided.
                                             </p>
                                         </motion.div>
                                     ) : (
@@ -383,71 +366,79 @@ function ContactFormContent() {
                                             {/* Form fields with improved styling */}
                                             <div className="grid md:grid-cols-2 gap-8">
                                                 <div className="space-y-4">
-                                                    <label htmlFor="name" className="block text-meta opacity-50 mb-2">
-                                                        01 // FULL_NAME
+                                                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                                                    Your name
                                                     </label>
                                                     <Input
                                                         id="name"
                                                         name="name"
                                                         type="text"
+                                                        autoComplete="name"
+                                                        maxLength={120}
                                                         required
                                                         value={formData.name}
                                                         onChange={handleChange}
                                                         className="h-14 bg-background/80 border-border focus:border-secondary focus:ring-2 focus:ring-secondary/10 text-base text-foreground placeholder:text-foreground/40 rounded-xl transition-all duration-300"
-                                                        placeholder="ENTITY NAME"
+                                                        placeholder="Name"
                                                     />
                                                 </div>
                                                 <div className="space-y-4">
-                                                    <label htmlFor="email" className="block text-meta opacity-50 mb-2">
-                                                        02 // EMAIL_PROTOCOL
+                                                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                                                    Work email
                                                     </label>
                                                     <Input
                                                         id="email"
                                                         name="email"
                                                         type="email"
+                                                        autoComplete="email"
+                                                        maxLength={254}
                                                         required
                                                         value={formData.email}
                                                         onChange={handleChange}
                                                 className="h-14 bg-background border-border focus:border-brand focus:ring-2 focus:ring-brand/10 text-base text-foreground placeholder:text-muted-foreground rounded-xl transition-all duration-300"
-                                                        placeholder="SENDER@ACCESS.NODE"
+                                                        placeholder="you@company.com"
                                                     />
                                                 </div>
                                             </div>
 
                                             <div className="grid md:grid-cols-2 gap-8">
                                                 <div className="space-y-4">
-                                                    <label htmlFor="company" className="block text-meta opacity-50 mb-2">
-                                                        03 // ORGANIZATION
+                                                <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+                                                    Company <span className="font-normal normal-case text-muted-foreground">(optional)</span>
                                                     </label>
                                                     <Input
                                                         id="company"
                                                         name="company"
                                                         type="text"
+                                                        autoComplete="organization"
+                                                        maxLength={160}
                                                         value={formData.company}
                                                         onChange={handleChange}
                                                         className="h-14 bg-background border-border focus:border-brand focus:ring-1 focus:ring-brand/20 text-base text-foreground placeholder:text-muted-foreground rounded-xl transition-all duration-300"
-                                                        placeholder="CORPORATE IDENTITY"
+                                                        placeholder="Company name"
                                                     />
                                                 </div>
                                                 <div className="space-y-4">
-                                                    <label htmlFor="phone" className="block text-meta opacity-50 mb-2">
-                                                        04 // COMMS_UID
+                                                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                                                    Phone <span className="font-normal normal-case text-muted-foreground">(optional)</span>
                                                     </label>
                                                     <Input
                                                         id="phone"
                                                         name="phone"
                                                         type="tel"
+                                                        autoComplete="tel"
+                                                        maxLength={40}
                                                         value={formData.phone}
                                                         onChange={handleChange}
                                                         className="h-14 bg-background border-border focus:border-brand focus:ring-1 focus:ring-brand/20 text-base text-foreground placeholder:text-muted-foreground rounded-xl transition-all duration-300"
-                                                        placeholder="+[NODE] XXXXX"
+                                                        placeholder="Include your country code"
                                                     />
                                                 </div>
                                             </div>
 
                                             <div className="space-y-4">
-                                                <label htmlFor="service" className="block text-meta opacity-50 mb-2">
-                                                    05 // INTEREST_AREA
+                                                <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
+                                                    What do you need help with?
                                                 </label>
                                                 <div className="relative group">
                                                     <select
@@ -458,18 +449,20 @@ function ContactFormContent() {
                                                         className="w-full h-14 rounded-xl border border-border bg-background px-4 text-base text-foreground focus:border-brand focus:ring-1 focus:ring-brand/20 focus:outline-none transition-all appearance-none cursor-pointer"
                                                     >
                                                         <option value="" className="bg-background text-foreground">Select a service</option>
-                                                        <option value="strategic-architecture" className="bg-background text-foreground">Strategic architecture</option>
-                                                        <option value="enterprise-intelligence" className="bg-background text-foreground">Enterprise intelligence</option>
-                                                        <option value="infinite-ecosystem" className="bg-background text-foreground">Managed platform</option>
-                                                        <option value="other" className="bg-background text-foreground">Other inquiry</option>
+                                                        <option value="ai-automation" className="bg-background text-foreground">AI agents and automation</option>
+                                                        <option value="software-development" className="bg-background text-foreground">Software or digital product</option>
+                                                        <option value="data-cloud" className="bg-background text-foreground">Data systems or cloud architecture</option>
+                                                        <option value="farm-management" className="bg-background text-foreground">Farm management software</option>
+                                                        <option value="china-sourcing" className="bg-background text-foreground">China sourcing and production</option>
+                                                        <option value="other" className="bg-background text-foreground">Something else</option>
                                                     </select>
                                                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/40 pointer-events-none group-focus-within:text-secondary transition-colors" />
                                                 </div>
                                             </div>
 
                                             <div className="space-y-4">
-                                                <label htmlFor="message" className="block text-meta opacity-50 mb-2">
-                                                    06 // SIGNAL_PAYLOAD
+                                                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                                                    Tell us a little about the project
                                                 </label>
                                                 <textarea
                                                     id="message"
@@ -479,9 +472,15 @@ function ContactFormContent() {
                                                     onChange={handleChange}
                                                     rows={5}
                                                     className="w-full rounded-xl border border-border bg-background px-4 py-4 text-base text-foreground focus:border-brand focus:ring-1 focus:ring-brand/20 focus:outline-none transition-all resize-none placeholder:text-muted-foreground duration-300"
-                                                    placeholder="DESCRIBE ARCHITECTURAL REQUIREMENTS..."
+                                                    placeholder="What are you trying to improve or build? Mention any current tools or key requirements."
                                                 />
                                             </div>
+
+                                            {error && (
+                                                <p role="alert" className="rounded-xl border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+                                                    {error}
+                                                </p>
+                                            )}
 
                                              <button
                                                 type="submit"
@@ -490,9 +489,9 @@ function ContactFormContent() {
                                             >
                                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-[100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                                                 <span className="relative flex items-center justify-center gap-4">
-                                                    {isSubmitting ? "ESTABLISHING LINK..." : (
+                                                {isSubmitting ? "Sending…" : (
                                                         <>
-                                                            EXECUTE TRANSMISSION
+                                                            Send inquiry
                                                             <Send className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                                         </>
                                                     )}

@@ -13,7 +13,18 @@ import type { Pagination, ProductInput } from "@/lib/types";
 export async function listApproved(pagination: Pagination) {
     return prisma.product.findMany({
         where: { approvedForSale: true },
-        include: { images: true, seller: true },
+        select: {
+            id: true,
+            name: true,
+            description: true,
+            price: true,
+            category: true,
+            demoUrl: true,
+            features: true,
+            techStack: true,
+            sellerId: true,
+            images: { select: { url: true } },
+        },
         orderBy: { createdAt: "desc" },
         skip: pagination.skip,
         take: pagination.take,
@@ -23,7 +34,18 @@ export async function listApproved(pagination: Pagination) {
 export async function listApprovedAll() {
     return prisma.product.findMany({
         where: { approvedForSale: true },
-        include: { images: true, seller: true },
+        select: {
+            id: true,
+            name: true,
+            description: true,
+            price: true,
+            category: true,
+            demoUrl: true,
+            features: true,
+            techStack: true,
+            sellerId: true,
+            images: { select: { url: true } },
+        },
         orderBy: { createdAt: "desc" },
     });
 }

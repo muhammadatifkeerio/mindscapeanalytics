@@ -11,6 +11,7 @@ import { enforceRouteAuthorization } from "@/lib/route-authorization";
 export const metadata: Metadata = {
     title: "Seller Portal | MSA Architect Network",
     description: "Manage your architectural assets, track sales, and optimize your persistent revenue streams in the MSA Seller Dashboard.",
+    robots: { index: false, follow: false },
 };
 
 export default async function SellerLayout({

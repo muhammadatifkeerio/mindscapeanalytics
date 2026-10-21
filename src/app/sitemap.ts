@@ -9,6 +9,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         "/about",
         "/zeeshan-keerio",
         "/contact",
+        "/become-seller",
+        "/outsourcing",
         "/solutions",
         "/solutions/ai-genai",
         "/solutions/cloud-infrastructure",
@@ -20,9 +22,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         "/pricing",
         "/legal/privacy",
         "/legal/terms",
+        "/legal/seller",
+        "/zh-cn",
+        ...["global-enterprise-erp", "automated-inventory-system", "production-esg-intelligence", "dblynx-neural-intelligence", "ai-sales-agent", "dblynx-regional-bank", "fuel-station-erp"].map((slug) => `/projects/${slug}`),
     ].map((route) => ({
         url: `${baseUrl}${route}`,
-        lastModified: new Date(),
         changeFrequency: "weekly" as const,
         priority: route === "" ? 1 : 0.8,
     }));

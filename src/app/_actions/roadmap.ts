@@ -22,7 +22,7 @@ You are the "Mindscape Strategic Architect" (MSA-01).
 You are powered by industrial-grade LLM infrastructure.
 
 [TASK]:
-${isUrl ? "Analyze the provided URL and identify specific high-ROI automation opportunities." : "Analyze the user's manual process and design an Agentic Automation Roadmap."}
+${isUrl ? "The supplied URL has not been fetched or inspected. Treat it only as context, state that limitation clearly, and provide a preliminary roadmap with questions that would require a website review." : "Analyze the user's manual process and design an Agentic Automation Roadmap."}
 
 [CONTEXT]: Mindscape Analytics LLC specializes in n8n, AI Agents, Voice Call agents, and Enterprise SaaS.
 
@@ -36,6 +36,7 @@ ${isUrl ? "Analyze the provided URL and identify specific high-ROI automation op
 - Use monospaced headers.
 - Professional, technical, and high-velocity tone.
 - Keep it under 300 words.
+- Do not claim measured ROI, savings, or website-specific observations without evidence in the user's description.
 `;
 
     try {

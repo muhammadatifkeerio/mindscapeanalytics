@@ -71,6 +71,18 @@ async function main() {
             features: ['Live Breach Search Engine', 'Compromised Credential Alerts', 'Domain & Identity Parsing', 'Extensive custom scraping available'],
             imageUrl: '/images/projects/breachdata_opt.webp',
         },
+        // SOURCE OF TRUTH: User confirmed a $299 one-time purchase price.
+        {
+            name: 'AurumPulse Gold News Intelligence Pro',
+            description: 'A gold (XAUUSD) economic-news intelligence terminal that brings scheduled event alerts, low/medium/high impact classifications, pre-news market context, conditional post-release scenarios, and historical and forward validation views into one workspace. One-time purchase. Analytical scenarios are not guaranteed predictions or financial advice.',
+            price: 299.00,
+            category: 'trading_intelligence',
+            approvedForSale: true,
+            demoUrl: null,
+            techStack: ['Economic calendar', 'XAUUSD analysis', 'MT5 monitoring', 'Historical validation'],
+            features: ['Scheduled macroeconomic event alerts', 'Low, medium, and high impact classifications', 'Pre-news trend, momentum, volatility, and risk context', 'Conditional post-news scenarios', 'Historical and forward-validation workspaces', 'One-time license purchase'],
+            imageUrl: '/images/projects/aurumpulse-gold-intelligence.webp',
+        },
         {
             name: 'Global Formations LLC Portal',
             description: 'Complete automated incorporation and registered agent platform. Allows users to form LLCs and generate operating agreements automatically.',

@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
+    alternates: { canonical: "/solutions/blockchain" },
     title: "Blockchain & Web3 Solutions | Mindscape Analytics",
     description: "Decentralized trust systems, smart contracts, and secure DApps for transparent enterprise operations.",
     openGraph: {

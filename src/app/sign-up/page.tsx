@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Shield, ArrowRight, Loader2, Mail, Lock, User } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "@/components/SmartImage";
 import { useRouter } from "next/navigation";
 import * as zod from "zod";
 
@@ -170,7 +170,7 @@ function SignUpContent() {
                     <Link href="/" className="inline-block group">
                         <div className="flex items-center justify-center gap-2 mb-6">
                             <Image
-                                src="/images/brand/mindscape-analytics-logo.png"
+                                src="/images/brand/mindscape-analytics-logo.webp"
                                 alt="Mindscape Analytics"
                                 width={240}
                                 height={56}
