@@ -1,12 +1,13 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: "AI Automation, Data & Software Services | Mindscape Analytics",
+    title: "AI, SaaS Development & China Sourcing Services | Mindscape Analytics",
     alternates: { canonical: "/services" },
-    description: "Explore AI agent and voice automation, lead-generation systems, data engineering, cloud architecture, and custom SaaS built around real business workflows.",
+    description: "Explore AI agents, voice automation, SaaS application development, data engineering, cloud architecture, and China direct factory sourcing. Discuss your project with Mindscape Analytics.",
     openGraph: {
-        title: "AI Automation, Data & Software Services | Mindscape Analytics",
-        description: "Practical AI automation, lead-generation systems, data engineering, cloud architecture, and custom software for business operations.",
+        title: "AI, SaaS Development & China Sourcing Services | Mindscape Analytics",
+        description: "AI automation, SaaS application development, data and cloud engineering, and China direct factory sourcing for growing businesses.",
+        url: "https://mindscapeanalytics.com/services",
     }
 }
 

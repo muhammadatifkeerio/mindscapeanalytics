@@ -12,8 +12,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "AI, Data & Software for Real Operations | Mindscape Analytics",
-  description: "Mindscape Analytics designs autonomous AI agents, decision-grade data systems, and custom digital products—and helps companies source from China and scale production.",
+  title: "AI, SaaS Development & China Sourcing | Mindscape Analytics",
+  description: "Build AI agents, custom SaaS applications, and data systems with Mindscape Analytics. Connect software engineering and cloud deployment with China direct factory sourcing and production.",
   keywords: [
     "AI Agents", "Gen AI Solutions", "Agentic AI Automation",
     "RSIQ Pro", "DBlynx", "DisposIQ", "Tenvo",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   // Public marketing URLs use the verified brand domain, independently of auth/API origins.
   metadataBase: new URL('https://mindscapeanalytics.com'),
   openGraph: {
-    title: "AI, Data & Software for Real Operations | Mindscape Analytics",
+    title: "AI, SaaS Development & China Sourcing | Mindscape Analytics",
     description: "Autonomous AI agents, decision-grade data systems, custom digital products, and China sourcing built around real operating needs.",
     type: "website",
     url: 'https://mindscapeanalytics.com',
@@ -108,7 +108,17 @@ const jsonLd = {
         "contactType": "customer service",
         "email": "info@mindscapeanalytics.com"
       },
-      "sameAs": ["https://www.linkedin.com/company/mindscapeanalytics/"]
+      "sameAs": ["https://www.linkedin.com/company/mindscapeanalytics/"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Mindscape Analytics Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Agents & Generative AI", "url": "https://mindscapeanalytics.com/solutions/ai-genai" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS Application Development", "url": "https://mindscapeanalytics.com/solutions/enterprise-software" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Engineering & Cloud Infrastructure", "url": "https://mindscapeanalytics.com/solutions/cloud-infrastructure" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Direct Factory Sourcing", "url": "https://mindscapeanalytics.com/china-sourcing" } }
+        ]
+      }
     },
     {
       "@type": "WebSite",

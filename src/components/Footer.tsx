@@ -13,7 +13,8 @@ const companyLinks = [
 
 const exploreLinks = [
     ["AI asset shop", "/shop"],
-    ["China sourcing", "/contact"],
+    ["China Direct Factory Sourcing", "/china-sourcing"],
+    ["SaaS Application Development", "/solutions/enterprise-software"],
     ["Tenvo", "https://www.tenvo.store/"],
     ["Insights", "/blog"],
 ] as const;

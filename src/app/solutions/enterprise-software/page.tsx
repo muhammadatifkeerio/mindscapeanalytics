@@ -2,11 +2,12 @@ import { Metadata } from "next";
 import EnterpriseSoftwareClient from "./EnterpriseSoftwareClient";
 
 export const metadata: Metadata = {
-    title: "Enterprise Software Architectures | Mindscape Analytics",
-    description: "Building the digital backbone of modern organizations with scalable, resilient, and secure application architectures that power global operations.",
+    title: "SaaS Application Development & Custom Software | Mindscape Analytics",
+    description: "Build custom SaaS applications, business portals, ERP and inventory systems with Mindscape Analytics. From product design and secure integrations to cloud deployment and ongoing support.",
+    alternates: { canonical: "/solutions/enterprise-software" },
     openGraph: {
-        title: "Enterprise Software Architectures | Mindscape Analytics",
-        description: "Building the digital backbone of modern organizations with scalable, resilient, and secure application architectures that power global operations.",
+        title: "SaaS Application Development & Custom Software | Mindscape Analytics",
+        description: "Turn your business workflow into a custom SaaS application, with product design, software engineering, cloud deployment, and ongoing support.",
         url: "https://mindscapeanalytics.com/solutions/enterprise-software",
         siteName: "Mindscape Analytics",
         locale: "en_US",

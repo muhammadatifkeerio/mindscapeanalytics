@@ -18,8 +18,8 @@ import {
 
 const features = [
     {
-        title: "Full Stack SaaS Platforms",
-        description: "End-to-end web applications built with Next.js 15+, optimized for high performance and global scale.",
+        title: "SaaS Application Development",
+        description: "Custom SaaS platforms, customer portals, subscriptions, and business workflows designed, developed, and deployed around your operations.",
         icon: Globe
     },
     {
@@ -53,8 +53,8 @@ export default function EnterpriseSoftwareClient() {
     return (
         <SolutionLayout
             currentSolutionId="enterprise-software"
-            title="Enterprise Software"
-            subtitle="Building the digital backbone of modern organizations with scalable, resilient, and secure application architectures."
+            title="SaaS Application Development"
+            subtitle="Turn your business workflow into software people can use. We design and build custom SaaS applications, ERP systems, customer portals, and integrations, then deploy and support them in the cloud."
         >
             <div className="space-y-32">
                 {/* Intro Section */}

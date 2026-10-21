@@ -32,9 +32,15 @@ const solutions = [
     },
     {
         id: "enterprise-software",
-        name: "Enterprise Core Systems",
+        name: "SaaS Application Development",
         icon: Code,
         href: "/solutions/enterprise-software"
+    },
+    {
+        id: "china-sourcing",
+        name: "China Direct Factory Sourcing",
+        icon: Cloud,
+        href: "/china-sourcing"
     },
     {
         id: "services",

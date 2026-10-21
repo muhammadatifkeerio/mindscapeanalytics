@@ -9,7 +9,7 @@ const siteLinks: NavLink[] = [
             { name: "AI & GenAI", href: "/solutions/ai-genai" },
             { name: "Blockchain & Ledger", href: "/solutions/blockchain" },
             { name: "Cloud Infrastructure", href: "/solutions/cloud-infrastructure" },
-            { name: "Enterprise Systems", href: "/solutions/enterprise-software" },
+            { name: "SaaS Application Development", href: "/solutions/enterprise-software" },
         ],
     },
     {
@@ -28,9 +28,11 @@ const siteLinks: NavLink[] = [
         label: "Execution Services",
         href: "/services",
         submenu: [
-            { name: "Strategic Analytics", href: "/services#analytics" },
-            { name: "Data Engineering", href: "/services#engineering" },
-            { name: "Custom Development", href: "/services#development" },
+            { name: "AI Agents & Automation", href: "/solutions/ai-genai" },
+            { name: "SaaS Application Development", href: "/solutions/enterprise-software" },
+            { name: "Data & Cloud Engineering", href: "/solutions/cloud-infrastructure" },
+            { name: "China Direct Factory Sourcing", href: "/china-sourcing" },
+            { name: "All Services", href: "/services" },
         ],
     },
     { name: "Shop", label: "AI Asset Shop", href: "/shop", prefetch: true },

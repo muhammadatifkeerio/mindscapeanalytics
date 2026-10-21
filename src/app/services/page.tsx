@@ -80,8 +80,8 @@ const services = [
     },
     {
         icon: Globe,
-        title: "Full Stack SaaS Platforms",
-        description: "End-to-end web applications and SaaS architectures built with Next.js 15+ for high performance.",
+        title: "SaaS Application Development",
+        description: "Custom SaaS applications, business portals, subscriptions, and integrations, from product design to cloud deployment and ongoing support.",
         features: [
             "Type-safe Architecture",
             "Micro-frontend Ready",
@@ -103,7 +103,7 @@ const services = [
             "Multi-source Tracking",
             "Conversion Optimization"
         ],
-        link: "#",
+        link: "/contact",
         gradient: "from-white/10 to-transparent"
     },
     {
@@ -149,6 +149,16 @@ const services = [
         gradient: "from-white/10 to-transparent"
     }
 ];
+
+// SOURCE OF TRUTH KEYWORDS: China sourcing, service catalog, factory coordination, production, supplier validation
+services.push({
+    icon: Globe,
+    title: "China Direct Factory Sourcing",
+    description: "Connect your product requirements with China factories. Coordinate supplier fit, samples, validation, production handoff, and delivery planning with our team.",
+    features: ["Product Requirements", "Factory Matching", "Sample Coordination", "Production Handoff", "Delivery Coordination"],
+    link: "/china-sourcing",
+    gradient: "from-white/10 to-transparent"
+});
 
 const process = [
     {

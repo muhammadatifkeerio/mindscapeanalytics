@@ -17,12 +17,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         "/solutions/enterprise-software",
         "/solutions/blockchain",
         "/services",
+        "/china-sourcing",
         "/projects",
         "/shop",
         "/pricing",
-        "/legal/privacy",
-        "/legal/terms",
-        "/legal/seller",
         "/zh-cn",
         ...["global-enterprise-erp", "automated-inventory-system", "production-esg-intelligence", "dblynx-neural-intelligence", "ai-sales-agent", "dblynx-regional-bank", "fuel-station-erp"].map((slug) => `/projects/${slug}`),
     ].map((route) => ({
