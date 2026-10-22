@@ -24,7 +24,7 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-10">
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-5 lg:p-10">
                     {/* Backdrop */}
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -40,20 +40,22 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 30 }}
                         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-                        className="relative w-full max-w-[1200px] h-full max-h-[900px] bg-card border border-border rounded-[3rem] overflow-hidden flex flex-col lg:flex-row shadow-2xl"
+                        className="relative flex h-[calc(100dvh-1.5rem)] max-h-[900px] w-full max-w-[1200px] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-2xl sm:h-[calc(100dvh-2.5rem)] sm:rounded-3xl lg:h-full lg:flex-row"
                     >
                         {/* Close Button */}
                         <button
+                            type="button"
                             onClick={onClose}
-                            className="absolute top-8 right-8 z-[110] p-4 bg-foreground/5 hover:bg-foreground/10 border border-border rounded-full text-foreground/40 hover:text-foreground transition-all backdrop-blur-xl"
+                            aria-label="Close product details"
+                            className="absolute right-3 top-3 z-[110] grid h-11 w-11 place-items-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-muted sm:right-5 sm:top-5"
                         >
                             <X size={20} />
                         </button>
 
                         {/* Left: Gallery Section */}
-                        <div className="w-full lg:w-1/2 p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-border overflow-y-auto no-scrollbar institutional-grid">
-                            <div className="space-y-8">
-                                <div className="aspect-[4/3] relative rounded-[2rem] overflow-hidden border border-border">
+                        <div className="min-h-0 w-full shrink-0 overflow-y-auto border-b border-border p-4 pt-16 sm:p-6 sm:pt-16 lg:h-full lg:w-1/2 lg:shrink lg:border-b-0 lg:border-r lg:p-8 xl:p-12 institutional-grid">
+                            <div className="space-y-5 sm:space-y-8">
+                                <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-border sm:aspect-[4/3] sm:rounded-2xl">
                                     <Image
                                         src={product.images[0]?.url || "https://placehold.co/600x400/0a0a0b/ffffff?text=No+Image"}
                                         alt={product.name}
@@ -70,7 +72,7 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                                 </div>
 
                                 {/* Tech Stack Protocol */}
-                                <div className="grid grid-cols-2 gap-3">
+                                <div className="grid grid-cols-2 gap-2 sm:gap-3">
                                     {techStack.map((tech: string, i: number) => (
                                         <div key={i} className="px-4 py-3 bg-foreground/[0.02] border border-border rounded-xl flex items-center gap-3">
                                             <Code size={12} className="text-foreground/20" />
@@ -80,9 +82,9 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                                 </div>
 
                                 {/* Description Context */}
-                                <div className="pt-8">
-                                    <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-4 block">Core Abstract</span>
-                                    <p className="text-foreground/40 text-sm font-medium leading-relaxed border-l border-border pl-6">
+                                <div className="pt-2 sm:pt-4">
+                                    <span className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">About this product</span>
+                                    <p className="border-l border-border pl-4 text-sm leading-6 text-muted-foreground sm:pl-5">
                                         {product.description || "Elite architectural primitive engineered for high-tier deployments."}
                                     </p>
                                 </div>
@@ -90,28 +92,28 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                         </div>
 
                         {/* Right: Interaction Interface */}
-                        <div className="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col overflow-y-auto no-scrollbar">
-                            <div className="mb-10">
-                                <div className="flex items-center gap-4 mb-4">
-                                    <span className="px-3 py-1 bg-foreground/5 border border-border rounded-full text-[8px] font-black uppercase tracking-[0.4em] text-foreground/40">
+                        <div className="min-h-0 w-full flex-1 overflow-y-auto p-4 pt-5 sm:p-6 lg:h-full lg:w-1/2 lg:flex-none lg:p-8 xl:p-12">
+                            <div className="mb-6 sm:mb-8">
+                                <div className="mb-3 flex flex-wrap items-center gap-2 sm:gap-4">
+                                    <span className="rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium capitalize text-muted-foreground">
                                         {product.category.replace(/_/g, ' ')}
                                     </span>
-                                    <span className="text-[8px] font-black uppercase tracking-[0.4em] text-foreground/10">#{product.id.slice(-6).toUpperCase()}</span>
+                                    <span className="text-xs text-muted-foreground">#{product.id.slice(-6).toUpperCase()}</span>
                                 </div>
-                                <h2 className="text-4xl md:text-5xl font-black tracking-tightest leading-none uppercase text-foreground mb-6">
+                                <h2 className="mb-4 break-words text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl lg:text-4xl">
                                     {product.name}
                                 </h2>
                             </div>
 
                             {/* Features Grid */}
-                            <div className="flex-1 space-y-8">
+                            <div className="space-y-5 sm:space-y-8">
                                 <div className="grid grid-cols-1 gap-4">
                                     {features.map((feature: string, i: number) => (
-                                        <div key={i} className="flex gap-4 items-center p-4 bg-foreground/[0.01] border border-border rounded-2xl group hover:bg-foreground/[0.03] transition-all">
-                                            <div className="w-6 h-6 rounded-lg bg-foreground/5 flex items-center justify-center flex-shrink-0">
-                                                <CheckCircle2 size={12} className="text-foreground/20 group-hover:text-foreground transition-colors" />
+                                        <div key={i} className="flex items-start gap-3 rounded-xl border border-border bg-background p-3 transition-colors hover:bg-muted/50 sm:items-center sm:p-4">
+                                            <div className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-muted text-brand">
+                                                <CheckCircle2 size={15} />
                                             </div>
-                                            <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/40 group-hover:text-foreground/80 transition-colors">
+                                            <span className="text-sm leading-5 text-foreground">
                                                 {feature}
                                             </span>
                                         </div>
@@ -120,16 +122,16 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                             </div>
 
                             {/* Acquisition Footer */}
-                            <div className="mt-12 pt-10 border-t border-border">
-                                <div className="flex items-center justify-between mb-8">
+                            <div className="mt-6 border-t border-border pt-5 sm:mt-10 sm:pt-8">
+                                <div className="mb-5 flex items-center justify-between gap-3 sm:mb-8">
                                     <div className="flex flex-col">
-                                        <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-1">{product.category === "request_access" ? "Availability" : product.category === "trading_intelligence" ? "One-time purchase" : "Standard Allocation"}</span>
+                                        <span className="mb-1 text-xs font-medium text-muted-foreground">{product.category === "request_access" ? "Availability" : product.category === "trading_intelligence" ? "One-time purchase" : "Price"}</span>
                                         <div className="flex items-baseline gap-2">
-                                            {product.category === "request_access" ? <span className="text-2xl font-bold tracking-tight text-foreground">Request access</span> : <><span className="text-4xl font-black tracking-tighter text-foreground">${product.price}</span><span className="text-foreground/20 text-[9px] font-bold uppercase">USD</span></>}
+                                            {product.category === "request_access" ? <span className="text-xl font-semibold text-foreground">Request access</span> : <><span className="text-3xl font-bold tracking-tight text-foreground">${product.price}</span><span className="text-xs font-medium uppercase text-muted-foreground">USD</span></>}
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-3 px-4 py-2 bg-foreground/5 rounded-xl border border-border">
-                                        <span className="text-[8px] font-black uppercase tracking-widest text-foreground/40">{product.category === "request_access" ? "Availability by request" : "Verified Ready"}</span>
+                                    <div className="flex items-center gap-3 rounded-xl border border-border bg-muted px-3 py-2">
+                                        <span className="text-xs font-medium text-muted-foreground">{product.category === "request_access" ? "Availability by request" : "Ready to purchase"}</span>
                                     </div>
                                 </div>
 
@@ -151,10 +153,10 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                                     </div>
                                 </div>
 
-                                <div className="mt-10 text-center">
+                                <div className="mt-6 text-center sm:mt-8">
                                     <a
                                         href={`/shop/${product.id}`}
-                                        className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20 hover:text-foreground transition-all flex items-center justify-center gap-2 group"
+                                        className="inline-flex min-h-11 items-center justify-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                                     >
                                         Inspect Full Documentation
                                         <ExternalLink size={10} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

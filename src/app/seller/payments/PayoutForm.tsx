@@ -16,23 +16,23 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
     const [state, action, isPending] = useActionState(updatePayouts, { error: null, success: false });
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-5 sm:space-y-8">
             {/* Method Selection */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
                 <button
                     onClick={() => setMethod("stripe")}
-                    className={`p-10 rounded-[2.5rem] border transition-all text-left relative overflow-hidden group ${method === "stripe"
-                            ? "bg-foreground/5 border-foreground/20"
-                            : "bg-foreground/[0.01] border-border opacity-40 hover:opacity-100 hover:border-border"
+                    className={`relative overflow-hidden rounded-2xl border p-4 text-left transition-colors sm:p-6 ${method === "stripe"
+                            ? "border-brand/40 bg-brand/5"
+                            : "border-border bg-card hover:border-brand/30"
                         }`}
                 >
                     <div className="relative z-10">
-                        <CreditCard size={32} className={`mb-6 ${method === "stripe" ? "text-foreground" : "text-foreground/20"}`} />
-                        <h3 className="text-xl font-black uppercase tracking-tight mb-2">Stripe Connect</h3>
-                        <p className="text-[10px] text-foreground/40 uppercase tracking-widest font-medium">Standard Fiat Rails</p>
+                        <CreditCard size={24} className={`mb-4 ${method === "stripe" ? "text-brand" : "text-muted-foreground"}`} />
+                        <h3 className="mb-1 text-base font-semibold">Stripe Connect</h3>
+                        <p className="text-sm text-muted-foreground">Receive payouts through Stripe.</p>
                     </div>
                     {method === "stripe" && (
-                        <div className="absolute top-8 right-8 text-blue-500">
+                        <div className="absolute right-4 top-4 text-brand sm:right-6 sm:top-6">
                             <CheckCircle2 size={24} />
                         </div>
                     )}
@@ -40,18 +40,18 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
 
                 <button
                     onClick={() => setMethod("crypto")}
-                    className={`p-10 rounded-[2.5rem] border transition-all text-left relative overflow-hidden group ${method === "crypto"
-                            ? "bg-foreground/5 border-foreground/20"
-                            : "bg-foreground/[0.01] border-border opacity-40 hover:opacity-100 hover:border-border"
+                    className={`relative overflow-hidden rounded-2xl border p-4 text-left transition-colors sm:p-6 ${method === "crypto"
+                            ? "border-brand/40 bg-brand/5"
+                            : "border-border bg-card hover:border-brand/30"
                         }`}
                 >
                     <div className="relative z-10">
-                        <Wallet size={32} className={`mb-6 ${method === "crypto" ? "text-foreground" : "text-foreground/20"}`} />
-                        <h3 className="text-xl font-black uppercase tracking-tight mb-2">Crypto Wallet</h3>
-                        <p className="text-[10px] text-foreground/40 uppercase tracking-widest font-medium">Decentralized Settlement</p>
+                        <Wallet size={24} className={`mb-4 ${method === "crypto" ? "text-brand" : "text-muted-foreground"}`} />
+                        <h3 className="mb-1 text-base font-semibold">Crypto wallet</h3>
+                        <p className="text-sm text-muted-foreground">Receive payouts to a wallet address.</p>
                     </div>
                     {method === "crypto" && (
-                        <div className="absolute top-8 right-8 text-blue-500">
+                        <div className="absolute right-4 top-4 text-brand sm:right-6 sm:top-6">
                             <CheckCircle2 size={24} />
                         </div>
                     )}
@@ -65,28 +65,28 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="bg-foreground/[0.02] border border-border rounded-[3rem] p-12 relative overflow-hidden"
+                        className="relative overflow-hidden rounded-2xl border border-border bg-card p-4 sm:p-6 lg:p-8"
                     >
                         <div className="max-w-xl">
-                            <h2 className="text-2xl font-black uppercase tracking-tighter mb-6">Financial Bridge Configuration</h2>
-                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-widest leading-relaxed mb-10">
+                            <h2 className="mb-3 text-xl font-semibold tracking-tight sm:text-2xl">Stripe payout account</h2>
+                            <p className="mb-6 text-sm leading-6 text-muted-foreground sm:mb-8">
                                 Connect your commercial terminal to the Stripe infrastructure to enable fiat currency distributions.
                             </p>
 
                             {stripeConnected ? (
-                                <div className="flex items-center gap-4 px-6 py-4 bg-green-500/10 border border-green-500/20 rounded-2xl mb-12">
+                                <div className="mb-6 flex items-center gap-3 rounded-xl border border-green-600/20 bg-green-600/10 px-4 py-3 sm:mb-8">
                                     <CheckCircle2 size={20} className="text-green-500" />
                                     <div>
-                                        <div className="text-[10px] font-black uppercase tracking-widest text-foreground">Registry Active</div>
-                                        <div className="text-[9px] text-foreground/40 uppercase tracking-tight">Commercial rails initialized and verified.</div>
+                                        <div className="text-sm font-semibold text-foreground">Account connected</div>
+                                        <div className="text-sm text-muted-foreground">Your Stripe payout account is verified.</div>
                                     </div>
                                 </div>
                             ) : (
-                                <div className="flex items-center gap-4 px-6 py-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl mb-12">
+                                <div className="mb-6 flex items-center gap-3 rounded-xl border border-amber-600/20 bg-amber-600/10 px-4 py-3 sm:mb-8">
                                     <AlertCircle size={20} className="text-amber-500" />
                                     <div>
-                                        <div className="text-[10px] font-black uppercase tracking-widest text-foreground">Awaiting Handshake</div>
-                                        <div className="text-[9px] text-foreground/40 uppercase tracking-tight">Stripe Connect identity not localized.</div>
+                                        <div className="text-sm font-semibold text-foreground">Setup needed</div>
+                                        <div className="text-sm text-muted-foreground">Connect Stripe to receive payouts.</div>
                                     </div>
                                 </div>
                             )}
@@ -98,7 +98,7 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                             }}>
                                 <button
                                     type="submit"
-                                    className="px-12 py-5 bg-foreground text-background rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-foreground/90 transition-all flex items-center gap-4 group"
+                                    className="inline-flex min-h-11 items-center gap-3 rounded-xl bg-foreground px-5 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90"
                                 >
                                     {stripeConnected ? "Manage Account" : "Initialize Handshake"}
                                     <ExternalLink size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -112,27 +112,27 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="bg-foreground/[0.02] border border-border rounded-[3rem] p-12 relative overflow-hidden"
+                        className="relative overflow-hidden rounded-2xl border border-border bg-card p-4 sm:p-6 lg:p-8"
                     >
                         <form action={action} className="max-w-xl">
                             <input type="hidden" name="payoutMethod" value="crypto" />
-                            <h2 className="text-2xl font-black uppercase tracking-tighter mb-6">Digital Asset Distribution</h2>
-                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-widest leading-relaxed mb-10">
+                            <h2 className="mb-3 text-xl font-semibold tracking-tight sm:text-2xl">Crypto payout address</h2>
+                            <p className="mb-6 text-sm leading-6 text-muted-foreground sm:mb-8">
                                 Input your destination address for decentralized settlements. Alpha, USDT, and ETH protocols supported.
                             </p>
 
-                            <div className="space-y-6 mb-12">
+                            <div className="mb-8 space-y-4 sm:mb-10">
                                 <div>
-                                    <label className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-4 block">Destination Address</label>
+                                    <label className="mb-2 block text-sm font-medium text-foreground">Wallet address</label>
                                     <input
                                         name="payoutDetails"
                                         defaultValue={initialMethod === "crypto" ? initialDetails : ""}
                                         placeholder="0x..."
-                                        className="w-full bg-foreground/5 border border-border rounded-2xl px-6 py-5 text-sm font-medium focus:border-foreground/20 outline-none transition-all placeholder:text-foreground/10"
+                                        className="w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-2 focus:ring-brand/20"
                                         required
                                     />
                                 </div>
-                                <p className="text-[9px] text-foreground/20 uppercase tracking-tight">
+                                <p className="text-sm leading-5 text-muted-foreground">
                                     Note: Ensure the address is accurate. Distributions across decentralized protocols are final.
                                 </p>
                             </div>
@@ -154,7 +154,7 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                             <button
                                 type="submit"
                                 disabled={isPending}
-                                className="px-12 py-5 bg-foreground text-background rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-foreground/90 transition-all flex items-center gap-4 active:scale-95 disabled:opacity-50 disabled:active:scale-100"
+                                className="inline-flex min-h-11 items-center gap-3 rounded-xl bg-foreground px-5 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90 active:scale-[.99] disabled:opacity-50"
                             >
                                 {isPending ? (
                                     <>

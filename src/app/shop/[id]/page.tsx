@@ -73,59 +73,57 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         <div className="min-h-screen bg-transparent text-foreground selection:bg-foreground selection:text-background">
             <Navbar />
 
-            <main className="pt-44 pb-32 px-6">
-                <div className="max-w-[1400px] mx-auto">
+            <main className="px-4 pb-16 pt-28 sm:px-6 sm:pb-24 sm:pt-36 lg:pb-32 lg:pt-44">
+                <div className="mx-auto max-w-[1400px]">
                     {/* Navigation */}
-                    <div className="mb-12">
+                    <div className="mb-7 sm:mb-12">
                         <Link
                             href="/shop"
-                            className="inline-flex items-center gap-3 text-foreground/40 hover:text-foreground transition-all group text-[10px] font-black uppercase tracking-[0.4em]"
+                            className="inline-flex min-h-11 items-center gap-3 text-sm font-medium text-muted-foreground transition-colors group hover:text-foreground"
                         >
                             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
                             Back to Market
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-                        <div className="space-y-8">
+                    <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+                        <div className="space-y-5 sm:space-y-8">
                             <ProductGallery images={product.images} name={product.name} />
 
                             {/* Tech Stack Overlay */}
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 gap-2 sm:gap-4">
                                 {techStack.map((tech: string, i: number) => (
-                                    <div key={i} className="px-6 py-4 bg-card border border-border rounded-2xl flex items-center gap-4 group hover:border-brand/35 transition-all shadow-sm">
-                                        <Code size={16} className="text-muted-foreground group-hover:text-brand transition-colors" />
-                                        <span className="text-xs font-medium text-foreground group-hover:text-brand transition-colors">{tech}</span>
+                                    <div key={i} className="flex min-w-0 items-center gap-2 rounded-xl border border-border bg-card px-3 py-3 shadow-sm transition-colors group hover:border-brand/35 sm:gap-4 sm:rounded-2xl sm:px-6 sm:py-4">
+                                        <Code size={16} className="shrink-0 text-muted-foreground transition-colors group-hover:text-brand" />
+                                        <span className="break-words text-xs font-medium text-foreground transition-colors group-hover:text-brand">{tech}</span>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
                         {/* Acquisition Interface */}
-                        <div className="space-y-12 lg:sticky lg:top-32">
+                        <div className="space-y-7 sm:space-y-10 lg:sticky lg:top-32 lg:space-y-12">
                             <div>
-                                <div className="flex items-center gap-4 mb-6">
-                                    <span className="px-4 py-1.5 bg-muted border border-border rounded-full text-[9px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                                <div className="mb-4 flex flex-wrap items-center gap-2 sm:mb-6 sm:gap-4">
+                                    <span className="rounded-full border border-border bg-muted px-3 py-1.5 text-xs font-semibold capitalize text-muted-foreground sm:px-4 sm:text-sm">
                                         {product.category.replace(/_/g, ' ')}
                                     </span>
-                                    <div className="w-px h-4 bg-foreground/10" />
-                                    <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">Product ID: #{product.id.slice(-6)}</span>
+                                    <span className="text-xs text-muted-foreground sm:text-sm">Product ID: #{product.id.slice(-6)}</span>
                                 </div>
                                 <h1
-                                    className="text-6xl md:text-7xl font-black mb-8 tracking-tightest leading-[0.9] uppercase"
-                                    style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
+                                    className="mb-5 break-words text-[clamp(2.25rem,10vw,4.5rem)] font-bold leading-[.98] tracking-tight sm:mb-8 sm:text-[clamp(3rem,6vw,6rem)]"
                                 >
                                     {product.name}
                                 </h1>
-                                <p className="text-muted-foreground text-lg md:text-xl leading-relaxed border-l-2 border-brand/35 pl-6">
+                                <p className="border-l-2 border-brand/35 pl-4 text-base leading-7 text-muted-foreground sm:pl-6 sm:text-lg sm:leading-relaxed md:text-xl">
                                     {product.description || "Elite architectural primitive engineered for high-tier deployments."}
                                 </p>
                             </div>
 
                             {/* Key Features Protocol */}
-                            <div className="bg-card border border-border rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
-                                <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground mb-4 px-2">Key Specifications</h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-5 rounded-2xl border border-border bg-card p-4 shadow-sm sm:space-y-6 sm:rounded-3xl sm:p-8">
+                                <h3 className="px-1 text-sm font-semibold text-foreground sm:mb-4 sm:px-2">Key specifications</h3>
+                                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
                                     {features.map((feature: string, i: number) => (
                                         <div key={i} className="flex gap-4 items-start group">
                                             <CheckCircle2 size={16} className="text-brand mt-0.5" />
@@ -138,22 +136,22 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                             </div>
 
                             {/* Price & Primary CTA Wrapper */}
-                            <div className="bg-muted/70 border border-border rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+                            <div className="relative overflow-hidden rounded-2xl border border-border bg-muted/70 p-4 sm:rounded-3xl sm:p-8 lg:p-10">
                                 <div className="absolute top-0 right-0 p-12 opacity-[0.02]">
                                     <ShieldCheck size={200} strokeWidth={0.5} />
                                 </div>
 
-                                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+                                <div className="relative z-10 flex flex-col items-stretch justify-between gap-6 sm:gap-8 md:flex-row md:items-center">
                                     <div>
-                                        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-foreground/40 mb-2 block">{product.category === "request_access" ? "Availability" : product.category === "trading_intelligence" ? "One-time purchase" : "Product price"}</span>
+                                        <span className="mb-2 block text-sm font-medium text-muted-foreground">{product.category === "request_access" ? "Availability" : product.category === "trading_intelligence" ? "One-time purchase" : "Product price"}</span>
                                         <div className="flex items-baseline gap-2">
-                                            {product.category === "request_access" ? <span className="text-3xl font-bold tracking-tight">Request access</span> : <><span className="text-5xl font-black tracking-tighter">${product.price}</span><span className="text-foreground/40 text-xs font-bold uppercase">USD</span></>}
+                                            {product.category === "request_access" ? <span className="text-2xl font-semibold tracking-tight sm:text-3xl">Request access</span> : <><span className="text-4xl font-bold tracking-tight sm:text-5xl">${product.price}</span><span className="text-xs font-medium uppercase text-muted-foreground">USD</span></>}
                                         </div>
                                         {product.category === "trading_intelligence" && <p className="mt-2 text-sm text-muted-foreground">Single payment. No recurring charge.</p>}
                                         {product.category === "request_access" && <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">No payment is collected here. Availability, licensing, and pricing are confirmed by our team.</p>}
                                     </div>
 
-                                    <div className="w-full md:w-[350px]">
+                                    <div className="w-full md:max-w-[350px] md:flex-1">
                                         <ProductDetailsClient
                                             product={{
                                                 id: product.id,
@@ -172,8 +170,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                             </div>
 
                             {/* Seller/Architect Context */}
-                            <div className="flex items-center gap-6 p-6 sm:p-8 bg-card border border-border rounded-2xl group hover:border-brand/30 transition-all shadow-sm">
-                                <div className="w-16 h-16 rounded-2xl bg-foreground/5 border border-border overflow-hidden flex-shrink-0">
+                            <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm transition-colors group hover:border-brand/30 sm:gap-6 sm:p-8">
+                                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-border bg-muted sm:h-16 sm:w-16 sm:rounded-2xl">
                                     {product.seller?.image ? (
                                         <div className="relative w-full h-full">
                                             <Image
@@ -189,13 +187,13 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                                         </div>
                                     )}
                                 </div>
-                                <div>
-                                    <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-1 block">Certified Architect</span>
-                                    <h4 className="text-xl font-bold uppercase tracking-tight group-hover:text-foreground transition-colors">{product.seller?.storeName || product.seller?.name || "System Core"}</h4>
+                                <div className="min-w-0">
+                                    <span className="mb-1 block text-xs font-medium text-muted-foreground">Seller</span>
+                                    <h4 className="break-words text-base font-semibold leading-5 transition-colors group-hover:text-foreground sm:text-xl">{product.seller?.storeName || product.seller?.name || "System Core"}</h4>
                                 </div>
-                                <div className="ml-auto flex items-center gap-2 px-3 py-1.5 bg-foreground/5 rounded-full border border-border">
+                                <div className="ml-auto flex shrink-0 items-center gap-2 rounded-full border border-border bg-muted px-2.5 py-1.5 sm:px-3">
                                     <Activity size={10} className="text-green-500 animate-pulse" />
-                                    <span className="text-[8px] font-black uppercase tracking-widest text-foreground/40">Active</span>
+                                    <span className="text-xs font-medium text-muted-foreground">Active</span>
                                 </div>
                             </div>
                         </div>

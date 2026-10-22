@@ -2,10 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "@/components/SmartImage";
+import BrandLogo from "@/components/BrandLogo";
 import { cn } from "@/lib/utils";
 import { LayoutDashboard, ArrowLeft, Settings, Menu, X, Package, ShoppingCart, Users, DollarSign } from "lucide-react";
 import LogoutButton from "@/components/auth/LogoutButton";
+import { usePathname } from "next/navigation";
 
 interface NavItem {
     label: string;
@@ -28,21 +29,16 @@ interface AdminSidebarProps {
 
 export function AdminSidebar({ navItems }: AdminSidebarProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
 
     return (
         <>
             {/* Mobile Header */}
-            <header className="lg:hidden flex items-center justify-between p-4 border-b border-border bg-black/40 backdrop-blur-xl sticky top-0 z-50">
-                <Image
-                    src="/images/brand/mindscape-analytics-logo-dark-2026.webp"
-                    alt="Mindscape Analytics"
-                    width={140}
-                    height={32}
-                    className="h-8 w-auto object-contain brightness-0 invert contrast-125 opacity-90"
-                />
+            <header className="sticky top-0 z-50 flex items-center justify-between border-b border-border bg-background/95 p-4 text-foreground backdrop-blur-xl lg:hidden">
+                <BrandLogo alt="Mindscape Analytics" width={140} height={32} className="h-8 w-auto object-contain" />
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="p-2 rounded-xl bg-foreground/5 border border-border"
+                    className="grid h-11 w-11 place-items-center rounded-xl border border-border bg-card text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     aria-label={isOpen ? "Close admin sidebar" : "Open admin sidebar"}
                     aria-expanded={isOpen}
                 >
@@ -52,31 +48,25 @@ export function AdminSidebar({ navItems }: AdminSidebarProps) {
 
             {/* Sidebar Overlay */}
             <aside className={cn(
-                "fixed inset-y-0 left-0 z-[100] w-72 border-r border-border p-8 flex flex-col backdrop-blur-2xl bg-black/90 lg:bg-foreground/[0.02] lg:sticky lg:h-screen transition-transform duration-500",
+                "fixed inset-y-0 left-0 z-[100] flex w-72 flex-col border-r border-border bg-background p-5 text-foreground shadow-xl transition-transform duration-300 lg:sticky lg:h-screen lg:shrink-0 lg:bg-muted/40 lg:p-6 lg:shadow-none",
                 isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
             )}>
                 <button
                     onClick={() => setIsOpen(false)}
-                    className="lg:hidden absolute top-8 right-8 text-foreground/40 hover:text-foreground"
+                    className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-xl border border-border bg-card text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:hidden"
                     aria-label="Close admin sidebar"
                 >
                     <ArrowLeft size={20} />
                 </button>
 
-                <div className="mb-12">
-                    <Image
-                    src="/images/brand/mindscape-analytics-logo-dark-2026.webp"
-                        alt="Mindscape Analytics"
-                        width={180}
-                        height={40}
-                        className="h-10 w-auto object-contain brightness-0 invert contrast-125 opacity-90"
-                    />
-                    <div className="mt-2 text-[8px] font-mono text-foreground/20 uppercase tracking-[0.5em]">
+                <div className="mb-8 pr-12 lg:mb-10 lg:pr-0">
+                    <BrandLogo alt="Mindscape Analytics" width={180} height={40} className="h-10 w-auto object-contain" />
+                    <div className="mt-2 text-xs font-medium text-muted-foreground">
                         Central // Hub
                     </div>
                 </div>
 
-                <nav className="space-y-2 flex-1">
+                <nav aria-label="Admin navigation" className="flex-1 space-y-1">
                     {navItems.map((item) => {
                         const Icon = ICON_MAP[item.icon] || LayoutDashboard;
                         return (
@@ -84,23 +74,29 @@ export function AdminSidebar({ navItems }: AdminSidebarProps) {
                                 key={item.href}
                                 href={item.href}
                                 onClick={() => setIsOpen(false)}
-                                className="flex items-center gap-3 px-4 py-3 rounded-xl text-foreground/60 hover:text-foreground hover:bg-foreground/5 transition-all group"
+                                aria-current={pathname === item.href ? "page" : undefined}
+                                className={cn(
+                                    "group flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                                    pathname === item.href
+                                        ? "bg-muted text-foreground"
+                                        : "text-muted-foreground hover:bg-muted/70 hover:text-foreground"
+                                )}
                             >
-                                <Icon size={20} className="group-hover:text-blue-400 transition-colors" />
-                                <span className="font-bold text-sm tracking-wide uppercase">{item.label}</span>
+                                <Icon size={18} className="shrink-0 transition-colors group-hover:text-brand" />
+                                <span>{item.label}</span>
                             </Link>
                         );
                     })}
                 </nav>
 
-                <div className="pt-8 border-t border-border space-y-2 mt-auto">
+                <div className="mt-auto space-y-1 border-t border-border pt-5">
                     <Link
                         href="/admin/settings"
                         onClick={() => setIsOpen(false)}
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl text-foreground/60 hover:text-foreground hover:bg-foreground/5 transition-all"
+                        className="flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted/70 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
-                        <Settings size={20} />
-                        <span className="font-bold text-sm uppercase">Settings</span>
+                        <Settings size={18} />
+                        <span>Settings</span>
                     </Link>
                     <LogoutButton />
                 </div>
@@ -109,7 +105,7 @@ export function AdminSidebar({ navItems }: AdminSidebarProps) {
             {/* Backdrop */}
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] lg:hidden"
+                    className="fixed inset-0 z-[90] bg-foreground/40 backdrop-blur-sm lg:hidden"
                     onClick={() => setIsOpen(false)}
                 />
             )}

@@ -52,6 +52,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Preserve old logo URLs while consolidating image discovery on the current brand asset.
+        source: "/images/logo/mindscape-analytics.png",
+        destination: "/images/brand/mindscape-analytics-logo-light-2026.webp",
+        permanent: true,
+      },
+      {
         source: "/founder/zeeshan-keerio",
         destination: "/zeeshan-keerio",
         permanent: true,

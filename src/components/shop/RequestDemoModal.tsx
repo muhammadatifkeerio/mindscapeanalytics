@@ -90,21 +90,23 @@ export function RequestDemoModal({ isOpen, onClose, productName, requestType = "
 
                             <button
                                 onClick={onClose}
-                                className="absolute top-4 right-4 p-2 text-foreground/40 hover:text-foreground hover:bg-foreground/10 rounded-full transition-all z-10"
+                                type="button"
+                                aria-label="Close request form"
+                                className="absolute right-3 top-3 z-10 grid h-11 w-11 place-items-center rounded-full border border-border bg-background text-foreground transition-colors hover:bg-muted sm:right-4 sm:top-4"
                             >
                                 <X size={20} />
                             </button>
 
-                            <div className="p-8 relative z-10">
+                            <div className="relative z-10 p-5 sm:p-8">
                                 <div className="mb-6">
-                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 flex items-center gap-2 mb-2">
+                                    <span className="mb-2 flex items-center gap-2 text-xs font-medium text-muted-foreground">
                                         <div className="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_hsl(var(--secondary)/0.5)] animate-pulse" />
                                         {requestType === "access" ? "AurumPulse early access" : "Product walkthrough"}
                                     </span>
-                                    <h3 className="text-2xl font-black uppercase tracking-tighter text-foreground">
+                                    <h3 className="text-2xl font-bold tracking-tight text-foreground">
                                         {requestType === "access" ? "Request Access" : "Request Demo"}
                                     </h3>
-                                    <p className="text-foreground/40 text-xs font-medium uppercase tracking-widest mt-1">
+                                    <p className="mt-1 break-words text-sm text-muted-foreground">
                                         Product: {productName}
                                     </p>
                                 </div>
@@ -113,14 +115,14 @@ export function RequestDemoModal({ isOpen, onClose, productName, requestType = "
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        className="py-12 flex flex-col items-center justify-center text-center space-y-4"
+                                        className="flex flex-col items-center justify-center space-y-4 py-10 text-center sm:py-12"
                                     >
                                         <div className="w-16 h-16 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center mb-2">
                                             <CheckCircle2 size={32} className="text-secondary" />
                                         </div>
                                         <div>
-                                            <h4 className="text-lg font-black uppercase tracking-widest text-foreground mb-2">Transmission complete</h4>
-                                            <p className="text-[11px] text-foreground/40 font-mono uppercase tracking-widest">Our engineers will contact you shortly regarding the demo environment.</p>
+                                            <h4 className="mb-2 text-lg font-semibold text-foreground">Request received</h4>
+                                            <p className="text-sm leading-6 text-muted-foreground">Our team will follow up shortly about your request.</p>
                                         </div>
                                     </motion.div>
                                 ) : (
@@ -133,7 +135,7 @@ export function RequestDemoModal({ isOpen, onClose, productName, requestType = "
                                                     required
                                                     disabled={isSubmitting}
                                                     placeholder="IDENTIFICATION (NAME)"
-                                                    className="w-full bg-foreground/[0.02] border border-border rounded-xl px-5 py-4 text-xs text-foreground placeholder:text-foreground/20 font-black tracking-widest focus:outline-none focus:border-foreground/30 focus:bg-foreground/[0.05] transition-all uppercase disabled:opacity-50"
+                                                    className="min-h-12 w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 disabled:opacity-50 sm:px-5"
                                                 />
                                             </div>
                                             <div>
@@ -143,7 +145,7 @@ export function RequestDemoModal({ isOpen, onClose, productName, requestType = "
                                                     required
                                                     disabled={isSubmitting}
                                                     placeholder="COMM LINK (EMAIL)"
-                                                    className="w-full bg-foreground/[0.02] border border-border rounded-xl px-5 py-4 text-xs text-foreground placeholder:text-foreground/20 font-black tracking-widest focus:outline-none focus:border-foreground/30 focus:bg-foreground/[0.05] transition-all uppercase disabled:opacity-50"
+                                                    className="min-h-12 w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 disabled:opacity-50 sm:px-5"
                                                 />
                                             </div>
                                             <div>
@@ -152,7 +154,7 @@ export function RequestDemoModal({ isOpen, onClose, productName, requestType = "
                                                     disabled={isSubmitting}
                                                     placeholder="ADDITIONAL PARAMETERS (OPTIONAL MESSAGE)"
                                                     rows={3}
-                                                    className="w-full bg-foreground/[0.02] border border-border rounded-xl px-5 py-4 text-xs text-foreground placeholder:text-foreground/20 font-black tracking-widest focus:outline-none focus:border-foreground/30 focus:bg-foreground/[0.05] transition-all uppercase resize-none disabled:opacity-50 custom-scrollbar"
+                                                    className="w-full resize-y rounded-xl border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 disabled:opacity-50 sm:px-5"
                                                 />
                                             </div>
                                         </div>

@@ -66,7 +66,7 @@ const team = [
         email: "#"
     },
     {
-        name: "Shafqat Ali",
+        name: "Shaizan Ali",
         role: "Software Engineer",
         bio: "Develops and improves software features, integrations, and systems with a focus on reliability and maintainability.",
         image: "/images/team/shafqat-ali-portrait-2026.webp",
@@ -162,14 +162,14 @@ export default function AboutPage() {
             <Navbar />
 
             {/* About introduction */}
-            <section className="relative overflow-hidden pb-16 pt-32 sm:pb-20 sm:pt-40 lg:pb-24 lg:pt-44">
-                <div className="container relative z-10 mx-auto max-w-7xl px-6">
-                    <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
+            <section className="relative overflow-hidden pb-12 pt-28 sm:pb-20 sm:pt-40 lg:pb-24 lg:pt-44">
+                <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
+                    <div className="grid items-center gap-6 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
                         <motion.h1
                             initial={{ opacity: 0, y: 18 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.75, ease: [0.23, 1, 0.32, 1] }}
-                            className="max-w-[12ch] text-left text-[clamp(3.5rem,7vw,6.5rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-foreground"
+                            className="max-w-[12ch] text-left text-[clamp(2.75rem,11vw,6.5rem)] font-semibold leading-[0.94] tracking-[-0.04em] text-foreground"
                         >
                             <span className="block">We build for</span>
                             <span className="mt-2 block">real work.</span>
@@ -204,7 +204,7 @@ export default function AboutPage() {
                         </motion.div>
                     </div>
 
-                    <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-4 border-t border-foreground/10 pt-5 sm:mt-16 sm:grid-cols-4 sm:gap-6 lg:mt-20">
+                    <div className="mt-9 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-foreground/10 pt-4 sm:mt-16 sm:grid-cols-4 sm:gap-6 lg:mt-20">
                         {["AI agents", "Data systems", "Digital products", "Production delivery"].map((capability) => (
                             <p key={capability} className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground/55 sm:text-sm">
                                 {capability}
@@ -215,9 +215,9 @@ export default function AboutPage() {
             </section>
 
             {/* --- Premium Company Overview Section --- */}
-            <section className="py-24 relative overflow-hidden border-y border-foreground/5 bg-foreground/[0.01]">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <section className="relative overflow-hidden border-y border-foreground/5 bg-foreground/[0.01] py-14 sm:py-20 lg:py-24">
+                <div className="container mx-auto max-w-7xl px-4 sm:px-6">
+                    <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-24">
                         <ScrollReveal className="space-y-8">
                           
                             <h2 className="fluid-h2 text-foreground">
@@ -237,7 +237,7 @@ export default function AboutPage() {
                             </div>
                         </ScrollReveal>
 
-                        <ScrollReveal className="p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] bg-card border border-border relative overflow-hidden group shadow-sm">
+                        <ScrollReveal className="relative overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-sm sm:rounded-[2rem] sm:p-8 lg:rounded-[3rem] lg:p-12">
                             <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent pointer-events-none" />
                             <h3 className="text-lg sm:text-xl font-black uppercase text-foreground mb-8 tracking-tight font-heading">What Makes Us Different?</h3>
                             <div className="space-y-6">
@@ -265,7 +265,7 @@ export default function AboutPage() {
             <section className="py-20 relative overflow-hidden border-y border-foreground/5">
                 <div className="absolute inset-0 bg-foreground/[0.01]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-foreground/5 rounded-full blur-[100px] pointer-events-none" />
-                <div className="container mx-auto px-6 max-w-4xl relative z-10">
+                <div className="container relative z-10 mx-auto max-w-4xl px-4 sm:px-6">
                     <ScrollReveal className="text-center space-y-7">
                         <h2 className="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter">Our vision</h2>
                         <div className="h-px w-24 bg-gradient-to-r from-transparent via-foreground/20 to-transparent mx-auto" />
@@ -277,8 +277,8 @@ export default function AboutPage() {
             </section>
 
             {/* --- Core expertise: how the vision becomes practical work --- */}
-            <section className="py-24 bg-transparent">
-                <div className="container mx-auto px-6 max-w-7xl">
+            <section className="bg-transparent py-14 sm:py-20 lg:py-24">
+                <div className="container mx-auto max-w-7xl px-4 sm:px-6">
                     <ScrollReveal className="text-center mb-20 space-y-4">
 
                         <h2 className="fluid-h2 text-foreground">
@@ -314,8 +314,8 @@ export default function AboutPage() {
             </section>
 
             {/* --- Company journey: context before introducing the people --- */}
-            <section className="py-24 bg-transparent border-t border-foreground/5">
-                <div className="container mx-auto px-6 max-w-5xl">
+            <section className="border-t border-foreground/5 bg-transparent py-14 sm:py-20 lg:py-24">
+                <div className="container mx-auto max-w-5xl px-4 sm:px-6">
                     <ScrollReveal className="text-center mb-16 space-y-4">
                         <p className="text-meta">From strategy to systems in the real world</p>
                         <h2 className="fluid-h2 text-foreground">Our journey</h2>
@@ -353,8 +353,8 @@ export default function AboutPage() {
             <TeamMoments />
 
             {/* --- Architects (Team) Section --- */}
-            <section className="py-32 bg-transparent">
-                <div className="container mx-auto px-6 max-w-7xl">
+            <section className="bg-transparent py-16 sm:py-24 lg:py-32">
+                <div className="container mx-auto max-w-7xl px-4 sm:px-6">
                     <ScrollReveal className="text-center mb-24 space-y-4">
                         <h2 className="fluid-h2 text-foreground">Core team</h2>
                     </ScrollReveal>
@@ -421,11 +421,11 @@ export default function AboutPage() {
             </section>
 
             {/* --- Trust and ongoing partnership --- */}
-            <section className="py-24 border-t border-foreground/5 bg-foreground/[0.01]">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid lg:grid-cols-[1.2fr_1.8fr] gap-8">
+            <section className="border-t border-foreground/5 bg-foreground/[0.01] py-14 sm:py-20 lg:py-24">
+                <div className="container mx-auto max-w-7xl px-4 sm:px-6">
+                    <div className="grid gap-5 lg:grid-cols-[1.2fr_1.8fr] lg:gap-8">
                         {/* Why Trust Us card */}
-                        <ScrollReveal className="space-y-10 p-8 sm:p-12 rounded-[2.5rem] bg-card border border-border shadow-sm relative overflow-hidden">
+                        <ScrollReveal className="relative space-y-7 overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-sm sm:space-y-10 sm:rounded-[2rem] sm:p-8 lg:rounded-[2.5rem] lg:p-12">
                             <div className="space-y-2">
                                 <h2 className="fluid-h2 text-foreground">Why partner with us?</h2>
                             </div>
@@ -443,7 +443,7 @@ export default function AboutPage() {
                         </ScrollReveal>
 
                         {/* Managed Infographic carbon card (100% visible on all backgrounds, extremely sleek) */}
-                        <ScrollReveal className="p-8 sm:p-16 rounded-[2.5rem] bg-muted border border-border flex flex-col justify-between overflow-hidden relative group shadow-sm min-h-[450px]">
+                        <ScrollReveal className="relative flex min-h-[350px] flex-col justify-between overflow-hidden rounded-2xl border border-border bg-muted p-5 shadow-sm sm:min-h-[420px] sm:rounded-[2rem] sm:p-8 lg:min-h-[450px] lg:rounded-[2.5rem] lg:p-16">
                             <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:30px_30px]" />
                             
                             <div className="relative z-10 space-y-10">
@@ -481,9 +481,9 @@ export default function AboutPage() {
             </section>
 
             {/* --- Stats Section --- */}
-            <section className="py-28 bg-transparent border-t border-foreground/5">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 sm:gap-16">
+            <section className="border-t border-foreground/5 bg-transparent py-16 sm:py-20 lg:py-28">
+                <div className="container mx-auto max-w-7xl px-4 sm:px-6">
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-12 md:grid-cols-4 lg:gap-16">
                         {[
                             { value: "AI + Data", label: "INTELLIGENT", sub: "SYSTEMS" },
                             { value: "Products", label: "BUILT FOR", sub: "REAL OPERATIONS" },
@@ -498,7 +498,7 @@ export default function AboutPage() {
                                 transition={{ duration: 0.6, delay: index * 0.08 }}
                                 className="text-center group"
                             >
-                                <div className="text-5xl sm:text-6xl md:text-7xl font-black mb-4 text-foreground font-heading leading-none tracking-tighter group-hover:scale-105 transition-transform duration-500">
+                                <div className="mb-3 text-3xl font-bold leading-tight tracking-tight text-foreground transition-transform duration-500 group-hover:scale-105 sm:mb-4 sm:text-5xl md:text-6xl lg:text-7xl">
                                     {stat.value}
                                 </div>
                                 <div className="text-meta group-hover:text-foreground transition-colors duration-300">

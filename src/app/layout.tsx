@@ -59,9 +59,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/images/brand/mindscape-icon-light-2026.png", sizes: "512x512", type: "image/png" },
-      { url: "/favicon-2026.ico", sizes: "48x48" },
+      // Keep the conventional root path explicit for browsers and search crawlers.
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
     ],
-    apple: [{ url: "/apple-touch-icon-2026.png", sizes: "180x180", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   robots: {
     index: true,

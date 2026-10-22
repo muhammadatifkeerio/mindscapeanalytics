@@ -11,32 +11,31 @@ import Link from "next/link";
 
 export default function NewSellerProductClient() {
     return (
-        <div className="min-h-screen bg-monochrome-cinematic text-foreground relative">
+        <div className="min-h-screen bg-background text-foreground relative">
             <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
                 <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
             </div>
             <Navbar />
 
-            <main className="relative z-10 pt-44 pb-32 px-6">
+            <main className="relative z-10 px-4 pb-16 pt-28 sm:px-6 sm:pb-24 sm:pt-36 lg:pb-32 lg:pt-44">
                 <div className="max-w-4xl mx-auto">
-                    <Link href="/seller/products" className="inline-flex items-center gap-2 text-foreground/40 hover:text-foreground mb-12 transition-all group">
+                    <Link href="/seller/products" className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground sm:mb-12">
                         <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.3em]">Abort Initialization</span>
+                        <span>Back to inventory</span>
                     </Link>
 
-                    <div className="mb-16">
+                    <div className="mb-8 sm:mb-12">
                         <h1
-                            className="text-5xl font-black mb-4 uppercase tracking-tighter"
-                            style={{ fontSize: "clamp(2.5rem, 6vw, 3rem)" }}
+                            className="mb-3 text-3xl font-bold tracking-tight sm:text-4xl"
                         >
-                            NEW ASSET <span className="text-foreground/20">INITIALIZATION.</span>
+                            Add an asset
                         </h1>
-                        <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em]">Authorized Listing Generation Terminal</p>
+                        <p className="text-sm text-muted-foreground">Share the details buyers need to evaluate your product.</p>
                     </div>
 
-                    <div className="flex items-center gap-3 px-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl mb-12">
+                    <div className="mb-8 flex items-start gap-3 rounded-xl border border-border bg-muted/60 px-4 py-4 sm:mb-12 sm:px-6">
                         <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-foreground/30 leading-loose">
+                        <p className="text-xs leading-5 text-muted-foreground sm:text-sm">
                             Institutional Policy: Released assets are subject to a 10-day settlement threshold and a standard 10% platform fee upon capital distribution.
                         </p>
                     </div>

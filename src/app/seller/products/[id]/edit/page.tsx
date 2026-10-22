@@ -25,27 +25,26 @@ export default async function SellerEditProductPage({ params }: { params: Promis
     }
 
     return (
-        <div className="min-h-screen bg-monochrome-cinematic text-foreground relative">
+        <div className="min-h-screen bg-background text-foreground relative">
             <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
                 <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
             </div>
             <Navbar />
 
-            <main className="relative z-10 pt-44 pb-32 px-6">
+            <main className="relative z-10 px-4 pb-16 pt-28 sm:px-6 sm:pb-24 sm:pt-36 lg:pb-32 lg:pt-44">
                 <div className="max-w-4xl mx-auto">
-                    <Link href="/seller/products" className="inline-flex items-center gap-2 text-foreground/40 hover:text-foreground mb-12 transition-all group">
+                    <Link href="/seller/products" className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground sm:mb-12">
                         <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.3em]">Return to Registry</span>
+                        <span>Back to inventory</span>
                     </Link>
 
-                    <div className="mb-16">
+                    <div className="mb-8 sm:mb-12">
                         <h1
-                            className="text-6xl font-black mb-4 uppercase tracking-tighter"
-                            style={{ fontSize: "clamp(2.5rem, 6vw, 3rem)" }}
+                            className="mb-3 text-3xl font-bold tracking-tight sm:text-4xl"
                         >
-                            RECONFIGURE <span className="text-foreground/20">ASSET.</span>
+                            Edit asset
                         </h1>
-                        <p className="text-muted-foreground text-[11px] font-black uppercase tracking-[0.5em]">Authorized Listing Re-Configuration</p>
+                        <p className="text-sm text-muted-foreground">Update your listing details and published files.</p>
                     </div>
 
                     <ProductForm

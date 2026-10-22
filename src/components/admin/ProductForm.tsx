@@ -107,7 +107,7 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
     return (
         <form
             action={handleSubmit}
-            className="space-y-12"
+            className="space-y-6 sm:space-y-8"
         >
             {state?.error && (
                 <div className="p-4 bg-red-500/10 border border-red-500/20 text-red-400 rounded-2xl text-[10px] font-black uppercase tracking-widest text-center animate-shake">
@@ -116,32 +116,32 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
             )}
 
             {/* Core Metadata */}
-            <div className="bg-foreground/[0.02] border border-border rounded-[2.5rem] p-10 space-y-10">
+            <div className="space-y-6 rounded-2xl border border-border bg-card p-4 sm:space-y-8 sm:p-6 lg:p-8">
                 <div className="flex items-center gap-4 mb-2">
-                    <Package size={16} className="text-foreground/20" />
-                    <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/40">Core Metadata</h3>
+                    <Package size={18} className="text-brand" />
+                    <h3 className="text-sm font-semibold text-foreground">Product details</h3>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
                     <div className="space-y-4">
-                        <label className="text-[9px] font-black uppercase tracking-widest text-foreground/30 ml-1">Asset Nomenclature</label>
+                        <label className="text-sm font-medium text-foreground">Product name</label>
                         <div className="relative group">
-                            <Type className="absolute left-6 top-1/2 -translate-y-1/2 text-foreground/10 group-focus-within:text-foreground transition-colors" size={16} />
+                            <Type className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-foreground" size={16} />
                             <input
                                 type="text"
                                 name="name"
                                 defaultValue={initialData?.name}
                                 required
                                 placeholder="E.G. NEURAL_CORE_V1"
-                                className="w-full pl-16 pr-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl text-foreground placeholder:text-foreground/10 focus:outline-none focus:border-foreground/20 transition-all font-bold tracking-tight uppercase"
+                                className="w-full rounded-xl border border-border bg-background py-3 pl-12 pr-4 text-base text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
                             />
                         </div>
                     </div>
 
                     <div className="space-y-4">
-                        <label className="text-[9px] font-black uppercase tracking-widest text-foreground/30 ml-1">Valuation (USD)</label>
+                        <label className="text-sm font-medium text-foreground">Price (USD)</label>
                         <div className="relative group">
-                            <DollarSign className="absolute left-6 top-1/2 -translate-y-1/2 text-foreground/10 group-focus-within:text-foreground transition-colors" size={16} />
+                            <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-foreground" size={16} />
                             <input
                                 type="number"
                                 name="price"
@@ -150,58 +150,58 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
                                 min="0"
                                 step="1"
                                 placeholder="0"
-                                className="w-full pl-16 pr-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl text-foreground placeholder:text-foreground/10 focus:outline-none focus:border-foreground/20 transition-all font-mono font-bold"
+                                className="w-full rounded-xl border border-border bg-background py-3 pl-12 pr-4 text-base text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
                             />
                         </div>
                     </div>
                 </div>
 
                 <div className="space-y-4">
-                    <label className="text-[9px] font-black uppercase tracking-widest text-foreground/30 ml-1">Architectural Classification</label>
+                        <label className="text-sm font-medium text-foreground">Category</label>
                     <div className="relative group">
-                        <Tag className="absolute left-6 top-1/2 -translate-y-1/2 text-foreground/10 group-focus-within:text-foreground transition-colors" size={16} />
+                        <Tag className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-foreground" size={16} />
                         <select
                             name="category"
                             defaultValue={initialData?.category || "saas"}
-                            className="w-full pl-16 pr-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl text-foreground focus:outline-none focus:border-foreground/20 transition-all font-bold appearance-none uppercase tracking-widest"
+                            className="w-full appearance-none rounded-xl border border-border bg-background py-3 pl-12 pr-4 text-base text-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
                         >
                             {CATEGORIES.map(cat => (
-                                <option key={cat.id} value={cat.id} className="bg-foreground/5">{cat.name}</option>
+                            <option key={cat.id} value={cat.id}>{cat.name}</option>
                             ))}
                         </select>
                     </div>
                 </div>
 
                 <div className="space-y-4">
-                    <label className="text-[9px] font-black uppercase tracking-widest text-foreground/30 ml-1">Asset Intelligence Overview</label>
+                    <label className="text-sm font-medium text-foreground">Description</label>
                     <div className="relative group">
-                        <FileText className="absolute left-6 top-8 text-foreground/10 group-focus-within:text-foreground transition-colors" size={16} />
+                        <FileText className="absolute left-4 top-5 text-muted-foreground transition-colors group-focus-within:text-foreground" size={16} />
                         <textarea
                             name="description"
                             defaultValue={initialData?.description ?? undefined}
                             required
                             rows={4}
                             placeholder="Identify the core primitives and intended utility..."
-                            className="w-full pl-16 pr-6 py-6 bg-foreground/[0.02] border border-border rounded-[2rem] text-foreground placeholder:text-foreground/10 focus:outline-none focus:border-foreground/20 transition-all leading-relaxed"
+                            className="w-full rounded-xl border border-border bg-background py-4 pl-12 pr-4 text-base leading-relaxed text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
                         />
                     </div>
                 </div>
             </div>
 
             {/* Technical Configuration */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
                 {/* Tech Stack */}
-                <div className="bg-foreground/[0.02] border border-border rounded-[2.5rem] p-10">
-                    <div className="flex items-center gap-4 mb-8">
-                        <Cpu size={16} className="text-foreground/20" />
-                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/40">Tech Stack Protocol</h3>
+                <div className="rounded-2xl border border-border bg-card p-4 sm:p-6">
+                    <div className="mb-6 flex items-center gap-3">
+                        <Cpu size={18} className="text-brand" />
+                        <h3 className="text-sm font-semibold text-foreground">Technology stack</h3>
                     </div>
                     <div className="space-y-6">
                         <input
                             type="text"
                             placeholder="Add tech (ENTER)"
                             onKeyDown={addTech}
-                            className="w-full px-6 py-3 bg-foreground/5 border border-border rounded-xl text-[10px] font-black uppercase tracking-widest focus:outline-none focus:border-white/30"
+                            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
                         />
                         <div className="flex flex-wrap gap-2">
                             {techStack.map(t => (
@@ -215,17 +215,17 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
                 </div>
 
                 {/* Features */}
-                <div className="bg-foreground/[0.02] border border-border rounded-[2.5rem] p-10">
-                    <div className="flex items-center gap-4 mb-8">
-                        <Check size={16} className="text-foreground/20" />
-                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/40">Core Primitives</h3>
+                <div className="rounded-2xl border border-border bg-card p-4 sm:p-6">
+                    <div className="mb-6 flex items-center gap-3">
+                        <Check size={18} className="text-brand" />
+                        <h3 className="text-sm font-semibold text-foreground">Features</h3>
                     </div>
                     <div className="space-y-6">
                         <input
                             type="text"
                             placeholder="Add feature (ENTER)"
                             onKeyDown={addFeature}
-                            className="w-full px-6 py-3 bg-foreground/5 border border-border rounded-xl text-[10px] font-black uppercase tracking-widest focus:outline-none focus:border-white/30"
+                            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
                         />
                         <div className="flex flex-wrap gap-2">
                             {features.map(f => (
@@ -239,21 +239,19 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
                 </div>
             </div>
 
-            <div className="bg-foreground/[0.02] border border-border rounded-[2.5rem] p-10">
-                <div className="flex items-center justify-between mb-8">
-                    <div className="flex items-center gap-4">
-                        <ImageIcon size={16} className="text-foreground/20" />
-                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/40">Visual Artifact Distribution</h3>
-                    </div>
+            <div className="rounded-2xl border border-border bg-card p-4 sm:rounded-3xl sm:p-6 lg:p-8">
+                <div className="mb-5 flex items-center gap-3 sm:mb-8 sm:gap-4">
+                    <ImageIcon size={18} className="text-brand" />
+                    <h3 className="text-sm font-semibold text-foreground">Preview image</h3>
                 </div>
                 <div className="space-y-6">
                     <ImageUpload
                         onUploadAction={setImageUrl}
                         initialUrl={imageUrl}
                     />
-                    <div className="flex items-center gap-4 p-6 bg-foreground/[0.02] border border-border rounded-3xl">
-                        <Check size={16} className="text-foreground/20" />
-                        <p className="text-[8px] font-black uppercase tracking-[0.2em] text-foreground/20 leading-loose">
+                    <div className="flex items-start gap-3 rounded-xl border border-border bg-muted/50 p-3 sm:items-center sm:gap-4 sm:p-4">
+                        <Check size={16} className="mt-0.5 shrink-0 text-muted-foreground sm:mt-0" />
+                        <p className="text-xs leading-5 text-muted-foreground">
                             Requirement: One high-fidelity preview image at 1200x800 industrial aspect ratio. 100KB WebP optimization is automatic.
                         </p>
                     </div>
@@ -261,16 +259,16 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
             </div>
 
             {/* Asset Deliverables */}
-            <div className="bg-foreground/[0.02] border border-border rounded-[2.5rem] p-10">
-                <div className="flex items-center justify-between mb-8">
-                    <div className="flex items-center gap-4">
-                        <Save size={16} className="text-foreground/20" />
-                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/40">Asset Deliverables (Digital Files)</h3>
+            <div className="rounded-2xl border border-border bg-card p-4 sm:rounded-3xl sm:p-6 lg:p-8">
+                <div className="mb-5 flex flex-col gap-3 sm:mb-8 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex items-center gap-3">
+                        <Save size={18} className="text-brand" />
+                        <h3 className="text-sm font-semibold text-foreground">Digital files</h3>
                     </div>
                     <button
                         type="button"
                         onClick={addFile}
-                        className="p-2 bg-foreground/5 hover:bg-foreground/10 rounded-lg text-[10px] font-black uppercase tracking-widest flex items-center gap-2 transition-all"
+                        className="inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-lg border border-border bg-muted px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted/70"
                     >
                         <Plus size={12} />
                         Add Package
@@ -278,52 +276,53 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
                 </div>
                 <div className="space-y-6">
                     {productFiles.map((file, index) => (
-                        <div key={index} className="p-6 bg-black/20 border border-border rounded-3xl space-y-4 relative group">
+                        <div key={index} className="relative space-y-4 rounded-xl border border-border bg-background p-3 sm:rounded-2xl sm:p-5">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="space-y-2">
-                                    <label className="text-[8px] font-black text-foreground/20 uppercase tracking-widest ml-1">Package Name</label>
+                                    <label className="ml-1 text-xs font-medium text-muted-foreground">Package name</label>
                                     <input
                                         type="text"
                                         value={file.filename}
                                         onChange={(e) => updateFile(index, "filename", e.target.value)}
                                         placeholder="E.G. CORE_REPOSITORY_V1"
-                                        className="w-full px-4 py-3 bg-foreground/5 border border-border rounded-xl text-[10px] font-bold text-foreground uppercase tracking-wider focus:outline-none focus:border-foreground/20"
+                                        className="min-h-11 w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 sm:px-4"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-[8px] font-black text-foreground/20 uppercase tracking-widest ml-1">Secure Download URL</label>
+                                    <label className="ml-1 text-xs font-medium text-muted-foreground">Secure download URL</label>
                                     <input
                                         type="url"
                                         value={file.url}
                                         onChange={(e) => updateFile(index, "url", e.target.value)}
                                         placeholder="HTTPS://GITHUB.COM/MSA/REPOSITORY"
-                                        className="w-full px-4 py-3 bg-foreground/5 border border-border rounded-xl text-[10px] font-mono text-foreground/40 focus:text-foreground transition-all uppercase"
+                                        className="min-h-11 w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 sm:px-4"
                                     />
                                 </div>
                             </div>
                             <button
                                 type="button"
                                 onClick={() => removeFile(index)}
-                                className="absolute -top-3 -right-3 p-2 bg-red-500 text-foreground rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-xl hover:scale-110"
+                                aria-label={`Remove package ${index + 1}`}
+                                className="absolute right-2 top-2 grid h-10 w-10 place-items-center rounded-full border border-border bg-background text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive sm:right-3 sm:top-3"
                             >
                                 <X size={12} />
                             </button>
                         </div>
                     ))}
-                    <p className="text-[8px] text-foreground/10 uppercase tracking-widest ml-2">Secure downloads are only exposed to verified purchasers post-settlement.</p>
+                    <p className="ml-1 text-xs leading-5 text-muted-foreground">Download links are shared with verified purchasers after payment is complete.</p>
                 </div>
             </div>
 
             {/* Deployment Action */}
-            <div className="pt-8 border-t border-border flex items-center justify-between">
-                <div className="flex items-center gap-4 text-foreground/20">
-                    <Check size={16} />
-                    <span className="text-[10px] font-black uppercase tracking-widest">Integrity Check Active</span>
+            <div className="flex flex-col gap-4 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between sm:pt-8">
+                <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                    <Check size={16} className="text-brand" />
+                    <span>Form validation is active</span>
                 </div>
                 <button
                     type="submit"
                     disabled={isPending}
-                    className="px-12 py-6 bg-foreground text-background rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-foreground/90 transition-all shadow-2xl active:scale-95 disabled:opacity-50 flex items-center gap-4"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-foreground px-5 py-3 text-sm font-semibold text-background shadow-lg transition-opacity hover:opacity-90 active:scale-[.99] disabled:opacity-50 sm:w-auto sm:px-8"
                 >
                     {isPending ? "INITIALIZING DEPLOYMENT..." : submitLabel}
                     <Plus size={14} />

@@ -48,7 +48,7 @@ const team = [
         email: "#"
     },
     {
-        name: "Shafqat Ali",
+        name: "Shaizan Ali",
         role: "Software Engineer",
         bio: "Develops and improves software features, integrations, and systems with a focus on reliability and maintainability.",
         image: "/images/team/shafqat-ali-portrait-2026.webp",

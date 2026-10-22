@@ -31,10 +31,10 @@ export default function Footer() {
     return (
         <footer className="border-t border-border bg-background">
             <div className="container-standard py-16 md:py-24">
-                <div className="grid gap-10 lg:grid-cols-[1.2fr_0.6fr_0.6fr_1.25fr] lg:gap-12">
-                    <div>
+                <div className="grid grid-cols-2 gap-x-5 gap-y-9 sm:gap-x-8 lg:grid-cols-[1.2fr_0.6fr_0.6fr_1.25fr] lg:gap-12">
+                    <div className="col-span-2 lg:col-span-1">
                         <Link href="/" aria-label="Mindscape Analytics home" className="inline-flex">
-                            <BrandLogo alt="Mindscape Analytics" width={300} height={100} className="h-auto w-[250px] object-contain sm:w-[290px]" />
+                            <BrandLogo alt="Mindscape Analytics" width={300} height={100} className="h-auto w-[200px] object-contain sm:w-[250px] lg:w-[290px]" />
                         </Link>
                         <p className="mt-7 max-w-md text-base leading-7 text-muted-foreground">AI agents, data systems, digital products, and factory-direct sourcing, designed as one connected path from intelligence to execution.</p>
                         <Link href="/contact" className="mt-8 inline-flex items-center gap-2 font-semibold text-brand">Get in touch <ArrowUpRight className="h-4 w-4" /></Link>
@@ -42,13 +42,13 @@ export default function Footer() {
                     </div>
                     <div>
                         <h2 className="text-sm font-semibold">Company</h2>
-                        <ul className="mt-6 space-y-4 text-sm text-muted-foreground">{companyLinks.map(([label, href]) => <li key={label}><Link href={href} className="transition-colors hover:text-foreground">{label}</Link></li>)}</ul>
+                        <ul className="mt-4 space-y-1 text-sm text-muted-foreground sm:mt-6">{companyLinks.map(([label, href]) => <li key={label}><Link href={href} className="inline-flex min-h-10 items-center transition-colors hover:text-foreground">{label}</Link></li>)}</ul>
                     </div>
                     <div>
                         <h2 className="text-sm font-semibold">Explore</h2>
-                        <ul className="mt-6 space-y-4 text-sm text-muted-foreground">{exploreLinks.map(([label, href]) => <li key={label}><Link href={href} className="transition-colors hover:text-foreground">{label}</Link></li>)}</ul>
+                        <ul className="mt-4 space-y-1 text-sm text-muted-foreground sm:mt-6">{exploreLinks.map(([label, href]) => <li key={label}><Link href={href} className="inline-flex min-h-10 items-center transition-colors hover:text-foreground">{label}</Link></li>)}</ul>
                     </div>
-                    <div className="lg:justify-self-end lg:w-full lg:max-w-sm">
+                    <div className="col-span-2 lg:col-span-1 lg:justify-self-end lg:w-full lg:max-w-sm">
                         <h2 className="text-sm font-semibold">Talk with our team</h2>
                         <p className="mt-2 text-sm leading-6 text-muted-foreground">Choose the direct contact option that works for you.</p>
                         <div className="mt-5 space-y-5 rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6">

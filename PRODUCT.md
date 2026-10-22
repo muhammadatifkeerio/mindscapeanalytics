@@ -63,7 +63,7 @@ Open / unconfirmed: whether the public claim “world’s first Agentic AI compa
 - **Founder / public lead:** Zeeshan Keerio (founder page `/zeeshan-keerio`).
 - **Site:** https://mindscapeanalytics.com
 - **Voice (from product surfaces):** confident, technical-but-accessible, ROI-aware; chat persona “Zee” is warm and professional — not robotic.
-- **Assets:** logo at `/images/logo/mindscape-analytics.png` (and related favicon / OG assets). Preserve brand name prominence on marketing surfaces.
+- **Assets:** theme-aware wordmarks at `/images/brand/mindscape-analytics-logo-light-2026.webp` and `/images/brand/mindscape-analytics-logo-dark-2026.webp`; use the matching transparent favicon and `/images/og-mindscape-2026.png` for share previews. Preserve brand name prominence on marketing surfaces.
 - Binding visual system is **not** defined here; record or replace via DESIGN.md / new-work when needed.
 
 ## Evidence on Hand

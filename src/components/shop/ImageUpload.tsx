@@ -102,7 +102,7 @@ export default function ImageUpload({ onUploadAction, initialUrl }: ImageUploadP
     return (
         <div className="space-y-4">
             <div
-                className={`relative aspect-video rounded-[2rem] border-2 border-dashed transition-all overflow-hidden flex items-center justify-center bg-foreground/[0.02] ${isOptimizing ? "border-foreground/20" : preview ? "border-transparent" : "border-border hover:border-foreground/20 cursor-pointer"
+                className={`relative aspect-video overflow-hidden rounded-2xl border-2 border-dashed bg-muted/40 transition-all sm:rounded-3xl ${isOptimizing ? "border-brand/40" : preview ? "border-transparent" : "cursor-pointer border-border hover:border-brand/50"
                     }`}
                 onClick={() => !isOptimizing && fileInputRef.current?.click()}
             >
@@ -117,34 +117,36 @@ export default function ImageUpload({ onUploadAction, initialUrl }: ImageUploadP
                         {!isOptimizing && (
                             <button
                                 onClick={(e) => { e.stopPropagation(); setPreview(""); onUploadAction(""); }}
-                                className="absolute top-4 right-4 p-2 bg-black/60 backdrop-blur-xl border border-border rounded-full text-foreground/40 hover:text-foreground transition-all shadow-2xl"
+                                type="button"
+                                aria-label="Remove preview image"
+                                className="absolute right-3 top-3 grid h-11 w-11 place-items-center rounded-full border border-border bg-background/95 text-foreground shadow-sm transition-colors hover:bg-muted"
                             >
                                 <X size={16} />
                             </button>
                         )}
                     </>
                 ) : (
-                    <div className="flex flex-col items-center gap-4 py-12">
-                        <div className="w-16 h-16 rounded-[1.5rem] bg-foreground/5 border border-border flex items-center justify-center text-foreground/20">
+                    <div className="flex cursor-pointer flex-col items-center gap-4 px-4 py-10 text-center sm:py-12">
+                        <div className="grid h-14 w-14 place-items-center rounded-2xl border border-border bg-background text-brand sm:h-16 sm:w-16 sm:rounded-[1.5rem]">
                             <Upload size={24} />
                         </div>
                         <div className="text-center">
-                            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40">Select Visual Artifact</p>
-                            <p className="text-[8px] text-foreground/10 uppercase tracking-widest mt-2">Standard: high-fidelity 1200x800 webp</p>
+                            <p className="text-sm font-semibold text-foreground">Choose a preview image</p>
+                            <p className="mt-2 text-xs leading-5 text-muted-foreground">Optimized to WebP at 1200 × 800 for the shop.</p>
                         </div>
                     </div>
                 )}
 
                 {isOptimizing && (
-                    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/40 backdrop-blur-md">
-                        <Loader2 className="text-foreground/40 animate-spin mb-4" size={32} />
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/60 animate-pulse">Optimizing Asset...</span>
+                    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-background/80 backdrop-blur-md">
+                        <Loader2 className="mb-4 animate-spin text-brand" size={32} />
+                        <span className="animate-pulse text-sm font-medium text-foreground">Optimizing image…</span>
                     </div>
                 )}
             </div>
 
             {error && (
-                <p className="text-[9px] font-black uppercase tracking-widest text-red-500/60 ml-2">{error}</p>
+                <p role="alert" className="ml-2 text-sm font-medium text-destructive">{error}</p>
             )}
 
             <input
@@ -156,10 +158,10 @@ export default function ImageUpload({ onUploadAction, initialUrl }: ImageUploadP
             />
 
             {!preview && !isOptimizing && (
-                <div className="flex items-center gap-4 px-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl">
-                    <ImageIcon size={16} className="text-foreground/20" />
-                    <p className="text-[8px] font-black uppercase tracking-[0.2em] text-foreground/20 leading-loose">
-                        Platform Policy: Automatic 100KB WebP optimization enforced for maximum system throughput.
+                <div className="flex items-start gap-3 rounded-xl border border-border bg-muted/50 px-3 py-3 sm:items-center sm:gap-4 sm:px-5 sm:py-4">
+                    <ImageIcon size={16} className="mt-0.5 shrink-0 text-muted-foreground sm:mt-0" />
+                    <p className="text-xs leading-5 text-muted-foreground">
+                        Images are automatically optimized as WebP to keep product pages fast.
                     </p>
                 </div>
             )}
