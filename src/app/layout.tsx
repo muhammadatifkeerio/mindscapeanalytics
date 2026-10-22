@@ -14,14 +14,6 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "AI & Software Development Company | Mindscape Analytics",
   description: "AI agents, workflow automation, SaaS and web apps, data platforms, and cloud infrastructure—built by Mindscape Analytics, with China sourcing through production.",
-  keywords: [
-    "AI Agents", "AI Agent Development", "AI Workflow Automation", "AI Chatbot Development", "Gen AI Solutions", "Agentic AI Automation",
-    "RSIQ Pro", "DBlynx", "DisposIQ", "Tenvo",
-    "AI Systems Engineering", "Custom Software Development", "Web Application Development", "SaaS Development", "UI/UX Design", "AWS Cost Optimization", "AWS Architecture and Deployment", "China Factory Sourcing", "AI Asset Shop",
-    "Mindscape Analytics", "Enterprise AI Solutions",
-    "Automated Sales Agents", "Scalable Cloud Infrastructure", "Expert Execution Services",
-    "Zeeshan Keerio", "AI Engineer Portfolio"
-  ],
   authors: [{ name: "Mindscape Analytics", url: "https://mindscapeanalytics.com" }],
   creator: "Mindscape Analytics",
   publisher: "Mindscape Analytics",
@@ -85,8 +77,7 @@ const jsonLd = {
       "@id": "https://mindscapeanalytics.com/#organization",
       "name": "Mindscape Analytics",
       "alternateName": "Mindscape",
-      "legalName": "Mindscape Analytics",
-      "foundingDate": "2025",
+      "legalName": "Mindscape Analytics LLC",
       "url": "https://mindscapeanalytics.com",
       "logo": "https://mindscapeanalytics.com/images/brand/mindscape-analytics-logo-light-2026.webp",
       "description": "An AI, data, and software company building automation, digital products, and China sourcing programs for real business operations.",
