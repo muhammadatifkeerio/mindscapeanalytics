@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+    robots: { index: false, follow: true },
     alternates: { canonical: "/become-seller" },
     title: "Become a Seller | Join the MSA Architect Network",
     description: "Monetize your code genius. Join our elite network of software architects and start selling your assets globally.",

@@ -4,6 +4,7 @@ import { ArrowUpRight, Mail, MapPin, MessageCircle } from "lucide-react";
 import WechatNumber from "@/components/WechatNumber";
 
 const companyLinks = [
+    ["Services", "/services"],
     ["Solutions", "/solutions"],
     ["Projects", "/projects"],
     ["Pricing", "/pricing"],

@@ -50,7 +50,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://mindscapeanalytics.com/" },
   icons: {
     icon: [
-      { url: "/images/brand/mindscape-icon-light-2026.png", sizes: "512x512", type: "image/png" },
+      // An opaque, theme-independent mark stays legible in browser and search chrome.
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
       // Keep the conventional root path explicit for browsers and search crawlers.
       { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
     ],
@@ -203,7 +204,7 @@ export default function RootLayout({
       <body className="font-sans" suppressHydrationWarning>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('mindscape-theme');var d=t==='dark';document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light';var icons=document.querySelectorAll('link[rel~="icon"]');for(var i=0;i<icons.length;i++){if(icons[i].href.indexOf('favicon.ico')===-1){icons[i].href=d?'/images/brand/mindscape-icon-dark-2026.png':'/images/brand/mindscape-icon-light-2026.png'}}}catch(e){document.documentElement.style.colorScheme='light'}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('mindscape-theme');var d=t==='dark';document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light'}catch(e){document.documentElement.style.colorScheme='light'}})();`,
           }}
         />
         <script
