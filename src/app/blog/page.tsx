@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 const resources = [
     { title: "AI products in day-to-day farm operations", description: "Explore the Smart Dairy and Cattle Farm Management System, with cattle, milk, feed, health, and farm-finance workflows in one operations view.", href: "https://cattle.mindscapeanalytics.com/", label: "Visit Smart Dairy" },
     { title: "Business operations connected to one workspace", description: "See TENVO’s storefront, POS, inventory, CRM, accounting, and analytics capabilities.", href: "https://www.tenvo.store/", label: "Visit TENVO" },
-    { title: "Production and disposal operations", description: "Explore DisposiQ’s production tracking, disposal records, activity feed, and operational insights.", href: "https://disposiq.tenvo.store/", label: "Visit DisposiQ" },
+    { title: "Bakery production and disposal automation", description: "Explore DisposiQ’s bakery production tracking, disposal records, team activity, and operational insights.", href: "https://disposiq.tenvo.store/", label: "Visit DisposiQ" },
 ];
 
 export default function BlogPage() {

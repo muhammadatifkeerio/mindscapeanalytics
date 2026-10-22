@@ -75,7 +75,7 @@ const solutionQuestions = [
         questions: [
             { question: "Can you handle the full web application development process?", answer: "We work across product discovery, UI/UX design, frontend and backend engineering, database design, integrations, testing, cloud deployment, and ongoing improvement. The scope is agreed around your users, workflows, and launch requirements." },
             { question: "Can you build AI features into a SaaS application?", answer: "Yes. We can integrate assistants, business knowledge retrieval, workflow automation, and connected tools into an application. Permissions, evaluation, operating costs, and human review are considered as part of the design." },
-            { question: "Can we see products Mindscape has developed?", answer: "Our projects include TENVO business operations software, Smart Dairy & Cattle Farm Management, and DisposIQ production operations software. The project catalog links to the live products so you can explore their workflows." },
+            { question: "Can we see products Mindscape has developed?", answer: "Our projects include TENVO business operations software, Smart Dairy & Cattle Farm Management, and DisposIQ bakery production and disposal automation. The project catalog links to the live products so you can explore their workflows." },
         ],
     },
 ]

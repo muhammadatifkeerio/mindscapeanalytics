@@ -63,11 +63,11 @@ const featuredProducts = [
     },
     {
         name: "DisposiQ",
-        category: "Production operations",
-        summary: "An operations hub that brings production tracking, disposal records, team activity, and operational insights into one shared view.",
+        category: "Bakery production automation",
+        summary: "A bakery operations hub for production tracking, disposal records, team activity, and operational insights. Planned packaging-factory access will help users source better-quality packaging at competitive factory-direct rates.",
         image: "/images/projects/disposiq-card.webp",
-        imageAlt: "DisposiQ operations dashboard for production, disposal, activity, and operational metrics",
-        highlights: ["Production tracking", "Disposal records", "Operational insights"],
+        imageAlt: "DisposiQ bakery production and disposal automation dashboard",
+        highlights: ["Bakery production", "Disposal records", "Packaging sourcing roadmap"],
         href: "https://disposiq.tenvo.store/",
         action: "Explore DisposiQ"
     }

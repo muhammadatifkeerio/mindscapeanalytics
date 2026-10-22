@@ -30,13 +30,13 @@ interface ProjectData {
 const PROJECTS: ProjectData[] = [
     {
         title: "DisposIQ",
-        category: "Enterprise Intelligence",
-        metrics: "Zero Data Loss • Real-time Sync",
-        description: "Next-gen production and disposal management ecosystem for enterprise-scale industrial operations.",
+        category: "Bakery Operations Automation",
+        metrics: "Production • Disposal • Packaging",
+        description: "Bakery production and disposal automation with traceable operational records and a planned path to direct packaging-factory sourcing.",
         image: "/images/projects/disposiq.webp",
-        details: ["Smart Reconciliation", "Autonomous Logging", "Multi-site Sync"],
+        details: ["Production Tracking", "Disposal Records", "Packaging Planning"],
         status: "live",
-        link: "https://disposiq.mindscapeanalytics.com/"
+        link: "https://disposiq.tenvo.store/"
     },
     {
         title: "Smart DairyFarm",

@@ -167,10 +167,10 @@ const featuredPortfolioProjects = [
     },
     {
         title: "DisposIQ",
-        category: "Production & disposal intelligence",
+        category: "Bakery production automation",
         image: "/images/projects/disposiq.webp",
-        description: "An operational system that connects production records, disposal tracking, reporting, and AI-assisted insights for food production and industrial teams.",
-        tags: ["Operations", "Analytics", "AI insights"],
+        description: "An operational system connecting bakery production records, disposal tracking, reporting, and insights, with direct packaging-factory sourcing planned for a future release.",
+        tags: ["Bakery operations", "Disposal tracking", "Packaging roadmap"],
         href: "https://disposiq.tenvo.store/",
         external: true,
     },

@@ -44,8 +44,8 @@ const products = [
     },
     {
         name: "DisposiQ",
-        label: "生产运营智能",
-        description: "集中查看生产流程、处置记录、团队活动与运营数据，让执行过程更清晰、可追踪。",
+        label: "烘焙生产与处置自动化",
+        description: "集中管理烘焙生产、处置记录、团队活动与运营数据；未来计划接入包装工厂申请与直接采购通道。",
         href: "https://disposiq.tenvo.store/",
         image: "/images/projects/disposiq-card.webp",
         imageAlt: "DisposiQ 生产运营管理平台",

@@ -169,7 +169,7 @@ const jsonLd = {
       "name": "DisposIQ",
       "url": "https://disposiq.tenvo.store/",
       "creator": { "@id": "https://www.mindscapeanalytics.com/#organization" },
-      "description": "Production and disposal operations platform for tracking activity and operational insights.",
+      "description": "Bakery production and disposal automation platform with operational tracking and a planned packaging-factory sourcing pathway.",
       "applicationCategory": "Automation / ERP",
       "operatingSystem": "Web-based"
     },
