@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, Send, X, Bot, User, Sparkles, Loader2, Mail, ArrowRight, ShieldCheck, Plus, Rocket, Mic, MicOff } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { contactFormSchema, leadSchema } from "@/lib/types";
 
 interface Message {
     role: "user" | "assistant";
@@ -391,9 +392,10 @@ export default function ChatWidget() {
     };
 
     const captureLead = useCallback(async () => {
-        if (!leadEmail.trim()) return;
+        const leadInput = leadSchema.safeParse({ email: leadEmail, source: "chat" });
+        if (!leadInput.success) return;
         try {
-            await fetch("/api/leads", {
+            const response = await fetch("/api/leads", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -403,9 +405,10 @@ export default function ChatWidget() {
                     metadata: { exchangeCount, capturedAt: new Date().toISOString() },
                 }),
             });
+            if (!response.ok) throw new Error("Lead capture failed");
             setLeadCaptured(true);
             setShowLeadCapture(false);
-            const confirmation = `Thank you! I've noted your email (${leadEmail}). Our architects will follow up with a personalized proposal within 24 hours. Feel free to continue chatting!`;
+            const confirmation = `Thank you! I've securely shared your email (${leadEmail}) with our team. Feel free to continue chatting.`;
             setMessages(prev => [...prev, {
                 role: "assistant",
                 content: confirmation,
@@ -433,7 +436,7 @@ export default function ChatWidget() {
         const emailMatch = trimmed.match(/[\w.-]+@[\w.-]+\.\w+/);
         if (emailMatch && !leadCaptured) {
             try {
-                fetch("/api/leads", {
+                const leadResponse = await fetch("/api/leads", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -442,8 +445,10 @@ export default function ChatWidget() {
                         message: updatedMessages.map(m => `${m.role}: ${m.content}`).join("\n").slice(0, 2000),
                     }),
                 });
-                setLeadCaptured(true);
-                setShowLeadCapture(false);
+                if (leadResponse.ok) {
+                    setLeadCaptured(true);
+                    setShowLeadCapture(false);
+                }
             } catch { }
         }
 
@@ -496,7 +501,7 @@ export default function ChatWidget() {
         const emailMatch = trimmed.match(/[\w.-]+@[\w.-]+\.\w+/);
         if (emailMatch && !leadCaptured) {
             try {
-                fetch("/api/leads", {
+                const leadResponse = await fetch("/api/leads", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -505,8 +510,10 @@ export default function ChatWidget() {
                         message: updatedMessages.map(m => `${m.role}: ${m.content}`).join("\n").slice(0, 2000),
                     }),
                 });
-                setLeadCaptured(true);
-                setShowLeadCapture(false);
+                if (leadResponse.ok) {
+                    setLeadCaptured(true);
+                    setShowLeadCapture(false);
+                }
             } catch { }
         }
 
@@ -543,13 +550,18 @@ export default function ChatWidget() {
 
     const submitContact = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const validation = contactFormSchema.safeParse(contactForm);
+        if (!validation.success) {
+            setContactFeedback(validation.error.issues[0]?.message ?? "Please check the form and try again.");
+            return;
+        }
         setContactSending(true);
         setContactFeedback(null);
         try {
             const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(contactForm),
+                body: JSON.stringify(validation.data),
             });
             const result: unknown = await response.json();
             if (!response.ok) {

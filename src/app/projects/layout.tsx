@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
+import { SEO_CONFIG } from '@/config/seo'
 
 export const metadata: Metadata = {
     title: "AI, Software & Digital Product Projects | Mindscape Analytics",
@@ -7,9 +8,15 @@ export const metadata: Metadata = {
     openGraph: {
         title: "AI, Software & Digital Product Projects | Mindscape Analytics",
         description: "See working products and software projects built by Mindscape Analytics, with links to live platforms and available digital assets.",
-        url: "https://mindscapeanalytics.com/projects",
-        images: ["/images/og-mindscape-2026.png"],
-    }
+        url: "https://www.mindscapeanalytics.com/projects",
+        images: [SEO_CONFIG.defaultSocialImage],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "AI, Software & Digital Product Projects | Mindscape Analytics",
+        description: "Explore TENVO, Smart Dairy, DisposIQ, RSIQ Pro, custom AI systems, and reusable digital products.",
+        images: [SEO_CONFIG.defaultSocialImage],
+    },
 }
 
 export default function ProjectsLayout({

@@ -63,23 +63,23 @@ export const stripeSessionIdSchema = z.object({
 });
 
 export const leadSchema = z.object({
-    email: z.string().email("Invalid email"),
-    name: z.string().optional(),
-    company: z.string().optional(),
-    phone: z.string().optional(),
-    source: z.string().default("website"),
-    service: z.string().optional(),
-    message: z.string().optional(),
+    email: z.string().trim().email("Invalid email").max(254),
+    name: z.string().trim().max(120).optional(),
+    company: z.string().trim().max(160).optional(),
+    phone: z.string().trim().max(40).optional(),
+    source: z.string().trim().min(1).max(60).default("website"),
+    service: z.string().trim().max(120).optional(),
+    message: z.string().trim().max(4_000).optional(),
     metadata: z.record(z.string(), z.union([z.string(), z.number(), z.boolean(), z.null()])).optional(),
 });
 
 export const contactFormSchema = z.object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
-    email: z.string().email("Please enter a valid email address"),
-    company: z.string().optional(),
-    phone: z.string().optional(),
-    service: z.string().min(1, "Please select a service"),
-    message: z.string().min(10, "Message must be at least 10 characters"),
+    name: z.string().trim().min(2, "Name must be at least 2 characters").max(120),
+    email: z.string().trim().email("Please enter a valid email address").max(254),
+    company: z.string().trim().max(160).optional(),
+    phone: z.string().trim().max(40).optional(),
+    service: z.string().trim().min(1, "Please select a service").max(120),
+    message: z.string().trim().min(10, "Message must be at least 10 characters").max(4_000),
 });
 
 export const chatMessageSchema = z.object({

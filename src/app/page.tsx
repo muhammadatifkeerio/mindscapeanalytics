@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI & Software Development Company | Mindscape Analytics",
     description: "Build AI agents, automation workflows, SaaS and web applications, data platforms, and cloud infrastructure, with China sourcing through production.",
-    url: "https://mindscapeanalytics.com",
+    url: "https://www.mindscapeanalytics.com",
     siteName: "Mindscape Analytics",
     images: [
       {
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
       },
     ],
     locale: "en_US",
+    alternateLocale: ["zh_CN"],
     type: "website",
   },
   twitter: {

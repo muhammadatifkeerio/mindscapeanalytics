@@ -1,162 +1,91 @@
-/**
- * Mindscape AI Orchestrator // 2026 Edition
- * 
- * Unified interface for NVIDIA NIM, Google Gemini, and OpenRouter.
- * Optimized for high-fidelity reasoning and cost-efficiency.
+import "server-only";
+
+import { z } from "zod";
+import type { AIMessage, AIProvider, AIRequest, AIResponse } from "@/lib/types";
+
+const openAIResponseSchema = z.object({ output: z.array(z.object({ content: z.array(z.object({ text: z.string().optional() })).optional() })).optional() });
+const geminiResponseSchema = z.object({ candidates: z.array(z.object({ content: z.object({ parts: z.array(z.object({ text: z.string().optional() })).optional() }).optional() })).optional() });
+const chatCompletionSchema = z.object({ choices: z.array(z.object({ message: z.object({ content: z.string() }) })).min(1) });
+
+/** SOURCE OF TRUTH KEYWORDS: extractOpenAIText, Responses API, output items, Zod validation, chatbot reply, safe parsing
+ * WHAT: Extracts assistant text from a validated OpenAI Responses API payload.
+ * WHY: REST responses store generated text in typed output content items.
+ * WHERE: OpenAI branch in callAI.
  */
-
-export type AIProvider = "NVIDIA" | "GOOGLE" | "OPENROUTER";
-
-export interface Message {
-    role: "system" | "user" | "assistant";
-    content: string;
+function extractOpenAIText(payload: object): string {
+    const parsed = openAIResponseSchema.safeParse(payload);
+    return parsed.success ? parsed.data.output?.flatMap((item) => item.content ?? []).map((item) => item.text ?? "").join("").trim() ?? "" : "";
 }
 
-export interface AIResponse {
-    content: string;
-    provider: AIProvider;
-    model: string;
-}
+/** SOURCE OF TRUTH KEYWORDS: callAI, Gemini default, OpenAI fallback, low-cost model, provider failover, server-only
+ * WHAT: Generates text through configured providers with ordered credential-aware failover.
+ * WHY: Chat, voice, and roadmap features need one reliable model path.
+ * WHERE: /api/chat, /api/voice, and roadmap actions.
+ */
+export async function callAI(request: AIRequest): Promise<AIResponse> {
+    const systemPrompt = request.systemPrompt ?? "You are the Mindscape Analytics assistant. Be concise, accurate, and helpful.";
+    const messages: AIMessage[] = request.messages?.length ? request.messages : [{ role: "user", content: request.prompt ?? "" }];
+    const allProviders = ["GOOGLE", "OPENAI", "NVIDIA", "OPENROUTER"] as const;
+    const providers: AIProvider[] = request.provider ? [request.provider, ...allProviders.filter((provider) => provider !== request.provider)] : [...allProviders];
 
-export async function callAI({
-    prompt,
-    messages = [],
-    systemPrompt = "You are the Strategic AI Architect for Mindscape Analytics. Provide industrial-grade, concise, and actionable intelligence.",
-    provider = "GOOGLE",
-    model,
-    temperature = 0.2,
-}: {
-    prompt?: string;
-    messages?: Message[];
-    systemPrompt?: string;
-    provider?: AIProvider;
-    model?: string;
-    temperature?: number;
-}): Promise<AIResponse> {
-    
-    // Construct messages array for chat-based APIs
-    const conversationHistory: Message[] = messages.length > 0 
-        ? [{ role: "system", content: systemPrompt }, ...messages]
-        : [
-            { role: "system", content: systemPrompt },
-            { role: "user", content: prompt || "" }
-        ];
-
-    // 1. GOOGLE GEMINI (Primary Priority for Chatbot)
-    if (provider === "GOOGLE") {
-        const apiKey = process.env.GOOGLE_AI_STUDIO_API;
-        const targetModel = model || "gemini-3-flash"; // May 2026 low-cost Gemini model
-        
+    for (const provider of providers) {
         try {
-            // Google API uses a different format for history
-            const contents = conversationHistory
-                .filter(m => m.role !== "system")
-                .map(m => ({
-                    role: m.role === "user" ? "user" : "model",
-                    parts: [{ text: m.content }]
-                }));
-
-            const systemInstruction = conversationHistory.find(m => m.role === "system")?.content;
-
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${targetModel}:generateContent?key=${apiKey}`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    system_instruction: systemInstruction ? { parts: [{ text: systemInstruction }] } : undefined,
-                    contents,
-                    generationConfig: { temperature }
-                }),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                return {
-                    content: data.candidates[0].content.parts[0].text,
-                    provider: "GOOGLE",
-                    model: targetModel
-                };
-            } else {
-                console.error("[AI] Google Gemini API error:", await response.text());
+            if (provider === "OPENAI") {
+                const apiKey = process.env.OPENAI_API_KEY?.trim();
+                if (!apiKey) continue;
+                const model = request.provider === provider && request.model ? request.model : process.env.OPENAI_CHAT_MODEL?.trim() || "gpt-6-luna";
+                const response = await fetch("https://api.openai.com/v1/responses", {
+                    method: "POST",
+                    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+                    body: JSON.stringify({ model, instructions: systemPrompt, input: messages.filter((message) => message.role !== "system"), reasoning: { effort: "none" }, max_output_tokens: request.maxOutputTokens ?? 700 }),
+                    signal: AbortSignal.timeout(25_000),
+                });
+                if (!response.ok) { console.error("[AI_OPENAI_ERROR]", response.status); continue; }
+                const payload: object = await response.json();
+                const content = extractOpenAIText(payload);
+                if (content) return { content, provider, model };
             }
-        } catch (e) {
-            console.error("Google Gemini Fallback triggered", e);
-        }
-    }
 
-    // 2. NVIDIA NIM (Primary for Logic/Reasoning or Fallback 1)
-    if (provider === "NVIDIA" || provider === "GOOGLE") {
-        const apiKey = process.env.NVIDIA_NIM_API_KEY;
-        const targetModel = (provider === "NVIDIA" ? model : undefined) || "mistralai/mistral-large-3-675b-instruct-2512";
-        
-        try {
-            const response = await fetch("https://integrate.api.nvidia.com/v1/chat/completions", {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${apiKey}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    model: targetModel,
-                    messages: conversationHistory,
-                    temperature,
-                    max_tokens: 2048,
-                }),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                return {
-                    content: data.choices[0].message.content,
-                    provider: "NVIDIA",
-                    model: targetModel
-                };
-            } else {
-                console.error("[AI] NVIDIA NIM API error:", await response.text());
+            if (provider === "GOOGLE") {
+                const apiKey = process.env.GOOGLE_AI_STUDIO_API?.trim() || process.env.X_goog_api_key?.trim() || process.env.GEMINI_API_KEY?.trim() || process.env.GOOGLE_API_KEY?.trim();
+                if (!apiKey) continue;
+                const model = request.provider === provider && request.model ? request.model : process.env.GEMINI_CHAT_MODEL?.trim() || "gemini-3.5-flash-lite";
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
+                    body: JSON.stringify({
+                        systemInstruction: { parts: [{ text: systemPrompt }] },
+                        contents: messages.filter((message) => message.role !== "system").map((message) => ({ role: message.role === "assistant" ? "model" : "user", parts: [{ text: message.content }] })),
+                        generationConfig: { maxOutputTokens: request.maxOutputTokens ?? 700, temperature: request.temperature ?? 0.35 },
+                    }),
+                    signal: AbortSignal.timeout(25_000),
+                });
+                if (!response.ok) { console.error("[AI_GOOGLE_ERROR]", response.status); continue; }
+                const payload: object = await response.json();
+                const parsed = geminiResponseSchema.safeParse(payload);
+                const content = parsed.success ? parsed.data.candidates?.[0]?.content?.parts?.map((part) => part.text ?? "").join("").trim() : "";
+                if (content) return { content, provider, model };
             }
-        } catch (e) {
-            console.error("NVIDIA NIM Fallback triggered", e);
+
+            if (provider === "NVIDIA" || provider === "OPENROUTER") {
+                const apiKey = provider === "NVIDIA" ? process.env.NVIDIA_NIM_API_KEY?.trim() : process.env.OPENROUTER_API_KEY?.trim();
+                if (!apiKey) continue;
+                const model = request.provider === provider && request.model ? request.model : provider === "NVIDIA" ? "mistralai/mistral-large-3-675b-instruct-2512" : "meta-llama/llama-3.3-70b-instruct";
+                const endpoint = provider === "NVIDIA" ? "https://integrate.api.nvidia.com/v1/chat/completions" : "https://openrouter.ai/api/v1/chat/completions";
+                const response = await fetch(endpoint, {
+                    method: "POST",
+                    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json", ...(provider === "OPENROUTER" ? { "HTTP-Referer": "https://www.mindscapeanalytics.com", "X-Title": "Mindscape Analytics" } : {}) },
+                    body: JSON.stringify({ model, messages: [{ role: "system", content: systemPrompt }, ...messages], temperature: request.temperature ?? 0.35, max_tokens: request.maxOutputTokens ?? 700 }),
+                    signal: AbortSignal.timeout(25_000),
+                });
+                if (!response.ok) { console.error(`[AI_${provider}_ERROR]`, response.status); continue; }
+                const payload: object = await response.json();
+                const parsed = chatCompletionSchema.safeParse(payload);
+                if (parsed.success) return { content: parsed.data.choices[0].message.content.trim(), provider, model };
+            }
+        } catch (error) {
+            console.error(`[AI_${provider}_FAILURE]`, error instanceof Error ? error.message : "Provider request failed");
         }
     }
-
-    // 3. OPENROUTER (High-Speed Global Router / Absolute Fallback)
-    const orApiKey = process.env.OPENROUTER_API_KEY;
-    const orModel = (provider === "OPENROUTER" ? model : undefined) || "meta-llama/llama-3.1-405b-instruct";
-    
-    try {
-        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${orApiKey}`,
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://mindscapeanalytics.com",
-                "X-Title": "Mindscape Analytics",
-            },
-            body: JSON.stringify({
-                model: orModel,
-                messages: conversationHistory,
-                temperature,
-            }),
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            return {
-                content: data.choices[0].message.content,
-                provider: "OPENROUTER",
-                model: orModel
-            };
-        } else {
-            console.error("[AI] OpenRouter API error:", await response.text());
-        }
-    } catch (e) {
-        console.error("OpenRouter Fallback triggered", e);
-    }
-
-    // Final failsafe if all APIs fail
-    return {
-        content: "I'm currently experiencing high network latency and cannot connect to my intelligence nodes. Please reach out via the contact form or email us directly.",
-        provider: "OPENROUTER",
-        model: "failsafe"
-    };
+    throw new Error("No configured AI provider returned a valid response.");
 }
-

@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WechatNumber from "@/components/WechatNumber";
+import { contactFormSchema } from "@/lib/types";
 
 const contactInfo = [
     {
@@ -47,7 +48,7 @@ const contactInfo = [
         icon: Globe,
         title: "Our website",
         value: "mindscapeanalytics.com",
-        link: "https://mindscapeanalytics.com",
+        link: "https://www.mindscapeanalytics.com",
         description: "Explore our services, products, and project portfolio."
     }
 ];
@@ -107,6 +108,11 @@ function ContactFormContent() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        const validation = contactFormSchema.safeParse(formData);
+        if (!validation.success) {
+            setError(validation.error.issues[0]?.message ?? "Please check the form and try again.");
+            return;
+        }
         setIsSubmitting(true);
         setError(null);
 
@@ -116,7 +122,7 @@ function ContactFormContent() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(validation.data),
             });
 
             const data = await response.json();

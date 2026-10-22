@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
+import { SEO_CONFIG } from "@/config/seo";
 
 export const metadata: Metadata = {
-    title: "Elite Assets | Mindscape Analytics Marketplace",
-    description: "Premium marketplace to Sell Digital Products, Sell pre built softwares, Sell n8n workfllows, and buy automations. Buy web components, buy workflows, and buy automations engineered for scale.",
+    title: "AI Software, Automations & Digital Products | Mindscape Shop",
+    description: "Browse production-ready AI tools, SaaS applications, automation workflows, data products, and reusable software assets from Mindscape Analytics and approved sellers.",
     alternates: { canonical: "/shop" },
-    keywords: [
-        "Sell Digital Products", "Sell pre built softwares", "Sell n8n workfllows",
-        "marketplace", "software selling platforms", "buy web", "buy componenets",
-        "buy wrokflows", "buy automations", "digital assets"
-    ],
     openGraph: {
-        title: "MSA Asset Terminal | Engineering for the Elite",
-        description: "Premium architectural assets for modern enterprise scale.",
-        url: "https://mindscapeanalytics.com/shop",
-        images: ["/images/og-mindscape-2026.png"],
+        title: "AI Software, Automations & Digital Products | Mindscape Shop",
+        description: "Browse reusable AI tools, SaaS applications, workflows, data products, and production-ready software assets.",
+        url: "https://www.mindscapeanalytics.com/shop",
+        images: [SEO_CONFIG.defaultSocialImage],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "AI Software, Automations & Digital Products | Mindscape Shop",
+        description: "Browse reusable AI tools, SaaS applications, workflows, data products, and production-ready software assets.",
+        images: [SEO_CONFIG.defaultSocialImage],
     },
 };
 

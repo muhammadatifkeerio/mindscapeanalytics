@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SolutionLayout from "@/components/layouts/SolutionLayout";
+import { SEO_CONFIG } from "@/config/seo";
 
 /**
  * SOURCE OF TRUTH KEYWORDS: China sourcing, direct factory, supplier matching, sample validation, production coordination, service metadata
@@ -15,9 +16,15 @@ export const metadata: Metadata = {
     openGraph: {
         title: "China Direct Factory Sourcing | Mindscape Analytics",
         description: "Move from product requirements to a coordinated production path with China factory sourcing, samples, and delivery planning.",
-        url: "https://mindscapeanalytics.com/china-sourcing",
-        images: ["/images/og-mindscape-2026.png"],
+        url: "https://www.mindscapeanalytics.com/china-sourcing",
+        images: [SEO_CONFIG.defaultSocialImage],
         type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "China Direct Factory Sourcing | Mindscape Analytics",
+        description: "Factory matching, sample coordination, supplier communication, production handoff, and delivery planning for global buyers.",
+        images: [SEO_CONFIG.defaultSocialImage],
     },
 };
 

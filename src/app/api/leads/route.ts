@@ -13,7 +13,12 @@ import * as leadService from "@/services/lead.service";
  */
 
 export const POST = withBaseHandler(async (request) => {
-    const body: unknown = await request.json();
+    let body: unknown;
+    try {
+        body = await request.json();
+    } catch {
+        throw new BadRequestError("Invalid JSON in request body");
+    }
     const validation = leadSchema.safeParse(body);
     if (!validation.success) {
         throw new BadRequestError("Invalid data", validation.error.format());

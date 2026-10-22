@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Web & SaaS Application Development | Mindscape Analytics",
         description: "From UI/UX design and application engineering to AI integration, cloud deployment, and product support.",
-        url: "https://mindscapeanalytics.com/solutions/enterprise-software",
+        url: "https://www.mindscapeanalytics.com/solutions/enterprise-software",
         siteName: "Mindscape Analytics",
         locale: "en_US",
         type: "website",

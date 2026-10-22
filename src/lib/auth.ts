@@ -29,9 +29,7 @@ export const auth = betterAuth({
     trustHost: true,
     trustedOrigins: [
         "https://www.mindscapeanalytics.com",
-        "https://mindscapeanalytics.com",
-        "https://mindscapeanalytics-main.vercel.app",
-        "https://mindscape-analytics-main.vercel.app"
+        "https://mindscapeanalytics.com"
     ],
     database: prismaAdapter(prisma, {
         provider: "postgresql",

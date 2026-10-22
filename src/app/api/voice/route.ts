@@ -42,9 +42,8 @@ export const POST = withBaseHandler(async (req) => {
                 ...parsed.data.history,
                 { role: "user", content: parsed.data.transcript },
             ],
-            provider: "GOOGLE",
-            model: "gemini-3.1-flash-lite",
             temperature: 0.6,
+            maxOutputTokens: 160,
         });
 
         const isLeadCapture = /email|schedule|call|contact|book|appointment|reach out/i.test(result.content);

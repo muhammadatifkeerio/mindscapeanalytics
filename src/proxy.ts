@@ -2,14 +2,15 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 /**
- * SOURCE OF TRUTH KEYWORDS: proxy, security headers, pathname
- * WHAT: Applies shared security headers to public routes.
- * WHY: Keep common browser security policy consistent across the site.
+ * SOURCE OF TRUTH KEYWORDS: proxy, security headers, pathname, Content-Language, zh-CN, localized response
+ * WHAT: Applies shared security and content-language headers to public routes.
+ * WHY: Keep browser policy consistent and expose the localized Chinese surface at the HTTP layer.
  * WHERE: All matched public requests before the Next.js App Router.
  */
 export function proxy(request: NextRequest) {
     const response = NextResponse.next();
     response.headers.set("x-pathname", request.nextUrl.pathname);
+    response.headers.set('Content-Language', request.nextUrl.pathname.startsWith('/zh-cn') ? 'zh-CN' : 'en-US');
 
     // --- Enterprise Security Headers ---
 
