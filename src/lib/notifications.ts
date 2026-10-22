@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 /**
- * SOURCE OF TRUTH KEYWORDS: notifyAdmin, Resend, Discord, lead email, lazy client
+ * SOURCE OF TRUTH KEYWORDS: notifyAdmin, NOTIFICATION_EMAILS, Resend, Discord, lead email, lazy client
  * WHAT: Admin lead notifications via Discord + Resend.
  * WHY: Construct Resend lazily so `next build` page collection does not log missing keys twice.
  * WHERE: /api/leads and /api/contact after lead.service writes.
@@ -9,7 +9,7 @@ import { Resend } from "resend";
 
 const EMAIL_FROM = process.env.EMAIL_FROM || "Mindscape Analytics <noreply@mindscapeanalytics.com>";
 const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
-const ADMIN_EMAILS = (process.env.ALLOWED_ADMINS || "contact@mindscapeanalytics.com,imzeeshan.ai@gmail.com")
+const NOTIFICATION_EMAILS = (process.env.NOTIFICATION_EMAILS || "info@mindscapeanalytics.com,zeeshan.keerio@mindscapeanalytics.com")
     .split(",")
     .map((email) => email.trim())
     .filter(Boolean);
@@ -66,7 +66,7 @@ export async function notifyAdmin(payload: {
     // 2. EMAIL NOTIFICATION
     const resend = getResend();
     if (resend) {
-        console.log(`[NOTIFY_EMAIL_START] Target: ${ADMIN_EMAILS.join(", ")}`);
+        console.log(`[NOTIFY_EMAIL_START] Target: ${NOTIFICATION_EMAILS.join(", ")}`);
         const emailHtml = `
             <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background: #000; color: #fff; padding: 40px; border: 1px solid #333; border-radius: 12px;">
                 <h2 style="letter-spacing: 0.2em; border-bottom: 1px solid #333; padding-bottom: 20px; font-weight: 900; color: #fff;">${payload.title.replace('🚀 ', '').replace('🔥 ', '')}</h2>
@@ -93,10 +93,10 @@ export async function notifyAdmin(payload: {
         `;
 
         try {
-            console.log(`[NOTIFY_EMAIL_ATTEMPT] Using From: ${EMAIL_FROM} | To: ${ADMIN_EMAILS.join(', ')}`);
+            console.log(`[NOTIFY_EMAIL_ATTEMPT] Using From: ${EMAIL_FROM} | To: ${NOTIFICATION_EMAILS.join(', ')}`);
             const { data, error } = await resend.emails.send({
                 from: EMAIL_FROM,
-                to: ADMIN_EMAILS,
+                to: NOTIFICATION_EMAILS,
                 replyTo: payload.email,
                 subject: `[${payload.score && payload.score >= 50 ? 'HOT_SIGNAL' : 'SIGNAL'}] ${payload.name || payload.email} // ${payload.service?.toUpperCase() || 'GENERAL'}`,
                 html: emailHtml,
@@ -107,7 +107,7 @@ export async function notifyAdmin(payload: {
                 
                 // Fallback Phase: Individual delivery with domain bypass
                 console.log('[NOTIFY_EMAIL_RECOVERY] Attempting individual delivery bypass...');
-                for (const email of ADMIN_EMAILS) {
+                for (const email of NOTIFICATION_EMAILS) {
                     try {
                         const isDomainError = error.name === 'validation_error' || error.message?.toLowerCase().includes('verified');
                         const recoveryFrom = isDomainError ? 'Mindscape <onboarding@resend.dev>' : EMAIL_FROM;
