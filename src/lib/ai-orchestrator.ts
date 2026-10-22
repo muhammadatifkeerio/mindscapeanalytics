@@ -74,7 +74,7 @@ export async function callAI(request: AIRequest): Promise<AIResponse> {
                 const endpoint = provider === "NVIDIA" ? "https://integrate.api.nvidia.com/v1/chat/completions" : "https://openrouter.ai/api/v1/chat/completions";
                 const response = await fetch(endpoint, {
                     method: "POST",
-                    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json", ...(provider === "OPENROUTER" ? { "HTTP-Referer": "https://www.mindscapeanalytics.com", "X-Title": "Mindscape Analytics" } : {}) },
+                    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json", ...(provider === "OPENROUTER" ? { "HTTP-Referer": "https://mindscapeanalytics.com", "X-Title": "Mindscape Analytics" } : {}) },
                     body: JSON.stringify({ model, messages: [{ role: "system", content: systemPrompt }, ...messages], temperature: request.temperature ?? 0.35, max_tokens: request.maxOutputTokens ?? 700 }),
                     signal: AbortSignal.timeout(25_000),
                 });

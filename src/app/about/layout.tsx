@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "About Us | Mindscape Analytics",
         description: "Our team builds practical AI, data, software, and sourcing systems for real business operations.",
-        url: "https://www.mindscapeanalytics.com/about",
+        url: "https://mindscapeanalytics.com/about",
         siteName: "Mindscape Analytics",
         images: [{ url: "/images/og-mindscape-2026.png", width: 1200, height: 630, alt: "Mindscape Analytics builds AI agents, software products, cloud systems, and China sourcing programs." }],
         type: "website",

@@ -171,7 +171,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         openGraph: {
             title: `${study.title} | Mindscape Analytics`,
             description: study.problem,
-            url: `https://www.mindscapeanalytics.com/projects/${slug}`,
+            url: `https://mindscapeanalytics.com/projects/${slug}`,
             type: 'article',
             images: [{ url: '/images/og-mindscape-2026.png', alt: 'Mindscape Analytics project portfolio' }],
         },

@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "AI & Software Development Company | Mindscape Analytics",
   description: "AI agents, workflow automation, SaaS and web apps, data platforms, and cloud infrastructure—built by Mindscape Analytics, with China sourcing through production.",
-  authors: [{ name: "Mindscape Analytics", url: "https://www.mindscapeanalytics.com" }],
+  authors: [{ name: "Mindscape Analytics", url: "https://mindscapeanalytics.com" }],
   creator: "Mindscape Analytics",
   publisher: "Mindscape Analytics",
   verification: {
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     description: "AI agents, SaaS and web applications, cloud infrastructure, data platforms, and China sourcing through production.",
     images: [SEO_CONFIG.defaultSocialImage],
   },
-  alternates: { canonical: "https://www.mindscapeanalytics.com/" },
+  alternates: { canonical: "https://mindscapeanalytics.com/" },
   icons: {
     icon: [
       // An opaque, theme-independent mark stays legible in browser and search chrome.
@@ -76,12 +76,12 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://www.mindscapeanalytics.com/#organization",
+      "@id": "https://mindscapeanalytics.com/#organization",
       "name": "Mindscape Analytics",
       "alternateName": "Mindscape",
       "legalName": "Mindscape Analytics LLC",
-      "url": "https://www.mindscapeanalytics.com",
-      "logo": "https://www.mindscapeanalytics.com/images/brand/mindscape-analytics-logo-light-2026.webp",
+      "url": "https://mindscapeanalytics.com",
+      "logo": "https://mindscapeanalytics.com/images/brand/mindscape-analytics-logo-light-2026.webp",
       "description": "An AI, data, and software company building automation, digital products, and China sourcing programs for real business operations.",
       "areaServed": [
         { "@type": "Country", "name": "United States" },
@@ -99,7 +99,7 @@ const jsonLd = {
         "China sourcing and production coordination"
       ],
       "founder": {
-        "@id": "https://www.mindscapeanalytics.com/#founder"
+        "@id": "https://mindscapeanalytics.com/#founder"
       },
       "address": {
         "@type": "PostalAddress",
@@ -118,31 +118,31 @@ const jsonLd = {
         "@type": "OfferCatalog",
         "name": "Mindscape Analytics Services",
         "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Agents & Generative AI", "url": "https://www.mindscapeanalytics.com/solutions/ai-genai" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS Application Development", "url": "https://www.mindscapeanalytics.com/solutions/enterprise-software" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Design", "url": "https://www.mindscapeanalytics.com/solutions/enterprise-software#ui-ux-design" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AWS Cost Optimization, Architecture & Deployment", "url": "https://www.mindscapeanalytics.com/solutions/cloud-infrastructure" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Direct Factory Sourcing", "url": "https://www.mindscapeanalytics.com/china-sourcing" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Agents & Generative AI", "url": "https://mindscapeanalytics.com/solutions/ai-genai" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS Application Development", "url": "https://mindscapeanalytics.com/solutions/enterprise-software" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Design", "url": "https://mindscapeanalytics.com/solutions/enterprise-software#ui-ux-design" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AWS Cost Optimization, Architecture & Deployment", "url": "https://mindscapeanalytics.com/solutions/cloud-infrastructure" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Direct Factory Sourcing", "url": "https://mindscapeanalytics.com/china-sourcing" } }
         ]
       }
     },
     {
       "@type": "WebSite",
-      "@id": "https://www.mindscapeanalytics.com/#website",
-      "url": "https://www.mindscapeanalytics.com",
+      "@id": "https://mindscapeanalytics.com/#website",
+      "url": "https://mindscapeanalytics.com",
       "name": "Mindscape Analytics",
       "alternateName": ["Mindscape", "Mindscape Analytics LLC"],
       "description": "AI agents, data systems, software products, and China sourcing for real business operations.",
-      "publisher": { "@id": "https://www.mindscapeanalytics.com/#organization" },
+      "publisher": { "@id": "https://mindscapeanalytics.com/#organization" },
       "inLanguage": ["en-US", "zh-CN"]
     },
     {
       "@type": "Person",
-      "@id": "https://www.mindscapeanalytics.com/#founder",
+      "@id": "https://mindscapeanalytics.com/#founder",
       "name": "Zeeshan Keerio",
       "jobTitle": "Lead AI Engineer & Solutions Architect",
       "description": "Founder of Mindscape Analytics and Lead AI Engineer & Solutions Architect, working across AI products, business software, data systems, and automation.",
-      "url": "https://www.mindscapeanalytics.com/zeeshan-keerio",
+      "url": "https://mindscapeanalytics.com/zeeshan-keerio",
       "sameAs": [
         "https://linkedin.com/in/zeeshan-keerio",
         "https://github.com/zeeshan-keerio"
@@ -152,7 +152,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "name": "RSIQ Pro",
       "url": "https://rsiq.mindscapeanalytics.com/",
-      "creator": { "@id": "https://www.mindscapeanalytics.com/#organization" },
+      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
       "description": "Market analysis and intelligent alerting for digital asset markets.",
       "applicationCategory": "FinTech AI",
       "operatingSystem": "Web-based"
@@ -168,7 +168,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "name": "DisposIQ",
       "url": "https://disposiq.tenvo.store/",
-      "creator": { "@id": "https://www.mindscapeanalytics.com/#organization" },
+      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
       "description": "Bakery production and disposal automation platform with operational tracking and a planned packaging-factory sourcing pathway.",
       "applicationCategory": "Automation / ERP",
       "operatingSystem": "Web-based"
@@ -177,7 +177,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "name": "TENVO",
       "url": "https://www.tenvo.store/",
-      "creator": { "@id": "https://www.mindscapeanalytics.com/#organization" },
+      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
       "description": "Business operations platform connecting storefront, point of sale, inventory, manufacturing, and finance workflows.",
       "applicationCategory": "Enterprise SaaS",
       "operatingSystem": "Web-based"
@@ -186,7 +186,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "name": "Smart Dairy & Cattle Farm Management System",
       "url": "https://cattle.mindscapeanalytics.com/",
-      "creator": { "@id": "https://www.mindscapeanalytics.com/#organization" },
+      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
       "description": "Farm operations software for cattle records, milk production, feed, herd health, and farm performance.",
       "applicationCategory": "Agriculture Management Software",
       "operatingSystem": "Web-based"

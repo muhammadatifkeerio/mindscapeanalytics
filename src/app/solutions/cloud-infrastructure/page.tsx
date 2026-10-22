@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "AWS Cost Optimization, Architecture & Deployment | Mindscape Analytics",
         description: "Cost-aware AWS architecture, application deployment, data engineering, CI/CD, monitoring, and infrastructure optimization.",
-        url: "https://www.mindscapeanalytics.com/solutions/cloud-infrastructure",
+        url: "https://mindscapeanalytics.com/solutions/cloud-infrastructure",
         siteName: "Mindscape Analytics",
         locale: "en_US",
         type: "website",

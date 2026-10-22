@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "AI, SaaS Development & China Sourcing Services | Mindscape Analytics",
         description: "AI automation, SaaS application development, data and cloud engineering, and China direct factory sourcing for growing businesses.",
-        url: "https://www.mindscapeanalytics.com/services",
+        url: "https://mindscapeanalytics.com/services",
         images: [SEO_CONFIG.defaultSocialImage],
     },
     twitter: {

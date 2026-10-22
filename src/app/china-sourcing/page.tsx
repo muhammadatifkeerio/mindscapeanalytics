@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "China Direct Factory Sourcing | Mindscape Analytics",
         description: "Move from product requirements to a coordinated production path with China factory sourcing, samples, and delivery planning.",
-        url: "https://www.mindscapeanalytics.com/china-sourcing",
+        url: "https://mindscapeanalytics.com/china-sourcing",
         images: [SEO_CONFIG.defaultSocialImage],
         type: "website",
     },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "AI Software, Automations & Digital Products | Mindscape Shop",
         description: "Browse reusable AI tools, SaaS applications, workflows, data products, and production-ready software assets.",
-        url: "https://www.mindscapeanalytics.com/shop",
+        url: "https://mindscapeanalytics.com/shop",
         images: [SEO_CONFIG.defaultSocialImage],
     },
     twitter: {

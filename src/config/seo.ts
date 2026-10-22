@@ -5,10 +5,10 @@
  * WHERE: Root metadata, service schema, localized pages, robots.txt, and sitemap.xml.
  */
 export const SEO_CONFIG = {
-    siteUrl: "https://www.mindscapeanalytics.com",
+    siteUrl: "https://mindscapeanalytics.com",
     defaultSocialImage: "/images/og-mindscape-2026.png",
-    organizationId: "https://www.mindscapeanalytics.com/#organization",
-    websiteId: "https://www.mindscapeanalytics.com/#website",
+    organizationId: "https://mindscapeanalytics.com/#organization",
+    websiteId: "https://mindscapeanalytics.com/#website",
     defaultLocale: "en_US",
     alternateLocale: "zh_CN",
 } as const;

@@ -102,20 +102,20 @@ export default function SolutionLayout({
     const currentSolution = solutions.find((solution) => solution.id === currentSolutionId)
     const questions = solutionQuestions.find((solution) => solution.id === currentSolutionId)?.questions
     const breadcrumbItems = [
-        { name: "Home", item: "https://www.mindscapeanalytics.com/" },
-        ...(currentSolution?.href.startsWith("/solutions/") ? [{ name: "Solutions", item: "https://www.mindscapeanalytics.com/solutions" }] : []),
-        ...(currentSolution ? [{ name: title, item: `https://www.mindscapeanalytics.com${currentSolution.href}` }] : []),
+        { name: "Home", item: "https://mindscapeanalytics.com/" },
+        ...(currentSolution?.href.startsWith("/solutions/") ? [{ name: "Solutions", item: "https://mindscapeanalytics.com/solutions" }] : []),
+        ...(currentSolution ? [{ name: title, item: `https://mindscapeanalytics.com${currentSolution.href}` }] : []),
     ]
     const searchData = currentSolution ? {
         "@context": "https://schema.org",
         "@graph": [
             {
                 "@type": "Service",
-                "@id": `https://www.mindscapeanalytics.com${currentSolution.href}#service`,
+                "@id": `https://mindscapeanalytics.com${currentSolution.href}#service`,
                 name: title,
                 description: subtitle,
-                url: `https://www.mindscapeanalytics.com${currentSolution.href}`,
-                provider: { "@id": "https://www.mindscapeanalytics.com/#organization" },
+                url: `https://mindscapeanalytics.com${currentSolution.href}`,
+                provider: { "@id": "https://mindscapeanalytics.com/#organization" },
             },
             {
                 "@type": "BreadcrumbList",

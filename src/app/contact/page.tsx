@@ -48,7 +48,7 @@ const contactInfo = [
         icon: Globe,
         title: "Our website",
         value: "mindscapeanalytics.com",
-        link: "https://www.mindscapeanalytics.com",
+        link: "https://mindscapeanalytics.com",
         description: "Explore our services, products, and project portfolio."
     }
 ];

@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
         openGraph: {
             title: `${product.name} | Mindscape Analytics Shop`,
             description,
-            url: `https://www.mindscapeanalytics.com/shop/${id}`,
+            url: `https://mindscapeanalytics.com/shop/${id}`,
             type: "website",
             images: [{ url: image, alt: product.name }],
         },

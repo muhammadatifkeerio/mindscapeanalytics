@@ -41,14 +41,14 @@ const nextConfig: NextConfig = {
         // The Vercel project alias is a deployment address, not a public brand URL.
         source: "/:path*",
         has: [{ type: "host", value: "mindscapeanalytics.vercel.app" }],
-        destination: "https://www.mindscapeanalytics.com/:path*",
+        destination: "https://mindscapeanalytics.com/:path*",
         permanent: true,
       },
       {
-        // Consolidate the apex host on the public www canonical.
+        // Consolidate www requests on the public apex canonical.
         source: "/:path*",
-        has: [{ type: "host", value: "mindscapeanalytics.com" }],
-        destination: "https://www.mindscapeanalytics.com/:path*",
+        has: [{ type: "host", value: "www.mindscapeanalytics.com" }],
+        destination: "https://mindscapeanalytics.com/:path*",
         permanent: true,
       },
       {

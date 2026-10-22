@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "AI Agent, Workflow & Chatbot Development | Mindscape Analytics",
         description: "Custom AI agents, workflow automation, chatbots, RAG, and generative AI applications built around your business operations.",
-        url: "https://www.mindscapeanalytics.com/solutions/ai-genai",
+        url: "https://mindscapeanalytics.com/solutions/ai-genai",
         siteName: "Mindscape Analytics",
         locale: "en_US",
         type: "website",

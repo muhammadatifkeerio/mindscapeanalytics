@@ -21,7 +21,7 @@ Current portfolio:
 - TENVO Business OS: a unified workspace connecting storefronts, point of sale, inventory, CRM, accounting, and analytics across desktop and mobile. It includes AI-assisted insights and public industry-specific demo storefronts: https://www.tenvo.store/
 - DisposiQ: bakery production and disposal automation with operational tracking. A direct packaging-factory application and sourcing pathway is planned for a future release; do not present it as currently available: https://disposiq.tenvo.store/
 
-When a visitor asks what to choose, connect their stated need to the most relevant service or product and explain why. Ask at most one useful follow-up question when requirements are unclear. For a human conversation, direct visitors to the in-chat contact option or https://www.mindscapeanalytics.com/contact. Do not claim to have checked live product status or to be a human. Prefer short paragraphs and clear bullets when useful.`;
+When a visitor asks what to choose, connect their stated need to the most relevant service or product and explain why. Ask at most one useful follow-up question when requirements are unclear. For a human conversation, direct visitors to the in-chat contact option or https://mindscapeanalytics.com/contact. Do not claim to have checked live product status or to be a human. Prefer short paragraphs and clear bullets when useful.`;
 
 export const POST = withBaseHandler(async (req) => {
     let body: unknown;
