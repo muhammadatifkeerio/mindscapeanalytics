@@ -12,9 +12,9 @@ import HeroReviews from "./_components/HeroReviews";
 import TeamMoments from "@/components/TeamMoments";
 
 const portfolio = [
+    { name: "TENVO Business OS", descriptor: "Mindscape Analytics' flagship business intelligence platform for storefronts, POS, inventory, manufacturing, finance, and AI-assisted analytics", image: "/images/projects/tenvo-card.webp", width: 1824, height: 862, href: "https://www.tenvo.store/" },
     { name: "Smart Dairy & Cattle Farm Management", descriptor: "A connected operating system for dairy and cattle farms", image: "/images/projects/smart-dairy-card.webp", width: 1754, height: 896, href: "https://cattle.mindscapeanalytics.com/" },
     { name: "RSIQ Pro", descriptor: "AI-powered market intelligence", image: "/images/projects/rsiq-pro-card.webp", width: 1863, height: 844, href: "https://rsiq.mindscapeanalytics.com/" },
-    { name: "TENVO", descriptor: "Business software for storefronts, POS, inventory, manufacturing, and finance", image: "/images/projects/tenvo-card.webp", width: 1824, height: 862, href: "https://www.tenvo.store/" },
     { name: "DisposiQ", descriptor: "Bakery production and disposal automation", image: "/images/projects/disposiq-card.webp", width: 1864, height: 843, href: "https://disposiq.tenvo.store/" },
 ] as const;
 

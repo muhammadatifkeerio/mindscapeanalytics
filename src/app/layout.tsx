@@ -150,18 +150,33 @@ const jsonLd = {
     },
     {
       "@type": "SoftwareApplication",
+      "@id": "https://www.tenvo.store/#softwareapplication",
+      "name": "TENVO Business OS",
+      "alternateName": "TENVO Business Intelligence Platform",
+      "url": "https://www.tenvo.store/",
+      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
+      "description": "Mindscape Analytics' flagship business intelligence and operations platform connecting storefronts, POS, inventory, CRM, accounting, manufacturing, analytics, and AI-assisted insights.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web-based"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://cattle.mindscapeanalytics.com/#softwareapplication",
+      "name": "Smart Dairy & Cattle Farm Management System",
+      "alternateName": "Smart DairyFarm",
+      "url": "https://cattle.mindscapeanalytics.com/",
+      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
+      "description": "Mindscape Analytics farm operations software for cattle records, milk production, feed, herd health, farm finances, and performance.",
+      "applicationCategory": "Agriculture Management Software",
+      "operatingSystem": "Web-based"
+    },
+    {
+      "@type": "SoftwareApplication",
       "name": "RSIQ Pro",
       "url": "https://rsiq.mindscapeanalytics.com/",
       "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
       "description": "Market analysis and intelligent alerting for digital asset markets.",
       "applicationCategory": "FinTech AI",
-      "operatingSystem": "Web-based"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "DBlynx",
-      "description": "Data intelligence platform for natural-language database queries and analytics.",
-      "applicationCategory": "AI Data Intelligence",
       "operatingSystem": "Web-based"
     },
     {
@@ -175,20 +190,9 @@ const jsonLd = {
     },
     {
       "@type": "SoftwareApplication",
-      "name": "TENVO",
-      "url": "https://www.tenvo.store/",
-      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
-      "description": "Business operations platform connecting storefront, point of sale, inventory, manufacturing, and finance workflows.",
-      "applicationCategory": "Enterprise SaaS",
-      "operatingSystem": "Web-based"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "Smart Dairy & Cattle Farm Management System",
-      "url": "https://cattle.mindscapeanalytics.com/",
-      "creator": { "@id": "https://mindscapeanalytics.com/#organization" },
-      "description": "Farm operations software for cattle records, milk production, feed, herd health, and farm performance.",
-      "applicationCategory": "Agriculture Management Software",
+      "name": "DBlynx",
+      "description": "Data intelligence platform for natural-language database queries and analytics.",
+      "applicationCategory": "AI Data Intelligence",
       "operatingSystem": "Web-based"
     }
   ]

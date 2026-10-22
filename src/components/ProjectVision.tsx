@@ -29,6 +29,16 @@ interface ProjectData {
 // --- Projects Data ---
 const PROJECTS: ProjectData[] = [
     {
+        title: "TENVO Business OS",
+        category: "Business Intelligence Platform",
+        metrics: "Live MVP • 62+ Industry Presets",
+        description: "Mindscape Analytics' flagship business operating system connecting storefronts, POS, inventory, CRM, accounting, manufacturing, analytics, and AI-assisted insights.",
+        image: "/images/projects/tenvo.webp",
+        details: ["Unified Business Operations", "AI-assisted Analytics", "Multi-location Commerce"],
+        status: "live",
+        link: "https://www.tenvo.store/"
+    },
+    {
         title: "DisposIQ",
         category: "Bakery Operations Automation",
         metrics: "Production • Disposal • Packaging",
@@ -57,16 +67,6 @@ const PROJECTS: ProjectData[] = [
         details: ["Multi-indicator Confluence", "Sentiment AI", "Custom Alert Engine"],
         status: "live",
         link: "https://rsiq.mindscapeanalytics.com/"
-    },
-    {
-        title: "Tenvo",
-        category: "Business Hub",
-        metrics: "Coming Soon • Scaling Ops",
-        description: "Advanced intelligent solution designed to automate and accelerate business growth trajectories.",
-        image: "/images/projects/tenvo.webp",
-        details: ["Growth Automation", "Predictive Analytics", "CRM Intelligence"],
-        status: "coming-soon",
-        link: "https://tenvo.mindscapeanalytics.com/"
     },
     {
         title: "CyberTrader-X",
