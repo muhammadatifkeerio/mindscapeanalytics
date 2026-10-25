@@ -36,9 +36,15 @@ const solutions = [
     },
     {
         id: "china-sourcing",
-        name: "China Direct Factory Sourcing",
+        name: "China Sourcing & QC",
         icon: Cloud,
-        href: "/china-sourcing"
+        href: "/services/china-sourcing"
+    },
+    {
+        id: "tianjin-inspection",
+        name: "Tianjin Inspection",
+        icon: Shield,
+        href: "/services/tianjin-inspection"
     },
     {
         id: "services",
@@ -76,6 +82,22 @@ const solutionQuestions = [
             { question: "Can you handle the full web application development process?", answer: "We work across product discovery, UI/UX design, frontend and backend engineering, database design, integrations, testing, cloud deployment, and ongoing improvement. The scope is agreed around your users, workflows, and launch requirements." },
             { question: "Can you build AI features into a SaaS application?", answer: "Yes. We can integrate assistants, business knowledge retrieval, workflow automation, and connected tools into an application. Permissions, evaluation, operating costs, and human review are considered as part of the design." },
             { question: "Can we see products Mindscape has developed?", answer: "Our projects include TENVO business operations software, Smart Dairy & Cattle Farm Management, and DisposIQ bakery production and disposal automation. The project catalog links to the live products so you can explore their workflows." },
+        ],
+    },
+    {
+        id: "china-sourcing",
+        questions: [
+            { question: "What is included in the $299 supplier shortlist?", answer: "The package covers one defined product requirement, up to five relevant supplier candidates, available business and capability checks, a comparison matrix, and next-step notes. Samples, laboratory testing, freight, duties, and third-party fees are separate." },
+            { question: "Are inspection reports certifications?", answer: "No. Reports document observations against the written checklist and note visible issues or unavailable evidence. They do not replace legal, engineering, safety, customs, or accredited certification advice." },
+            { question: "How are sourcing and inspection services paid?", answer: "After scope, access, and scheduling are confirmed, Mindscape Analytics LLC sends a secure Stripe invoice for the agreed consulting service. Recurring QC retainers are quoted separately." },
+        ],
+    },
+    {
+        id: "tianjin-inspection",
+        questions: [
+            { question: "Which locations do you cover?", answer: "The listed inspection packages cover scheduled work in Tianjin and Beijing. Other locations may require a separate travel and availability quote." },
+            { question: "Can you inspect an electric vehicle?", answer: "Eligible vehicle engagements can document observable condition and available records against an agreed checklist. We confirm access and scope first, and we do not represent this as an engineering, safety, roadworthiness, title, or regulatory certification." },
+            { question: "When is an inspection scheduled?", answer: "We first confirm the site contact, access, checklist, package, exclusions, and proposed date. The visit is scheduled after the written scope is accepted and the Stripe invoice is paid." },
         ],
     },
 ]

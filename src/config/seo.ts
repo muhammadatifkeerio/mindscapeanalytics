@@ -35,11 +35,13 @@ export const INDEXABLE_STATIC_ROUTES = [
     "/solutions/enterprise-software",
     "/solutions/blockchain",
     "/services",
-    "/china-sourcing",
+    "/services/china-sourcing",
+    "/services/tianjin-inspection",
     "/projects",
     "/shop",
     "/pricing",
     "/zh-cn",
+    "/zh/go-global",
 ] as const;
 
 /**

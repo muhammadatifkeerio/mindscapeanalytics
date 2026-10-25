@@ -161,7 +161,17 @@ services.push({
     title: "China Direct Factory Sourcing",
     description: "Connect your product requirements with China factories. Coordinate supplier fit, samples, validation, production handoff, and delivery planning with our team.",
     features: ["Product Requirements", "Factory Matching", "Sample Coordination", "Production Handoff", "Delivery Coordination"],
-    link: "/china-sourcing",
+    link: "/services/china-sourcing",
+    gradient: "from-white/10 to-transparent"
+});
+
+// SOURCE OF TRUTH KEYWORDS: China go global, Chuhai service, AI sales agents, global infrastructure, English B2B, Chinese founders
+services.push({
+    icon: Globe,
+    title: "China Go-Global AI GTM",
+    description: "For Beijing and Tianjin technology and hardware teams: English B2B market entry, AI voice and sales agents, global web infrastructure, and billing integration.",
+    features: ["English B2B Positioning", "Vapi or Retell Agents", "Next.js Global Web", "Stripe Integration", "CRM & Lead Workflows"],
+    link: "/zh/go-global",
     gradient: "from-white/10 to-transparent"
 });
 

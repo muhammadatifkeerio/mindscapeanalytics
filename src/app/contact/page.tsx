@@ -476,6 +476,13 @@ function ContactFormContent() {
                                                         <option value="data-cloud" className="bg-background text-foreground">Data systems or cloud architecture</option>
                                                         <option value="farm-management" className="bg-background text-foreground">Farm management software</option>
                                                         <option value="china-sourcing" className="bg-background text-foreground">China sourcing and production</option>
+                                                        <option value="digital-supplier-shortlist" className="bg-background text-foreground">$299 digital supplier shortlist</option>
+                                                        <option value="supplier-verification-report" className="bg-background text-foreground">$199 supplier verification report</option>
+                                                        <option value="factory-sample-inspection" className="bg-background text-foreground">$349 factory or sample inspection</option>
+                                                        <option value="expanded-factory-ev-inspection" className="bg-background text-foreground">$499 expanded factory or EV inspection</option>
+                                                        <option value="tianjin-beijing-inspection" className="bg-background text-foreground">Tianjin or Beijing inspection</option>
+                                                        <option value="qc-procurement-retainer" className="bg-background text-foreground">QC and procurement retainer</option>
+                                                        <option value="china-go-global" className="bg-background text-foreground">中国企业出海 / China go-global</option>
                                                         <option value="other" className="bg-background text-foreground">Something else</option>
                                                     </select>
                                                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/40 pointer-events-none group-focus-within:text-secondary transition-colors" />

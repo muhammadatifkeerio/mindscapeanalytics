@@ -160,7 +160,7 @@ export default function ChineseLandingPage() {
                                     <li className="flex gap-3"><Search aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-brand" />海外 B2B 线索研究与客户开发工作流</li>
                                     <li className="flex gap-3"><Workflow aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-brand" />网站、CRM、数据系统与 AI 自动化，支持询盘跟进</li>
                                 </ul>
-                                <Link href="/contact" className="mt-8 inline-flex min-h-11 w-fit items-center gap-2 font-semibold text-brand underline underline-offset-4">讨论海外增长方案 <ArrowUpRight aria-hidden="true" className="h-4 w-4" /></Link>
+                                <Link href="/zh/go-global" className="mt-8 inline-flex min-h-11 w-fit items-center gap-2 font-semibold text-brand underline underline-offset-4">了解出海 AI GTM 与全球基础设施 <ArrowUpRight aria-hidden="true" className="h-4 w-4" /></Link>
                             </article>
 
                             <article className="flex flex-col rounded-2xl bg-brand p-6 text-white sm:p-8">
@@ -172,7 +172,7 @@ export default function ChineseLandingPage() {
                                     <li className="flex gap-3"><Workflow aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-white/75" />报价、产品规格、样品反馈与供应商沟通协同</li>
                                     <li className="flex gap-3"><ArrowRight aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-white/75" />明确生产节点、责任分工与交付准备</li>
                                 </ul>
-                                <Link href="/china-sourcing" className="mt-8 inline-flex min-h-11 w-fit items-center gap-2 font-semibold text-white underline underline-offset-4">了解中国工厂寻源服务 <ArrowUpRight aria-hidden="true" className="h-4 w-4" /></Link>
+                                <Link href="/services/china-sourcing" className="mt-8 inline-flex min-h-11 w-fit items-center gap-2 font-semibold text-white underline underline-offset-4">了解中国工厂寻源服务 <ArrowUpRight aria-hidden="true" className="h-4 w-4" /></Link>
                             </article>
                         </div>
                     </div>
@@ -243,7 +243,7 @@ export default function ChineseLandingPage() {
             <footer lang="zh-CN" className="border-t border-border bg-background">
                 <div className="container-standard grid gap-8 pb-24 pt-10 text-sm text-muted-foreground sm:grid-cols-[1fr_auto] sm:items-end sm:pb-24 lg:pb-10">
                     <div><p className="font-semibold text-foreground">Mindscape Analytics</p><p className="mt-2 max-w-xl leading-6">AI、软件与跨境业务协作，服务中国制造企业和国际采购团队。</p><p className="mt-5">© 2026 Mindscape Analytics LLC。保留所有权利。</p></div>
-                    <div className="flex flex-wrap gap-x-6 gap-y-3 sm:justify-end"><Link href="/projects" className="underline underline-offset-4 hover:text-foreground">项目</Link><Link href="/china-sourcing" className="underline underline-offset-4 hover:text-foreground">中国工厂寻源</Link><a href="mailto:info@mindscapeanalytics.com" className="underline underline-offset-4 hover:text-foreground">电子邮件</a></div>
+                    <div className="flex flex-wrap gap-x-6 gap-y-3 sm:justify-end"><Link href="/projects" className="underline underline-offset-4 hover:text-foreground">项目</Link><Link href="/zh/go-global" className="underline underline-offset-4 hover:text-foreground">中国企业出海</Link><Link href="/services/china-sourcing" className="underline underline-offset-4 hover:text-foreground">中国工厂寻源</Link><a href="mailto:info@mindscapeanalytics.com" className="underline underline-offset-4 hover:text-foreground">电子邮件</a></div>
                 </div>
             </footer>
         </div>

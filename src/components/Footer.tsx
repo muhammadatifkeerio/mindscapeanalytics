@@ -14,7 +14,9 @@ const companyLinks = [
 
 const exploreLinks = [
     ["AI asset shop", "/shop"],
-    ["China Direct Factory Sourcing", "/china-sourcing"],
+    ["China Sourcing & Supplier Vetting", "/services/china-sourcing"],
+    ["Tianjin & Beijing Inspections", "/services/tianjin-inspection"],
+    ["中国企业出海", "/zh/go-global"],
     ["SaaS Application Development", "/solutions/enterprise-software"],
     ["TENVO Business OS", "https://www.tenvo.store/"],
     ["Smart Dairy & Cattle", "https://cattle.mindscapeanalytics.com/"],

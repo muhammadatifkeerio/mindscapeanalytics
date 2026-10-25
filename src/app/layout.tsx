@@ -122,7 +122,9 @@ const jsonLd = {
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS Application Development", "url": "https://mindscapeanalytics.com/solutions/enterprise-software" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Design", "url": "https://mindscapeanalytics.com/solutions/enterprise-software#ui-ux-design" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AWS Cost Optimization, Architecture & Deployment", "url": "https://mindscapeanalytics.com/solutions/cloud-infrastructure" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Direct Factory Sourcing", "url": "https://mindscapeanalytics.com/china-sourcing" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Factory Vetting, Sample QC and Procurement Support", "url": "https://mindscapeanalytics.com/services/china-sourcing" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tianjin and Beijing Inspection Reports", "url": "https://mindscapeanalytics.com/services/tianjin-inspection" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Go-Global AI GTM and Cloud Infrastructure", "url": "https://mindscapeanalytics.com/zh/go-global" } }
         ]
       }
     },
