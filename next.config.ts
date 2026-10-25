@@ -48,6 +48,12 @@ const nextConfig: NextConfig = {
         destination: "/zeeshan-keerio",
         permanent: true,
       },
+      {
+        // Consolidate the former sourcing route on the expanded canonical service page.
+        source: "/china-sourcing",
+        destination: "/services/china-sourcing",
+        permanent: true,
+      },
     ];
   },
 };
