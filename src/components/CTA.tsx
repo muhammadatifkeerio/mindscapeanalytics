@@ -82,11 +82,7 @@ export default function CTA() {
                                 </motion.div>
                             </CalButton>
 
-                            <Link href="/contact">
-                                <button className="px-12 py-5 rounded-full bg-transparent border-2 border-black/10 text-background font-bold text-xl hover:bg-black/5 transition-all uppercase tracking-tighter">
-                                    Request Proposal
-                                </button>
-                            </Link>
+                            <Link href="/contact" className="rounded-full border-2 border-black/10 bg-transparent px-12 py-5 text-xl font-bold uppercase tracking-tighter text-background transition-all hover:bg-black/5">Request Proposal</Link>
                         </motion.div>
                     </div>
                 </div>

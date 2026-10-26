@@ -134,14 +134,7 @@ export default function EnterpriseSoftwareClient() {
                         <p className="text-foreground/40 mb-8 font-medium">
                             Schedule a deep-dive technical workshop with our lead architects to plan your next major release.
                         </p>
-                        <Link href="/contact">
-                            <button className="btn-institutional group">
-                                <span className="relative z-10 flex items-center justify-center gap-4">
-                                    Talk to an Architect
-                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                                </span>
-                            </button>
-                        </Link>
+                        <Link href="/contact" className="btn-institutional group"><span className="relative z-10 flex items-center justify-center gap-4">Talk to an Architect<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" /></span></Link>
                     </div>
                 </section>
             </div>

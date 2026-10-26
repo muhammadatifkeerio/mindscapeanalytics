@@ -406,14 +406,7 @@ export default function ProjectsPage() {
                         <p className="text-lg font-medium text-muted-foreground uppercase tracking-tighter max-w-2xl mx-auto">
                             All our deployed systems are backed by monthly infrastructure management, database optimization, and security monitoring to ensure long-term reliability and scalable growth.
                         </p>
-                        <Link href="/pricing" className="inline-block pt-8">
-                            <button className="btn-institutional group mx-auto">
-                                <span className="relative z-10 flex items-center justify-center gap-4">
-                                    View Pricing & SLAs
-                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                                </span>
-                            </button>
-                        </Link>
+                        <Link href="/pricing" className="btn-institutional group mx-auto mt-8"><span className="relative z-10 flex items-center justify-center gap-4">View Pricing &amp; SLAs<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" /></span></Link>
                     </div>
                 </div>
             </section>

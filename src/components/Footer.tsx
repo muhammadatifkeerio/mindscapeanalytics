@@ -14,6 +14,7 @@ const companyLinks = [
 
 const exploreLinks = [
     ["AI asset shop", "/shop"],
+    ["Foreign Trade Sales Automation", "/services/foreign-trade-automation"],
     ["China Sourcing & Supplier Vetting", "/services/china-sourcing"],
     ["Tianjin & Beijing Inspections", "/services/tianjin-inspection"],
     ["中国企业出海", "/zh/go-global"],

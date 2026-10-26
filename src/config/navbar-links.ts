@@ -32,6 +32,7 @@ const siteLinks: NavLink[] = [
             { name: "SaaS Application Development", href: "/solutions/enterprise-software" },
             { name: "UI/UX Design", href: "/solutions/enterprise-software#ui-ux-design" },
             { name: "AWS Architecture & Deployment", href: "/solutions/cloud-infrastructure" },
+            { name: "Foreign Trade Sales Automation", href: "/services/foreign-trade-automation" },
             { name: "China Sourcing & Supplier Vetting", href: "/services/china-sourcing" },
             { name: "Tianjin & Beijing Inspections", href: "/services/tianjin-inspection" },
             { name: "中国企业出海", href: "/zh/go-global" },

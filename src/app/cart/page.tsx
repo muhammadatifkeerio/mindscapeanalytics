@@ -83,11 +83,7 @@ export default function CartPage() {
                                 <ShoppingBag size={48} className="mx-auto mb-6 text-foreground/10" />
                                 <h2 className="text-xl font-black uppercase tracking-widest mb-4">Allocation Empty</h2>
                                 <p className="text-foreground/40 text-xs mb-10 uppercase tracking-widest">No architectural assets selected for acquisition.</p>
-                                <Link href="/shop">
-                                    <button className="px-10 py-4 bg-foreground text-background text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-foreground/90 transition-all">
-                                        Return to Marketplace
-                                    </button>
-                                </Link>
+                                <Link href="/shop" className="inline-flex rounded-xl bg-foreground px-10 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-background transition-all hover:bg-foreground/90">Return to Marketplace</Link>
                             </motion.div>
                         ) : (
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">

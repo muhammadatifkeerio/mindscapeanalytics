@@ -10,7 +10,7 @@ import type { NextRequest } from 'next/server';
 export function proxy(request: NextRequest) {
     const response = NextResponse.next();
     response.headers.set("x-pathname", request.nextUrl.pathname);
-    response.headers.set('Content-Language', request.nextUrl.pathname.startsWith('/zh-cn') ? 'zh-CN' : 'en-US');
+    response.headers.set('Content-Language', request.nextUrl.pathname.startsWith('/zh') ? 'zh-CN' : 'en-US');
 
     // --- Enterprise Security Headers ---
 

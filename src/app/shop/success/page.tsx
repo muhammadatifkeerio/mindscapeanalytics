@@ -170,12 +170,7 @@ export default function SuccessPage({ searchParams }: { searchParams: Promise<{ 
                             </div>
                             <h3 className="text-xl font-black uppercase tracking-tight mb-3">CONTINUE MATRIX</h3>
                             <p className="text-foreground/40 text-[10px] mb-8 uppercase tracking-widest leading-relaxed">Scan the marketplace for additional architectural primitives.</p>
-                            <Link href="/shop" className="block">
-                                <button className="w-full py-5 bg-foreground/5 border border-border text-foreground rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-foreground/10 transition-all flex items-center justify-center gap-3 active:scale-95">
-                                    OPEN MARKETPLACE
-                                    <ArrowRight size={14} />
-                                </button>
-                            </Link>
+                            <Link href="/shop" className="flex w-full items-center justify-center gap-3 rounded-2xl border border-border bg-foreground/5 py-5 text-[10px] font-black uppercase tracking-[0.3em] text-foreground transition-all hover:bg-foreground/10 active:scale-95">OPEN MARKETPLACE<ArrowRight size={14} /></Link>
                         </motion.div>
                     </div>
 

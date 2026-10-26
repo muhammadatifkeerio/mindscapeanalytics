@@ -46,12 +46,7 @@ const GrowthHub = () => {
                             </div>
                         </div>
 
-                        <Link href="/become-seller" className="mt-12 group/btn">
-                            <button className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em] text-background bg-foreground py-4 px-8 border border-border rounded-2xl hover:opacity-90 transition-all duration-500 shadow-[0_0_20px_hsl(var(--foreground) / 0.05)]">
-                                Become a Seller
-                                <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
-                            </button>
-                        </Link>
+                        <Link href="/become-seller" className="group/btn mt-12 flex items-center gap-4 rounded-2xl border border-border bg-foreground px-8 py-4 text-xs font-black uppercase tracking-[0.2em] text-background shadow-[0_0_20px_hsl(var(--foreground)/0.05)] transition-all duration-500 hover:opacity-90">Become a Seller<ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" /></Link>
                     </motion.div>
 
                     {/* Hire Side */}
@@ -86,12 +81,7 @@ const GrowthHub = () => {
                             </div>
                         </div>
 
-                        <Link href="/outsourcing" className="mt-12 group/btn">
-                            <button className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em] text-foreground py-4 px-8 border border-border rounded-2xl hover:bg-foreground hover:text-background transition-all duration-500 shadow-sm bg-card">
-                                Hire Talent
-                                <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
-                            </button>
-                        </Link>
+                        <Link href="/outsourcing" className="group/btn mt-12 flex items-center gap-4 rounded-2xl border border-border bg-card px-8 py-4 text-xs font-black uppercase tracking-[0.2em] text-foreground shadow-sm transition-all duration-500 hover:bg-foreground hover:text-background">Hire Talent<ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" /></Link>
                     </motion.div>
 
                 </div>

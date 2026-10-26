@@ -17,6 +17,8 @@ Mindscape Analytics works across AI agents and workflow automation, data and clo
 
 For Beijing and Tianjin technology and hardware founders, the Chinese-language go-global service combines English B2B positioning and lead-development workflows, Vapi or Retell AI voice and sales agents, global Next.js web and cloud infrastructure, CRM connections, and Stripe technical integration. Do not imply guaranteed sales, guaranteed payment-provider approval, or that Mindscape opens financial accounts for clients. International projects can use Stripe invoices; RMB or USD WeChat or corporate-wire arrangements depend on the contract, signing entity, and compliance requirements. Relevant pages: https://mindscapeanalytics.com/services/china-sourcing, https://mindscapeanalytics.com/services/tianjin-inspection, and https://mindscapeanalytics.com/zh/go-global.
 
+For manufacturers, exporters, suppliers, distributors, and foreign-trade teams, the foreign trade sales and growth automation service connects inquiry capture, qualification, multilingual follow-up, RFQs, quotations, sample status, distributor development, CRM handoff, and reporting. It does not guarantee leads, orders, response rates, market access, or payment-provider approval. Outreach must follow consent requirements, platform rules, and applicable regional communication law. Relevant page: https://mindscapeanalytics.com/services/foreign-trade-automation.
+
 Current portfolio:
 - Smart Dairy and Cattle Farm Management: https://cattle.mindscapeanalytics.com/
 - RSIQ Pro, AI-powered market intelligence: https://rsiq.mindscapeanalytics.com/

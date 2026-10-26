@@ -3,7 +3,7 @@
 import React from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Check, Sparkles, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const tiers = [
@@ -124,16 +124,14 @@ export default function Pricing() {
                                 ))}
                             </ul>
 
-                            <Link href={`/contact?plan=${tier.slug}`} className="mt-auto block group/btn">
-                                <button className={cn(
-                                    "w-full py-5 rounded-xl text-[10px] font-black uppercase tracking-[0.3em] transition-all flex items-center justify-center gap-3",
-                                    tier.popular
-                                        ? "bg-foreground text-background hover:bg-foreground/90 hover:scale-[1.02] shadow-xl"
-                                        : "bg-foreground/5 border border-border text-foreground/40 hover:bg-foreground/10 hover:text-foreground hover:border-foreground/20"
-                                )}>
-                                    Initiate Contract
-                                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                                </button>
+                            <Link href={`/contact?plan=${tier.slug}`} className={cn(
+                                "group/btn mt-auto flex w-full items-center justify-center gap-3 rounded-xl py-5 text-[10px] font-black uppercase tracking-[0.3em] transition-all",
+                                tier.popular
+                                    ? "bg-foreground text-background shadow-xl hover:scale-[1.02] hover:bg-foreground/90"
+                                    : "border border-border bg-foreground/5 text-foreground/40 hover:border-foreground/20 hover:bg-foreground/10 hover:text-foreground"
+                            )}>
+                                Initiate Contract
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                             </Link>
                         </motion.div>
                     ))}

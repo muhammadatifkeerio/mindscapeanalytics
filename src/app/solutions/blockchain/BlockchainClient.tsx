@@ -134,14 +134,7 @@ export default function BlockchainClient() {
                         <p className="text-foreground/40 mb-8 font-medium">
                             From smart contract audits to full protocol design, our Web3 engineers deliver secure decentralization.
                         </p>
-                        <Link href="/contact">
-                            <button className="btn-institutional group">
-                                <span className="relative z-10 flex items-center justify-center gap-4">
-                                    Protocol Strategy
-                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                                </span>
-                            </button>
-                        </Link>
+                        <Link href="/contact" className="btn-institutional group"><span className="relative z-10 flex items-center justify-center gap-4">Protocol Strategy<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" /></span></Link>
                     </div>
                 </section>
             </div>

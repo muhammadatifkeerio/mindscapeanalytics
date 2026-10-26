@@ -35,6 +35,7 @@ export const INDEXABLE_STATIC_ROUTES = [
     "/solutions/enterprise-software",
     "/solutions/blockchain",
     "/services",
+    "/services/foreign-trade-automation",
     "/services/china-sourcing",
     "/services/tianjin-inspection",
     "/projects",

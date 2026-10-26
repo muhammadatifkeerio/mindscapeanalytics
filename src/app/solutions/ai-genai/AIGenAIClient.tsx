@@ -131,14 +131,7 @@ export default function AIGenAIClient() {
                             Our team conducts deep technical audits to identify the high-impact AI opportunities
                             within your existing tech stack.
                         </p>
-                        <Link href="/contact">
-                            <button className="btn-institutional group">
-                                <span className="relative z-10 flex items-center justify-center gap-4">
-                                    Speak to an AI Architect
-                                    <Zap className="w-4 h-4 transition-transform group-hover:scale-125" />
-                                </span>
-                            </button>
-                        </Link>
+                        <Link href="/contact" className="btn-institutional group"><span className="relative z-10 flex items-center justify-center gap-4">Speak to an AI Architect<Zap className="h-4 w-4 transition-transform group-hover:scale-125" /></span></Link>
                     </div>
                 </section>
             </div>

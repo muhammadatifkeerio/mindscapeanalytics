@@ -47,6 +47,12 @@ const solutions = [
         href: "/services/tianjin-inspection"
     },
     {
+        id: "foreign-trade-automation",
+        name: "Foreign Trade Automation",
+        icon: Brain,
+        href: "/services/foreign-trade-automation"
+    },
+    {
         id: "services",
         name: "Managed Operation Units",
         icon: Shield,
@@ -98,6 +104,14 @@ const solutionQuestions = [
             { question: "Which locations do you cover?", answer: "The listed inspection packages cover scheduled work in Tianjin and Beijing. Other locations may require a separate travel and availability quote." },
             { question: "Can you inspect an electric vehicle?", answer: "Eligible vehicle engagements can document observable condition and available records against an agreed checklist. We confirm access and scope first, and we do not represent this as an engineering, safety, roadworthiness, title, or regulatory certification." },
             { question: "When is an inspection scheduled?", answer: "We first confirm the site contact, access, checklist, package, exclusions, and proposed date. The visit is scheduled after the written scope is accepted and the Stripe invoice is paid." },
+        ],
+    },
+    {
+        id: "foreign-trade-automation",
+        questions: [
+            { question: "Which teams is this service for?", answer: "It is designed for manufacturers, exporters, suppliers, distributors, and foreign-trade teams managing international inquiries, RFQs, quotations, samples, partner relationships, and sales handoffs." },
+            { question: "Can you automate multilingual sales follow-up?", answer: "We can design assisted drafting, translation, routing, reminders, and follow-up workflows around approved channels and your review rules. Commitments, pricing, regulated claims, and sensitive negotiations can remain subject to human approval." },
+            { question: "Does automation guarantee leads or export sales?", answer: "No. The system can improve process consistency, response handling, and visibility, but market demand, platform policies, buyer decisions, commercial terms, and sales outcomes remain outside any guarantee." },
         ],
     },
 ]
@@ -188,7 +202,7 @@ export default function SolutionLayout({
             <div className="container-standard py-20">
                 <div className="flex flex-col lg:flex-row gap-20">
                     {/* Sticky Sidebar Navigation */}
-                    <aside className="w-full lg:w-80 shrink-0">
+                    <aside className="order-2 hidden w-full shrink-0 lg:order-1 lg:block lg:w-80">
                         <div className="sticky top-32 space-y-8">
                             <div>
                                 <h3 className="text-foreground font-black text-sm uppercase tracking-widest mb-6 border-b border-border pb-4">
@@ -234,7 +248,7 @@ export default function SolutionLayout({
                     </aside>
 
                     {/* Main Content Area */}
-                    <main className="w-full flex-1">
+                    <main className="order-1 w-full flex-1 lg:order-2">
                         {children}
                         {questions && <section aria-labelledby="service-questions" className="mt-20 border-t border-border pt-12">
                             <h2 id="service-questions" className="font-heading text-3xl font-semibold tracking-tight">Planning your project</h2>

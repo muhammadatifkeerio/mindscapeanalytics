@@ -340,12 +340,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                             Book a strategy call to map out the architecture and timeline for your custom AI ecosystem.
                         </p>
                         <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <Link href="/contact">
-                                <button className="px-10 py-5 bg-foreground text-background font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:scale-105 transition-transform flex items-center gap-3 shadow-2xl">
-                                    Initiate Deployment
-                                    <ArrowRight className="w-4 h-4" />
-                                </button>
-                            </Link>
+                            <Link href="/contact" className="flex items-center gap-3 rounded-xl bg-foreground px-10 py-5 text-[10px] font-black uppercase tracking-[0.4em] text-background shadow-2xl transition-transform hover:scale-105">Initiate Deployment<ArrowRight className="h-4 w-4" /></Link>
                             <Link href="/pricing" className="text-[10px] font-black uppercase tracking-widest text-background/60 hover:text-background border-b border-black/20 pb-1 transition-colors">
                                 View Managed Plans
                             </Link>

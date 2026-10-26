@@ -21,6 +21,7 @@ const portfolio = [
 const capabilities = [
     { title: "Autonomous AI agents", copy: "Deploy digital operators that research, qualify, coordinate, and complete repeatable work across your existing stack.", icon: Bot },
     { title: "Data products that decide", copy: "Turn fragmented operational data into governed pipelines, live intelligence, and decision systems your team can trust.", icon: Database },
+    { title: "Foreign trade growth systems", copy: "Connect export inquiries, multilingual follow-up, quotations, distributor development, CRM, and reporting in one commercial workflow.", icon: TrendingUp },
     { title: "Factory-direct sourcing", copy: "Move from product idea to production through our direct China factory network, with sourcing, validation, and delivery coordination.", icon: Factory },
 ] as const;
 

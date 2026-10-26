@@ -182,14 +182,7 @@ export default function PricingPage() {
                                     </div>
                                 </div>
 
-                                <Link href="/contact" className="w-full">
-                                    <button className={plan.highlight ? "btn-institutional group w-full" : "btn-outline-institutional group w-full"}>
-                                        <span className="relative z-10 flex items-center justify-center gap-4">
-                                            {plan.cta}
-                                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                                        </span>
-                                    </button>
-                                </Link>
+                                <Link href="/contact" className={plan.highlight ? "btn-institutional group w-full" : "btn-outline-institutional group w-full"}><span className="relative z-10 flex items-center justify-center gap-4">{plan.cta}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" /></span></Link>
                             </motion.div>
                         ))}
                     </div>
@@ -214,7 +207,7 @@ export default function PricingPage() {
                             <div className="grid grid-cols-2 gap-6">
                                 {[
                                     { icon: Lock, label: "Data Protection", value: "AES-256" },
-                                    { icon: Clock, label: "System Uptime", value: "99.99%" },
+                                    { icon: Clock, label: "System Monitoring", value: "Scope-defined" },
                                     { icon: Shield, label: "Security Scale", value: "Industrial" },
                                     { icon: Zap, label: "Latency Goal", value: "< 10MS" }
                                 ].map(item => (

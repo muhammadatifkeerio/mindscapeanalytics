@@ -152,12 +152,10 @@ export default function SolutionsClient() {
                                 </p>
                             </div>
 
-                            <Link href="/services" className="group/btn relative">
-                                <button className="btn-institutional group px-12 py-8 bg-primary text-primary-foreground font-black uppercase text-[11px] tracking-[0.4em] rounded-2xl flex items-center gap-4 border border-primary-foreground/10">
-                                    <Zap size={14} className="fill-current" />
-                                    EXPLORE_MANAGED_MODELS
-                                    <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
-                                </button>
+                            <Link href="/services" className="group/btn relative flex items-center gap-4 rounded-2xl border border-primary-foreground/10 bg-primary px-12 py-8 text-[11px] font-black uppercase tracking-[0.4em] text-primary-foreground">
+                                <Zap size={14} className="fill-current" />
+                                EXPLORE_MANAGED_MODELS
+                                <ArrowRight size={14} className="transition-transform group-hover:translate-x-2" />
                                 <div className="absolute -inset-4 bg-foreground/5 blur-2xl rounded-full opacity-0 group-hover/btn:opacity-100 transition-opacity" />
                             </Link>
                         </div>

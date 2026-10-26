@@ -96,7 +96,8 @@ const jsonLd = {
         "UI/UX design for web applications",
         "AI workflow and chatbot development",
         "AWS cost optimization, architecture, and deployment",
-        "China sourcing and production coordination"
+        "China sourcing and production coordination",
+        "Foreign trade sales and growth automation"
       ],
       "founder": {
         "@id": "https://mindscapeanalytics.com/#founder"
@@ -124,7 +125,8 @@ const jsonLd = {
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AWS Cost Optimization, Architecture & Deployment", "url": "https://mindscapeanalytics.com/solutions/cloud-infrastructure" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Factory Vetting, Sample QC and Procurement Support", "url": "https://mindscapeanalytics.com/services/china-sourcing" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tianjin and Beijing Inspection Reports", "url": "https://mindscapeanalytics.com/services/tianjin-inspection" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Go-Global AI GTM and Cloud Infrastructure", "url": "https://mindscapeanalytics.com/zh/go-global" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Go-Global AI GTM and Cloud Infrastructure", "url": "https://mindscapeanalytics.com/zh/go-global" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Foreign Trade Sales and Growth Automation", "url": "https://mindscapeanalytics.com/services/foreign-trade-automation" } }
         ]
       }
     },

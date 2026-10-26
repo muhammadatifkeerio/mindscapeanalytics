@@ -263,14 +263,7 @@ function ShopContent({ initialProducts }: { initialProducts: ShopProduct[] }) {
                             </div>
 
                             <div className="flex flex-col gap-6 w-full md:w-auto">
-                                <Link href="/become-seller">
-                                    <button className="btn-institutional group">
-                                        <span className="relative z-10 flex items-center justify-center gap-4">
-                                            Initialize Protocol
-                                            <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
-                                        </span>
-                                    </button>
-                                </Link>
+                                <Link href="/become-seller" className="btn-institutional group"><span className="relative z-10 flex items-center justify-center gap-4">Initialize Protocol<ArrowRight size={16} className="transition-transform group-hover:translate-x-2" /></span></Link>
                                 <p className="text-[9px] text-foreground/20 font-black uppercase tracking-widest text-center">85% Revenue Retention Guaranteed</p>
                             </div>
                         </div>

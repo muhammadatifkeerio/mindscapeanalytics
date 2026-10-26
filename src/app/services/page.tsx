@@ -165,6 +165,16 @@ services.push({
     gradient: "from-white/10 to-transparent"
 });
 
+// SOURCE OF TRUTH KEYWORDS: foreign trade automation, export sales CRM, distributor growth, RFQ workflow, multilingual follow-up, service catalog
+services.push({
+    icon: TrendingUp,
+    title: "Foreign Trade Sales & Growth Automation",
+    description: "Connect export inquiries, multilingual follow-up, RFQs, quotations, distributor development, CRM, and performance reporting in one commercial workflow.",
+    features: ["Inquiry Qualification", "Multilingual Follow-up", "RFQ & Quotation Workflow", "Distributor Pipeline", "Sales Reporting"],
+    link: "/services/foreign-trade-automation",
+    gradient: "from-white/10 to-transparent"
+});
+
 // SOURCE OF TRUTH KEYWORDS: China go global, Chuhai service, AI sales agents, global infrastructure, English B2B, Chinese founders
 services.push({
     icon: Globe,
@@ -343,14 +353,9 @@ export default function ServicesPage() {
                                         </div>
                                     ))}
                                 </div>
-                                <Link href="/contact">
-                                    <button className="btn-institutional group w-full">
-                                        <span className="relative z-10 flex items-center justify-center gap-4">
-                                            INITIATE_ONBOARDING
-                                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                                        </span>
-                                    </button>
-                                </Link>
+                            <Link href="/contact" className="btn-institutional group w-full">
+                                <span className="relative z-10 flex items-center justify-center gap-4">INITIATE_ONBOARDING<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" /></span>
+                            </Link>
                             </div>
                         </div>
                     </div>
@@ -370,22 +375,8 @@ export default function ServicesPage() {
                             BECOME THE <br /> <span className="opacity-40">STANDARD.</span>
                         </h2>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                            <Link href="/contact">
-                                <button className="btn-institutional group">
-                                    <span className="relative z-10 flex items-center justify-center gap-4">
-                                        START_PROJECT
-                                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                                    </span>
-                                </button>
-                            </Link>
-                            <Link href="/shop">
-                                <button className="btn-outline-institutional group">
-                                    <span className="relative z-10 flex items-center justify-center gap-4">
-                                        BROWSE_ARCHITECTURES
-                                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                                    </span>
-                                </button>
-                            </Link>
+                            <Link href="/contact" className="btn-institutional group"><span className="relative z-10 flex items-center justify-center gap-4">START_PROJECT<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" /></span></Link>
+                            <Link href="/shop" className="btn-outline-institutional group"><span className="relative z-10 flex items-center justify-center gap-4">BROWSE_ARCHITECTURES<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" /></span></Link>
                         </div>
                     </motion.div>
                 </div>

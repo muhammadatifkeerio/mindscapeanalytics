@@ -483,6 +483,7 @@ function ContactFormContent() {
                                                         <option value="tianjin-beijing-inspection" className="bg-background text-foreground">Tianjin or Beijing inspection</option>
                                                         <option value="qc-procurement-retainer" className="bg-background text-foreground">QC and procurement retainer</option>
                                                         <option value="china-go-global" className="bg-background text-foreground">中国企业出海 / China go-global</option>
+                                                        <option value="foreign-trade-growth-automation" className="bg-background text-foreground">Foreign trade sales and growth automation</option>
                                                         <option value="other" className="bg-background text-foreground">Something else</option>
                                                     </select>
                                                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/40 pointer-events-none group-focus-within:text-secondary transition-colors" />
