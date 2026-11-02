@@ -14,7 +14,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "AI & Software Development Company | Mindscape Analytics",
-  description: "AI agents, workflow automation, SaaS and web apps, data platforms, and cloud infrastructure—built by Mindscape Analytics, with China sourcing through production.",
+  description: "Mindscape Analytics builds AI agents, workflow automation, SaaS and web apps, data platforms, and cloud infrastructure, with China sourcing and production support.",
   authors: [{ name: "Mindscape Analytics", url: "https://mindscapeanalytics.com" }],
   creator: "Mindscape Analytics",
   publisher: "Mindscape Analytics",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SEO_CONFIG.siteUrl),
   openGraph: {
     title: "AI & Software Development Company | Mindscape Analytics",
-    description: "AI agents, workflow automation, SaaS and web apps, data platforms, and cloud infrastructure—built by Mindscape Analytics, with China sourcing through production.",
+    description: "Mindscape Analytics builds AI agents, workflow automation, SaaS and web apps, data platforms, and cloud infrastructure, with China sourcing and production support.",
     type: "website",
     url: SEO_CONFIG.siteUrl,
     siteName: 'Mindscape Analytics',
@@ -119,6 +119,7 @@ const jsonLd = {
         "@type": "OfferCatalog",
         "name": "Mindscape Analytics Services",
         "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://mindscapeanalytics.com/services/ai-voice-receptionist#service", "name": "AI Voice Receptionist and Appointment Booking", "url": "https://mindscapeanalytics.com/services/ai-voice-receptionist" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Agents & Generative AI", "url": "https://mindscapeanalytics.com/solutions/ai-genai" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS Application Development", "url": "https://mindscapeanalytics.com/solutions/enterprise-software" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Design", "url": "https://mindscapeanalytics.com/solutions/enterprise-software#ui-ux-design" } },
@@ -126,7 +127,8 @@ const jsonLd = {
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Factory Vetting, Sample QC and Procurement Support", "url": "https://mindscapeanalytics.com/services/china-sourcing" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tianjin and Beijing Inspection Reports", "url": "https://mindscapeanalytics.com/services/tianjin-inspection" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Go-Global AI GTM and Cloud Infrastructure", "url": "https://mindscapeanalytics.com/zh/go-global" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Foreign Trade Sales and Growth Automation", "url": "https://mindscapeanalytics.com/services/foreign-trade-automation" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Foreign Trade Sales and Growth Automation", "url": "https://mindscapeanalytics.com/services/foreign-trade-automation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-Commerce Profit and Inventory Intelligence", "url": "https://mindscapeanalytics.com/ecommerce" } }
         ]
       }
     },

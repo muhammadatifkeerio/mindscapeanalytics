@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import * as productService from "@/services/product.service";
-import { getAbsoluteUrl, INDEXABLE_STATIC_ROUTES, PROJECT_CASE_STUDY_SLUGS } from "@/config/seo";
+import { getAbsoluteUrl, INDEXABLE_STATIC_ROUTES } from "@/config/seo";
 
 /** SOURCE OF TRUTH KEYWORDS: sitemap, revalidation, approved products, discovery, catalog refresh
  * WHAT: Refreshes the sitemap after product changes without requiring a new deployment.
@@ -12,7 +12,6 @@ export const revalidate = 3600;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const staticRoutes: MetadataRoute.Sitemap = [
         ...INDEXABLE_STATIC_ROUTES,
-        ...PROJECT_CASE_STUDY_SLUGS.map((slug) => `/projects/${slug}`),
     ].map((route) => ({
         url: getAbsoluteUrl(route),
         changeFrequency: "weekly" as const,

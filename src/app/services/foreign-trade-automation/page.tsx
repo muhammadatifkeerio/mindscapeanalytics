@@ -39,8 +39,9 @@ export default function ForeignTradeAutomationPage() {
     ] as const;
 
     return (
-        <SolutionLayout currentSolutionId="foreign-trade-automation" title="Foreign trade sales and growth automation" subtitle="Turn scattered export inquiries and follow-ups into a connected commercial system—from first contact and qualification to quotation, distributor development, and order handoff.">
+        <SolutionLayout currentSolutionId="foreign-trade-automation" title="Foreign trade sales and growth automation" subtitle="Connect export inquiries and follow-ups in one sales workflow. Track each step from first contact and qualification through quotation, distributor development, and order handoff.">
             <section aria-labelledby="trade-system-heading">
+                <p className="mb-6 text-sm leading-6 text-muted-foreground">Need to handle incoming product calls and appointment requests as well? Explore our <Link href="/services/ai-voice-receptionist" className="font-semibold text-foreground underline underline-offset-4">AI voice receptionist and inquiry qualification service</Link>.</p>
                 <h2 id="trade-system-heading" className="fluid-h2">Build the operating system behind international sales.</h2>
                 <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">Designed for manufacturers, exporters, suppliers, distributors, and foreign-trade teams that need clearer ownership, faster response, and better pipeline visibility across markets.</p>
                 <div className="mt-10 divide-y divide-border border-y border-border">

@@ -1,5 +1,5 @@
 /**
- * SOURCE OF TRUTH KEYWORDS: SEO configuration, canonical origin, social image, public routes, project slugs, locale alternates
+ * SOURCE OF TRUTH KEYWORDS: SEO configuration, canonical origin, social image, public routes, sitemap inventory, locale alternates
  * WHAT: Shared search-discovery constants for metadata, structured data, robots, and sitemap generation.
  * WHY: Keeps canonical URLs and indexable route inventory consistent across every crawler-facing surface.
  * WHERE: Root metadata, service schema, localized pages, robots.txt, and sitemap.xml.
@@ -13,16 +13,6 @@ export const SEO_CONFIG = {
     alternateLocale: "zh_CN",
 } as const;
 
-export const PROJECT_CASE_STUDY_SLUGS = [
-    "global-enterprise-erp",
-    "automated-inventory-system",
-    "production-esg-intelligence",
-    "dblynx-neural-intelligence",
-    "ai-sales-agent",
-    "dblynx-regional-bank",
-    "fuel-station-erp",
-] as const;
-
 export const INDEXABLE_STATIC_ROUTES = [
     "",
     "/about",
@@ -35,9 +25,11 @@ export const INDEXABLE_STATIC_ROUTES = [
     "/solutions/enterprise-software",
     "/solutions/blockchain",
     "/services",
+    "/services/ai-voice-receptionist",
     "/services/foreign-trade-automation",
     "/services/china-sourcing",
     "/services/tianjin-inspection",
+    "/ecommerce",
     "/projects",
     "/shop",
     "/pricing",

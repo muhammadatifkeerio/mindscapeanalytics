@@ -2,15 +2,15 @@ import { Metadata } from "next";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "Mindscape Analytics | TENVO Business Intelligence & AI Products",
-  description: "Mindscape Analytics builds TENVO Business OS, Smart Dairy & Cattle Farm Management, RSIQ Pro, DisposIQ, AI agents, SaaS platforms, and China sourcing systems.",
+  title: "Business Intelligence & AI Systems | Mindscape Analytics",
+  description: "Multilingual business software, AI workflows, analytics, and China sourcing support connecting commerce, finance, inventory, and production operations.",
   alternates: {
     canonical: "/",
     languages: { "en-US": "/", "zh-CN": "/zh-cn", "x-default": "/" },
   },
   openGraph: {
-    title: "Mindscape Analytics | TENVO Business Intelligence & AI Products",
-    description: "Explore TENVO Business OS, Smart Dairy & Cattle Farm Management, RSIQ Pro, DisposIQ, and custom AI and software systems from Mindscape Analytics.",
+    title: "Business Intelligence & AI Systems | Mindscape Analytics",
+    description: "Explore multilingual business software, AI workflows, analytics, and operations systems from Mindscape Analytics.",
     url: "https://mindscapeanalytics.com",
     siteName: "Mindscape Analytics",
     images: [
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mindscape Analytics | TENVO Business Intelligence & AI Products",
-    description: "TENVO Business OS, Smart Dairy, RSIQ Pro, DisposIQ, AI agents, SaaS platforms, and China sourcing systems.",
+    title: "Business Intelligence & AI Systems | Mindscape Analytics",
+    description: "Multilingual business software, AI workflows, analytics, and China sourcing support.",
     images: ["/images/og-mindscape-2026.png"],
   },
 };

@@ -54,7 +54,7 @@ const products = [
         name: "DBLynx",
         label: "企业数据智能",
         description: "通过自然语言探索企业数据库与运营数据，帮助团队更直接地获得业务洞察。",
-        href: "/projects/dblynx-regional-bank",
+        href: "/projects",
         image: "/images/projects/dblynx-card.webp",
         imageAlt: "DBLynx 企业数据智能产品界面",
     },
@@ -188,7 +188,7 @@ export default function ChineseLandingPage() {
                         <div className="divide-y divide-border border-y border-border">
                             <div className="grid gap-2 py-5 sm:grid-cols-[minmax(9rem,.65fr)_1.35fr] sm:gap-8"><h3 className="font-semibold">AI 与自动化</h3><p className="text-sm leading-6 text-muted-foreground sm:text-base">用于线索整理、客户响应、内部知识检索与跨系统流程的 AI Agent、聊天助手和自动化工作流。</p></div>
                             <div className="grid gap-2 py-5 sm:grid-cols-[minmax(9rem,.65fr)_1.35fr] sm:gap-8"><h3 className="font-semibold">SaaS 与业务软件</h3><p className="text-sm leading-6 text-muted-foreground sm:text-base">从需求梳理、UI/UX、数据与 API 集成，到云端部署和持续改进，交付可贴合运营流程的 Web 应用。</p></div>
-                            <div className="grid gap-2 py-5 sm:grid-cols-[minmax(9rem,.65fr)_1.35fr] sm:gap-8"><h3 className="font-semibold">云架构与部署</h3><p className="text-sm leading-6 text-muted-foreground sm:text-base">评估工作负载、架构与云账单，规划 AWS 成本优化、CI/CD 和监控。过往项目云成本节省最高达 70%；实际效果取决于原有架构、使用量与服务配置。</p></div>
+                            <div className="grid gap-2 py-5 sm:grid-cols-[minmax(9rem,.65fr)_1.35fr] sm:gap-8"><h3 className="font-semibold">云架构与部署</h3><p className="text-sm leading-6 text-muted-foreground sm:text-base">评估工作负载、架构与云账单，规划 AWS 成本优化、CI/CD 和监控。优化空间需根据现有架构、使用量与服务配置逐项评估，不预设节省比例。</p></div>
                         </div>
                     </div>
                 </section>

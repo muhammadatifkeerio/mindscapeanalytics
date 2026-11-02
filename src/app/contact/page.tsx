@@ -3,7 +3,7 @@
 import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, CheckCircle2, Calendar, Globe, ChevronDown, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle2, Globe, ChevronDown, MessageCircle } from "lucide-react";
 import { LinkedinIcon } from "@/components/icons/brand-icons";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Image from "@/components/SmartImage";
@@ -38,11 +38,11 @@ const contactInfo = [
         description: "Follow Mindscape Analytics and connect with our team."
     },
     {
-        icon: Calendar,
-        title: "Book a strategy call",
-        value: "Schedule Now",
+        icon: MessageCircle,
+        title: "Start a conversation",
+        value: "Chat with our team",
         link: "#contact-chat",
-        description: "Open a conversation with our team and tell us what you are building."
+        description: "Talk with our team about your project, goals, and next step."
     },
     {
         icon: Globe,
@@ -185,7 +185,7 @@ function ContactFormContent() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
-                                {info.title === "Book a strategy call" ? (
+                                {info.title === "Start a conversation" ? (
                                   <button
                                     type="button"
                                     onClick={() => window.dispatchEvent(new CustomEvent("open-chat"))}
@@ -194,8 +194,8 @@ function ContactFormContent() {
                                   >
                                   <div className="h-full p-8 rounded-2xl bg-card border border-border hover:border-brand/35 transition-all duration-300 group shadow-sm surface-frost">
                                     <div className="mb-6 w-12 h-12 rounded-xl bg-muted border border-border flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-all duration-300"><info.icon className="h-6 w-6" /></div>
-                                    <h3 className="text-meta mb-2">Start a conversation</h3>
-                                    <p className="text-lg font-bold text-foreground mb-4 leading-tight">Chat with our team</p>
+                                    <h3 className="text-meta mb-2">Talk with our team</h3>
+                                    <p className="text-lg font-bold text-foreground mb-4 leading-tight">Start a conversation</p>
                                     <p className="text-muted-foreground text-sm leading-relaxed">{info.description}</p>
                                   </div>
                                   </button>

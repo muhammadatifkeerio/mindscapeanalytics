@@ -37,6 +37,25 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      /**
+       * SOURCE OF TRUTH KEYWORDS: legacy case study redirects, unsupported project claims, portfolio paths, sitemap cleanup, permanent redirect
+       * WHAT: Moves legacy case-study URLs with unverified client-result claims to the verified product portfolio.
+       * WHY: Prevents unsupported case-study claims from remaining publicly accessible while preserving useful inbound links.
+       * WHERE: Next.js production redirects for retired /projects/[slug] case-study paths.
+       */
+      ...[
+        "global-enterprise-erp",
+        "automated-inventory-system",
+        "production-esg-intelligence",
+        "dblynx-neural-intelligence",
+        "ai-sales-agent",
+        "dblynx-regional-bank",
+        "fuel-station-erp",
+      ].map((slug) => ({
+        source: `/projects/${slug}`,
+        destination: "/projects",
+        permanent: true,
+      })),
       {
         // Preserve old logo URLs while consolidating image discovery on the current brand asset.
         source: "/images/logo/mindscape-analytics.png",

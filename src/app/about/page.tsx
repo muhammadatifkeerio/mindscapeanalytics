@@ -17,12 +17,17 @@ import {
     CheckCircle2
 } from "lucide-react";
 import { Linkedin } from "@/components/icons/brand-icons";
-import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AIAuditLeadMagnet from "@/components/AIAuditLeadMagnet";
 import TeamMoments from "@/components/TeamMoments";
 
+/**
+ * SOURCE OF TRUTH KEYWORDS: About team, profile names, portrait assets, public contacts, team links, people-first trust
+ * WHAT: Public team profiles and their confirmed image and contact references.
+ * WHY: Accurate identities and working links support visitor trust and prevent incorrect portrait attribution.
+ * WHERE: About page core team cards.
+ */
 const team = [
     {
         name: "Zeeshan Keerio",
@@ -37,7 +42,7 @@ const team = [
         name: "Muhammad Atif",
         role: "Full-Stack Developer & AI Engineer",
         bio: "Builds and maintains responsive product experiences, connecting clear interfaces with dependable application logic.",
-        image: "/images/team/muhammad-ibrahim.webp",
+        image: "/images/team/muhammad-atif-new.webp",
         linkedin: "#",
         email: "mailto:atif@mindscapeanalytics.com"
     },
@@ -53,7 +58,7 @@ const team = [
         name: "Muhammad Ibrahim",
         role: "Senior Manager - Marketing",
         bio: "Shapes go-to-market strategy, brand positioning, and partnerships that connect Mindscape products with the right customers.",
-        image: "/images/team/shafqat-ali.webp",
+        image: "/images/team/muhammad-ibrahim.webp",
         linkedin: "#",
         email: "#"
     },
@@ -69,7 +74,7 @@ const team = [
         name: "Shaizan Ali",
         role: "Software Engineer",
         bio: "Develops and improves software features, integrations, and systems with a focus on reliability and maintainability.",
-        image: "/images/team/shafqat-ali-portrait-2026.webp",
+        image: undefined,
         linkedin: "#",
         email: "#"
     }
@@ -77,29 +82,24 @@ const team = [
 
 const timeline = [
     {
-        year: "2018",
-        title: "FOUNDATION",
-        description: "Mindscape Analytics establishes its core AI architecture, laying the groundwork for industrial-grade systems."
+        year: "01",
+        title: "DISCOVER",
+        description: "Map the operating question, current tools, data owners, constraints, and the decisions the system needs to support."
     },
     {
-        year: "2020",
-        title: "AGENTIC PIVOT",
-        description: "Shifted focus to autonomous agent ecosystems and secure big data pipelines for enterprise-scale operations."
+        year: "02",
+        title: "ARCHITECT",
+        description: "Define the software, data connections, workflow boundaries, human review points, and acceptance criteria before implementation."
     },
     {
-        year: "2022",
-        title: "GLOBAL SCALABILITY",
-        description: "Launched the global node network and our signature managed infrastructure model for high-growth businesses."
+        year: "03",
+        title: "DELIVER",
+        description: "Build, integrate, test, and document the agreed system, then prepare the people who will use and maintain it."
     },
     {
-        year: "2024",
-        title: "VOICE INNOVATION",
-        description: "Integration of next-gen AI voice agents (Vapi/Retell), revolutionizing appointment booking and support."
-    },
-    {
-        year: "2026",
-        title: "THE STANDARD",
-        description: "Positioned as the global AI-first technology partner, helping elite businesses transition to autonomous systems."
+        year: "04",
+        title: "IMPROVE",
+        description: "Review system performance against the agreed measures and adjust the workflow as business needs change."
     }
 ];
 
@@ -313,12 +313,12 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* --- Company journey: context before introducing the people --- */}
+            {/* --- Delivery approach: context before introducing the people --- */}
             <section className="border-t border-foreground/5 bg-transparent py-14 sm:py-20 lg:py-24">
                 <div className="container mx-auto max-w-5xl px-4 sm:px-6">
                     <ScrollReveal className="text-center mb-16 space-y-4">
-                        <p className="text-meta">From strategy to systems in the real world</p>
-                        <h2 className="fluid-h2 text-foreground">Our journey</h2>
+                        <p className="text-meta">From an operating question to a system people can use</p>
+                        <h2 className="fluid-h2 text-foreground">How we work</h2>
                     </ScrollReveal>
 
                     <div className="relative">
@@ -370,16 +370,22 @@ export default function AboutPage() {
                                 className="p-6 rounded-[2rem] bg-card border border-border hover:border-brand/35 transition-all duration-500 group relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md"
                             >
                                 <div>
-                                    <Link href={member.href || "#"} className={cn("block overflow-hidden rounded-2xl aspect-[4/5] relative border border-foreground/10 mb-8", !member.href && "cursor-default")}>
-                                        <Image
-                                            src={member.image}
-                                            alt={member.name}
-                                            fill
-                                            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                                            className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60" />
-                                    </Link>
+                                    <div className="mb-8 block aspect-[4/5] overflow-hidden rounded-2xl relative border border-foreground/10">
+                                        {member.image ? (
+                                            <Image
+                                                src={member.image}
+                                                alt={member.name}
+                                                fill
+                                                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                                                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                                            />
+                                        ) : (
+                                            <div role="img" aria-label={`${member.name} initials`} className="grid h-full place-items-center bg-muted font-heading text-5xl font-semibold text-muted-foreground">
+                                                {member.name.split(" ").map((part) => part[0]).join("")}
+                                            </div>
+                                        )}
+                                        {member.image && <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60" />}
+                                    </div>
 
                                     <div className="space-y-4">
                                         <div className="flex justify-between items-start">

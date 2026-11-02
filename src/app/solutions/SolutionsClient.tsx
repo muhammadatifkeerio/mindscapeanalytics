@@ -62,12 +62,12 @@ const solutions = [
     {
         icon: Shield,
         title: "Managed Operation Units",
-        description: "Perpetual system maintenance, military-grade monitoring, and continuous AI model optimization.",
+        description: "Ongoing technical support planned around the system, maintenance needs, monitoring scope, and agreed response requirements.",
         features: [
-            "24/7 Performance Sync",
-            "Automated Security Patching",
-            "Database Health Monitoring",
-            "Recurring Model Optimization"
+            "Agreed Monitoring Schedule",
+            "Maintenance Planning",
+            "Database Health Reviews",
+            "Model Evaluation and Updates"
         ],
         link: "/services",
         gradient: "from-foreground/10 to-transparent"

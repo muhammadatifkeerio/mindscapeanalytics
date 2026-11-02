@@ -16,6 +16,7 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 
 const solutions = [
+    { id: "ai-voice-receptionist", name: "AI Voice Receptionist", icon: Brain, href: "/services/ai-voice-receptionist" },
     {
         id: "ai-genai",
         name: "AI Agents & Workflows",
@@ -66,6 +67,15 @@ const solutions = [
  * WHERE: The shared solution detail layout.
  */
 const solutionQuestions = [
+    {
+        id: "ai-voice-receptionist",
+        questions: [
+            { question: "Can the assistant answer outside business hours?", answer: "Around-the-clock answering can be configured with suitable telephony and fallback routing. Included minutes, concurrent calls, availability expectations, and human support hours are specified in the agreement." },
+            { question: "Can it book appointments and update our CRM?", answer: "We confirm supported calendar and CRM access, booking rules, required fields, and permissions during discovery. The pilot checks conflicting bookings, confirmations, handoffs, and recovery when a connected service is unavailable." },
+            { question: "What happens when a caller needs a person?", answer: "The call flow includes agreed escalation rules, such as live transfer, message capture, or a callback request. Approved knowledge and administrative boundaries define what the assistant can handle." },
+            { question: "Are call usage and software charges included?", answer: "The written proposal identifies minute allowances, telephone and AI charges, third-party licenses, integration costs, overage rates, and support scope. The displayed ranges are indicative starting packages." },
+        ],
+    },
     {
         id: "ai-genai",
         questions: [

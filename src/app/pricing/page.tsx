@@ -65,7 +65,7 @@ const pricingPlans = [
             "Scalable Cloud Cluster Architecture",
             "Database Clustering & Sharding",
             "Industrial Performance Engineering",
-            "24/7 Dedicated Support Node"
+            "Support scope and response targets defined in the agreement"
         ],
         cta: "Request Consultation",
         highlight: false

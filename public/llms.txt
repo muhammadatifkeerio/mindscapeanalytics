@@ -1,0 +1,37 @@
+# Mindscape Analytics
+
+> Mindscape Analytics LLC builds multilingual operating systems, AI-assisted workflows, data products, software applications, and China sourcing support for real business operations.
+
+## Primary pages
+
+- [AI Voice Receptionist](https://mindscapeanalytics.com/services/ai-voice-receptionist): Inbound reception, inquiry qualification, supported calendar booking, human handoff, configured languages, and call reporting. Package ranges are indicative; telephony, minutes, concurrency, integrations, and support are scoped in a proposal.
+
+- [Homepage](https://mindscapeanalytics.com/): Company overview, operating-system approach, shipped products, and contact paths.
+- [E-Commerce Profit & Inventory Intelligence](https://mindscapeanalytics.com/ecommerce): Commerce revenue, margin, inventory, and operational workflow systems.
+- [Enterprise Software](https://mindscapeanalytics.com/solutions/enterprise-software): SaaS and web application design, engineering, integrations, deployment, and support.
+- [AI Agents & Workflows](https://mindscapeanalytics.com/solutions/ai-genai): AI-assisted workflows, connected tools, evaluation, deployment, and human review.
+- [Foreign Trade Sales & Growth Automation](https://mindscapeanalytics.com/services/foreign-trade-automation): Multilingual inquiry, quotation, distributor, and commercial handoff workflows.
+- [China Sourcing & QC](https://mindscapeanalytics.com/services/china-sourcing): Supplier shortlists, documented checks, sample coordination, and inspection support.
+- [Projects](https://mindscapeanalytics.com/projects): Mindscape product and project portfolio.
+- [Contact](https://mindscapeanalytics.com/contact): Start a conversation with Mindscape Analytics.
+
+## Who Mindscape works with
+
+- Commerce and operations teams that need clearer product economics, inventory visibility, finance reporting, production context, or connected workflows.
+- Manufacturers and export businesses seeking multilingual sales workflows, distributor development, supplier coordination, or a path from product requirements to production.
+- Teams planning custom software, SaaS applications, data platforms, AI-assisted workflows, or cloud architecture.
+
+Integration availability, source-data quality, security requirements, delivery scope, and acceptance criteria are confirmed during discovery and written into the proposal.
+
+## Evidence and accuracy
+
+- Screenshots on the e-commerce page are interface examples. Their displayed figures, records, prospect details, integrations, and workflow outputs are not verified customer outcomes or guarantees.
+- Mindscape does not guarantee leads, orders, revenue, profit increases, platform access, or a particular operational result.
+- AI-assisted workflows are designed with defined data access, review points, and human approval for material commercial decisions.
+
+## Organization
+
+- Legal name: Mindscape Analytics LLC
+- Website: https://mindscapeanalytics.com/
+- Location: Sheridan, Wyoming, USA; work also spans China-market delivery.
+- Contact: https://mindscapeanalytics.com/contact

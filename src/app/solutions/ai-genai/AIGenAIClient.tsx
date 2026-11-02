@@ -84,8 +84,8 @@ export default function AIGenAIClient() {
                             </motion.div>
                             <div className="absolute inset-0 bg-gradient-to-t from-white/[0.02] via-transparent to-transparent" />
                             <div className="absolute bottom-8 left-8 p-6 bg-transparent/60 backdrop-blur-xl border border-border rounded-2xl">
-                                <span className="text-foreground font-black text-2xl block tracking-tighter">98%</span>
-                                <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-[0.2em]">Accuracy Improvement</span>
+                                <span className="text-foreground font-black text-2xl block tracking-tighter">Human review</span>
+                                <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-[0.2em]">For consequential actions</span>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "@/components/SmartImage";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
@@ -32,6 +33,20 @@ const process = [
     ["Evolve", "We measure performance and improve the system as your business changes."],
 ] as const;
 
+/**
+ * SOURCE OF TRUTH KEYWORDS: Mindscape operating system, multilingual workflows, finance inventory production, buyer qualification, homepage proof, growth copilot
+ * WHAT: The ordered proof stages used to explain the connected operating systems Mindscape designs and delivers.
+ * WHY: Gives buyers a concrete journey from data signals to documented operational action without relying on unverified outcome claims.
+ * WHERE: Homepage proof narrative between capability discovery and sourcing delivery.
+ */
+const operatingJourney = [
+    { number: "01", title: "Bring the operating picture together", copy: "Compare commerce, advertising, warehouse, finance, and production signals in one view. Data sources and access are confirmed for each project.", icon: LineChart, detail: "Signals, in one working view" },
+    { number: "02", title: "Trace margin from revenue to net", copy: "Review sales, product costs, fees, fulfillment, and marketing against a documented formula. Keep contribution margin distinct from platform ROAS.", icon: Database, detail: "Costs, visible and explainable" },
+    { number: "03", title: "See inventory risk earlier", copy: "Compare usable stock with expected demand, replenishment lead time, and campaign plans. Forecasts show assumptions and missing inputs.", icon: PackageCheck, detail: "Stock levels, in context" },
+    { number: "04", title: "Qualify suppliers with evidence", copy: "Compare supplier claims, pricing, capacity, certifications, and terms against source records; flag anything that still needs independent verification.", icon: Globe2, detail: "Growth, grounded in evidence" },
+    { number: "05", title: "Put automation behind approval", copy: "Let workflows prepare summaries and suggested next steps while people retain approval over financial, inventory, and supplier decisions.", icon: Bot, detail: "Automation, with people in control" },
+] as const;
+
 const reveal = {
     hidden: { opacity: 0, y: 28, filter: "blur(8px)" },
     visible: { opacity: 1, y: 0, filter: "blur(0px)" },
@@ -46,6 +61,10 @@ const reveal = {
 export default function HomeClient() {
     const reduceMotion = useReducedMotion();
     const transition = reduceMotion ? { duration: 0 } : { duration: 0.75, ease: [0.16, 1, 0.3, 1] as const };
+    const [activeJourneyStep, setActiveJourneyStep] = useState(0);
+    const [previewDecision, setPreviewDecision] = useState<"pending" | "approved" | "changes">("pending");
+
+    const activeJourney = operatingJourney[activeJourneyStep];
 
     return (
         <main className="msa-home min-h-screen overflow-hidden bg-background text-foreground">
@@ -66,19 +85,20 @@ export default function HomeClient() {
                     <motion.div initial="hidden" animate="visible" variants={reveal} transition={transition} className="relative z-20 order-last w-full max-w-xl sm:order-none lg:pb-20">
                         <div className="mb-7 hidden items-center gap-3 text-xs font-semibold text-brand sm:flex">
                             <span className="inline-flex h-2.5 w-2.5 rounded-full bg-brand shadow-[0_0_0_7px_hsl(var(--brand)/0.1)]" />
-                            AI, data, products & production
+                            AI, data & operating systems
                         </div>
                         <h1 className="max-w-[12ch] text-balance font-heading text-[clamp(2.65rem,10vw,4rem)] font-semibold leading-[0.95] tracking-[-0.04em] sm:max-w-[14ch] sm:text-[clamp(3rem,5.2vw,5rem)]">
-                            AI that works for you.
+                            Make operations work together.
                         </h1>
                         <p className="mt-4 max-w-[54ch] text-pretty text-base leading-7 text-muted-foreground sm:mt-7 md:text-lg md:leading-8">
-                            Mindscape builds autonomous AI agents, decision-grade data systems, and digital products, then helps ambitious companies take physical products from China sourcing to production.
+                            Mindscape builds multilingual operating systems that connect finance, inventory, production, growth workflows, and AI-assisted decisions. We help teams put those systems to work in their daily operations.
                         </p>
                         <div className="mt-5 flex flex-col items-stretch gap-2.5 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
                             <Link href="/contact" className="msa-button group w-full justify-between sm:w-auto">
                                 Get in touch
                                 <span className="msa-button-orb"><ArrowRight className="h-4 w-4" /></span>
                             </Link>
+                            <Link href="/ecommerce" className="msa-text-link w-full justify-center sm:w-auto">E-commerce profit &amp; inventory intelligence <ArrowRight className="h-4 w-4" /></Link>
                             <Link href="/projects" className="msa-text-link !hidden self-start sm:!inline-flex sm:self-auto">Explore our work <ArrowRight className="h-4 w-4" /></Link>
                         </div>
                         <HeroReviews />
@@ -122,14 +142,167 @@ export default function HomeClient() {
                 </div>
             </section>
 
-            <section className="border-y border-border bg-muted/45 py-20 md:py-28">
+            {/*
+             * SOURCE OF TRUTH KEYWORDS: Homepage proof narrative, operating system journey, native scroll motion, reduced motion, multilingual operations, qualified growth
+             * WHAT: A scroll-led, text-first explanation of Mindscape's operational system capabilities.
+             * WHY: Makes product proof understandable without scroll-jacking, autoplay media, or claims that the visitor cannot verify.
+             * WHERE: Homepage after the capability overview and before the sourcing service path.
+             */}
+            {/*
+             * SOURCE OF TRUTH KEYWORDS: Operating journey, interactive canvas, sticky preview, commerce margin, inventory, supplier evidence, human approval
+             * WHAT: Shows how Mindscape connects operating signals to explainable decisions through an interactive, illustrative software preview.
+             * WHY: Replaces five repetitive cards with a scroll-linked story and concrete interface examples while preserving readable content without motion.
+             * WHERE: Homepage between capability overview and China sourcing section.
+             */}
+            <section className="border-y border-border bg-muted/45 py-14 md:py-20" aria-labelledby="operating-journey-heading">
                 <div className="container-standard">
-                    <div className="grid items-end gap-10 lg:grid-cols-[1fr_0.7fr]"><p className="max-w-4xl text-balance font-heading text-[clamp(2.6rem,5.2vw,6rem)] font-medium leading-[0.95] tracking-[-0.04em]">From one business question to an orchestrated system.</p><p className="max-w-lg text-base leading-7 text-muted-foreground lg:justify-self-end">Agents coordinate research, structured data, human approvals, and production actions, while your team remains in control of the decisions that matter.</p></div>
-                    <div className="mt-16 overflow-hidden rounded-2xl bg-card ring-1 ring-border shadow-sm">
-                        <div className="grid gap-px bg-border md:grid-cols-[0.8fr_1.2fr_0.8fr]">
-                            <div className="bg-card p-7 md:p-9"><p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Input</p><p className="mt-5 text-xl font-medium">“Find and validate a production partner for our new retail product.”</p></div>
-                            <div className="relative overflow-hidden bg-card p-7 md:p-9"><div className="absolute inset-0 opacity-30 [background-image:linear-gradient(hsl(var(--border)/.7)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)/.7)_1px,transparent_1px)] [background-size:32px_32px]" /><div className="relative flex min-h-40 items-center justify-center gap-4">{[Bot, Globe2, LineChart, PackageCheck].map((Icon, index) => <motion.span key={index} animate={reduceMotion ? undefined : { y: [0, index % 2 ? 7 : -7, 0] }} transition={{ duration: 3.5 + index * 0.4, repeat: Infinity }} className="grid h-14 w-14 place-items-center rounded-2xl bg-background text-foreground shadow-md"><Icon className="h-5 w-5" /></motion.span>)}</div><p className="relative mt-4 text-center text-xs text-muted-foreground">Research → qualify → model → coordinate</p></div>
-                            <div className="bg-card p-7 md:p-9"><p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Outcome</p><ul className="mt-5 space-y-3 text-sm text-muted-foreground"><li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-brand" /> Structured supplier shortlist</li><li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-brand" /> Production risk map</li><li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-brand" /> Human-approved next steps</li></ul></div>
+                    <div className="mb-7 max-w-3xl sm:mb-10">
+                        <p className="text-xs font-semibold uppercase tracking-[.16em] text-brand">How it works</p>
+                        <h2 id="operating-journey-heading" className="mt-3 text-balance font-heading text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-tight tracking-[-0.03em]">Connect business data to better decisions.</h2>
+                        <p className="mt-3 max-w-2xl leading-7 text-muted-foreground">See what changed across sales, costs, inventory, and operations, then decide what needs attention.</p>
+                    </div>
+
+                    <div className="grid items-start gap-6 lg:grid-cols-[0.86fr_1.14fr] lg:gap-9">
+                        <ol className="order-2 space-y-2 lg:order-1" aria-label="Mindscape operating-system journey">
+                            {operatingJourney.map(({ number, title, copy, icon: Icon, detail }, index) => (
+                                <li key={title} className="lg:flex lg:items-center">
+                                    <button
+                                        type="button"
+                                        aria-pressed={activeJourneyStep === index}
+                                        onClick={() => setActiveJourneyStep(index)}
+                                        className={`group relative w-full rounded-xl border p-4 text-left transition-colors duration-150 sm:p-5 ${activeJourneyStep === index ? "border-brand/40 bg-card" : "border-transparent bg-transparent hover:border-border hover:bg-card/65"}`}
+                                    >
+                                        {activeJourneyStep === index && <span className="absolute bottom-5 left-0 top-5 w-1 rounded-r-full bg-brand" aria-hidden="true" />}
+                                        <span className="flex items-start gap-4 sm:gap-5">
+                                            <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-colors ${activeJourneyStep === index ? "bg-brand/10 text-brand" : "bg-background text-muted-foreground group-hover:text-foreground"}`}>
+                                                <Icon className="h-5 w-5" aria-hidden="true" />
+                                            </span>
+                                            <span className="min-w-0">
+                                                <span className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">
+                                                    <span className={activeJourneyStep === index ? "text-brand" : ""}>{number}</span>
+                                                    <span>{detail}</span>
+                                                </span>
+                                                <span className="mt-2 block text-lg font-semibold leading-snug tracking-[-.02em] text-foreground sm:text-xl">{title}</span>
+                                                <span className="mt-2 block max-w-xl text-sm leading-6 text-muted-foreground sm:text-[15px]">{copy}</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                </li>
+                            ))}
+                        </ol>
+
+                        <div className="order-1 lg:order-2 lg:sticky lg:top-24">
+                            <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+                                <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
+                                    <div className="flex min-w-0 items-center gap-3">
+                                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand"><Boxes className="h-4 w-4" aria-hidden="true" /></span>
+                                        <div className="min-w-0"><p className="truncate text-sm font-semibold">Operating system preview</p><p className="text-xs text-muted-foreground">Illustrative interface · sample data</p></div>
+                                    </div>
+                                    <span className="hidden shrink-0 items-center gap-2 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground sm:inline-flex"><span className="h-2 w-2 rounded-full bg-brand" aria-hidden="true" /> Preview mode</span>
+                                </div>
+
+                                <div className="border-b border-border px-4 py-3 lg:hidden">
+                                    <div role="group" aria-label="Choose an operating system preview stage" className="grid grid-cols-5 gap-1">
+                                        {operatingJourney.map((step, index) => (
+                                            <button
+                                                key={step.number}
+                                                id={`journey-step-tab-${index}`}
+                                                type="button"
+                                                aria-pressed={activeJourneyStep === index}
+                                                aria-controls="operating-journey-preview"
+                                                onClick={() => setActiveJourneyStep(index)}
+                                                className={`min-h-11 rounded-lg text-xs font-semibold transition-colors ${activeJourneyStep === index ? "bg-foreground text-background" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}
+                                            >
+                                                {step.number}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div
+                                    id="operating-journey-preview"
+                                    role="region"
+                                    aria-label={`${activeJourney.number}: ${activeJourney.title}`}
+                                    className="min-h-[390px] p-5 sm:min-h-[430px] sm:p-7"
+                                >
+                                        {activeJourneyStep === 0 && (
+                                            <div>
+                                                <div className="flex flex-wrap items-start justify-between gap-4">
+                                                    <div><p className="text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">Unified command surface</p><h3 className="mt-2 text-xl font-semibold tracking-[-.03em] sm:text-2xl">A shared view of operations</h3></div>
+                                                    <span className="rounded-full bg-muted px-3 py-1.5 text-xs font-medium text-muted-foreground">Example source systems</span>
+                                                </div>
+                                                <div className="mt-5 flex flex-wrap gap-2">{["Shopify", "Amazon SP-API", "Meta Ads", "Warehouse"].map((source) => <span key={source} className="rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium">{source}</span>)}</div>
+                                                <div className="mt-5 grid grid-cols-2 gap-3">
+                                                    {[ ["Orders", "1,284"], ["Net sales", "$84.2k"], ["Stock alerts", "03"], ["Data status", "Needs review"] ].map(([label, value]) => <div key={label} className="rounded-2xl border border-border bg-background p-4"><p className="text-xs text-muted-foreground">{label}</p><p className="mt-2 text-xl font-semibold tracking-tight sm:text-2xl">{value}</p></div>)}
+                                                </div>
+                                                <div className="mt-5 rounded-2xl border border-border bg-background p-4">
+                                                    <div className="flex items-center justify-between gap-3"><p className="text-sm font-medium">Operating activity</p><span className="text-xs text-muted-foreground">Illustrative · 30 days</span></div>
+                                                    <div aria-label="Illustrative activity chart" role="img" className="mt-4 flex h-16 items-end gap-1.5">{[36, 52, 44, 68, 56, 76, 61, 83, 67, 91, 72, 86, 65, 78, 94, 72, 88, 61, 82, 96, 74, 86, 68, 91].map((height, index) => <span key={index} className={`min-w-0 flex-1 rounded-t-sm ${index === 19 ? "bg-brand" : "bg-brand/20"}`} style={{ height: `${height}%` }} />)}</div>
+                                                </div>
+                                                <p className="mt-4 text-xs leading-5 text-muted-foreground">Example systems only. Connector availability and data access are confirmed during discovery.</p>
+                                            </div>
+                                        )}
+
+                                        {activeJourneyStep === 1 && (
+                                            <div>
+                                                <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">Contribution margin bridge</p><h3 className="mt-2 text-xl font-semibold tracking-[-.03em] sm:text-2xl">Trace what remains after costs</h3></div><span className="rounded-full bg-muted px-3 py-1.5 text-xs font-medium text-muted-foreground">Illustrative figures</span></div>
+                                                <div className="mt-5 rounded-2xl border border-border bg-background p-4 sm:p-5">
+                                                    <div className="flex items-center justify-between border-b border-border pb-4"><div><p className="text-xs text-muted-foreground">Example period · net sales</p><p className="mt-1 text-2xl font-semibold">$84,200</p></div><span className="rounded-lg bg-brand/10 px-3 py-2 text-sm font-semibold text-brand">CM3 · $22,700</span></div>
+                                                    <div className="mt-4 space-y-4">{[
+                                                        { label: "Net sales", value: "$84.2k", width: "100%", emphasize: true },
+                                                        { label: "Product costs", value: "−$32.1k", width: "62%", emphasize: false },
+                                                        { label: "Fulfillment and fees", value: "−$8.4k", width: "38%", emphasize: false },
+                                                        { label: "Marketing spend", value: "−$21.0k", width: "52%", emphasize: false },
+                                                        { label: "Contribution after marketing", value: "$22.7k", width: "48%", emphasize: true },
+                                                    ].map((item) => <div key={item.label}><div className="mb-1.5 flex items-center justify-between gap-3 text-xs"><span className="text-muted-foreground">{item.label}</span><span className="font-semibold tabular-nums">{item.value}</span></div><div className="h-2 overflow-hidden rounded-full bg-muted"><div className={`h-full rounded-full ${item.emphasize ? "bg-brand" : "bg-foreground/25"}`} style={{ width: item.width }} /></div></div>)}</div>
+                                                </div>
+                                                <p className="mt-4 text-xs leading-5 text-muted-foreground">A sample calculation only. Margin definitions, currency, returns, and included costs are agreed and documented for each business.</p>
+                                            </div>
+                                        )}
+
+                                        {activeJourneyStep === 2 && (
+                                            <div>
+                                                <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">Predictive inventory runway</p><h3 className="mt-2 text-xl font-semibold tracking-[-.03em] sm:text-2xl">Plan around stock and lead time</h3></div><span className="rounded-full border border-brand/25 bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand">Example risk scenario</span></div>
+                                                <div className="mt-5 rounded-2xl border border-border bg-background p-5">
+                                                    <div className="flex flex-wrap items-end justify-between gap-4"><div><p className="text-xs text-muted-foreground">Estimated stock coverage</p><p className="mt-2 text-4xl font-semibold tracking-[-.05em]">14 <span className="text-base font-medium text-muted-foreground">days</span></p></div><div className="text-sm sm:text-right"><p className="text-muted-foreground">Replenishment lead time</p><p className="mt-1 font-semibold">21 days · sample</p></div></div>
+                                                    <div className="mt-5 h-3 overflow-hidden rounded-full bg-muted"><div className="h-full w-[47%] rounded-full bg-brand" /></div>
+                                                    <div className="mt-5 grid grid-cols-2 gap-3"><div className="rounded-xl border border-border p-3"><p className="text-xs text-muted-foreground">Usable units</p><p className="mt-1 text-lg font-semibold">448</p></div><div className="rounded-xl border border-border p-3"><p className="text-xs text-muted-foreground">Expected daily use</p><p className="mt-1 text-lg font-semibold">32 units</p></div></div>
+                                                </div>
+                                                <div className="mt-4 flex items-start gap-3 rounded-2xl bg-muted/70 p-4"><PackageCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" /><p className="text-sm leading-6"><span className="font-semibold">Review replenishment timing.</span> This example compares stock coverage with lead time; a forecast depends on demand history and planning assumptions.</p></div>
+                                            </div>
+                                        )}
+
+                                        {activeJourneyStep === 3 && (
+                                            <div>
+                                                <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">Supplier qualification</p><h3 className="mt-2 text-xl font-semibold tracking-[-.03em] sm:text-2xl">Compare evidence before a decision</h3></div><span className="rounded-full bg-muted px-3 py-1.5 text-xs font-medium text-muted-foreground">Evidence checklist</span></div>
+                                                <div className="mt-5 overflow-hidden rounded-2xl border border-border bg-background">
+                                                    <div className="grid grid-cols-[1fr_auto] gap-3 border-b border-border bg-muted/55 px-4 py-3 text-xs font-semibold uppercase tracking-[.1em] text-muted-foreground"><span>Qualification item</span><span>Next check</span></div>
+                                                    {[
+                                                        ["Quoted price", "Compare like terms"],
+                                                        ["Minimum order", "Confirm quantity"],
+                                                        ["Production capacity", "Request evidence"],
+                                                        ["Certifications", "Verify issuer and scope"],
+                                                        ["Lead time", "Confirm in writing"],
+                                                    ].map(([item, action]) => <div key={item} className="grid grid-cols-[1fr_auto] items-center gap-3 border-b border-border/70 px-4 py-3.5 last:border-b-0"><span className="text-sm font-medium">{item}</span><span className="flex items-center gap-2 text-right text-xs text-muted-foreground"><span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />{action}</span></div>)}
+                                                </div>
+                                                <p className="mt-4 text-xs leading-5 text-muted-foreground">The preview does not show verified suppliers or live quotes. Each claim needs a source and appropriate verification.</p>
+                                            </div>
+                                        )}
+
+                                        {activeJourneyStep === 4 && (
+                                            <div>
+                                                <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">Human review queue</p><h3 className="mt-2 text-xl font-semibold tracking-[-.03em] sm:text-2xl">Keep consequential actions reviewable</h3></div><span className="rounded-full bg-muted px-3 py-1.5 text-xs font-medium text-muted-foreground">Demo only</span></div>
+                                                <div className="mt-5 rounded-2xl border border-border bg-background p-5">
+                                                    <div className="flex items-center justify-between gap-3"><div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-brand/10 text-brand"><Bot className="h-5 w-5" aria-hidden="true" /></span><div><p className="text-sm font-semibold">Inventory review suggestion</p><p className="mt-1 text-xs text-muted-foreground">Prepared from the illustrative scenario</p></div></div><span className="rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">Human approval</span></div>
+                                                    <div className="mt-5 rounded-xl bg-muted/60 p-4"><p className="text-xs font-semibold uppercase tracking-[.1em] text-muted-foreground">Proposed next step</p><p className="mt-2 text-sm leading-6">Review replenishment timing against current stock, demand assumptions, and supplier lead time.</p></div>
+                                                    <div className="mt-4 flex flex-wrap items-center gap-2"><button type="button" onClick={() => setPreviewDecision("approved")} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-foreground px-4 text-sm font-semibold text-background transition-colors hover:bg-foreground/85"><Check className="h-4 w-4" aria-hidden="true" />Approve in preview</button><button type="button" onClick={() => setPreviewDecision("changes")} className="inline-flex min-h-11 items-center justify-center rounded-xl border border-border px-4 text-sm font-semibold transition-colors hover:bg-muted">Request changes</button><span aria-live="polite" className="text-xs font-medium text-muted-foreground">{previewDecision === "pending" ? "Awaiting review" : previewDecision === "approved" ? "Approved in this preview" : "Changes requested in this preview"}</span></div>
+                                                </div>
+                                                <p className="mt-4 text-xs leading-5 text-muted-foreground">These demo controls do not submit data or connect to a business system.</p>
+                                            </div>
+                                        )}
+                                </div>
+                            </div>
+                            <p className="mt-3 text-center text-xs leading-5 text-muted-foreground">All figures and records are illustrative. Integrations, forecasts, and workflows are scoped and validated with each client.</p>
                         </div>
                     </div>
                 </div>

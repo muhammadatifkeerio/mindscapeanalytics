@@ -17,7 +17,7 @@ const reviews = [
 ] as const;
 
 /**
- * SOURCE OF TRUTH KEYWORDS: hero reviews, verified Fiverr feedback, 4-second carousel, reduced motion
+ * SOURCE OF TRUTH KEYWORDS: homepage testimonials, client feedback, review carousel, reduced motion
  * WHAT: A single-row mobile review summary and desktop carousel of the nine supplied client reviews.
  * WHY: Keeps social proof visible in the hero without letting it crowd the headline and primary actions.
  * WHERE: Rendered beneath the homepage hero actions in src/app/HomeClient.tsx.
@@ -44,7 +44,7 @@ export default function HeroReviews() {
     return (
         <section
             role="region"
-            aria-label="Client reviews from Fiverr"
+            aria-label="Client reviews"
             aria-roledescription="carousel"
             aria-live="off"
             onMouseEnter={() => setIsInteracting(true)}
@@ -90,7 +90,7 @@ export default function HeroReviews() {
                     <span className="hidden h-8 w-8 shrink-0 place-items-center rounded-full bg-brand/10 text-xs font-bold text-brand sm:grid" aria-hidden="true">{review.name.slice(0, 1).toUpperCase()}</span>
                     <div className="min-w-0 text-xs leading-4 text-muted-foreground">
                         <p className="truncate"><span className="font-semibold text-foreground">{review.name}</span><span aria-hidden="true"> · </span>{review.location}</p>
-                        <p className="truncate">Fiverr client · {review.age}</p>
+                    <p className="truncate">Client feedback</p>
                     </div>
                 </div>
 

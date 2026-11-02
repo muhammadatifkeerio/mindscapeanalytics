@@ -22,12 +22,12 @@ const services = [
     {
         icon: Brain,
         title: "AI Agents & Automation",
-        description: "Autonomous AI agents that replace manual operations with intelligent, self-operating system logic.",
+        description: "AI-assisted workflows for research, inquiry triage, content preparation, and repeatable tasks, with review points for sensitive actions.",
         features: [
             "Agentic Workflows",
             "Operation-First Design",
-            "Autonomous Capture",
-            "Contextual Reasoning",
+            "Human Review Points",
+            "Context-Aware Responses",
             "System-wide Integration"
         ],
         link: "/solutions/ai-genai",
@@ -35,16 +35,16 @@ const services = [
     },
     {
         icon: Mic,
-        title: "AI Voice Call Agents",
-        description: "Human-like AI voice systems (Vapi/Retell) for inbound & outbound appointment booking.",
+        title: "AI Voice Receptionist & Calling",
+        description: "Answer business inquiries, qualify interest, coordinate appointments, and hand conversations to your team through scoped voice workflows.",
         features: [
-            "Ultra-low Latency Sync",
-            "Contextual Booking Logic",
-            "Bilingual Support",
+            "Inbound Reception and FAQs",
+            "Scheduling and Handoff Rules",
+            "Configured Language Support",
             "CRM Data Pipeline",
             "Calendar Integration"
         ],
-        link: "/solutions/ai-genai",
+        link: "/services/ai-voice-receptionist",
         gradient: "from-white/10 to-transparent"
     },
     {
@@ -64,7 +64,7 @@ const services = [
     {
         icon: Cpu,
         title: "AI Chatbots (Sales & Support)",
-        description: "Intelligent engines that capture leads and facilitate complex support 24/7 without friction.",
+        description: "Conversational support that answers approved questions, collects inquiry details, and routes requests to the right person or workflow.",
         features: [
             "Lead Gen Engines",
             "Support Intelligence",
@@ -82,7 +82,7 @@ const services = [
         features: [
             "Type-safe Architecture",
             "Micro-frontend Ready",
-            "Enterprise Security",
+            "Security-Conscious Design",
             "Real-time Data Fetching",
             "Scalable Auth Systems"
         ],
@@ -113,16 +113,24 @@ const services = [
     },
     {
         icon: BarChart3,
-        title: "Dynamic Dashboard Creation",
-        description: "Enterprise-grade visualization systems that provide real-time visibility into high-velocity operations.",
+        title: "Business Intelligence & Operations Dashboards",
+        description: "Dashboards that make agreed business metrics, source data, refresh rules, and operational exceptions clear to the people who use them.",
         features: [
-            "Real-time HUD Design",
-            "Cross-platform Sync",
-            "Custom Metric Tracking",
-            "Interactive Data Nodes",
-            "Executive Reports"
+            "Metric Definitions",
+            "Approved Data Connections",
+            "Role-Specific Views",
+            "Exception Monitoring",
+            "Executive Reporting"
         ],
         link: "/solutions/enterprise-software",
+        gradient: "from-white/10 to-transparent"
+    },
+    {
+        icon: BarChart3,
+        title: "E-Commerce Profit & Inventory Intelligence",
+        description: "Connect product economics, returns, fulfillment, marketing spend, stock movement, and operating workflows in a decision-ready reporting system.",
+        features: ["Contribution-Margin Definitions", "Blended Marketing Efficiency", "Inventory Runway", "Finance and Operations", "Multilingual Workflows"],
+        link: "/ecommerce",
         gradient: "from-white/10 to-transparent"
     },
     {
@@ -241,7 +249,7 @@ export default function ServicesPage() {
                             className="max-w-4xl border-t border-border pt-12"
                         >
                             <p className="text-xl md:text-2xl lg:text-3xl font-black text-foreground/40 font-heading tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl">
-                                Web application development, UI/UX design, AI agents, chatbot and workflow automation, AWS architecture and deployment, and China factory sourcing. From your first product brief to a working system.
+                                E-commerce intelligence, web application development, AI workflows, AWS architecture, foreign-trade automation, and China factory sourcing. From a specific operating question to a scoped system.
                             </p>
                         </motion.div>
                     </div>
@@ -326,7 +334,7 @@ export default function ServicesPage() {
                                 WE DON&apos;T JUST DELIVER. <br /> <span className="text-muted-foreground">WE OPTIMIZE.</span>
                             </h2>
                             <p className="text-lg md:text-xl font-black uppercase tracking-tight max-w-xl text-muted-foreground">
-                                Our clients subscribe to long-term reliability. We manage hosting, databases, AI maintenance, and security so you can focus on growth.
+                                Ongoing support can be scoped to your system, including infrastructure monitoring, database maintenance, AI workflow updates, and security reviews. Coverage and response windows are agreed in writing.
                             </p>
                             <div className="grid grid-cols-2 gap-6 text-meta text-muted-foreground">
                                 <div>✔ MANAGED TECHNICAL OPERATIONS</div>
@@ -339,13 +347,13 @@ export default function ServicesPage() {
                         <div className="p-12 rounded-[3.5rem] bg-background text-foreground space-y-8 relative overflow-hidden group border border-border">
                             <div className="absolute inset-0 z-0 opacity-10 bg-[url('/grid.svg')] bg-[length:40px_40px]" />
                             <div className="relative z-10 space-y-8">
-                                <h3 className="text-xl lg:text-3xl font-black uppercase tracking-tight text-foreground">THE ELITE SUBSCRIPTION</h3>
+                                <h3 className="text-xl lg:text-3xl font-black uppercase tracking-tight text-foreground">MANAGED SUPPORT, SCOPED TO YOUR SYSTEM</h3>
                                 <div className="space-y-4">
                                     {[
-                                        "Monthly AI Maintenance & Optimization",
-                                        "Automated Scale & Load Balancing",
-                                        "24/7 Priority Support Node",
-                                        "Recurring Security Audits"
+                                        "AI, database, and integration maintenance",
+                                        "Capacity planning based on measured workloads",
+                                        "Agreed monitoring and response windows",
+                                        "Scheduled security reviews within scope"
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-4">
                                             <div className="w-1.5 h-1.5 bg-foreground rounded-full group-hover:scale-150 transition-transform" />
@@ -354,7 +362,7 @@ export default function ServicesPage() {
                                     ))}
                                 </div>
                             <Link href="/contact" className="btn-institutional group w-full">
-                                <span className="relative z-10 flex items-center justify-center gap-4">INITIATE_ONBOARDING<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" /></span>
+                                <span className="relative z-10 flex items-center justify-center gap-4">Discuss managed support<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" /></span>
                             </Link>
                             </div>
                         </div>

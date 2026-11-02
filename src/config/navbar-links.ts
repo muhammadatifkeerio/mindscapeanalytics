@@ -10,6 +10,7 @@ const siteLinks: NavLink[] = [
             { name: "Blockchain & Ledger", href: "/solutions/blockchain" },
             { name: "Cloud Infrastructure", href: "/solutions/cloud-infrastructure" },
             { name: "SaaS Application Development", href: "/solutions/enterprise-software" },
+            { name: "E-Commerce Intelligence", href: "/ecommerce" },
         ],
     },
     {
@@ -28,10 +29,12 @@ const siteLinks: NavLink[] = [
         label: "Execution Services",
         href: "/services",
         submenu: [
+            { name: "AI Voice Receptionist", href: "/services/ai-voice-receptionist" },
             { name: "AI Agents & Automation", href: "/solutions/ai-genai" },
             { name: "SaaS Application Development", href: "/solutions/enterprise-software" },
             { name: "UI/UX Design", href: "/solutions/enterprise-software#ui-ux-design" },
             { name: "AWS Architecture & Deployment", href: "/solutions/cloud-infrastructure" },
+            { name: "E-Commerce Intelligence", href: "/ecommerce" },
             { name: "Foreign Trade Sales Automation", href: "/services/foreign-trade-automation" },
             { name: "China Sourcing & Supplier Vetting", href: "/services/china-sourcing" },
             { name: "Tianjin & Beijing Inspections", href: "/services/tianjin-inspection" },

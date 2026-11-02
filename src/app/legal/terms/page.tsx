@@ -32,7 +32,7 @@ export default function TermsPage() {
 
                         <section className="space-y-4">
                             <h2 className="text-foreground text-xl font-black tracking-widest border-l-2 border-foreground/20 pl-4">LIABILITY_BOUNDS // 03</h2>
-                            <p>While we engineer for 99.99% uptime, we are not liable for autonomous reasoning variations or third-party API dependencies (Vapi, Retell, OpenAI).</p>
+                            <p>Availability objectives and support commitments apply only when they are stated in the applicable written agreement. Third-party provider incidents, network conditions, and service changes may affect system availability.</p>
                         </section>
                     </div>
                 </motion.div>

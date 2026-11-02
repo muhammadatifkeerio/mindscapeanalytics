@@ -87,8 +87,8 @@ export default function EnterpriseSoftwareClient() {
                             </motion.div>
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                             <div className="absolute bottom-8 left-8 p-6 bg-transparent/60 backdrop-blur-xl border border-border rounded-2xl">
-                                <span className="text-foreground font-black text-2xl block tracking-tighter">99.99%</span>
-                                <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-[0.2em]">System Availability</span>
+                                <span className="text-foreground font-black text-2xl block tracking-tighter">Defined in scope</span>
+                                <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-[0.2em]">Availability objectives</span>
                             </div>
                         </div>
                     </div>

@@ -13,6 +13,8 @@ const companyLinks = [
 ] as const;
 
 const exploreLinks = [
+    ["AI Voice Receptionist", "/services/ai-voice-receptionist"],
+    ["E-Commerce Intelligence", "/ecommerce"],
     ["AI asset shop", "/shop"],
     ["Foreign Trade Sales Automation", "/services/foreign-trade-automation"],
     ["China Sourcing & Supplier Vetting", "/services/china-sourcing"],
