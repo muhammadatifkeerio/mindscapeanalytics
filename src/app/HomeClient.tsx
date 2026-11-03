@@ -3,13 +3,13 @@
 import { useState } from "react";
 import Image from "@/components/SmartImage";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Bot, Boxes, Check, Database, Factory, Globe2, LineChart, PackageCheck, Sparkles, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, Bot, Boxes, Check, Database, Factory, Globe2, LineChart, PackageCheck, TrendingUp, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadCaptureBar from "@/components/LeadCaptureBar";
 import BrandCardShowcase from "./_components/BrandCardShowcase";
 import HeroReviews from "./_components/HeroReviews";
+import HeroPortrait from "./_components/HeroPortrait";
 import TeamMoments from "@/components/TeamMoments";
 
 const portfolio = [
@@ -19,11 +19,18 @@ const portfolio = [
     { name: "DisposiQ", descriptor: "Bakery production and disposal automation", image: "/images/projects/disposiq-card.webp", width: 1864, height: 843, href: "https://disposiq.tenvo.store/" },
 ] as const;
 
-const capabilities = [
-    { title: "Autonomous AI agents", copy: "Deploy digital operators that research, qualify, coordinate, and complete repeatable work across your existing stack.", icon: Bot },
-    { title: "Data products that decide", copy: "Turn fragmented operational data into governed pipelines, live intelligence, and decision systems your team can trust.", icon: Database },
-    { title: "Foreign trade growth systems", copy: "Connect export inquiries, multilingual follow-up, quotations, distributor development, CRM, and reporting in one commercial workflow.", icon: TrendingUp },
-    { title: "Factory-direct sourcing", copy: "Move from product idea to production through our direct China factory network, with sourcing, validation, and delivery coordination.", icon: Factory },
+/**
+ * SOURCE OF TRUTH KEYWORDS: service paths, e-commerce intelligence, AI voice receptionist, export sales, China sourcing, custom software
+ * WHAT: The primary buyer needs and matching service destinations shown on the homepage.
+ * WHY: Helps visitors choose a relevant offer without sorting through the full technical catalog.
+ * WHERE: Homepage service discovery section immediately below the hero.
+ */
+const servicePaths = [
+    { title: "E-commerce intelligence", copy: "Connect sales, costs, marketing, and stock to understand margins and inventory risk.", icon: LineChart, href: "/ecommerce" },
+    { title: "AI voice receptionist", copy: "Answer common calls, qualify inquiries, book appointments, and route requests to staff.", icon: Bot, href: "/services/ai-voice-receptionist" },
+    { title: "Export sales operations", copy: "Organize export inquiries, RFQs, multilingual follow-up, quotations, and distributor pipelines.", icon: TrendingUp, href: "/services/foreign-trade-automation" },
+    { title: "China sourcing & checks", copy: "Evaluate suppliers, coordinate samples, and plan inspection and production handoff.", icon: Factory, href: "/services/china-sourcing" },
+    { title: "Custom software and data", copy: "Build business applications, data pipelines, and dashboards around how your team works.", icon: Database, href: "/solutions/enterprise-software" },
 ] as const;
 
 const process = [
@@ -47,11 +54,6 @@ const operatingJourney = [
     { number: "05", title: "Put automation behind approval", copy: "Let workflows prepare summaries and suggested next steps while people retain approval over financial, inventory, and supplier decisions.", icon: Bot, detail: "Automation, with people in control" },
 ] as const;
 
-const reveal = {
-    hidden: { opacity: 0, y: 28, filter: "blur(8px)" },
-    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-};
-
 /**
  * SOURCE OF TRUTH KEYWORDS: Mindscape homepage, AI agency hero, China sourcing, Tenvo, light theme, rose accent
  * WHAT: The primary 2026 marketing experience for Mindscape Analytics.
@@ -59,9 +61,8 @@ const reveal = {
  * WHERE: Rendered by src/app/page.tsx at the public root route.
  */
 export default function HomeClient() {
-    const reduceMotion = useReducedMotion();
-    const transition = reduceMotion ? { duration: 0 } : { duration: 0.75, ease: [0.16, 1, 0.3, 1] as const };
     const [activeJourneyStep, setActiveJourneyStep] = useState(0);
+    const [serviceMotionPaused, setServiceMotionPaused] = useState(false);
     const [previewDecision, setPreviewDecision] = useState<"pending" | "approved" | "changes">("pending");
 
     const activeJourney = operatingJourney[activeJourneyStep];
@@ -77,51 +78,35 @@ export default function HomeClient() {
              * WHY: Keep the offer and primary action clear on narrow screens without reserving desktop-sized empty space.
              * WHERE: Homepage first section, before the product portfolio strip.
              */}
-            <section className="relative isolate min-h-0 overflow-hidden pt-[max(7rem,calc(env(safe-area-inset-top)_+_5.5rem))] lg:min-h-[100svh] md:pt-32">
-                <div className="hero-halo" aria-hidden="true" />
-                <div className="hero-particles" aria-hidden="true" />
-
-                <div className="container-standard relative z-10 grid min-h-0 items-center gap-0 pb-10 sm:gap-10 sm:pb-14 lg:min-h-[calc(100svh-7rem)] lg:grid-cols-[0.9fr_1.15fr_0.75fr] lg:gap-0 lg:pb-8">
-                    <motion.div initial="hidden" animate="visible" variants={reveal} transition={transition} className="relative z-20 order-last w-full max-w-xl sm:order-none lg:pb-20">
-                        <div className="mb-7 hidden items-center gap-3 text-xs font-semibold text-brand sm:flex">
-                            <span className="inline-flex h-2.5 w-2.5 rounded-full bg-brand shadow-[0_0_0_7px_hsl(var(--brand)/0.1)]" />
-                            AI, data & operating systems
+            <section className="relative isolate overflow-hidden pt-[max(7rem,calc(env(safe-area-inset-top)_+_5.5rem))] md:pt-32">
+                <div className="container-standard relative grid items-center gap-8 pb-10 sm:gap-10 sm:pb-14 lg:grid-cols-[1fr_1.1fr_0.55fr] lg:gap-6 lg:pb-8">
+                    <div className="relative z-10 order-2 w-full max-w-xl lg:order-1 lg:py-10">
+                        <div className="mb-5 flex items-center gap-3 text-xs font-semibold text-brand">
+                            AI, data &amp; operating systems
                         </div>
-                        <h1 className="max-w-[12ch] text-balance font-heading text-[clamp(2.65rem,10vw,4rem)] font-semibold leading-[0.95] tracking-[-0.04em] sm:max-w-[14ch] sm:text-[clamp(3rem,5.2vw,5rem)]">
+                        <h1 className="max-w-[15ch] text-balance font-heading text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
                             Make operations work together.
                         </h1>
-                        <p className="mt-4 max-w-[54ch] text-pretty text-base leading-7 text-muted-foreground sm:mt-7 md:text-lg md:leading-8">
-                            Mindscape builds multilingual operating systems that connect finance, inventory, production, growth workflows, and AI-assisted decisions. We help teams put those systems to work in their daily operations.
+                        <p className="mt-5 max-w-[58ch] text-pretty leading-7 text-muted-foreground sm:mt-6 sm:text-lg sm:leading-8">
+                            Mindscape builds business software and AI workflows for e-commerce teams, manufacturers, and exporters. Connect your systems, spot what needs attention, and keep people in control of important decisions.
                         </p>
-                        <div className="mt-5 flex flex-col items-stretch gap-2.5 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+                        <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                             <Link href="/contact" className="msa-button group w-full justify-between sm:w-auto">
-                                Get in touch
-                                <span className="msa-button-orb"><ArrowRight className="h-4 w-4" /></span>
+                                Discuss your workflow
+                                <span className="msa-button-orb"><ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
                             </Link>
-                            <Link href="/ecommerce" className="msa-text-link w-full justify-center sm:w-auto">E-commerce profit &amp; inventory intelligence <ArrowRight className="h-4 w-4" /></Link>
-                            <Link href="/projects" className="msa-text-link !hidden self-start sm:!inline-flex sm:self-auto">Explore our work <ArrowRight className="h-4 w-4" /></Link>
+                            <Link href="#service-pathways" className="msa-text-link w-full justify-center sm:w-auto">Choose a service <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
                         </div>
                         <HeroReviews />
-                    </motion.div>
-
-                    <motion.div initial={reduceMotion ? false : { opacity: 0, y: 18, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ ...transition, delay: 0.12 }} className="relative z-10 order-first -mx-3 -mt-4 flex h-[clamp(17rem,78vw,23rem)] items-center justify-center overflow-hidden sm:order-none sm:mx-0 sm:mt-0 sm:h-auto sm:min-h-[480px] sm:items-end sm:self-end lg:min-h-[720px]">
-                        <div className="absolute inset-x-[12%] bottom-[9%] h-[60%] rounded-[50%] bg-[hsl(var(--brand)/0.09)] blur-3xl" aria-hidden="true" />
-                        <Image src="/images/hero/mindscape-intelligence-2026.webp" alt="An ethereal AI portrait visualizing connected intelligence" width={1024} height={1536} priority sizes="(max-width: 639px) 76vw, (max-width: 1023px) 48vw, 42vw" className="hero-portrait-image relative z-10 h-full w-auto max-w-full object-contain object-center mix-blend-multiply dark:mix-blend-screen sm:h-auto sm:max-h-[min(50svh,28rem)] sm:object-bottom lg:max-h-[78svh]" />
-                        <motion.div animate={reduceMotion ? undefined : { y: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute left-0 top-[27%] z-20 hidden w-60 rounded-2xl bg-card/95 p-4 shadow-[0_18px_60px_rgba(35,20,25,0.12)] ring-1 ring-border/70 backdrop-blur-xl md:block">
-                            <div className="flex items-start gap-3">
-                                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-foreground text-background"><Sparkles className="h-4 w-4" /></span>
-                                <div><p className="text-xs text-muted-foreground">Example workflow</p><p className="mt-1 text-sm font-semibold">Research supplier landscape</p><div className="mt-3 space-y-2 text-[11px] text-muted-foreground"><p className="flex items-center gap-2"><Check className="h-3 w-3 text-brand" /> Validate requirements</p><p className="flex items-center gap-2"><Check className="h-3 w-3 text-brand" /> Compare factory fit</p></div></div>
-                            </div>
-                        </motion.div>
-                    </motion.div>
-
-                    <motion.aside initial="hidden" animate="visible" variants={reveal} transition={{ ...transition, delay: 0.22 }} className="relative z-20 hidden sm:block lg:pb-28 lg:pl-2">
-                        <div className="mb-0 ml-auto max-w-none border-t border-border pt-4 lg:mb-12 lg:max-w-[260px] lg:pt-5">
-                            <div className="flex items-end justify-between gap-4"><p className="text-xs leading-5 text-muted-foreground">One connected delivery team</p><span className="font-heading text-3xl font-semibold tracking-[-0.04em]">AI →</span></div>
-                            <div className="mt-4 flex flex-wrap gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground"><span>AI</span><span aria-hidden="true">·</span><span>Data</span><span aria-hidden="true">·</span><span>Products</span><span aria-hidden="true">·</span><span>Production</span></div>
-                        </div>
-                        <p className="max-w-[13ch] font-heading text-[clamp(2rem,8vw,2.5rem)] font-semibold leading-[0.98] tracking-[-0.04em] sm:text-[clamp(2.25rem,3.8vw,4.4rem)]">Your AI system doesn’t sleep.</p>
-                    </motion.aside>
+                    </div>
+                    <div className="relative order-1 flex h-[clamp(17rem,70vw,25rem)] items-end justify-center overflow-hidden lg:order-2 lg:h-[min(74svh,44rem)]">
+                        <HeroPortrait />
+                    </div>
+                    <aside className="relative order-3 hidden self-center border-t border-border pt-5 lg:block">
+                        <p className="text-xs leading-5 text-muted-foreground">One connected delivery team</p>
+                        <p className="mt-4 text-xs font-semibold uppercase tracking-[.12em] text-muted-foreground">AI · Data · Products · Production</p>
+                        <p className="mt-8 max-w-[12ch] font-heading text-[clamp(1.75rem,2.8vw,3rem)] font-semibold leading-tight tracking-[-.03em]">Your AI system doesn’t sleep.</p>
+                    </aside>
                 </div>
 
                 <div className="relative z-20 mt-5 hidden border-y border-border/75 bg-card/70 py-5 before:absolute before:left-1/2 before:top-0 before:h-px before:w-24 before:-translate-x-1/2 before:bg-brand sm:block md:mt-0">
@@ -129,32 +114,45 @@ export default function HomeClient() {
                 </div>
             </section>
 
-            <section className="container-standard py-24 md:py-36">
-                <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
-                    <div className="lg:sticky lg:top-32 lg:self-start"><h2 className="text-balance font-heading text-[clamp(2.6rem,5vw,5.6rem)] font-semibold leading-[0.94] tracking-[-0.04em]">One partner from intelligence to execution.</h2><p className="mt-7 max-w-md text-base leading-7 text-muted-foreground">Strategy is only valuable when it becomes an operating system. We combine AI, data, software, and supply-chain execution so fewer critical handoffs are left to chance.</p></div>
-                    <div className="divide-y divide-border border-y border-border">
-                        {capabilities.map(({ title, copy, icon: Icon }, index) => (
-                            <motion.article key={title} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-15%" }} transition={{ ...transition, delay: index * 0.08 }} className="group grid gap-5 py-9 sm:grid-cols-[56px_0.7fr_1fr] sm:items-start md:py-12">
-                                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-muted text-foreground transition-colors group-hover:bg-brand group-hover:text-white"><Icon className="h-5 w-5" /></span><h3 className="text-xl font-semibold tracking-[-0.025em] md:text-2xl">{title}</h3><p className="max-w-xl leading-7 text-muted-foreground">{copy}</p>
-                            </motion.article>
-                        ))}
-                    </div>
+            <section id="service-pathways" className="container-standard scroll-mt-24 py-10 md:py-14" aria-labelledby="service-pathways-heading">
+                <div className="mb-5 max-w-2xl">
+                    <p className="text-xs font-semibold uppercase tracking-[.16em] text-brand">Choose your starting point</p>
+                    <h2 id="service-pathways-heading" className="mt-2 text-balance font-heading text-2xl font-semibold tracking-tight md:text-3xl">What would you like to improve?</h2>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">Choose a service. We will help define the scope.</p>
                 </div>
+                {/* SOURCE OF TRUTH KEYWORDS: service card row, horizontal overflow, keyboard navigation, compact services, hover motion, reduced motion
+                    WHAT: Five equal desktop cards with a native horizontal row on smaller screens.
+                    WHY: Keeps service discovery compact while preserving readable copy and full-card link targets.
+                    WHERE: Homepage service pathways. */}
+                <div className="service-loop-window" data-paused={serviceMotionPaused}>
+                <div className="service-loop-track grid auto-cols-[minmax(16rem,80%)] grid-flow-col gap-3 overflow-x-auto px-1 pb-4 pt-2 snap-x snap-proximity sm:auto-cols-[minmax(15rem,38%)] lg:auto-cols-auto lg:grid-cols-5">
+                    {[...servicePaths, ...servicePaths].map(({ title, copy, icon: Icon, href }, index) => (
+                        <Link key={`${title}-${index}`} href={href} aria-hidden={index >= servicePaths.length ? true : undefined} tabIndex={index >= servicePaths.length ? -1 : undefined} className={`${index >= servicePaths.length ? "service-path-copy " : ""}service-path-card group flex min-w-0 snap-start flex-col rounded-xl border border-border bg-card p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand lg:p-5`}>
+                            <span className="flex items-center justify-between gap-3"><span className="grid h-9 w-9 place-items-center rounded-lg bg-brand/10 text-brand"><Icon className="h-[18px] w-[18px]" aria-hidden="true" /></span><ArrowRight className="service-path-arrow h-4 w-4 text-muted-foreground" aria-hidden="true" /></span>
+                            <h3 className="mt-4 text-base font-semibold leading-snug tracking-tight">{title}</h3>
+                            <p className="mt-2 flex-1 text-[13px] leading-5 text-muted-foreground">{copy}</p>
+                            <span className="mt-4 text-xs font-semibold text-brand">View service</span>
+                        </Link>
+                    ))}
+                </div>
+                </div>
+                <button type="button" onClick={() => setServiceMotionPaused((paused) => !paused)} aria-pressed={serviceMotionPaused} className="service-loop-control min-h-11 text-xs font-semibold text-muted-foreground sm:hidden">{serviceMotionPaused ? "Resume service cards" : "Pause service cards"}</button>
+                <p className="mt-1 hidden text-xs text-muted-foreground sm:block lg:hidden">Swipe or scroll to explore all five services.</p>
             </section>
 
             {/*
-             * SOURCE OF TRUTH KEYWORDS: Homepage proof narrative, operating system journey, native scroll motion, reduced motion, multilingual operations, qualified growth
-             * WHAT: A scroll-led, text-first explanation of Mindscape's operational system capabilities.
-             * WHY: Makes product proof understandable without scroll-jacking, autoplay media, or claims that the visitor cannot verify.
+             * SOURCE OF TRUTH KEYWORDS: Homepage proof narrative, operating system journey, click-selected preview, multilingual operations, commerce margin, inventory
+             * WHAT: A click-selected explanation of Mindscape's operational system capabilities.
+             * WHY: Makes product proof understandable without scroll-triggered state, autoplay media, or claims that the visitor cannot verify.
              * WHERE: Homepage after the capability overview and before the sourcing service path.
              */}
             {/*
-             * SOURCE OF TRUTH KEYWORDS: Operating journey, interactive canvas, sticky preview, commerce margin, inventory, supplier evidence, human approval
+             * SOURCE OF TRUTH KEYWORDS: Operating journey, click controls, commerce margin, inventory, supplier evidence, human approval
              * WHAT: Shows how Mindscape connects operating signals to explainable decisions through an interactive, illustrative software preview.
-             * WHY: Replaces five repetitive cards with a scroll-linked story and concrete interface examples while preserving readable content without motion.
+             * WHY: Uses simple click controls and concrete interface examples, with no scroll-linked animation.
              * WHERE: Homepage between capability overview and China sourcing section.
              */}
-            <section className="border-y border-border bg-muted/45 py-14 md:py-20" aria-labelledby="operating-journey-heading">
+            <section className="operating-journey-section border-y border-border bg-muted/45 py-10 sm:py-14 md:py-20" aria-labelledby="operating-journey-heading">
                 <div className="container-standard">
                     <div className="mb-7 max-w-3xl sm:mb-10">
                         <p className="text-xs font-semibold uppercase tracking-[.16em] text-brand">How it works</p>

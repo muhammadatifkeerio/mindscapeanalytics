@@ -41,7 +41,6 @@
         100% { transform: translate3d(-50%, 0, 0); }
     }
 }
-
 @utility border-border {
     border-color: hsl(var(--border));
 }
@@ -155,7 +154,6 @@
         transform: rotateY(180deg);
     }
 }
-
 @media (prefers-reduced-motion: reduce) {
     .business-card-inner { transition-duration: 1ms; }
 }
@@ -267,6 +265,47 @@ h1, h2, h3, h4 {
     .hero-portrait-image {
         -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
         mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+    }
+
+    /* SOURCE OF TRUTH KEYWORDS: service card motion, hover lift, keyboard focus, reduced motion, transform, service pathways
+       WHAT: Brief interaction feedback for service links. WHY: Adds movement only during intentional interaction. WHERE: Homepage service row. */
+    .service-path-card { transition: transform 180ms ease-out, border-color 180ms ease-out; }
+    .service-path-arrow { transition: transform 180ms ease-out; }
+    .service-loop-track .service-path-copy { display: none; }
+    /* SOURCE OF TRUTH KEYWORDS: mobile service loop, seamless track, pause motion, compact journey, reduced motion, mobile layout
+       WHAT: Phone-only service loop and compact operating preview. WHY: Saves vertical space without changing desktop composition. WHERE: Homepage below hero. */
+    @media (max-width: 639px) {
+        .service-loop-window { overflow: hidden; }
+        .service-loop-track { display: flex; width: max-content; overflow: visible; padding: 8px 12px 8px 0; gap: 12px; animation: service-card-loop 45s linear infinite; }
+        .service-loop-track .service-path-card { width: 240px; flex: 0 0 240px; padding: 16px; }
+        .service-loop-track .service-path-copy { display: flex; }
+        .service-loop-window[data-paused="true"] .service-loop-track,
+        .service-loop-window:focus-within .service-loop-track,
+        .service-loop-window:active .service-loop-track { animation-play-state: paused; }
+        .operating-journey-section h2 { font-size: 1.75rem; line-height: 1.15; }
+        .operating-journey-section h2 + p { font-size: 0.875rem; line-height: 1.5; margin-top: 10px; }
+        .operating-journey-section ol button { padding: 12px; }
+        .operating-journey-section ol button > span { gap: 12px; }
+        .operating-journey-section ol button .h-11 { height: 32px; width: 32px; border-radius: 8px; }
+        .operating-journey-section ol button .text-lg { font-size: 1rem; }
+        .operating-journey-section ol button .tracking-\[\.14em\] { letter-spacing: 0.06em; font-size: 10px; }
+        #operating-journey-preview { padding: 16px; min-height: 0; }
+        @keyframes service-card-loop { to { transform: translateX(-50%); } }
+    }
+    @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
+        .service-loop-window { overflow-x: auto; scrollbar-width: none; }
+        .service-loop-window::-webkit-scrollbar { display: none; }
+        .service-loop-track { animation: none; }
+        .service-loop-track .service-path-copy, .service-loop-control { display: none; }
+    }
+    .service-path-card:focus-visible { border-color: hsl(var(--brand)); }
+    @media (hover: hover) and (pointer: fine) {
+        .service-path-card:hover { transform: translateY(-4px); border-color: hsl(var(--brand) / 0.5); }
+        .service-path-card:hover .service-path-arrow { transform: translateX(3px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .service-path-card, .service-path-arrow { transition: none; }
+        .service-path-card:hover, .service-path-card:hover .service-path-arrow { transform: none; }
     }
 
     @media (max-width: 639px) {

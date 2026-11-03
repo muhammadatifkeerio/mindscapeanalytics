@@ -29,7 +29,7 @@ export function PremiumCard({
     tag
 }: PremiumCardProps) {
     return (
-        <div className="group relative h-full bg-card border border-border/50 rounded-[2rem] flex flex-col p-6 overflow-hidden">
+        <div className="group relative h-full bg-card border border-border rounded-2xl flex flex-col p-6 overflow-hidden transition-colors duration-150 hover:border-brand/40">
             {/* Top Tag or Icon */}
             <div className="flex items-center justify-between mb-6 z-10 relative">
                 {tag ? (
@@ -64,26 +64,26 @@ export function PremiumCard({
 
                 {/* Text Content */}
                 <div className={cn("flex flex-col flex-grow", imagePosition === "right" ? "w-full md:w-1/2" : "w-full")}>
-                    <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3 tracking-tight group-hover:text-foreground/80 transition-colors">
+                    <h3 className="text-xl font-semibold text-foreground mb-3 tracking-tight">
                         {title}
                     </h3>
-                    <p className="text-muted-foreground text-xs leading-relaxed mb-6">
+                    <p className="text-muted-foreground text-sm leading-6 mb-5">
                         {description}
                     </p>
 
                     {features.length > 0 && (
-                        <div className="space-y-2 mb-6 mt-auto">
+                        <ul className="space-y-2.5 mb-5 mt-auto">
                             {features.map((feature) => (
-                                <div key={feature} className="flex items-center text-[9px] font-mono font-bold text-muted-foreground uppercase tracking-wider">
-                                    <div className="w-1 h-1 bg-foreground/50 rounded-full mr-2" />
-                                    {feature}
-                                </div>
+                                <li key={feature} className="flex items-start gap-2 text-xs leading-5 text-muted-foreground">
+                                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+                                    <span>{feature}</span>
+                                </li>
                             ))}
-                        </div>
+                        </ul>
                     )}
 
-                    <Link href={link} className="mt-auto inline-flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-foreground hover:text-foreground/80 transition-colors group/link mt-4 pt-4 border-t border-border/50">
-                        Learn More
+                    <Link href={link} className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-foreground transition-colors hover:text-brand group/link mt-2 pt-4 border-t border-border">
+                        Explore service
                         <ArrowRight className="w-3 h-3 ml-2 transition-transform group-hover/link:translate-x-1" />
                     </Link>
                 </div>

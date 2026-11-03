@@ -164,10 +164,10 @@ function ContactFormContent() {
                         className="max-w-4xl mx-auto text-center"
                     >
                         <h1 className="fluid-h1 mb-8">
-                            Tell us what you’re looking to build.
+                            Tell us what your team needs to improve.
                         </h1>
                         <p className="fluid-body max-w-4xl mx-auto text-foreground/70 font-medium tracking-tight">
-                            Share a few details and our team will get back to you. Prefer to speak directly? Choose one of our office numbers below.
+                            Choose the closest service and tell us what is getting in the way. We will review your current tools and goals, then follow up with a clear next step.
                         </p>
                     </motion.div>
                 </div>
@@ -472,8 +472,16 @@ function ContactFormContent() {
                                                     >
                                                         <option value="" className="bg-background text-foreground">Select a service</option>
                                                         <option value="ai-automation" className="bg-background text-foreground">AI agents and automation</option>
+                                                        <option value="voice-workflow-review" className="bg-background text-foreground">AI voice workflow review</option>
+                                                        <option value="voice-receptionist" className="bg-background text-foreground">AI receptionist</option>
+                                                        <option value="voice-sales-assistant" className="bg-background text-foreground">AI sales assistant</option>
+                                                        <option value="voice-operations" className="bg-background text-foreground">Multi-team AI voice operations</option>
+                                                        <option value="voice-revenue-workflow" className="bg-background text-foreground">Connected voice and sales workflow</option>
                                                         <option value="software-development" className="bg-background text-foreground">Software or digital product</option>
                                                         <option value="data-cloud" className="bg-background text-foreground">Data systems or cloud architecture</option>
+                                                        <option value="ecommerce-profit-inventory" className="bg-background text-foreground">E-commerce profit and inventory intelligence</option>
+                                                        <option value="ecommerce-diagnostic" className="bg-background text-foreground">E-commerce diagnostic</option>
+                                                        <option value="commerce-agency-partner" className="bg-background text-foreground">Agency reporting partnership</option>
                                                         <option value="farm-management" className="bg-background text-foreground">Farm management software</option>
                                                         <option value="china-sourcing" className="bg-background text-foreground">China sourcing and production</option>
                                                         <option value="digital-supplier-shortlist" className="bg-background text-foreground">$299 digital supplier shortlist</option>

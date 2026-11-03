@@ -2,15 +2,15 @@ import { Metadata } from "next";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "Business Intelligence & AI Systems | Mindscape Analytics",
-  description: "Multilingual business software, AI workflows, analytics, and China sourcing support connecting commerce, finance, inventory, and production operations.",
+  title: "AI, Data & Business Software for Commerce | Mindscape Analytics",
+  description: "Business software, analytics, and AI workflows for e-commerce teams, manufacturers, and exporters. Connect sales, inventory, production, and sourcing operations.",
   alternates: {
     canonical: "/",
     languages: { "en-US": "/", "zh-CN": "/zh-cn", "x-default": "/" },
   },
   openGraph: {
-    title: "Business Intelligence & AI Systems | Mindscape Analytics",
-    description: "Explore multilingual business software, AI workflows, analytics, and operations systems from Mindscape Analytics.",
+    title: "AI, Data & Business Software for Commerce | Mindscape Analytics",
+    description: "Explore business software, analytics, and AI workflows for e-commerce teams, manufacturers, and exporters.",
     url: "https://mindscapeanalytics.com",
     siteName: "Mindscape Analytics",
     images: [
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Business Intelligence & AI Systems | Mindscape Analytics",
-    description: "Multilingual business software, AI workflows, analytics, and China sourcing support.",
+    title: "AI, Data & Business Software for Commerce | Mindscape Analytics",
+    description: "Business software and AI workflows for commerce, manufacturing, and export teams.",
     images: ["/images/og-mindscape-2026.png"],
   },
 };

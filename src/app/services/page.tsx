@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
     Brain,
     Cpu,
@@ -24,11 +23,11 @@ const services = [
         title: "AI Agents & Automation",
         description: "AI-assisted workflows for research, inquiry triage, content preparation, and repeatable tasks, with review points for sensitive actions.",
         features: [
-            "Agentic Workflows",
-            "Operation-First Design",
-            "Human Review Points",
-            "Context-Aware Responses",
-            "System-wide Integration"
+            "Research and inquiry workflows",
+            "Rules based on your operations",
+            "Human review for sensitive actions",
+            "Approved business context",
+            "Connections to existing tools"
         ],
         link: "/solutions/ai-genai",
         gradient: "from-white/10 to-transparent"
@@ -38,11 +37,11 @@ const services = [
         title: "AI Voice Receptionist & Calling",
         description: "Answer business inquiries, qualify interest, coordinate appointments, and hand conversations to your team through scoped voice workflows.",
         features: [
-            "Inbound Reception and FAQs",
-            "Scheduling and Handoff Rules",
-            "Configured Language Support",
-            "CRM Data Pipeline",
-            "Calendar Integration"
+            "Answer approved common questions",
+            "Appointment and transfer rules",
+            "Configured language support",
+            "CRM connection where supported",
+            "Calendar connection where supported"
         ],
         link: "/services/ai-voice-receptionist",
         gradient: "from-white/10 to-transparent"
@@ -66,11 +65,11 @@ const services = [
         title: "AI Chatbots (Sales & Support)",
         description: "Conversational support that answers approved questions, collects inquiry details, and routes requests to the right person or workflow.",
         features: [
-            "Lead Gen Engines",
-            "Support Intelligence",
-            "CRM Data Sync",
-            "Multi-channel Deployment",
-            "Analytics Readout"
+            "Approved question handling",
+            "Inquiry capture and routing",
+            "CRM connection where supported",
+            "Configured channel deployment",
+            "Conversation reporting"
         ],
         link: "/solutions/ai-genai",
         gradient: "from-white/10 to-transparent"
@@ -80,11 +79,11 @@ const services = [
         title: "Web & SaaS Application Development",
         description: "Complete web applications, SaaS platforms, and AI-enabled software: product discovery, UI/UX design, APIs, databases, deployment, and ongoing support.",
         features: [
-            "Type-safe Architecture",
-            "Micro-frontend Ready",
-            "Security-Conscious Design",
-            "Real-time Data Fetching",
-            "Scalable Auth Systems"
+            "Product discovery and scope",
+            "Responsive user experience",
+            "Secure-by-design development",
+            "APIs and data connections",
+            "Deployment and support planning"
         ],
         link: "/solutions/enterprise-software",
         gradient: "from-white/10 to-transparent"
@@ -100,13 +99,13 @@ const services = [
     {
         icon: TrendingUp,
         title: "Lead Generation AI Systems",
-        description: "Automated engines designed to capture, track, and qualify high-intent leads across ecosystems.",
+        description: "Tools to capture, organize, and qualify inquiries from approved sources using rules your team can review.",
         features: [
-            "Targeted Capture Logic",
-            "Automated Scoring",
-            "Lead Nurture Flow",
-            "Multi-source Tracking",
-            "Conversion Optimization"
+            "Inquiry capture and routing",
+            "Business-fit qualification rules",
+            "Follow-up task workflows",
+            "Lead-source tracking",
+            "Outcome reporting"
         ],
         link: "/contact",
         gradient: "from-white/10 to-transparent"
@@ -136,13 +135,13 @@ const services = [
     {
         icon: Database,
         title: "Data Engineering & Analytics",
-        description: "Architecting the pipelines that power modern intelligence. Scalable, secure, and performant.",
+        description: "Connect approved data sources through documented pipelines, quality checks, and reporting models that support business decisions.",
         features: [
-            "ETL Pipeline Mastery",
-            "Warehouse Architecture",
-            "Stream Processing",
-            "Data Quality Audits",
-            "Predictive Analytics"
+            "Data source and pipeline design",
+            "Analytics warehouse planning",
+            "Batch or event-based processing",
+            "Data quality checks",
+            "Forecasts with stated assumptions"
         ],
         link: "/solutions/cloud-infrastructure",
         gradient: "from-white/10 to-transparent"
@@ -150,13 +149,13 @@ const services = [
     {
         icon: Shield,
         title: "Custom DB & Infrastructure",
-        description: "Industrial-grade database design and cloud management focused on long-term scalability.",
+        description: "Database and cloud infrastructure designed around access control, backups, measured workloads, and the reliability your team needs.",
         features: [
-            "Schema Architecture",
-            "Redundancy Protocols",
-            "Managed Maintenance",
-            "Security Hardening",
-            "Automated Backups"
+            "Database and schema planning",
+            "Availability and recovery design",
+            "Scoped maintenance",
+            "Security configuration",
+            "Backup and restore planning"
         ],
         link: "/solutions/cloud-infrastructure",
         gradient: "from-white/10 to-transparent"
@@ -193,26 +192,50 @@ services.push({
     gradient: "from-white/10 to-transparent"
 });
 
+/**
+ * SOURCE OF TRUTH KEYWORDS: priority services, e-commerce intelligence, AI voice, export sales, China sourcing, software development
+ * WHAT: Places the most specific buyer-facing service pages first in the services catalog.
+ * WHY: Visitors can identify a relevant offer before scanning specialist engineering capabilities.
+ * WHERE: Services catalog cards.
+ */
+const primaryServiceTitles = [
+    "E-Commerce Profit & Inventory Intelligence",
+    "AI Voice Receptionist & Calling",
+    "Foreign Trade Sales & Growth Automation",
+    "China Direct Factory Sourcing",
+    "Web & SaaS Application Development",
+] as const;
+
+const primaryServices = primaryServiceTitles.flatMap((primaryTitle) => {
+    const service = services.find((item) => item.title === primaryTitle);
+    return service ? [service] : [];
+});
+
+const orderedServices = [
+    ...primaryServices,
+    ...services.filter((service) => !primaryServiceTitles.some((primaryTitle) => primaryTitle === service.title)),
+];
+
 const process = [
     {
         step: "01",
         title: "Discovery",
-        description: "We analyze your business needs and define project scope"
+        description: "We map your goals, current tools, and operating constraints."
     },
     {
         step: "02",
         title: "Strategy",
-        description: "Develop a comprehensive roadmap and technical architecture"
+        description: "We agree on deliverables, data access, and the project plan."
     },
     {
         step: "03",
         title: "Development",
-        description: "Build your solution with agile methodology and best practices"
+        description: "We build and connect the workflows included in the agreed scope."
     },
     {
         step: "04",
         title: "Deployment",
-        description: "Launch with confidence and provide ongoing support"
+        description: "We review the result with your team and define any ongoing support."
     }
 ];
 
@@ -221,47 +244,23 @@ export default function ServicesPage() {
         <div className="min-h-screen bg-background text-foreground relative">
             <Navbar />
 
-            {/* --- Industrial Hero Section --- */}
-            <section className="relative pt-44 pb-32 overflow-hidden institutional-grid">
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="flex flex-col items-center text-center space-y-12">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/5 border border-border backdrop-blur-md"
-                        >
-                            <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_hsl(var(--foreground) / 0.6)]" />
-                            <span className="text-meta">Service_Catalog // v4.2</span>
-                        </motion.div>
-
-                        <motion.h1
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="fluid-h1"
-                        >
-                            APPLICATION &amp; AI <br /> <span className="opacity-40">SERVICES.</span>
-                        </motion.h1>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="max-w-4xl border-t border-border pt-12"
-                        >
-                            <p className="text-xl md:text-2xl lg:text-3xl font-black text-foreground/40 font-heading tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl">
-                                E-commerce intelligence, web application development, AI workflows, AWS architecture, foreign-trade automation, and China factory sourcing. From a specific operating question to a scoped system.
-                            </p>
-                        </motion.div>
-                    </div>
+            <section className="container-standard pb-12 pt-36 md:pb-16 md:pt-44">
+                <div className="max-w-4xl">
+                    <p className="text-xs font-semibold uppercase tracking-[.16em] text-brand">Services for business operations and growth</p>
+                    <h1 className="mt-4 text-balance font-heading text-[clamp(2.5rem,6vw,4.75rem)] font-semibold leading-[.98] tracking-[-.04em]">Business software, AI, and growth systems.</h1>
+                    <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">We help e-commerce teams, manufacturers, and exporters connect data, respond to customers, and improve essential workflows. Start with the service closest to your business need.</p>
+                    <Link href="/contact" className="msa-button mt-7">Discuss your business challenge <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
                 </div>
             </section>
 
-            {/* Services Grid */}
-            <section className="section-spacing bg-transparent relative">
-                <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay pointer-events-none" />
+            <section className="section-spacing bg-transparent">
                 <div className="container mx-auto px-6 relative z-10">
+                    <div className="mb-8 max-w-2xl">
+                        <h2 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">Choose the offer closest to your goal</h2>
+                        <p className="mt-3 leading-7 text-muted-foreground">Compare the main service areas first. Specialist capabilities follow below.</p>
+                    </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto">
-                        {services.map((service, index) => (
+                        {orderedServices.map((service, index) => (
                             <PremiumCard
                                 key={service.title}
                                 {...service}
@@ -276,38 +275,24 @@ export default function ServicesPage() {
             <TechStackShowcase />
 
             {/* --- Process Section --- */}
-            <section className="py-32 bg-background border-t border-border">
+            <section className="py-20 bg-background border-t border-border md:py-24">
                 <div className="container mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-32"
-                    >
-                        <h2 className="fluid-h2 mb-4">
-                            PROCESS.
-                        </h2>
-                        <span className="text-meta">The engineering workflow</span>
-                    </motion.div>
+                    <div className="mb-12 text-center md:mb-16">
+                        <h2 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">A clear path from discovery to handoff</h2>
+                        <p className="mt-3 text-muted-foreground">Scope, delivery, and review are agreed before work begins.</p>
+                    </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-screen-2xl mx-auto">
-                        {process.map((item, index) => (
-                            <motion.div
-                                key={item.step}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="group"
-                            >
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-screen-2xl mx-auto">
+                        {process.map((item) => (
+                            <div key={item.step} className="group">
                                 <div className="space-y-6">
-                                    <span className="text-5xl font-black text-foreground/5 group-hover:text-foreground/20 transition-colors leading-none">{item.step}</span>
-                                    <h3 className="text-xl font-black uppercase tracking-tight text-foreground">{item.title}</h3>
-                                    <p className="text-foreground/40 text-sm font-medium leading-relaxed uppercase tracking-tight">
+                                    <span className="text-3xl font-semibold text-brand leading-none">{item.step}</span>
+                                    <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
+                                    <p className="text-muted-foreground text-sm leading-relaxed">
                                         {item.description}
                                     </p>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -328,26 +313,26 @@ export default function ServicesPage() {
             <section className="py-24 border-t border-border bg-muted/40 text-foreground">
                 <div className="container-standard">
                     <div className="grid lg:grid-cols-2 gap-20 items-center max-w-screen-2xl mx-auto">
-                        <div className="space-y-12">
-                            <span className="text-meta opacity-40">Business_Model // Managed</span>
-                            <h2 className="fluid-h2 text-foreground">
-                                WE DON&apos;T JUST DELIVER. <br /> <span className="text-muted-foreground">WE OPTIMIZE.</span>
+                        <div className="space-y-8">
+                            <p className="text-sm font-semibold text-brand">After launch</p>
+                            <h2 className="font-heading text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+                                Support that fits your system
                             </h2>
-                            <p className="text-lg md:text-xl font-black uppercase tracking-tight max-w-xl text-muted-foreground">
+                            <p className="text-lg leading-7 max-w-xl text-muted-foreground">
                                 Ongoing support can be scoped to your system, including infrastructure monitoring, database maintenance, AI workflow updates, and security reviews. Coverage and response windows are agreed in writing.
                             </p>
-                            <div className="grid grid-cols-2 gap-6 text-meta text-muted-foreground">
-                                <div>✔ MANAGED TECHNICAL OPERATIONS</div>
-                                <div>✔ RELIABILITY PRACTICES</div>
-                                <div>✔ COST VISIBILITY</div>
-                                <div>✔ CONTINUOUS IMPROVEMENT</div>
+                            <div className="grid grid-cols-2 gap-4 text-sm text-muted-foreground">
+                                <div>Managed technical operations</div>
+                                <div>Reliability reviews</div>
+                                <div>Cloud cost visibility</div>
+                                <div>Ongoing improvements</div>
                             </div>
                         </div>
 
-                        <div className="p-12 rounded-[3.5rem] bg-background text-foreground space-y-8 relative overflow-hidden group border border-border">
+                        <div className="p-8 rounded-2xl bg-background text-foreground space-y-7 relative overflow-hidden border border-border sm:p-10">
                             <div className="absolute inset-0 z-0 opacity-10 bg-[url('/grid.svg')] bg-[length:40px_40px]" />
                             <div className="relative z-10 space-y-8">
-                                <h3 className="text-xl lg:text-3xl font-black uppercase tracking-tight text-foreground">MANAGED SUPPORT, SCOPED TO YOUR SYSTEM</h3>
+                                <h3 className="text-xl font-semibold tracking-tight text-foreground">Possible support scope</h3>
                                 <div className="space-y-4">
                                     {[
                                         "AI, database, and integration maintenance",
@@ -355,14 +340,14 @@ export default function ServicesPage() {
                                         "Agreed monitoring and response windows",
                                         "Scheduled security reviews within scope"
                                     ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4">
-                                            <div className="w-1.5 h-1.5 bg-foreground rounded-full group-hover:scale-150 transition-transform" />
-                                            <span className="text-xs font-black uppercase tracking-widest text-foreground">{item}</span>
+                                        <div key={i} className="flex items-center gap-3">
+                                            <div className="w-1.5 h-1.5 bg-brand rounded-full" />
+                                            <span className="text-sm font-medium text-foreground">{item}</span>
                                         </div>
                                     ))}
                                 </div>
-                            <Link href="/contact" className="btn-institutional group w-full">
-                                <span className="relative z-10 flex items-center justify-center gap-4">Discuss managed support<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" /></span>
+                            <Link href="/contact" className="msa-button w-full justify-between">
+                                Discuss managed support<ArrowRight className="w-4 h-4" aria-hidden="true" />
                             </Link>
                             </div>
                         </div>
@@ -371,22 +356,18 @@ export default function ServicesPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-32 bg-transparent text-center">
+            <section className="py-20 bg-transparent text-center md:py-24">
                 <div className="container mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto space-y-12"
-                    >
-                        <h2 className="fluid-h2 mb-12">
-                            BECOME THE <br /> <span className="opacity-40">STANDARD.</span>
+                    <div className="max-w-4xl mx-auto space-y-8">
+                        <h2 className="font-heading text-4xl font-semibold tracking-tight md:text-5xl">
+                            Ready to improve a workflow?
                         </h2>
-                        <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                            <Link href="/contact" className="btn-institutional group"><span className="relative z-10 flex items-center justify-center gap-4">START_PROJECT<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" /></span></Link>
-                            <Link href="/shop" className="btn-outline-institutional group"><span className="relative z-10 flex items-center justify-center gap-4">BROWSE_ARCHITECTURES<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" /></span></Link>
+                        <p className="mx-auto max-w-2xl leading-7 text-muted-foreground">Tell us what is slowing the work down. We will help identify a practical first step and define what a project would include.</p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <Link href="/contact" className="msa-button">Discuss your project <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+                            <Link href="/projects" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-5 font-semibold hover:bg-muted">See selected work <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
