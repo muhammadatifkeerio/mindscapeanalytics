@@ -55,6 +55,18 @@ const operatingJourney = [
 ] as const;
 
 /**
+ * SOURCE OF TRUTH KEYWORDS: automation offer, sales automation, marketing automation, lead generation, buyer benefits, workflow outcomes
+ * WHAT: Defines the three buyer-facing automation paths and their concrete operational outcomes.
+ * WHY: Lets visitors identify a relevant starting point before discussing a custom connected workflow.
+ * WHERE: Homepage automation-flow section below service discovery.
+ */
+const automationOffers = [
+    { label: "Sales automation", title: "Turn interest into a reliable next step.", copy: "Capture inquiries, qualify the fit, prepare follow-ups, and keep your team focused on the conversations that need people.", outcomes: ["Faster response handoff", "Clearer pipeline context"], icon: TrendingUp },
+    { label: "Marketing automation", title: "Make campaigns easier to measure and improve.", copy: "Connect approved campaign signals, content activity, and audience responses so the next action is based on evidence—not guesswork.", outcomes: ["Connected campaign signals", "Reviewable follow-up actions"], icon: LineChart },
+    { label: "Lead generation", title: "Build a lead engine your team can review.", copy: "Define your ideal customer, research the right accounts, enrich the record, and route qualified opportunities into the right workflow.", outcomes: ["Better-fit opportunities", "Human-approved outreach"], icon: Users },
+] as const;
+
+/**
  * SOURCE OF TRUTH KEYWORDS: Mindscape homepage, AI agency hero, China sourcing, Tenvo, light theme, rose accent
  * WHAT: The primary 2026 marketing experience for Mindscape Analytics.
  * WHY: Unifies AI, data, product engineering, and factory-direct sourcing into one credible conversion path.
@@ -152,7 +164,7 @@ export default function HomeClient() {
              * WHY: Uses simple click controls and concrete interface examples, with no scroll-linked animation.
              * WHERE: Homepage between capability overview and China sourcing section.
              */}
-            <section className="operating-journey-section border-y border-border bg-muted/45 py-10 sm:py-14 md:py-20" aria-labelledby="operating-journey-heading">
+            <section className="hidden" aria-hidden="true">
                 <div className="container-standard">
                     <div className="mb-7 max-w-3xl sm:mb-10">
                         <p className="text-xs font-semibold uppercase tracking-[.16em] text-brand">How it works</p>
@@ -301,6 +313,56 @@ export default function HomeClient() {
                                 </div>
                             </div>
                             <p className="mt-3 text-center text-xs leading-5 text-muted-foreground">All figures and records are illustrative. Integrations, forecasts, and workflows are scoped and validated with each client.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/*
+             * SOURCE OF TRUTH KEYWORDS: automation workflow visualization, sales flow, marketing flow, lead generation, connected nodes, buyer conversion
+             * WHAT: Presents Mindscape's three core automation offers as an animated, human-reviewed operating flow.
+             * WHY: Makes the value of an automation engagement tangible before a visitor commits to a discovery conversation.
+             * WHERE: Homepage between service discovery and sourcing delivery.
+             */}
+            <section className="relative overflow-hidden border-y border-border bg-card py-16 sm:py-20 md:py-28" aria-labelledby="automation-flow-heading">
+                <div aria-hidden="true" className="absolute inset-0 opacity-50 [background-image:radial-gradient(hsl(var(--brand)/.18)_1px,transparent_1px)] [background-size:22px_22px]" />
+                <div className="container-standard relative">
+                    <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-14">
+                        <div className="max-w-xl">
+                            <p className="text-xs font-semibold uppercase tracking-[.18em] text-brand">What we make work for you</p>
+                            <h2 id="automation-flow-heading" className="mt-4 text-balance font-heading text-[clamp(2.7rem,5vw,5.6rem)] font-semibold leading-[0.93] tracking-[-0.045em]">Move every good signal closer to revenue.</h2>
+                            <p className="mt-6 text-lg leading-8 text-muted-foreground">We design connected sales, marketing, and lead-generation workflows around your team&apos;s real decisions—so automation prepares the work and people stay in control.</p>
+                            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                                {["Designed around your current tools", "Clear approval points", "Practical, measurable handoffs", "Built to evolve with your team"].map((benefit) => <div key={benefit} className="flex items-start gap-3 rounded-xl border border-border bg-background/80 p-4 text-sm font-medium"><Check className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />{benefit}</div>)}
+                            </div>
+                            <Link href="/contact?plan=automation-workflow-review" className="msa-button mt-8 w-full justify-between sm:w-auto">Map your automation opportunity <span className="msa-button-orb"><ArrowRight className="h-4 w-4" aria-hidden="true" /></span></Link>
+                        </div>
+
+                        <div className="rounded-3xl border border-border bg-background/95 p-4 shadow-[0_22px_70px_hsl(var(--foreground)/0.1)] sm:p-6">
+                            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
+                                <div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-brand/10 text-brand"><Boxes className="h-5 w-5" aria-hidden="true" /></span><div><p className="text-sm font-semibold">Connected automation canvas</p><p className="text-xs text-muted-foreground">Illustrative flow · your tools and approval rules</p></div></div>
+                                <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand"><span className="h-2 w-2 animate-pulse rounded-full bg-brand motion-reduce:animate-none" aria-hidden="true" /> Live workflow concept</span>
+                            </div>
+
+                            <div className="relative mt-5 overflow-hidden rounded-2xl border border-border bg-muted/35 p-4 sm:p-6">
+                                <svg viewBox="0 0 900 420" className="absolute inset-0 h-full w-full" aria-hidden="true">
+                                    <defs><linearGradient id="automation-flow-gradient" x1="0" x2="1"><stop offset="0%" stopColor="hsl(var(--brand))" stopOpacity="0.18" /><stop offset="52%" stopColor="hsl(var(--brand))" stopOpacity="0.7" /><stop offset="100%" stopColor="hsl(var(--brand))" stopOpacity="0.18" /></linearGradient></defs>
+                                    {[92, 210, 328].map((y) => <path key={y} d={`M72 ${y} C260 ${y - 46}, 500 ${y + 46}, 828 ${y}`} fill="none" stroke="url(#automation-flow-gradient)" strokeWidth="3" strokeDasharray="7 10" />)}
+                                    <g className="motion-reduce:hidden">
+                                        {[["M72 92 C260 46, 500 138, 828 92", "4.8s"], ["M72 210 C260 164, 500 256, 828 210", "5.6s"], ["M72 328 C260 282, 500 374, 828 328", "6.4s"]].map(([path, duration]) => <circle key={path} r="7" fill="hsl(var(--brand))"><animateMotion dur={duration} repeatCount="indefinite" path={path} /></circle>)}
+                                    </g>
+                                </svg>
+                                <div className="relative space-y-5">
+                                    {automationOffers.map(({ label, title, outcomes, icon: Icon }, index) => (
+                                        <article key={label} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-xl border border-border/80 bg-background/90 p-4 sm:grid-cols-[11rem_1fr_auto] sm:gap-5">
+                                            <div className="flex items-center gap-3"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand"><Icon className="h-4 w-4" aria-hidden="true" /></span><div><p className="text-xs font-semibold uppercase tracking-[.12em] text-brand">0{index + 1} · {label}</p><p className="mt-1 text-sm font-semibold">{title}</p></div></div>
+                                            <div className="hidden items-center justify-between gap-2 sm:flex">{["Signal", "Enrich", "Approve", "Act"].map((node, nodeIndex) => <span key={node} className="flex items-center gap-2 text-[11px] font-medium text-muted-foreground"><span className="grid h-7 w-7 place-items-center rounded-full border border-brand/30 bg-card text-[10px] font-semibold text-foreground">{nodeIndex + 1}</span>{node}</span>)}</div>
+                                            <div className="col-span-2 flex flex-wrap gap-2 sm:col-span-1 sm:justify-end">{outcomes.map((outcome) => <span key={outcome} className="rounded-full border border-border bg-card px-2.5 py-1 text-[10px] font-semibold text-muted-foreground">{outcome}</span>)}</div>
+                                        </article>
+                                    ))}
+                                </div>
+                            </div>
+                            <p className="mt-4 text-xs leading-5 text-muted-foreground">The visual is a workflow representation, not a claim about prebuilt integrations or automated decisions. We confirm systems, permissions, and human review points during discovery.</p>
                         </div>
                     </div>
                 </div>
