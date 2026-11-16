@@ -13,10 +13,10 @@ const moments = [
         alt: "Mindscape Analytics team gathered together at the office",
     },
     {
-        title: "Abu Dhabi Business Week 2025",
-        detail: "Mindscape Analytics at an industry event.",
-        image: "/images/team/mindscape-team-abu-dhabi-2025.webp",
-        alt: "Mindscape Analytics team at Abu Dhabi Business Week 2025",
+        title: "Mindscape Analytics UAE team event",
+        detail: "The Mindscape Analytics team together at a UAE event.",
+        image: "/images/team/team-mindscapeanalytics-uae-event.webp",
+        alt: "Mindscape Analytics team together at a UAE event",
     },
 ];
 
@@ -61,7 +61,7 @@ export default function TeamMoments({ compact = false }: { compact?: boolean }) 
                 <div className="mt-8 border-t border-border/80 pt-5">
                     <p className="font-semibold tracking-tight">{activeMoment.title}</p>
                     <p className="mt-1 text-sm text-muted-foreground">{activeMoment.detail}</p>
-                    <p className="mt-4 text-xs font-medium text-brand">Mindscape Analytics · Abu Dhabi Business Week 2025</p>
+                    <p className="mt-4 text-xs font-medium text-brand">Mindscape Analytics · UAE team event</p>
                 </div>
             )}
         </>

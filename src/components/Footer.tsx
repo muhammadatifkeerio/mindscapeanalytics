@@ -1,7 +1,6 @@
 import BrandLogo from "@/components/BrandLogo";
 import Link from "next/link";
-import { ArrowUpRight, Mail, MapPin, MessageCircle } from "lucide-react";
-import WechatNumber from "@/components/WechatNumber";
+import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
 
 const companyLinks = [
     ["Services", "/services"],
@@ -66,11 +65,6 @@ export default function Footer() {
                                     <a href="https://wa.me/13072106155" target="_blank" rel="noreferrer" aria-label="Message the US team on WhatsApp" className="inline-flex items-center gap-1.5 font-medium text-brand hover:underline"><MessageCircle className="h-4 w-4" /> WhatsApp</a>
                                 </div>
                             </div>
-                            <div className="border-t border-border pt-4">
-                                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">🇨🇳 China · WeChat</p>
-                                <WechatNumber compact />
-                            </div>
-                            <p className="flex items-start gap-2 border-t border-border pt-4 text-xs leading-5 text-muted-foreground"><MapPin className="mt-0.5 h-4 w-4 shrink-0" /> Sheridan, Wyoming, USA · Beijing, China</p>
                         </div>
                     </div>
                 </div>

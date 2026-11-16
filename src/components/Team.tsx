@@ -19,7 +19,7 @@ const team = [
         name: "Muhammad Atif",
         role: "Full-Stack Developer & AI Engineer",
         bio: "Builds and maintains responsive product experiences, connecting clear interfaces with dependable application logic.",
-        image: "/images/team/muhammad-ibrahim.webp",
+        image: "/images/team/muhammad-atif.webp",
         linkedin: "#",
         email: "mailto:atif@mindscapeanalytics.com"
     },
@@ -35,7 +35,7 @@ const team = [
         name: "Muhammad Ibrahim",
         role: "Senior Manager - Marketing",
         bio: "Shapes go-to-market strategy, brand positioning, and partnerships that connect Mindscape products with the right customers.",
-        image: "/images/team/shafqat-ali.webp",
+        image: "/images/team/muhammad-ibrahim.webp",
         linkedin: "#",
         email: "#"
     },
@@ -51,7 +51,7 @@ const team = [
         name: "Shaizan Ali",
         role: "Software Engineer",
         bio: "Develops and improves software features, integrations, and systems with a focus on reliability and maintainability.",
-        image: "/images/team/shafqat-ali-portrait-2026.webp",
+        image: "/images/team/shaizan-ali.webp",
         linkedin: "#",
         email: "#"
     }
@@ -100,16 +100,22 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
                     <div className="w-[1px] h-8 bg-foreground" />
                 </div>
                 <div className="aspect-[3/4] relative overflow-hidden">
-                    <div className="w-full h-full transition-transform duration-700 group-hover:scale-105">
-                        <Image
-                            src={member.image}
-                            alt={member.name}
-                            fill
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                            priority={index < 3}
-                        />
-                    </div>
+                    {member.image ? (
+                        <div className="w-full h-full transition-transform duration-700 group-hover:scale-105">
+                            <Image
+                                src={member.image}
+                                alt={member.name}
+                                fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                priority={index < 3}
+                            />
+                        </div>
+                    ) : (
+                        <div role="img" aria-label={`${member.name} initials`} className="grid h-full place-items-center bg-muted font-heading text-5xl font-semibold text-muted-foreground">
+                            {member.name.split(" ").map((part) => part[0]).join("")}
+                        </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
 
                     <div className="absolute bottom-6 left-6 right-6 z-20">

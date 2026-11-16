@@ -42,7 +42,7 @@ const team = [
         name: "Muhammad Atif",
         role: "Full-Stack Developer & AI Engineer",
         bio: "Builds and maintains responsive product experiences, connecting clear interfaces with dependable application logic.",
-        image: "/images/team/muhammad-atif-new.webp",
+        image: "/images/team/muhammad-atif.webp",
         linkedin: "#",
         email: "mailto:atif@mindscapeanalytics.com"
     },
@@ -74,7 +74,7 @@ const team = [
         name: "Shaizan Ali",
         role: "Software Engineer",
         bio: "Develops and improves software features, integrations, and systems with a focus on reliability and maintainability.",
-        image: undefined,
+        image: "/images/team/shaizan-ali.webp",
         linkedin: "#",
         email: "#"
     }

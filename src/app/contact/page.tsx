@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WechatNumber from "@/components/WechatNumber";
 import { contactFormSchema } from "@/lib/types";
 
 const contactInfo = [
@@ -56,7 +55,6 @@ const contactInfo = [
 const officeLocations = [
     { code: "US", flag: "🇺🇸", country: "United States", city: "Sheridan, Wyoming", address: "30 N Gould St, Suite R · Sheridan, WY 82801", phone: "+1 307 210 6155", href: "tel:+13072106155", pin: { left: "20.3%", top: "25.1%" } },
     { code: "PK", flag: "🇵🇰", country: "Pakistan", city: "Karachi", address: "Pearl Building · Bahria Town, Karachi", phone: "+92 307 210 6155", href: "tel:+923072106155", pin: { left: "68.6%", top: "36.2%" } },
-    { code: "CN", flag: "🇨🇳", country: "China", city: "Beijing", address: "Beijing · China sourcing network", phone: "+86 178 0226 7424", href: "tel:+8617802267424", pin: { left: "82.3%", top: "27.8%" } },
 ];
 
 const faqs = [
@@ -218,32 +216,18 @@ function ContactFormContent() {
                                 )}
                             </motion.div>
                         ))}
-                        <motion.article
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: contactInfo.length * 0.1 }}
-                            className="h-full rounded-2xl border border-border bg-card p-8 shadow-sm surface-frost"
-                        >
-                            <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-muted text-foreground">
-                                <MessageCircle className="h-6 w-6" aria-hidden="true" />
-                            </div>
-                            <h3 className="text-meta mb-2">🇨🇳 WeChat</h3>
-                            <p className="text-sm leading-relaxed text-muted-foreground">Find our China team in WeChat using this phone number.</p>
-                            <WechatNumber />
-                        </motion.article>
                     </div>
                 </div>
             </section>
 
             <section className="container-standard pb-16 md:pb-24" aria-labelledby="global-offices-heading">
                 <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                    <div><p className="text-xs font-semibold uppercase tracking-[.16em] text-brand">Global presence</p><h2 id="global-offices-heading" className="mt-3 font-heading text-3xl font-semibold tracking-[-.035em] sm:text-4xl">Reach our teams in three locations</h2></div>
-                    <p className="max-w-lg text-sm leading-6 text-muted-foreground">Reach our US, Pakistan, or China teams directly. The map marks Sheridan, Karachi, and Beijing.</p>
+                    <div><p className="text-xs font-semibold uppercase tracking-[.16em] text-brand">Global presence</p><h2 id="global-offices-heading" className="mt-3 font-heading text-3xl font-semibold tracking-[-.035em] sm:text-4xl">Reach our teams in two locations</h2></div>
+                    <p className="max-w-lg text-sm leading-6 text-muted-foreground">Reach our US or Pakistan teams directly. The map marks Sheridan and Karachi.</p>
                 </div>
 
                 <div className="grid gap-5 lg:grid-cols-[1.2fr_.8fr] lg:items-stretch">
-                    <div className="relative min-h-[260px] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-sm sm:min-h-[360px] sm:p-5" role="img" aria-label="World map showing Mindscape Analytics offices in Sheridan, Wyoming; Karachi, Pakistan; and Beijing, China">
+                    <div className="relative min-h-[260px] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-sm sm:min-h-[360px] sm:p-5" role="img" aria-label="World map showing Mindscape Analytics offices in Sheridan, Wyoming and Karachi, Pakistan">
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_68%_34%,hsl(var(--brand)/.09),transparent_42%)]" />
                         <svg viewBox="0 0 900 420" className="absolute inset-0 h-full w-full text-foreground" fill="none" aria-hidden="true">
                             <defs><pattern id="office-map-grid" width="45" height="45" patternUnits="userSpaceOnUse"><path d="M45 0H0V45" fill="none" stroke="currentColor" strokeOpacity=".045" strokeWidth="1" /></pattern></defs>

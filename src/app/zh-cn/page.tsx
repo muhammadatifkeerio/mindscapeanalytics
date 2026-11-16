@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "@/components/SmartImage";
 import BrandLogo from "@/components/BrandLogo";
 import { ArrowRight, ArrowUpRight, Factory, Globe2, Mail, Search, Workflow } from "lucide-react";
-import WechatNumber from "@/components/WechatNumber";
 
 /** SOURCE OF TRUTH KEYWORDS: China market, Chinese factories, overseas growth, factory sourcing, AI software, zh-CN
  * WHAT: Localized Chinese landing page for factory growth, China supply-chain collaboration, and shipped software products.
@@ -135,8 +134,7 @@ export default function ChineseLandingPage() {
                             <h2 className="mt-4 max-w-sm font-heading text-3xl font-semibold leading-tight tracking-[-.03em] sm:text-4xl">从业务机会，到清晰的执行路径。</h2>
                             <p className="mt-4 max-w-md leading-7 text-background/75">先明确产品、市场与运营目标，再共同确定合适的研究、软件或供应链协作范围。</p>
                             <div className="mt-8 border-t border-white/20 pt-6">
-                                <p className="text-xs font-semibold uppercase tracking-[.12em] text-background/60">中国团队 · 电话 / 微信</p>
-                                <WechatNumber compact locale="zh-CN" inverse />
+                                <p className="text-xs font-semibold uppercase tracking-[.12em] text-background/60">联系我们</p>
                                 <a href="mailto:info@mindscapeanalytics.com" className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-background/90 underline underline-offset-4 hover:text-white"><Mail aria-hidden="true" className="h-4 w-4" />info@mindscapeanalytics.com</a>
                             </div>
                         </div>
